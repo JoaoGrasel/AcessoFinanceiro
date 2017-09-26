@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.util.Scanner;
+
 /**
  *
  * @author thiagobrezinski
@@ -15,7 +17,7 @@ public class AcessoFinanceiro {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
     }
     
 }
