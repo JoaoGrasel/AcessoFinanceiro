@@ -5,6 +5,7 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -16,26 +17,27 @@ public class TelaAcesso {
     private Scanner teclado;
     private ControladorAcesso owner;
     
-    public TelaAcesso() {
+    public TelaAcesso(ControladorAcesso owner) {
         this.teclado = new Scanner(System.in);
-        this.owner = new ControladorAcesso();
+        this.owner = owner;
     }
     
-    public void exibeAcessoFinanceiro() {
+    public int exibeAcessoFinanceiro(){
         int matricula = 0;
+        boolean matriculaInvalida = true;
         
-        System.out.println("+-+-+-+ Acesso ao financeiro +-+-+-+");
-        System.out.println("Insira sua matrícula: ");
+        System.out.println(Constantes.ACESSO_FINANCEIRO);
+        System.out.println(Constantes.INSIRA_MATRICULA);
         
-        if(teclado.hasNextInt()) matricula = teclado.nextInt();
-        if(Character.isDigit(matricula)) {
-            Funcionario funcionario = owner.encontraFuncionarioPelaMatricula(matricula);
-            owner.validaAcessoFinanceiro(funcionario);
-        } else {
-            
+        while(matriculaInvalida) {
+            try {
+                matricula = teclado.nextInt();
+                matriculaInvalida = false;
+            } catch (InputMismatchException e) {
+                System.out.println(Constantes.MATRICULA_INVALIDA);
+            }
         }
-        
-        
+        return matricula;
     }
     
 }
