@@ -13,14 +13,14 @@ import java.util.Date;
  */
 public class Funcionario {
 
-    private String matricula;
+    private int matricula;
     private String nome;
     private Date dataNascimento;
     private int telefone;
     private int salario;
     private Cargo cargo;
 
-    public Funcionario(String matricula, String nome, Date dataNascimento, int telefone, int salario, Cargo cargo) {
+    public Funcionario(int matricula, String nome, Date dataNascimento, int telefone, int salario, Cargo cargo) {
         this.matricula = matricula;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -29,7 +29,7 @@ public class Funcionario {
         this.cargo = cargo;
     }
 
-    public String getMatricula() {
+    public int getMatricula() {
         return this.matricula;
     }
 
@@ -53,7 +53,7 @@ public class Funcionario {
         return this.cargo;
     }
 
-    public void setMatricula(String matricula) {
+    public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
 
@@ -76,7 +76,5 @@ public class Funcionario {
     public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
-
-}
 
 }

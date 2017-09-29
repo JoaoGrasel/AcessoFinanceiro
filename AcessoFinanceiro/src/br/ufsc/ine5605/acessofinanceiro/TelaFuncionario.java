@@ -23,7 +23,7 @@ public class TelaFuncionario {
         this.teclado = new Scanner(System.in);
     }
 
-    public void exibeMenuFuncionario() {
+    public int exibeMenuFuncionario() {
 
         int opcao = 0;
 
@@ -38,51 +38,66 @@ public class TelaFuncionario {
         System.out.println(" -------- 5- Voltar ao menu principal -----");
         System.out.println(" ------------------------------------------");
 
+        //COLOCAR UMA EXEÇÃO PARA PEGAR CASO ELE DIGITE UMA LETRA, PENSAR TAMBEM NO DEFAULT
         opcao = teclado.nextInt();
 
-        switch (opcao) {
-            case 1:
-                incluiFuncionario();
-                break;
-            case 2:
-                editaFuncionario();
-                break;
-            case 3:
-                listaFuncionarios();
-                break;
-            case 4:
-                excluiFuncionario();
-                break;
-            case 5:
-                controlador.voltaMenuPrincipal();
-                break;
-        }
-
+        return opcao;
     }
 
-    public void incluiFuncionario() {
-
+    public void novoFuncionario() {
         System.out.println("--------- Novo Funcionário ---------");
         System.out.println("------------------------------------");
+    }
+
+    public String pedeNome() {
+
         System.out.println(" Digite o nome do funcionário:");
         String nome = teclado.nextLine();
+        //fazer as excecoes do nome
+        return nome;
+    }
 
+    public int pedeMatricula() {
         System.out.println(" Digite a matrícula do funcionário:");
-        String matricula = teclado.nextLine();
-        for (controlador.verificaMatricula(matricula)                 ) {
-            System.out.println(" Digite a matrícula do funcionário:");
-            matricula = teclado.nextLine();
-        }
+        int matricula = teclado.nextLine();
+        //fazer as execoes da matricula
+        return matricula;
+    }
 
+    public Date pedeDataNascimento() {
         System.out.println(" Digite a data de nascimento do funcionário:");
         String dataNascimento = teclado.nextLine();
+        //fazer as excecoes da data e depois transformar em um string
+        return
+    }
+
+    public String pedeTelefone() {
         System.out.println(" Digite o telefone do funcionário:");
         String telefone = teclado.nextLine();
+        //tratar excecoes telefone
+        return telefone;
+    }
+
+    public String pedeSalario() {
         System.out.println(" Digite o salário do funcionário:");
         String salario = teclado.nextLine();
-        System.out.println(" Escolha o cargo do funcionário:");
-
+        //tratar as excecoes do salario
+        return salario;
     }
+//
+//        System.out.println(" Digite a matrícula do funcionário:");
+//        String matricula = teclado.nextLine();
+//        for (controlador.verificaMatricula(matricula)                  ) {
+//            System.out.println(" Digite a matrícula do funcionário:");
+//            matricula = teclado.nextLine();
+//        }
+//
+//
+//
+//
+//        System.out.println(" Escolha o cargo do funcionário:");
+//
+//    }
 
     public void editaFuncionario() {
 
@@ -192,4 +207,5 @@ public class TelaFuncionario {
         }
 
     }
+
 }

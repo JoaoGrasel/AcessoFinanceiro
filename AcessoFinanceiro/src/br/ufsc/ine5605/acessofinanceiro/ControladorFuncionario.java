@@ -23,8 +23,34 @@ public class ControladorFuncionario {
         this.controladorPrincipal = owner;
     }
 
-    public void iniciaMenuFuncionario() {
-        telaFuncionario.exibeMenuFuncionario();
+    public void exibeMenuFuncionario() {
+
+        int opcao = telaFuncionario.exibeMenuFuncionario();
+
+        switch (opcao) {
+            case 1:
+                incluiFuncionario();
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                voltaMenuPrincipal();
+                break;
+        }
+
+    }
+
+    public void incluiFuncionario() {
+        telaFuncionario.novoFuncionario();
+        String nome = telaFuncionario.pedeNome();
+        int matricula = telaFuncionario.pedeMatricula();
+        Date dataNascimento = telaFuncionario.pedeDataNascimento();
+        String telefone = telaFuncionario.pedeTelefone();
+        String salario = telaFuncionario.pedeSalario();
     }
 
     public void voltaMenuPrincipal() {
