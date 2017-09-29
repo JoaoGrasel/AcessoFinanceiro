@@ -5,19 +5,18 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
-import java.util.Scanner;
+import java.util.ArrayList;
 
 /**
  *
- * @author thiagobrezinski
+ * @author bruno
  */
-public class AcessoFinanceiro {
+public class ControladorCargo {
+    private ArrayList<Cargo> cargos;
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        
+    public ControladorCargo() {
+        this.cargos = new ArrayList<>();
     }
+    
     
 }
