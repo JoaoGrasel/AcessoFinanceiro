@@ -28,7 +28,7 @@ public class ControladorAcesso {
         if(validaAcessoFinanceiro(matricula)) {
             System.out.println(Constantes.ACESSO_PERMITIDO);
         } else {
-            controladorPrincipal.retornaMotivoP
+//            controladorPrincipal.retornaMotivoP
         }
     }
     

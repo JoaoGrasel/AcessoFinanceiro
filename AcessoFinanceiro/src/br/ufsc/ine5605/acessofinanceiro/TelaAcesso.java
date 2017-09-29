@@ -27,10 +27,10 @@ public class TelaAcesso {
         boolean matriculaInvalida = true;
         
         System.out.println(Constantes.ACESSO_FINANCEIRO);
-        System.out.println(Constantes.INSIRA_MATRICULA);
         
         while(matriculaInvalida) {
             try {
+                System.out.println(Constantes.INSIRA_MATRICULA);
                 matricula = teclado.nextInt();
                 matriculaInvalida = false;
             } catch (InputMismatchException e) {
