@@ -47,7 +47,7 @@ public class ControladorAcesso {
                 System.out.println(Motivo.CARGO_SEM_ACESSO);
             }
         } catch (NullPointerException e) {
-            System.out.println(Constantes.MATRICULA_INEXISTENTE);
+            System.out.println(Constantes.ACESSO_MATRICULA_INEXISTENTE);
         }
         return false;
     }

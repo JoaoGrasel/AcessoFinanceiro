@@ -30,11 +30,11 @@ public class TelaAcesso {
         
         while(matriculaInvalida) {
             try {
-                System.out.println(Constantes.INSIRA_MATRICULA);
+                System.out.println(Constantes.ACESSO_INSIRA_MATRICULA);
                 matricula = teclado.nextInt();
                 matriculaInvalida = false;
             } catch (InputMismatchException e) {
-                System.out.println(Constantes.MATRICULA_INVALIDA);
+                System.out.println(Constantes.ACESSO_MATRICULA_INVALIDA);
             }
         }
         return matricula;
