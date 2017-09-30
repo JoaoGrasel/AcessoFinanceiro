@@ -6,6 +6,7 @@
 package br.ufsc.ine5605.acessofinanceiro;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -17,13 +18,14 @@ public class ControladorFuncionario {
     private ControladorPrincipal controladorPrincipal;
     private ArrayList<Funcionario> funcionarios;
 
-    ControladorFuncionario(ControladorPrincipal owner) {
+    public ControladorFuncionario(ControladorPrincipal owner) {
         this.telaFuncionario = new TelaFuncionario(this);
         this.funcionarios = new ArrayList<>();
         this.controladorPrincipal = owner;
+
     }
 
-    public void exibeMenuFuncionario() {
+    public void menuFuncionario() {
 
         int opcao = telaFuncionario.exibeMenuFuncionario();
 
@@ -32,66 +34,143 @@ public class ControladorFuncionario {
                 incluiFuncionario();
                 break;
             case 2:
+                editaFuncionario();
                 break;
             case 3:
+                listaFuncionarios();
                 break;
             case 4:
+                menuDeletarFuncionario();
                 break;
             case 5:
-                voltaMenuPrincipal();
+                this.controladorPrincipal.exibeMenuPrincipal();
+                break;
+            default:
+                menuFuncionario();
                 break;
         }
 
     }
 
     public void incluiFuncionario() {
-        telaFuncionario.novoFuncionario();
-        String nome = telaFuncionario.pedeNome();
-        int matricula = telaFuncionario.pedeMatricula();
-        Date dataNascimento = telaFuncionario.pedeDataNascimento();
-        String telefone = telaFuncionario.pedeTelefone();
-        String salario = telaFuncionario.pedeSalario();
-    }
 
-    public void voltaMenuPrincipal() {
-        controladorPrincipal.exibeMenuPrincipal();
-    }
+        this.telaFuncionario.mensagemNovoFuncionario();
 
-    public ArrayList<Funcionario> getFuncionarios() {
-        return this.funcionarios;
-    }
+        String nome = this.telaFuncionario.pedeNome();
+        int matricula = this.telaFuncionario.pedeMatricula();
+        Date dataNascimento = this.telaFuncionario.pedeDataNascimento();
+        int telefone = this.telaFuncionario.pedeTelefone();
+        int salario = this.telaFuncionario.pedeSalario();
+        Cargo cargo = this.controladorPrincipal.controladorCargo.cadastraCargo;
 
-    public boolean matriculaExiste(String matricula) {
-        for (Funcionario funcionario : funcionarios) {
-            String matriculaFuncionario = funcionario.getMatricula();
-            if (matriculaFuncionario.equals(matricula)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean verificaMatricula(String matricula) {
-        if (matricula != null) {
-            //verifica se é só numeros if(sohNumero)
-            if (matriculaExiste(matricula)) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return true;
+        if (!this.funcionarios.contains(findFuncionarioByMatricula(matricula))) {
+            Funcionario funcionario = new Funcionario(matricula, nome, dataNascimento, telefone, salario, cargo);
+            funcionarios.add(funcionario);
         }
 
+        menuFuncionario();
+        return;
     }
 
-    public Funcionario findFuncionarioByMatricula(String matricula) {
-        for (Funcionario funcionarioLista : funcionarios) {
-            if (funcionarioLista.getMatricula().equals(matricula)) {
-                return funcionarioLista;
+    public void editaFuncionario() {
+        this.telaFuncionario.mensagemEditaFuncionario();
+        Funcionario funcionario = pedeFuncionario();
+        this.telaFuncionario.exibeFuncionarioSelecionado();
+        this.telaFuncionario.exibeFuncionario(funcionario.getMatricula(), funcionario.getNome(), funcionario.getDataNascimento(), funcionario.getTelefone(), funcionario.getSalario(), funcionario.getCargo());
+
+        int opcao = this.telaFuncionario.exibeMenuEditaFuncionario();
+
+        switch (opcao) {
+            case 1:
+                String nome = this.telaFuncionario.pedeNome();
+                funcionario.setNome(nome);
+                break;
+            case 2:
+                int matricula = this.telaFuncionario.pedeMatricula();
+                funcionario.setMatricula(matricula);
+                break;
+            case 3:
+                Date dataNascimento = this.telaFuncionario.pedeDataNascimento();
+                funcionario.setDataNascimento(dataNascimento);
+                break;
+            case 4:
+                int telefone = this.telaFuncionario.pedeTelefone();
+                funcionario.setTelefone(telefone);
+                break;
+            case 5:
+                int salario = this.telaFuncionario.pedeSalario();
+                funcionario.setSalario(salario);
+                break;
+            case 6:
+                Cargo cargo = this.controladorPrincipal.controladorCargo.cadastraCargo;
+                funcionario.setCargo(cargo);
+                break;
+            case 7:
+                menuFuncionario();
+                break;
+            default:
+                editaFuncionario();
+                break;
+        }
+    }
+
+    public void listaFuncionarios() {
+        this.telaFuncionario.mensagemListaFuncionarios();
+        for (Funcionario funcionarioCadastrado : funcionarios) {
+            int matricula = funcionarioCadastrado.getMatricula();
+            String nome = funcionarioCadastrado.getNome();
+            Date dataNascimento = funcionarioCadastrado.getDataNascimento();
+            int telefone = funcionarioCadastrado.getTelefone();
+            int salario = funcionarioCadastrado.getSalario();
+            Cargo cargo = funcionarioCadastrado.getCargo();
+            this.telaFuncionario.exibeFuncionario(matricula, nome, dataNascimento, telefone, salario, cargo);
+        }
+        menuFuncionario();
+    }
+
+    public void menuDeletarFuncionario() {
+        this.telaFuncionario.mensagemDeletaFuncionario();
+        Funcionario funcionario = pedeFuncionario();
+        this.telaFuncionario.exibeFuncionarioSelecionado();
+        this.telaFuncionario.exibeFuncionario(funcionario.getMatricula(), funcionario.getNome(), funcionario.getDataNascimento(), funcionario.getTelefone(), funcionario.getSalario(), funcionario.getCargo());
+        int opcao = this.telaFuncionario.exibeMenuDeletaFuncionario();
+
+        switch (opcao) {
+            case 1:
+                deletaFuncionario(funcionario);
+                menuFuncionario();
+                break;
+            case 2:
+                menuFuncionario();
+                break;
+            default:
+                menuDeletarFuncionario();
+                break;
+        }
+    }
+
+    public void deletaFuncionario(Funcionario funcionario) {
+        if (funcionario != null) {
+            if (funcionarios.contains(funcionario)) {
+                funcionarios.remove(funcionario);
+                funcionario = null;
+            }
+        }
+    }
+
+    public Funcionario findFuncionarioByMatricula(int matricula) {
+        for (Funcionario funcionarioCadastrado : this.funcionarios) {
+            if (matricula == funcionarioCadastrado.getMatricula()) {
+                return funcionarioCadastrado;
             }
         }
         return null;
+    }
+
+    public Funcionario pedeFuncionario() {
+        int matricula = this.telaFuncionario.pedeMatricula();
+        Funcionario funcionario = findFuncionarioByMatricula(matricula);
+        return funcionario;
     }
 
 }
