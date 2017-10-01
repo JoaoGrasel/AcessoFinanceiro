@@ -46,6 +46,7 @@ public class ControladorFuncionario {
                 this.controladorPrincipal.exibeMenuPrincipal();
                 break;
             default:
+                System.out.println(Constantes.OPCAO_INEXISTENTE);
                 menuFuncionario();
                 break;
         }
@@ -57,11 +58,23 @@ public class ControladorFuncionario {
         this.telaFuncionario.mensagemNovoFuncionario();
 
         String nome = this.telaFuncionario.pedeNome();
-        int matricula = this.telaFuncionario.pedeMatricula();
+        int matricula = cadastraMatricula();
+
         Date dataNascimento = this.telaFuncionario.pedeDataNascimento();
         int telefone = this.telaFuncionario.pedeTelefone();
         int salario = this.telaFuncionario.pedeSalario();
-        Cargo cargo = this.controladorPrincipal.controladorCargo.cadastraCargo;
+        int opcao;
+        opcao = this.telaFuncionario.opcaoCargoFuncionario();
+        Cargo cargo = null;
+        switch (opcao) {
+            case 1:
+                listaCargos();
+                cargo = atribuiCargoPorCodigo();
+                break;
+            case 2:
+                cargo = this.controladorPrincipal.controladorCargo.cadastraCargoParaFuncionario();
+                break;
+        }
 
         if (!this.funcionarios.contains(findFuncionarioByMatricula(matricula))) {
             Funcionario funcionario = new Funcionario(matricula, nome, dataNascimento, telefone, salario, cargo);
@@ -86,7 +99,7 @@ public class ControladorFuncionario {
                 funcionario.setNome(nome);
                 break;
             case 2:
-                int matricula = this.telaFuncionario.pedeMatricula();
+                int matricula = cadastraMatricula();
                 funcionario.setMatricula(matricula);
                 break;
             case 3:
@@ -101,10 +114,22 @@ public class ControladorFuncionario {
                 int salario = this.telaFuncionario.pedeSalario();
                 funcionario.setSalario(salario);
                 break;
+
             case 6:
-                Cargo cargo = this.controladorPrincipal.controladorCargo.cadastraCargo;
+                int opcaoCargo = this.telaFuncionario.opcaoCargoFuncionario();
+                Cargo cargo = null;
+                switch (opcaoCargo) {
+                    case 1:
+                        listaCargos();
+                        cargo = atribuiCargoPorCodigo();
+                        break;
+                    case 2:
+                        cargo = this.controladorPrincipal.controladorCargo.cadastraCargoParaFuncionario();
+                        break;
+                }
                 funcionario.setCargo(cargo);
                 break;
+
             case 7:
                 menuFuncionario();
                 break;
@@ -171,6 +196,36 @@ public class ControladorFuncionario {
         int matricula = this.telaFuncionario.pedeMatricula();
         Funcionario funcionario = findFuncionarioByMatricula(matricula);
         return funcionario;
+    }
+
+    private void listaCargos() {
+        ArrayList<Cargo> cargos = controladorPrincipal.controladorCargo.getCargos();
+        for (Cargo cargoListado : cargos) {
+            this.telaFuncionario.listaCargo(cargoListado.getCodigo(), cargoListado.getNome());
+        }
+    }
+
+    private Cargo atribuiCargoPorCodigo() {
+        int codigo = this.telaFuncionario.pedeCodigo();
+        ArrayList<Cargo> cargos = controladorPrincipal.controladorCargo.getCargos();
+        for (Cargo cargoListado : cargos) {
+            if (cargoListado.getCodigo() == this.telaFuncionario.pedeCodigo()) {
+                return cargoListado;
+            }
+        }
+        atribuiCargoPorCodigo();
+        return null;
+    }
+
+    public int cadastraMatricula() {
+        int matricula = this.telaFuncionario.pedeMatricula();
+        for (Funcionario funcionarioCadastrado : funcionarios) {
+            if (funcionarioCadastrado.getMatricula() == matricula) {
+                this.telaFuncionario.mensagemErroMatriculaJaCadastrada();
+            }
+            cadastraMatricula();
+        }
+        return matricula;
     }
 
 }

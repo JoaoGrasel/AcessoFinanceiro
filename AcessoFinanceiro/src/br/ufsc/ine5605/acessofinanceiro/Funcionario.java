@@ -54,6 +54,7 @@ public class Funcionario {
     }
 
     public void setMatricula(int matricula) {
+
         this.matricula = matricula;
     }
 
