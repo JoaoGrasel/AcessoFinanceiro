@@ -20,6 +20,9 @@ class Constantes {
     public static final String OPCAO_INEXISTENTE = "Opcao inexistente: tente novamente.";
     public static final String INSIRA_OPCAO = "Insira a opcao: ";
     public static final String MATRICULA_JA_CADASTRADA = "Matricula invalida: a matricula inserida ja foi cadastrada";
+    public static final String MATRICULA_INEXISTENTE = "Matricula inexistente: a matricula inserida nao pertence a nenhum funcionario";
+    public static final String TENTAR_NOVAMENTE = "1 - Tentar novamente";
+    public static final String VOLTAR_MENU_PRINCIPAL = "2 - Voltar ao menu principal";
 
     // ACESSO AO FINANCEIRO
     public static final String ACESSO_FINANCEIRO = "+-+-+-+-+-+-+-+ Acesso ao financeiro +-+-+-+-+-+-+-+";
@@ -37,10 +40,13 @@ class Constantes {
     public static final String RELATORIO_FILTRO_MOTIVO_HORARIO_NAO_PERMITIDO = "3 - Horario nao permitido";
     public static final String RELATORIO_FILTRO_MOTIVO_ACESSO_BLOQUEADO = "4 - Acesso bloqueado";
     public static final String RELATORIO_ACESSO_MATRICULA = "Relatorio de acesso negado - matricula: ";
+	public static final String RELATORIO_ACESSO_MOTIVO_MATRICULA_INEXISTENTE = "Relatorio de acesso negado - motivo: matricula inexistente";
     public static final String RELATORIO_VOLTAR_MENU_PRINCIPAL = "1 - Voltar ao menu principal";
     public static final String RELATORIO_REGISTRO_CABECALHO = "+-+-+ Registro ";
     public static final String RELATORIO_REGISTRO_DATA = "Data: ";
     public static final String RELATORIO_REGISTRO_MOTIVO = "Motivo: ";
+    public static final String RELATORIO_REGISTRO_MATRICULA = "Matricula: ";
+    public static final String RELATORIO_REGISTRO_NENHUM_ENCONTRADO = "Nenhum registro encontrado.";
 
     //MENU GERENCIAR FUNCIONARIO
     public static final String GERENCIAR_FUNCIONARIO = " +-+-+-+-+-+-+-+ Gerenciar Funcionários +-+-+-+-+-+-+-+";

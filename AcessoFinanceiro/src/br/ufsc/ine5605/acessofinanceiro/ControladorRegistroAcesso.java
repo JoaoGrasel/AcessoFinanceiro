@@ -46,7 +46,7 @@ public class ControladorRegistroAcesso {
         int opcao = telaRegistroAcesso.exibeFiltroPorMotivo();
         switch(opcao) {
             case 1:
-                telaRegistroAcesso.exibeRelatorioMatriculaInexistente();
+                exibeRelatorioMatriculaInexistente();
                 break;
             case 2:
                 telaRegistroAcesso.exibeRelatorioCargoSemAcesso();
@@ -66,12 +66,14 @@ public class ControladorRegistroAcesso {
 
     public void exibeFiltroPorMatricula() {
         int matricula = telaRegistroAcesso.exibeFiltroPorMatricula();
+		boolean nenhumRegistroEncontrado = false;
 		if(controladorPrincipal.validaMatricula(matricula)) {
 			ArrayList<RegistroAcesso> registrosEncontrados = new ArrayList<>();
 			registrosEncontrados = encontraRegistrosPorMatricula(matricula);
-			exibeRelatorioPorMatricula(registrosEncontrados, matricula);
+			if(registrosEncontrados.isEmpty()) nenhumRegistroEncontrado = true;
+			exibeRelatorioPorMatricula(registrosEncontrados, matricula, nenhumRegistroEncontrado);
 		} else {
-			trataRegistroNaoEncontrado();
+			exibeMatriculaInexistente();
 		}
     }
 
@@ -85,13 +87,34 @@ public class ControladorRegistroAcesso {
 		return registrosEncontrados;
 	}
 
-	public void exibeRelatorioPorMatricula(ArrayList<RegistroAcesso> registrosEncontrados, int matricula) {
+	public void exibeRelatorioPorMatricula(ArrayList<RegistroAcesso> registrosEncontrados, int matricula, boolean nenhumRegistroEncontrado) {
 		int opcao = 0;
-		opcao = telaRegistroAcesso.exibeRelatorioPorMatricula(registrosEncontrados, matricula);
+		opcao = telaRegistroAcesso.exibeRelatorioPorMatricula(registrosEncontrados, matricula, nenhumRegistroEncontrado);
 		if(opcao == 1) {
 			controladorPrincipal.exibeMenuPrincipal();
 		}
-		//REVER AQUI
 	}
-    
+
+	public void exibeMatriculaInexistente() {
+		int opcao = 0;
+		opcao = telaRegistroAcesso.exibeMatriculaInexistente();
+		if(opcao == 1) {
+			exibeFiltroPorMatricula();
+		} else if(opcao == 2) {
+			controladorPrincipal.exibeMenuPrincipal();
+		}
+	}
+
+	public void exibeRelatorioMatriculaInexistente() {
+		ArrayList<RegistroAcesso> registrosEncontrados = new ArrayList<>();
+		boolean nenhumRegistroEncontrado = false;
+		for(RegistroAcesso registro : this.registros) {
+			if(registro.getMotivo() == Motivo.MatriculaInexistente) {
+				registrosEncontrados.add(registro);
+			}
+		}
+		if(registrosEncontrados.isEmpty()) nenhumRegistroEncontrado = true;
+		telaRegistroAcesso.exibeRelatorioMatriculaInexistente(registrosEncontrados, nenhumRegistroEncontrado);
+	}
+	
 }
