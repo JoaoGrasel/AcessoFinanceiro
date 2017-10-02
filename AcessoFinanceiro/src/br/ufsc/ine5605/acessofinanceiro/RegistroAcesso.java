@@ -13,22 +13,22 @@ import java.util.Date;
  */
 public class RegistroAcesso {
     
-    private Date dataHora;
+	private Date data;
     private int matricula;
     private Motivo motivo;
     
-    public RegistroAcesso(Date dataHora, int matricula, Motivo motivo) {
-        this.dataHora = dataHora;
+    public RegistroAcesso(Date data, int matricula, Motivo motivo) {
+        this.data = data;
         this.matricula = matricula;
         this.motivo = motivo;
     }
 
-    public Date getDataHora() {
-        return dataHora;
+    public Date getData() {
+        return data;
     }
 
-    public void setDataHora(Date dataHora) {
-        this.dataHora = dataHora;
+    public void setData(Date data) {
+        this.data = data;
     }
 
     public int getMatricula() {

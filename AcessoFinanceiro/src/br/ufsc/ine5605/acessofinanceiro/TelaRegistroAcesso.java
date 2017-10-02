@@ -5,6 +5,7 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -12,12 +13,12 @@ import java.util.Scanner;
  *
  * @author thiagobrezinski
  */
-class TelaRelatorioAcesso {
+class TelaRegistroAcesso {
     
     private Scanner teclado;
-    private ControladorRelatorioAcesso owner;
+    private ControladorRegistroAcesso owner;
     
-    public TelaRelatorioAcesso(ControladorRelatorioAcesso owner) {
+    public TelaRegistroAcesso(ControladorRegistroAcesso owner) {
         this.owner = owner;
         this.teclado = new Scanner(System.in);
     }
@@ -73,5 +74,33 @@ class TelaRelatorioAcesso {
         }
         return matricula;
     }
+
+	public int exibeRelatorioPorMatricula(ArrayList<RegistroAcesso> registrosEncontrados, int matricula) {
+		int numeroRegistro = 0;
+		System.out.println(Constantes.RELATORIO_ACESSO_MATRICULA + matricula);
+		for(RegistroAcesso registro : registrosEncontrados) {
+			numeroRegistro++;
+			System.out.println(Constantes.RELATORIO_REGISTRO_CABECALHO + numeroRegistro);
+			System.out.println(Constantes.RELATORIO_REGISTRO_DATA + registro.getData());
+			System.out.println(Constantes.RELATORIO_REGISTRO_MOTIVO + registro.getMotivo());
+		}
+		System.out.println(Constantes.RELATORIO_VOLTAR_MENU_PRINCIPAL);
+		int opcao = 0;
+		boolean opcaoInvalida = true;
+		while(opcaoInvalida) {
+			try {
+				System.out.println(Constantes.INSIRA_OPCAO);
+				opcao = teclado.nextInt();
+				if(opcao == 1) {
+					opcaoInvalida = false;
+				} else {
+					System.out.println(Constantes.OPCAO_INEXISTENTE);
+				}
+			} catch (InputMismatchException e) {
+				System.out.println(Constantes.OPCAO_INVALIDA);
+			}
+		}
+		return opcao;
+	}
     
 }
