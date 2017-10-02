@@ -12,12 +12,12 @@ package br.ufsc.ine5605.acessofinanceiro;
 public class ControladorPrincipal {
     private TelaPrincipal telaPrincipal;
     private ControladorCargo controladorCargo;
-    private ControladorData controladorData;
+    private ControladorDataSistema controladorData;
     private ControladorFuncionario controladorFuncionario;
     private ControladorAcesso controladorAcesso;
     private ControladorRelatorio controladorRelatorio;
 
-    public ControladorPrincipal(TelaPrincipal telaPrincipal, ControladorCargo controladorCargo, ControladorData controladorData, 
+    public ControladorPrincipal(TelaPrincipal telaPrincipal, ControladorCargo controladorCargo, ControladorDataSistema controladorData, 
             ControladorFuncionario controladorFuncionario, ControladorAcesso controladorAcesso, ControladorRelatorio controladorRelatorio) {
         this.telaPrincipal = telaPrincipal;
         this.controladorCargo = controladorCargo;
@@ -39,7 +39,7 @@ public class ControladorPrincipal {
         
     }
     
-    public void gerenciarData(ControladorData controladorData){
+    public void gerenciarData(ControladorDataSistema controladorData){
         
     }
     
