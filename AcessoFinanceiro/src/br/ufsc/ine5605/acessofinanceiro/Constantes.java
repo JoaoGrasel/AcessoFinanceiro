@@ -18,6 +18,7 @@ class Constantes {
     public static final String MATRICULA_INVALIDA = "Matricula invalida: a matricula deve conter somente numeros.";
     public static final String OPCAO_INVALIDA = "Opcao invalida: por favor digite somente um numero.";
     public static final String OPCAO_INEXISTENTE = "Opcao inexistente: tente novamente.";
+    public static final String INSIRA_OPCAO = "Insira a opcao: ";
     public static final String MATRICULA_JA_CADASTRADA = "Matricula invalida: a matricula inserida ja foi cadastrada";
 
     // ACESSO AO FINANCEIRO
@@ -26,7 +27,7 @@ class Constantes {
     public static final String ACESSO_PERMITIDO = "Parabens, voce conseguiu acessar o financeiro. Faca a festa!";
 
     // RELATORIO
-    public static final String RELATORIO_ACESSO = "+-+-+-+-+-+-+-+ Relatorio de acesso negado +-+-+-+-+-+-+-+";
+    public static final String RELATORIO_ACESSO = "+-+-+-+-+-+-+-+ Gerenciar Relatorios +-+-+-+-+-+-+-+";
     public static final String RELATORIO_ESCOLHA_FILTRO = "Escolha o filtro: ";
     public static final String RELATORIO_FILTRO_MOTIVO = "1 - Por motivo";
     public static final String RELATORIO_FILTRO_MATRICULA = "2 - Por matricula";
@@ -35,6 +36,11 @@ class Constantes {
     public static final String RELATORIO_FILTRO_MOTIVO_CARGO_SEM_ACESSO = "2 - Cargo sem acesso";
     public static final String RELATORIO_FILTRO_MOTIVO_HORARIO_NAO_PERMITIDO = "3 - Horario nao permitido";
     public static final String RELATORIO_FILTRO_MOTIVO_ACESSO_BLOQUEADO = "4 - Acesso bloqueado";
+    public static final String RELATORIO_ACESSO_MATRICULA = "Relatorio de acesso negado - matricula: ";
+    public static final String RELATORIO_VOLTAR_MENU_PRINCIPAL = "1 - Voltar ao menu principal";
+    public static final String RELATORIO_REGISTRO_CABECALHO = "+-+-+ Registro ";
+    public static final String RELATORIO_REGISTRO_DATA = "Data: ";
+    public static final String RELATORIO_REGISTRO_MOTIVO = "Motivo: ";
 
     //MENU GERENCIAR FUNCIONARIO
     public static final String GERENCIAR_FUNCIONARIO = " +-+-+-+-+-+-+-+ Gerenciar Funcionários +-+-+-+-+-+-+-+";
