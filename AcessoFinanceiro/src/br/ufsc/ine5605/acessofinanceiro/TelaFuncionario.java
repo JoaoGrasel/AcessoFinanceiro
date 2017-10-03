@@ -7,6 +7,7 @@ package br.ufsc.ine5605.acessofinanceiro;
 
 import java.util.Scanner;
 import java.util.Date;
+import java.util.InputMismatchException;
 
 /**
  *
@@ -22,9 +23,7 @@ public class TelaFuncionario {
         this.teclado = new Scanner(System.in);
     }
 
-    public int exibeMenuFuncionario() {
-        int opcao;
-
+    public void exibeMenuFuncionario() {
         System.out.println(Constantes.GERENCIAR_FUNCIONARIO);
         System.out.println();
         System.out.println(Constantes.CADASTRAR_FUNCIONARIO);
@@ -32,12 +31,25 @@ public class TelaFuncionario {
         System.out.println(Constantes.LISTAR_FUNCIONARIOS);
         System.out.println(Constantes.DELETAR_FUNCIONARIO);
         System.out.println(Constantes.VOLTAR_AO_MENU_PRINCIPAL);
+        System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println();
+    }
 
-        //colocar exceção para caso ele digite uma letra ou sei la p repetir
-        opcao = teclado.nextInt();
+    public int pedeOpcao() {
+        int opcao = 0;
+        boolean opcaoInvalida = true;
 
+        while (opcaoInvalida) {
+            try {
+                opcao = teclado.nextInt();
+                opcaoInvalida = false;
+            } catch (InputMismatchException e) {
+                System.out.println(Constantes.OPCAO_INVALIDA);
+            }
+
+        }
         return opcao;
+
     }
 
     public void mensagemNovoFuncionario() {
@@ -50,13 +62,11 @@ public class TelaFuncionario {
         System.out.println();
     }
 
-    public int opcaoCargoFuncionario() {
-        int opcao;
+    public void exibeOpcaoCargoFuncionario() {
+
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println(Constantes.USAR_CARGO_EXISTENTE);
         System.out.println(Constantes.CRIAR_CARGO_PARA_FUNCIONARIO);
-        opcao = teclado.nextInt();
-        return opcao;
 
     }
 
@@ -66,10 +76,7 @@ public class TelaFuncionario {
         System.out.println();
     }
 
-    public int exibeMenuEditaFuncionario() {
-
-        int opcao;
-
+    public void exibeMenuEditaFuncionario() {
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println(Constantes.ALTERAR_NOME);
         System.out.println(Constantes.ALTERAR_MATRICULA);
@@ -78,12 +85,9 @@ public class TelaFuncionario {
         System.out.println(Constantes.ALTERAR_SALARIO);
         System.out.println(Constantes.ALTERAR_CARGO);
         System.out.println(Constantes.OPCAO_VOLTAR);
-
-        opcao = teclado.nextInt();
-        return opcao;
     }
 
-    public void exibeFuncionarioSelecionado() {
+    public void exibeMensagemFuncionarioSelecionado() {
         System.out.println(Constantes.FUNCIONARIO_SELECIONADO);
     }
 
@@ -108,13 +112,12 @@ public class TelaFuncionario {
 
     }
 
-    public int exibeMenuDeletaFuncionario() {
-        int opcao;
+    public void exibeMenuDeletaFuncionario() {
+
         System.out.println(Constantes.TEM_CERTEZA_EXCLUIR);
         System.out.println(Constantes.SIM);
         System.out.println(Constantes.NAO);
-        opcao = teclado.nextInt();
-        return opcao;
+
     }
 
     public String pedeNome() {
@@ -126,8 +129,19 @@ public class TelaFuncionario {
 
     public int pedeMatricula() {
         System.out.println(Constantes.DIGITE_MATRICULA);
-        int matricula = teclado.nextInt();
-        //fazer as execoes da matricula
+        int matricula = 0;
+        boolean matriculaInvalida = true;
+
+        while (matriculaInvalida) {
+            try {
+                matricula = teclado.nextInt();
+                matriculaInvalida = false;
+            } catch (InputMismatchException e) {
+                System.out.println(Constantes.MATRICULA_INVALIDA);
+                pedeMatricula();
+            }
+
+        }
         return matricula;
     }
 
@@ -140,22 +154,57 @@ public class TelaFuncionario {
 
     public int pedeTelefone() {
         System.out.println(Constantes.DIGITE_TELEFONE);
-        int telefone = teclado.nextInt();
-        //tratar excecoes telefone
+        int telefone = 0;
+        boolean telefoneInvalido = true;
+
+        while (telefoneInvalido) {
+            try {
+                telefone = teclado.nextInt();
+                telefoneInvalido = false;
+            } catch (InputMismatchException e) {
+                System.out.println(Constantes.TELEFONE_INVALIDO);
+                pedeTelefone();
+            }
+
+        }
         return telefone;
     }
 
     public int pedeSalario() {
         System.out.println(Constantes.DIGITE_SALARIO);
-        int salario = teclado.nextInt();
-        //tratar as excecoes do salario
+        int salario = 0;
+
+        boolean salarioInvalido = true;
+
+        while (salarioInvalido) {
+            try {
+                salario = teclado.nextInt();
+                salarioInvalido = false;
+            } catch (InputMismatchException e) {
+                System.out.println(Constantes.SALARIO_INVALIDO);
+                pedeSalario();
+            }
+
+        }
         return salario;
+
     }
 
     public int pedeCodigo() {
         System.out.println(Constantes.DIGITE_CODIGO);
-        int codigo = teclado.nextInt();
-        //tratar as excecoes do codigo
+        int codigo = 0;
+        boolean codigoInvalido = true;
+
+        while (codigoInvalido) {
+            try {
+                codigo = teclado.nextInt();
+                codigoInvalido = false;
+            } catch (InputMismatchException e) {
+                System.out.println(Constantes.CODIGO_INVALIDO);
+                pedeCodigo();
+            }
+
+        }
         return codigo;
     }
 
@@ -163,4 +212,19 @@ public class TelaFuncionario {
         System.out.println(Constantes.MATRICULA_JA_CADASTRADA);
     }
 
+    public void opcaoInexistente() {
+        System.out.println(Constantes.OPCAO_INEXISTENTE);
+    }
+
+    void mensagemUsuarioCadastrado() {
+        System.out.println(Constantes.USUARIO_CADASTRADO_SUCESSO);
+    }
+
+    void mensagemCargoNaoEncontrado() {
+        System.out.println(Constantes.CARGO_NAO_ENCONTRADO);
+    }
+
+    void mensagemFuncionarioDeletadoSucesso() {
+        System.out.println(Constantes.FUNCIONARIO_DELETADO_SUCESSO);
+    }
 }

@@ -5,18 +5,13 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author thiagobrezinski
  */
-public class RelatorioAcesso {
-    
-    private ArrayList<RegistroAcesso> registros;
-    
-    public RelatorioAcesso() {
-        this.registros = new ArrayList<>();
-    }
-    
+public enum Motivo {
+	MATICULA_INEXISTENTE,
+	CARGO_SEM_ACESSO,
+	HORARIO_NAO_PERMITIDO,
+	ACESSO_BLOQUEADO
 }
