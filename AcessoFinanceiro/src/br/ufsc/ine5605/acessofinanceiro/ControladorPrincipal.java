@@ -15,16 +15,15 @@ public class ControladorPrincipal {
     private ControladorData controladorData;
     private ControladorFuncionario controladorFuncionario;
     private ControladorAcesso controladorAcesso;
-    private ControladorRelatorio controladorRelatorio;
+    private ControladorRelatorioAcesso controladorRelatorioAcesso;
 
-    public ControladorPrincipal(TelaPrincipal telaPrincipal, ControladorCargo controladorCargo, ControladorData controladorData, 
-            ControladorFuncionario controladorFuncionario, ControladorAcesso controladorAcesso, ControladorRelatorio controladorRelatorio) {
-        this.telaPrincipal = telaPrincipal;
+    public ControladorPrincipal() {
+        this.telaPrincipal = new TelaPrincipal(this);
         this.controladorCargo = controladorCargo;
         this.controladorData = controladorData;
         this.controladorFuncionario = controladorFuncionario;
         this.controladorAcesso = controladorAcesso;
-        this.controladorRelatorio = controladorRelatorio;
+        this.controladorRelatorioAcesso = controladorRelatorioAcesso;
     }
     
     public void exibeMenuPrincipal() {
@@ -43,11 +42,14 @@ public class ControladorPrincipal {
         
     }
     
-    public void emitirRelatorio(ControladorRelatorio controladorRelatorio){
+    public void emitirRelatorio(ControladorRelatorioAcesso controladorRelatorioAcesso){
         
     }
     
     public void acessarFinanceiro(ControladorAcesso controladorAcesso){
+        
+    }
+    public void horarioDoSistema(){
         
     }
     

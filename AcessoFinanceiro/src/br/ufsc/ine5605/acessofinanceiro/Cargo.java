@@ -14,14 +14,11 @@ import java.util.ArrayList;
 public class Cargo {
     private int codigo;
     private String nome;
-    // Vai mudar provavelmente.
-    private TipoAcesso horario;
     private ArrayList<Funcionario> funcionarios;
 
-    public Cargo(int codigo, String nome, TipoAcesso horario) {
+    public Cargo(int codigo, String nome) {
         this.codigo = codigo;
         this.nome = nome;
-        this.horario = horario;
         this.funcionarios = new ArrayList<>();
     }
 
@@ -39,14 +36,6 @@ public class Cargo {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public TipoAcesso getHorario() {
-        return horario;
-    }
-
-    public void setHorario(TipoAcesso horario) {
-        this.horario = horario;
     }
 
     public ArrayList<Funcionario> getFuncionarios() {

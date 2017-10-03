@@ -16,16 +16,56 @@ public class ControladorCargo {
     private ControladorPrincipal controladorPrincipal;
     private TelaCargo telaCargo;
 
-    public ControladorCargo() {
+    public ControladorCargo(ControladorPrincipal owner) {
         this.cargos = new ArrayList<>();
+        this.telaCargo = new TelaCargo(this);
+        this.controladorPrincipal = owner;
     }
     
-    public void exibeMenuCargo(){
+    public void menuCargo(){
         
+        int opcao = telaCargo.exibeMenuCargo();
+
+        switch (opcao) {
+            case 1:
+                incluiCargo();
+                break;
+            case 2:
+                editaCargo();
+                break;
+            case 3:
+                listaCargo();
+                break;
+            case 4:
+                menuDeletarCargo();
+                break;
+            case 5:
+                this.controladorPrincipal.exibeMenuPrincipal();
+                break;
+            default:
+                System.out.println(Constantes.OPCAO_INEXISTENTE);
+                menuCargo();
+                break;
+        }
     }
     
     public void voltaMenuPrincipal() {
         controladorPrincipal.exibeMenuPrincipal();
+    }
+    public void encontraCargoPorCodigo(int codigo) {
+    
+    }
+
+    private void incluiCargo() {
+    }
+
+    private void editaCargo() {
+    }
+
+    private void listaCargo() {
+    }
+
+    private void menuDeletarCargo() {
     }
     
     
