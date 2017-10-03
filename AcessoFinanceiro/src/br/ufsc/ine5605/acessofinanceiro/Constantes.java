@@ -40,7 +40,7 @@ class Constantes {
     public static final String RELATORIO_FILTRO_MOTIVO_HORARIO_NAO_PERMITIDO = "3 - Horario nao permitido";
     public static final String RELATORIO_FILTRO_MOTIVO_ACESSO_BLOQUEADO = "4 - Acesso bloqueado";
     public static final String RELATORIO_ACESSO_MATRICULA = "Relatorio de acesso negado - matricula: ";
-	public static final String RELATORIO_ACESSO_MOTIVO_MATRICULA_INEXISTENTE = "Relatorio de acesso negado - motivo: matricula inexistente";
+    public static final String RELATORIO_ACESSO_MOTIVO_MATRICULA_INEXISTENTE = "Relatorio de acesso negado - motivo: matricula inexistente";
     public static final String RELATORIO_VOLTAR_MENU_PRINCIPAL = "1 - Voltar ao menu principal";
     public static final String RELATORIO_REGISTRO_CABECALHO = "+-+-+ Registro ";
     public static final String RELATORIO_REGISTRO_DATA = "Data: ";
@@ -97,21 +97,21 @@ class Constantes {
     public static final String TEM_CERTEZA_EXCLUIR = " Tem certeza que deseja excluir o funcionario? ";
     public static final String SIM = " 1. Sim ";
     public static final String NAO = " 2. Não";
-    
+
     //MENU GERENCIAR CARGO  @BRUNO
     public static final String GERENCIAR_CARGO = " +-+-+-+-+-+-+-+ Gerenciar Cargo +-+-+-+-+-+-+-+";
     public static final String CADASTRAR_CARGO = " 1. Cadastrar Cargo ";
     public static final String EDITAR_CARGO = " 2. Editar Cargo ";
     public static final String LISTAR_CARGOS = " 3. Listar Cargos ";
     public static final String DELETAR_CARGO = " 4. Deletar Cargo ";
-    
+
     //CADASTRA CARGO    @BRUNO
     public static final String MENSAGEM_NOVO_CARGO = "+-+-+-+-+-+-+-+ Novo Cargo +-+-+-+-+-+-+-+";
     public static final String DIGITE_NOME_CARGO = " Digite o nome do cargo:";
     public static final String DIGITE_CODIGO_CARGO = " Digite o código que deseja atribuir ao cargo: ";
-    
+
     //EDITAR CARGO   @BRUNO
-    public static final String TITULO_EDITAR_CARGO= "+-+-+-+-+-+-+-+ Editar Cargo +-+-+-+-+-+-+-+";
+    public static final String TITULO_EDITAR_CARGO = "+-+-+-+-+-+-+-+ Editar Cargo +-+-+-+-+-+-+-+";
     public static final String CARGO_SELECIONADO = " Cargo selecionado: ";
     public static final String ALTERAR_NOME_CARGO = " 1. Alterar Nome do Cargo";
     public static final String ALTERAR_CODIGO_CARGO = " 2. Alterar Código do Cargo ";
@@ -132,4 +132,3 @@ class Constantes {
     public static final String USUARIO_CADASTRADO_SUCESSO = "Usuario cadastrado com sucesso!";
 
 }
-

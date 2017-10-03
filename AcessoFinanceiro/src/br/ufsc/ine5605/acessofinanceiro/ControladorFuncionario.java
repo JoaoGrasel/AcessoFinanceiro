@@ -12,7 +12,7 @@ import java.util.Date;
  *
  * @author vladimir
  */
-public class ControladorFuncionario {
+public class ControladorFuncionario implements IControladorFuncionario {
 
     private TelaFuncionario telaFuncionario;
     private ControladorPrincipal controladorPrincipal;

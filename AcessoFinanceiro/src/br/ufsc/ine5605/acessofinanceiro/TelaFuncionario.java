@@ -128,12 +128,12 @@ public class TelaFuncionario {
     }
 
     public int pedeMatricula() {
-        System.out.println(Constantes.DIGITE_MATRICULA);
         int matricula = 0;
         boolean matriculaInvalida = true;
 
         while (matriculaInvalida) {
             try {
+                System.out.println(Constantes.DIGITE_MATRICULA);
                 matricula = teclado.nextInt();
                 matriculaInvalida = false;
             } catch (InputMismatchException e) {
@@ -153,12 +153,12 @@ public class TelaFuncionario {
     }
 
     public int pedeTelefone() {
-        System.out.println(Constantes.DIGITE_TELEFONE);
         int telefone = 0;
         boolean telefoneInvalido = true;
 
         while (telefoneInvalido) {
             try {
+                System.out.println(Constantes.DIGITE_TELEFONE);
                 telefone = teclado.nextInt();
                 telefoneInvalido = false;
             } catch (InputMismatchException e) {
@@ -171,13 +171,13 @@ public class TelaFuncionario {
     }
 
     public int pedeSalario() {
-        System.out.println(Constantes.DIGITE_SALARIO);
         int salario = 0;
 
         boolean salarioInvalido = true;
 
         while (salarioInvalido) {
             try {
+                System.out.println(Constantes.DIGITE_SALARIO);
                 salario = teclado.nextInt();
                 salarioInvalido = false;
             } catch (InputMismatchException e) {
@@ -191,12 +191,12 @@ public class TelaFuncionario {
     }
 
     public int pedeCodigo() {
-        System.out.println(Constantes.DIGITE_CODIGO);
         int codigo = 0;
         boolean codigoInvalido = true;
 
         while (codigoInvalido) {
             try {
+                System.out.println(Constantes.DIGITE_CODIGO);
                 codigo = teclado.nextInt();
                 codigoInvalido = false;
             } catch (InputMismatchException e) {
