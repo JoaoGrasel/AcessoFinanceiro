@@ -14,14 +14,24 @@ import java.util.ArrayList;
 public class Cargo {
     private int codigo;
     private String nome;
+    private boolean ehGerente;
+    private boolean temAcessoAoFinanceiro;
     private ArrayList<Funcionario> funcionarios;
 
-    public Cargo(int codigo, String nome) {
+    public Cargo(int codigo, String nome, boolean ehGerente, boolean temAcessoAoFinanceiro) {
         this.codigo = codigo;
         this.nome = nome;
+        this.ehGerente = ehGerente;
+        this.temAcessoAoFinanceiro = temAcessoAoFinanceiro;
         this.funcionarios = new ArrayList<>();
     }
-
+    public boolean ehGerente(){
+        return this.ehGerente;
+    }
+    public boolean temAcessoAoFinanceiro() {
+        return this.temAcessoAoFinanceiro;
+    }
+    
     public int getCodigo() {
         return codigo;
     }
