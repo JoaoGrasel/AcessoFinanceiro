@@ -109,7 +109,7 @@ public class ControladorRegistroAcesso {
 		ArrayList<RegistroAcesso> registrosEncontrados = new ArrayList<>();
 		boolean nenhumRegistroEncontrado = false;
 		for(RegistroAcesso registro : this.registros) {
-			if(registro.getMotivo() == Motivo.MatriculaInexistente) {
+			if(registro.getMotivo() == Motivo.MATICULA_INEXISTENTE) {
 				registrosEncontrados.add(registro);
 			}
 		}

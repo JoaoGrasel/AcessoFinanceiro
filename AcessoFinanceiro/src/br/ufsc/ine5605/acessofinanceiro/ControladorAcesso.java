@@ -52,6 +52,7 @@ public class ControladorAcesso {
         return false;
     }
     
+	//REVER
     public boolean validaHorarioAcesso(Cargo cargo) {
         Date horario = controladorPrincipal.horarioDoSistema();
         if(!horario.after(cargo.getHorarioInicio()) && horario.before(cargo.getHorarioFim())) {
