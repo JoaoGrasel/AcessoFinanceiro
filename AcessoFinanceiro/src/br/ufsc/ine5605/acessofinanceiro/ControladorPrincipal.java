@@ -10,26 +10,22 @@ package br.ufsc.ine5605.acessofinanceiro;
  * @author thiagobrezinski
  */
 public class ControladorPrincipal {
-    private TelaPrincipal telaPrincipal;
-    private ControladorCargo controladorCargo;
-    private ControladorDataSistema controladorData;
-    private ControladorFuncionario controladorFuncionario;
-    private ControladorAcesso controladorAcesso;
-    private ControladorRelatorioAcesso controladorRelatorioAcesso;
+    public TelaPrincipal telaPrincipal;
+    public ControladorCargo controladorCargo;
+    public ControladorDataSistema controladorData;
+    public ControladorFuncionario controladorFuncionario;
+    public ControladorAcesso controladorAcesso;
+    public ControladorRegistroAcessoNegado controladorRegistroAcessoNegado;
 
-<<<<<<< HEAD
+    
     public ControladorPrincipal() {
         this.telaPrincipal = new TelaPrincipal(this);
-=======
-    public ControladorPrincipal(TelaPrincipal telaPrincipal, ControladorCargo controladorCargo, ControladorDataSistema controladorData, 
-            ControladorFuncionario controladorFuncionario, ControladorAcesso controladorAcesso, ControladorRelatorio controladorRelatorio) {
-        this.telaPrincipal = telaPrincipal;
->>>>>>> 221324d38e91fd72ff38f10450eed1cc441d2311
+
         this.controladorCargo = controladorCargo;
         this.controladorData = controladorData;
         this.controladorFuncionario = controladorFuncionario;
         this.controladorAcesso = controladorAcesso;
-        this.controladorRelatorioAcesso = controladorRelatorioAcesso;
+        this.controladorRegistroAcessoNegado = controladorRegistroAcessoNegado;
     }
     
     public void exibeMenuPrincipal() {
@@ -48,7 +44,7 @@ public class ControladorPrincipal {
         
     }
     
-    public void emitirRelatorio(ControladorRelatorioAcesso controladorRelatorioAcesso){
+    public void emitirRelatorio(ControladorRegistroAcessoNegado controladorRegistroAcessoNegado){
         
     }
     
