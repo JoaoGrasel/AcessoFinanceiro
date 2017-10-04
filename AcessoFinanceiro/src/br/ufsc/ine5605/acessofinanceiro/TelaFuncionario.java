@@ -123,7 +123,6 @@ public class TelaFuncionario {
     public String pedeNome() {
         System.out.println(Constantes.DIGITE_NOME);
         String nome = teclado.nextLine();
-        //fazer as excecoes do nome
         return nome;
     }
 
@@ -216,15 +215,23 @@ public class TelaFuncionario {
         System.out.println(Constantes.OPCAO_INEXISTENTE);
     }
 
-    void mensagemUsuarioCadastrado() {
+    public void mensagemUsuarioCadastrado() {
         System.out.println(Constantes.USUARIO_CADASTRADO_SUCESSO);
     }
 
-    void mensagemCargoNaoEncontrado() {
+    public void mensagemCargoNaoEncontrado() {
         System.out.println(Constantes.CARGO_NAO_ENCONTRADO);
     }
 
-    void mensagemFuncionarioDeletadoSucesso() {
+    public void mensagemFuncionarioDeletadoSucesso() {
         System.out.println(Constantes.FUNCIONARIO_DELETADO_SUCESSO);
+    }
+
+    public void mensagemNomeInvalidoLetras() {
+        System.out.println(Constantes.NOME_INVALIDO_LETRAS);
+    }
+
+    public void mensagemNomeInvalidoTamanho() {
+        System.out.println(Constantes.NOME_INVALIDO_TAMANHO);
     }
 }

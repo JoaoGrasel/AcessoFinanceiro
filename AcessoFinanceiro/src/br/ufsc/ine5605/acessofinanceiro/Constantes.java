@@ -23,6 +23,8 @@ class Constantes {
     public static final String MATRICULA_INEXISTENTE = "Matricula inexistente: a matricula inserida nao pertence a nenhum funcionario";
     public static final String TENTAR_NOVAMENTE = "1 - Tentar novamente";
     public static final String VOLTAR_MENU_PRINCIPAL = "2 - Voltar ao menu principal";
+    public static final String NOME_INVALIDO_LETRAS = "Nome invalido, o nome deve conter somente letras.";
+    public static final String NOME_INVALIDO_TAMANHO = "Nome invalido, o nome deve conter no mínimo 3 letras.";
 
     // ACESSO AO FINANCEIRO
     public static final String ACESSO_FINANCEIRO = "+-+-+-+-+-+-+-+ Acesso ao financeiro +-+-+-+-+-+-+-+";

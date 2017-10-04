@@ -7,6 +7,7 @@ package br.ufsc.ine5605.acessofinanceiro;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.lang.Character;
 
 /**
  *
@@ -25,11 +26,23 @@ public class ControladorFuncionario implements IControladorFuncionario {
 
     }
 
+    /**
+     * Exibe o menu principal do CRUD do funcionário.
+     */
     public void exibeMenuFuncionario() {
         telaFuncionario.exibeMenuFuncionario();
         controlaMenuFuncionario();
     }
 
+    /**
+     * Controla o que o sistema faz com base na opcao que o usuario selecionar
+     * no menu principal do funcionario. Caso aperte 1: cadastra um funcionario.
+     * Caso aperte 2: edita um funcionario. Caso aperte 3: lista todos os
+     * funcionarios. Caso aperte 4: deleta um funcionario. Caso aperte 5: volta
+     * ao menu principal do sistema. Caso aperte outra tecla: apresenta uma
+     * mensagem de opcao inexistente e pede que o usuario digite outra vez a
+     * opcao que deseja selecionar.
+     */
     public void controlaMenuFuncionario() {
         int opcao = this.telaFuncionario.pedeOpcao();
 
@@ -44,32 +57,37 @@ public class ControladorFuncionario implements IControladorFuncionario {
                 listaFuncionarios();
                 break;
             case 4:
-                menuDeletarFuncionario();
+                deletaFuncionario();
                 break;
             case 5:
                 this.controladorPrincipal.exibeMenuPrincipal();
                 break;
             default:
-                System.out.println(Constantes.OPCAO_INEXISTENTE);
+                this.telaFuncionario.opcaoInexistente();
                 exibeMenuFuncionario();
                 break;
         }
 
     }
 
+    /**
+     * Pede ao usuario todos os atributos para cadastrar um funcionario e caso o
+     * funcionario não esteja cadastrado (matricula não foi cadastrada ainda),
+     * cadastra o funcionario.
+     */
     public void incluiFuncionario() {
 
         this.telaFuncionario.mensagemNovoFuncionario();
 
         String nome = this.telaFuncionario.pedeNome();
-        int matricula = cadastraMatricula();
+        int matricula = verificaMatriculaInserida();
         Date dataNascimento = this.telaFuncionario.pedeDataNascimento();
         int telefone = this.telaFuncionario.pedeTelefone();
         int salario = this.telaFuncionario.pedeSalario();
         this.telaFuncionario.exibeOpcaoCargoFuncionario();
-        Cargo cargo = opcaoCargoFuncionario();
+        Cargo cargo = atribuiCargoAoFuncionario();
 
-        if (!this.funcionarios.contains(encontraFuncionarioPorMatricula(matricula))) {
+        if (!this.funcionarios.contains(encontraFuncionarioPelaMatricula(matricula))) {
             Funcionario funcionario = new Funcionario(matricula, nome, dataNascimento, telefone, salario, cargo);
             funcionarios.add(funcionario);
             this.telaFuncionario.mensagemUsuarioCadastrado();
@@ -77,25 +95,40 @@ public class ControladorFuncionario implements IControladorFuncionario {
         exibeMenuFuncionario();
     }
 
-    public Cargo opcaoCargoFuncionario() {
+    /**
+     * Retorna um cargo que deseja se atribuir ao funcionario por meio do que o
+     * usuario selecionar. Caso aperte 1: o usuario visualiza os cargos
+     * existentes, com seu codigo, e insere o codigo do cargo que deseja
+     * atribuir. Caso aperte 2: o usuario cadastra um cargo para atribuir ao
+     * funcionario. Caso aperte qualquer outra tecla: o usuario visualiza uma
+     * mensagem de opcao invalida e insere novamente uma opcao de o que deseja
+     * fazer.
+     *
+     * @return cargo a ser atribuido ao funcionario
+     */
+    public Cargo atribuiCargoAoFuncionario() {
         int opcao = this.telaFuncionario.pedeOpcao();
         Cargo cargo = null;
         switch (opcao) {
             case 1:
-                listaCargos();
-                cargo = atribuiCargoPorCodigo();
+                this.controladorPrincipal.controladorCargo.listaCargos();
+                cargo = verificaCodigoComCargo();
                 break;
             case 2:
                 cargo = this.controladorPrincipal.controladorCargo.cadastraCargoParaFuncionario();
                 break;
             default:
                 this.telaFuncionario.opcaoInexistente();
-                opcaoCargoFuncionario();
+                atribuiCargoAoFuncionario();
                 break;
         }
         return cargo;
     }
 
+    /**
+     * Pede qual funcionario o usuario deseja editar. Exibe o menu de editar
+     * funcionario e chama quem controla o menu.
+     */
     public void editaFuncionario() {
         this.telaFuncionario.mensagemEditaFuncionario();
         Funcionario funcionario = pedeFuncionario();
@@ -107,6 +140,18 @@ public class ControladorFuncionario implements IControladorFuncionario {
 
     }
 
+    /**
+     * Controla o que o sistema faz com base na opcao que o usuario selecionar
+     * no menu para deletar o funcionario. Caso aperte 1: altera o nome do
+     * funcionario. Caso aperte 2: altera a matricula do funcionario. Caso
+     * aperte 3: altera a data de nascimento do funcionario. Caso aperte 4:
+     * altera o telefone do funcionario. Caso aperte 5: altera o salario do
+     * funcionario. Caso aperte 6: altera o cargo do funcionario. Caso aperte 7:
+     * volta ao menu principal. Caso aperte qualquer outra tecla: exibe mensagem
+     * de opcao invalida e pede para que insira uma nova opcao.
+     *
+     * @param funcionario a ser editado.
+     */
     public void controlaMenuEditaFuncionario(Funcionario funcionario) {
         int opcao = this.telaFuncionario.pedeOpcao();
 
@@ -116,7 +161,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
                 funcionario.setNome(nome);
                 break;
             case 2:
-                int matricula = cadastraMatricula();
+                int matricula = verificaMatriculaInserida();
                 funcionario.setMatricula(matricula);
                 break;
             case 3:
@@ -134,7 +179,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
 
             case 6:
                 this.telaFuncionario.exibeOpcaoCargoFuncionario();
-                Cargo cargo = opcaoCargoFuncionario();
+                Cargo cargo = atribuiCargoAoFuncionario();
                 funcionario.setCargo(cargo);
                 break;
 
@@ -148,6 +193,10 @@ public class ControladorFuncionario implements IControladorFuncionario {
         }
     }
 
+    /**
+     * Lista na tela todos os funcionarios cadastrados, com todos os seus
+     * atributos. Retorna ao menu funcionario.
+     */
     public void listaFuncionarios() {
         this.telaFuncionario.mensagemListaFuncionarios();
         for (Funcionario funcionarioCadastrado : funcionarios) {
@@ -162,7 +211,11 @@ public class ControladorFuncionario implements IControladorFuncionario {
         exibeMenuFuncionario();
     }
 
-    public void menuDeletarFuncionario() {
+    /**
+     * Pede qual funcionario o usuario deseja deletar. Exibe o menu de deletar
+     * funcionario e chama quem controla o menu.
+     */
+    public void deletaFuncionario() {
         this.telaFuncionario.mensagemDeletaFuncionario();
         Funcionario funcionario = pedeFuncionario();
         this.telaFuncionario.exibeMensagemFuncionarioSelecionado();
@@ -171,6 +224,16 @@ public class ControladorFuncionario implements IControladorFuncionario {
         controlaMenuDeletarFuncionario(funcionario);
     }
 
+    /**
+     * Controla o que o sistema faz com base na opcao que o usuario selecionar
+     * no menu para deletar o funcionario. Caso o usuario aperte 1: deleta o
+     * funcionario. Caso o usuario aperte 2: volta para o menu principal do
+     * funcionario. Caso o usuario aperte outra tecla qualquer: apresenta a
+     * mensagem de opcao inexistente e exibe o menu de deletar um funcionario
+     * novamente
+     *
+     * @param funcionario a ser deletado
+     */
     public void controlaMenuDeletarFuncionario(Funcionario funcionario) {
         int opcao = this.telaFuncionario.pedeOpcao();
         switch (opcao) {
@@ -189,6 +252,12 @@ public class ControladorFuncionario implements IControladorFuncionario {
 
     }
 
+    /**
+     * Caso o funcionario exista na lista de funcionarios ele é deletado da
+     * mesma
+     *
+     * @param funcionario que vai ser deletado
+     */
     public void deletaFuncionario(Funcionario funcionario) {
         if (funcionario != null) {
             if (funcionarios.contains(funcionario)) {
@@ -199,7 +268,8 @@ public class ControladorFuncionario implements IControladorFuncionario {
         }
     }
 
-    public Funcionario encontraFuncionarioPorMatricula(int matricula) {
+    @Override
+    public Funcionario encontraFuncionarioPelaMatricula(int matricula) {
         for (Funcionario funcionarioCadastrado : this.funcionarios) {
             if (matricula == funcionarioCadastrado.getMatricula()) {
                 return funcionarioCadastrado;
@@ -208,41 +278,106 @@ public class ControladorFuncionario implements IControladorFuncionario {
         return null;
     }
 
+    /**
+     * Pede inicialemente qual a matricula do funcionario que o usuario esta se
+     * referindo. Com a matricula inserida pelo usuario, encontra o funcionario
+     * em questão.
+     *
+     * @return funcionario a quem o usuario esta se referindo
+     */
     public Funcionario pedeFuncionario() {
         int matricula = this.telaFuncionario.pedeMatricula();
-        Funcionario funcionario = encontraFuncionarioPorMatricula(matricula);
+        Funcionario funcionario = encontraFuncionarioPelaMatricula(matricula);
         return funcionario;
     }
 
-    private void listaCargos() {
-        ArrayList<Cargo> cargos = controladorPrincipal.controladorCargo.getCargos();
-        for (Cargo cargoListado : cargos) {
-            this.telaFuncionario.listaCargo(cargoListado.getCodigo(), cargoListado.getNome());
-        }
-    }
-
-    private Cargo atribuiCargoPorCodigo() {
+    /**
+     * Pede para o usuario digitar um codigo de cargo;
+     *
+     * @return codigo digitado pelo usuario
+     */
+    public int pedeCodigo() {
         int codigo = this.telaFuncionario.pedeCodigo();
-        ArrayList<Cargo> cargos = controladorPrincipal.controladorCargo.getCargos();
-        for (Cargo cargoListado : cargos) {
-            if (cargoListado.getCodigo() == codigo) {
-                return cargoListado;
-            }
-        }
-        this.telaFuncionario.mensagemCargoNaoEncontrado();
-        atribuiCargoPorCodigo();
-        return null;
+        return codigo;
     }
 
-    public int cadastraMatricula() {
+    /**
+     * Verifica qual o cargo responsavel pelo codigo digitado pelo usuario
+     *
+     * @return cargo com o codigo digitado pelo usuario;
+     */
+    public Cargo verificaCodigoComCargo() {
+        int codigo = pedeCodigo();
+        Cargo cargo = this.controladorPrincipal.controladorCargo.encontraCargoPorCodigo(codigo);
+        if (cargo == null) {
+            this.telaFuncionario.mensagemCargoNaoEncontrado();
+            verificaCodigoComCargo();
+        }
+        return cargo;
+
+    }
+
+    /**
+     * Verifica se a matricula inserida pelo usuario ja foi cadastrada
+     * anteriormente
+     *
+     * @return matricula caso não tenha sido cadastrada antes, caso contrario
+     * pede para que o usuario insira uma nova matricula
+     */
+    public int verificaMatriculaInserida() {
         int matricula = this.telaFuncionario.pedeMatricula();
         for (Funcionario funcionarioCadastrado : funcionarios) {
             if (funcionarioCadastrado.getMatricula() == matricula) {
                 this.telaFuncionario.mensagemErroMatriculaJaCadastrada();
             }
-            cadastraMatricula();
+            verificaMatriculaInserida();
         }
         return matricula;
+    }
+
+    @Override
+    public boolean matriculaExiste(int matricula) {
+        for (Funcionario funcionarioCadastrado : funcionarios) {
+            if (funcionarioCadastrado.getMatricula() == matricula) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Pede para o usuário inserir um nome para o funcionário, chama o método
+     * para verificar se o nome é valido e, caso seja, retorna o nome.
+     *
+     * @return nome do funcionario validado e inserido pelo usuário
+     */
+    public String pedeNome() {
+        String nome = this.telaFuncionario.pedeNome();
+        verificaNome(nome);
+        return nome;
+    }
+
+    /**
+     * Verifica se a string nome é composta de pelo menos 3 caracteres e somente
+     * de letras ou espaços. Caso não seja exibe uma mensagem ao usuário e chama
+     * o pedeNome novamente.
+     *
+     * @param nome que o usuário inseriu por meio do teclado.
+     */
+    public void verificaNome(String nome) {
+        if (nome.length() > 2) {
+            for (int i = 0; i < nome.length(); i++) {
+                char letraAnalisada = nome.charAt(i);
+                if (!Character.isLetter(letraAnalisada)) {
+                    if (!Character.isSpace(letraAnalisada)) {
+                        this.telaFuncionario.mensagemNomeInvalidoLetras();
+                        pedeNome();
+                    }
+                }
+            }
+        } else {
+            this.telaFuncionario.mensagemNomeInvalidoTamanho
+        }
     }
 
 }

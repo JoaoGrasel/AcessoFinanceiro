@@ -26,6 +26,6 @@ public interface IControladorFuncionario {
      * @return boolean - verdadeiro caso encontrou um funcionario com a
      * matricula inserida
      */
-    public boolean verificaMatriculaExistente(int matricula);
+    public boolean matriculaExiste(int matricula);
 
 }
