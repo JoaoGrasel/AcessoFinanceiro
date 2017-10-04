@@ -25,9 +25,7 @@ public class TelaAcesso {
     public int exibeAcessoFinanceiro(){
         int matricula = 0;
         boolean matriculaInvalida = true;
-        
         System.out.println(Constantes.ACESSO_FINANCEIRO);
-        
         while(matriculaInvalida) {
             try {
                 System.out.println(Constantes.INSIRA_MATRICULA);
@@ -39,5 +37,42 @@ public class TelaAcesso {
         }
         return matricula;
     }
+
+	public void exibeAcessoPermitido() {
+		System.out.println(Constantes.ACESSO_PERMITIDO);
+	}
+
+	public void exibeAcessoNegadoMatriculaInexistente() {
+		System.out.println(Constantes.ACESSO_MATRICULA_INEXISTENTE);
+	}
+
+	public int exibeNovaTentativa() {
+		int opcao = 0;
+		boolean opcaoInvalida = true;
+		while(opcaoInvalida) {
+			try {
+				System.out.println(Constantes.INSIRA_OPCAO);
+				System.out.println(Constantes.TENTAR_NOVAMENTE);
+				System.out.println(Constantes.VOLTAR_MENU_PRINCIPAL);
+				opcao = teclado.nextInt();
+				opcaoInvalida = false;
+			} catch (InputMismatchException e) {
+				System.out.println(Constantes.OPCAO_INVALIDA);
+			}
+		}
+		return opcao;
+	}
+
+	public void exibeAcessoNegadoCargoSemAcesso() {
+		System.out.println(Constantes.ACESSO_NEGADO_CARGO_SEM_ACESSO);
+	}
+
+	public void exibeAcessoNegadoHorarioNaoPermitido() {
+		System.out.println(Motivo.HORARIO_NAO_PERMITIDO);
+	}
+
+	public void exibeAcessoNegadoAcessoBloqueado() {
+		System.out.println(Constantes.ACESSO_NEGADO_ACESSO_BLOQUEADO);
+	}
     
 }

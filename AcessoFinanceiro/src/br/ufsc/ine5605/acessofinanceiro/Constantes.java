@@ -30,6 +30,10 @@ class Constantes {
     public static final String ACESSO_FINANCEIRO = "+-+-+-+-+-+-+-+ Acesso ao financeiro +-+-+-+-+-+-+-+";
     public static final String ACESSO_MATRICULA_INEXISTENTE = "Nao foi possivel acessar o financeiro. A matricula inserida nao existe.";
     public static final String ACESSO_PERMITIDO = "Parabens, voce conseguiu acessar o financeiro. Faca a festa!";
+    public static final String ACESSO_NEGADO_MATRICULA_INEXISTENTE = "Acesso negado: matricula inexistente.";
+    public static final String ACESSO_NEGADO_HORARIO_NAO_PERMITIDO = "Acesso negado: horario nao permitido.";
+    public static final String ACESSO_NEGADO_CARGO_SEM_ACESSO = "Acesso negado: cargo sem acesso.";
+    public static final String ACESSO_NEGADO_ACESSO_BLOQUEADO = "Acesso negado: acesso bloqueado.";
 
     // RELATORIO
     public static final String RELATORIO_ACESSO = "+-+-+-+-+-+-+-+ Gerenciar Relatorios +-+-+-+-+-+-+-+";

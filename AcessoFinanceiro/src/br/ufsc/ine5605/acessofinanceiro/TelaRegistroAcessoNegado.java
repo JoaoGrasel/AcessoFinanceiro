@@ -13,12 +13,12 @@ import java.util.Scanner;
  *
  * @author thiagobrezinski
  */
-class TelaRegistroAcesso {
+class TelaRegistroAcessoNegado {
     
     private Scanner teclado;
-    private ControladorRegistroAcesso owner;
+    private ControladorRegistroAcessoNegado owner;
     
-    public TelaRegistroAcesso(ControladorRegistroAcesso owner) {
+    public TelaRegistroAcessoNegado(ControladorRegistroAcessoNegado owner) {
         this.owner = owner;
         this.teclado = new Scanner(System.in);
     }
@@ -75,14 +75,14 @@ class TelaRegistroAcesso {
         return matricula;
     }
 
-	public int exibeRelatorioPorMatricula(ArrayList<RegistroAcesso> registrosEncontrados, int matricula, boolean nenhumRegistroEncontrado) {
+	public int exibeRelatorioPorMatricula(ArrayList<RegistroAcessoNegado> registrosEncontrados, int matricula, boolean nenhumRegistroEncontrado) {
 		int opcao = 0;
 		if(nenhumRegistroEncontrado) {
 			System.out.println(Constantes.RELATORIO_REGISTRO_NENHUM_ENCONTRADO);
 		} else {
 			int numeroRegistro = 0;
 			System.out.println(Constantes.RELATORIO_ACESSO_MATRICULA + matricula);
-			for(RegistroAcesso registro : registrosEncontrados) {
+			for(RegistroAcessoNegado registro : registrosEncontrados) {
 				numeroRegistro++;
 				System.out.println(Constantes.RELATORIO_REGISTRO_CABECALHO + numeroRegistro);
 				System.out.println(Constantes.RELATORIO_REGISTRO_DATA + registro.getData());
@@ -124,14 +124,14 @@ class TelaRegistroAcesso {
 		return opcao;
 	}
 
-	public int exibeRelatorioMatriculaInexistente(ArrayList<RegistroAcesso> registrosEncontrados, boolean nenhumRegistroEncontrado) {
+	public int exibeRelatorioMatriculaInexistente(ArrayList<RegistroAcessoNegado> registrosEncontrados, boolean nenhumRegistroEncontrado) {
 		int opcao = 0;
 		if(nenhumRegistroEncontrado) {
 			System.out.println(Constantes.RELATORIO_REGISTRO_NENHUM_ENCONTRADO);
 		} else {
 			int numeroRegistro = 0;
 			System.out.println(Constantes.RELATORIO_ACESSO_MOTIVO_MATRICULA_INEXISTENTE);
-			for(RegistroAcesso registro : registrosEncontrados) {
+			for(RegistroAcessoNegado registro : registrosEncontrados) {
 				numeroRegistro++;
 				System.out.println(Constantes.RELATORIO_REGISTRO_CABECALHO + numeroRegistro);
 				System.out.println(Constantes.RELATORIO_REGISTRO_DATA + registro.getData());
