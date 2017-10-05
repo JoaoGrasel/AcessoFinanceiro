@@ -22,7 +22,10 @@ class Constantes {
     public static final String MATRICULA_JA_CADASTRADA = "Matricula invalida: a matricula inserida ja foi cadastrada";
     public static final String MATRICULA_INEXISTENTE = "Matricula inexistente: a matricula inserida nao pertence a nenhum funcionario";
     public static final String TENTAR_NOVAMENTE = "1 - Tentar novamente";
-    public static final String VOLTAR_MENU_PRINCIPAL = "2 - Voltar ao menu principal";
+	public static final String VOLTAR_MENU_PRINCIPAL_1 = "1 - Voltar ao menu principal";
+    public static final String VOLTAR_MENU_PRINCIPAL_2 = "2 - Voltar ao menu principal";
+    public static final String VOLTAR_MENU_PRINCIPAL_3 = "3 - Voltar ao menu principal";
+    public static final String VOLTAR_MENU_PRINCIPAL_5 = "5 - Voltar ao menu principal";
     public static final String NOME_INVALIDO_LETRAS = "Nome invalido, o nome deve conter somente letras.";
     public static final String NOME_INVALIDO_TAMANHO = "Nome invalido, o nome deve conter no mínimo 3 letras.";
     public static final String DATA_NASCIMENTO_INVALIDA = "Data de nascimento inválida. A data deve ser inserida no formato dd/mm/yyyy";
@@ -39,7 +42,7 @@ class Constantes {
     public static final String ACESSO_NEGADO_ACESSO_BLOQUEADO = "Acesso negado: acesso bloqueado.";
 
     // RELATORIO
-    public static final String RELATORIO_ACESSO = "+-+-+-+-+-+-+-+ Gerenciar Relatorios +-+-+-+-+-+-+-+";
+    public static final String RELATORIO_ACESSO = "+-+-+-+-+-+-+-+ Emitir relatorio +-+-+-+-+-+-+-+";
     public static final String RELATORIO_ESCOLHA_FILTRO = "Escolha o filtro: ";
     public static final String RELATORIO_FILTRO_MOTIVO = "1 - Por motivo";
     public static final String RELATORIO_FILTRO_MATRICULA = "2 - Por matricula";
@@ -50,7 +53,9 @@ class Constantes {
     public static final String RELATORIO_FILTRO_MOTIVO_ACESSO_BLOQUEADO = "4 - Acesso bloqueado";
     public static final String RELATORIO_ACESSO_MATRICULA = "Relatorio de acesso negado - matricula: ";
     public static final String RELATORIO_ACESSO_MOTIVO_MATRICULA_INEXISTENTE = "Relatorio de acesso negado - motivo: matricula inexistente";
-    public static final String RELATORIO_VOLTAR_MENU_PRINCIPAL = "1 - Voltar ao menu principal";
+    public static final String RELATORIO_ACESSO_MOTIVO_ACESSO_BLOQUEADO = "Relatorio de acesso negado - motivo: acesso bloqueado";
+    public static final String RELATORIO_ACESSO_MOTIVO_CARGO_SEM_ACESSO = "Relatorio de acesso negado - motivo: cargo sem acesso";
+    public static final String RELATORIO_ACESSO_MOTIVO_HORARIO_NAO_PERMITIDO = "Relatorio de acesso negado - motivo: horario nao permitido";
     public static final String RELATORIO_REGISTRO_CABECALHO = "+-+-+ Registro ";
     public static final String RELATORIO_REGISTRO_DATA = "Data: ";
     public static final String RELATORIO_REGISTRO_MOTIVO = "Motivo: ";

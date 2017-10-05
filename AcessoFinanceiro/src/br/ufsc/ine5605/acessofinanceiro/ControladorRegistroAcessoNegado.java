@@ -33,7 +33,7 @@ public class ControladorRegistroAcessoNegado {
                 exibeFiltroPorMatricula();
                 break;
             case 3:
-                //volta para o menu principal
+                ControladorPrincipal.getInstance().exibeMenuPrincipal();
                 break;
             default:
                 System.out.println(Constantes.OPCAO_INEXISTENTE);
@@ -45,19 +45,21 @@ public class ControladorRegistroAcessoNegado {
         int opcao = telaRegistroAcessoNegado.exibeFiltroPorMotivo();
         switch(opcao) {
             case 1:
-                exibeRelatorioMatriculaInexistente();
+                exibeRelatorioPorMotivo(Motivo.MATRICULA_INEXISTENTE);
                 break;
             case 2:
-                telaRegistroAcessoNegado.exibeRelatorioCargoSemAcesso();
+                exibeRelatorioPorMotivo(Motivo.CARGO_SEM_ACESSO);
                 break;
             case 3:
-                telaRegistroAcessoNegado.exibeRelatorioHorarioNaoPermitido();
+                exibeRelatorioPorMotivo(Motivo.HORARIO_NAO_PERMITIDO);
                 break;
             case 4:
-                telaRegistroAcessoNegado.exibeRelatorioAcessoBloqueado();
+                exibeRelatorioPorMotivo(Motivo.ACESSO_BLOQUEADO);
                 break;
+			case 5:
+				ControladorPrincipal.getInstance().exibeMenuPrincipal();
             default:
-				System.out.println(Constantes.OPCAO_INEXISTENTE);
+				telaRegistroAcessoNegado.exibeOpcaoInexistente();
                 exibeFiltroPorMotivo();
                 break;
         }
@@ -65,17 +67,46 @@ public class ControladorRegistroAcessoNegado {
 
     public void exibeFiltroPorMatricula() {
         int matricula = telaRegistroAcessoNegado.exibeFiltroPorMatricula();
-		boolean nenhumRegistroEncontrado = false;
+		boolean encontrouRegistro = false;
 		if(ControladorPrincipal.getInstance().matriculaExiste(matricula)) {
 			ArrayList<RegistroAcessoNegado> registrosEncontrados = new ArrayList<>();
 			registrosEncontrados = encontraRegistrosPorMatricula(matricula);
-			if(registrosEncontrados.isEmpty()) nenhumRegistroEncontrado = true;
-			exibeRelatorioPorMatricula(registrosEncontrados, matricula, nenhumRegistroEncontrado);
+			if(!registrosEncontrados.isEmpty()) encontrouRegistro = true;
+			exibeRelatorioPorMatricula(registrosEncontrados, matricula, encontrouRegistro);
 		} else {
 			exibeMatriculaInexistente();
 		}
     }
 
+	public void exibeRelatorioPorMotivo(Motivo motivo) {
+		boolean encontrouRegistro = false;
+		int opcao = 0;
+		
+		ArrayList<RegistroAcessoNegado> registrosEncontrados = new ArrayList<>();
+		registrosEncontrados = encontraRegistrosPorMotivo(motivo);
+		if(!registrosEncontrados.isEmpty()) encontrouRegistro = true;
+		opcao = telaRegistroAcessoNegado.exibeRelatorioPorMotivo(registrosEncontrados, encontrouRegistro, motivo);
+		if(opcao == 1) ControladorPrincipal.getInstance().exibeMenuPrincipal();
+	}
+	
+	public void exibeRelatorioPorMatricula(ArrayList<RegistroAcessoNegado> registrosEncontrados, int matricula, boolean encontrouRegistro) {
+		int opcao = 0;
+		opcao = telaRegistroAcessoNegado.exibeRelatorioPorMatricula(registrosEncontrados, matricula, encontrouRegistro);
+		if(opcao == 1) {
+			ControladorPrincipal.getInstance().exibeMenuPrincipal();
+		}
+	}
+	
+	public ArrayList<RegistroAcessoNegado> encontraRegistrosPorMotivo(Motivo motivo) {
+		ArrayList<RegistroAcessoNegado> registrosEncontrados = new ArrayList<>();
+		for(RegistroAcessoNegado registro : this.registros) {
+			if(registro.getMotivo() == motivo) {
+				registrosEncontrados.add(registro);
+			}
+		}
+		return registrosEncontrados;
+	}
+	
 	public ArrayList<RegistroAcessoNegado> encontraRegistrosPorMatricula(int matricula) {
 		ArrayList<RegistroAcessoNegado> registrosEncontrados = new ArrayList<>();
 		for(RegistroAcessoNegado registro : this.registros) {
@@ -86,14 +117,20 @@ public class ControladorRegistroAcessoNegado {
 		return registrosEncontrados;
 	}
 
-	public void exibeRelatorioPorMatricula(ArrayList<RegistroAcessoNegado> registrosEncontrados, int matricula, boolean nenhumRegistroEncontrado) {
-		int opcao = 0;
-		opcao = telaRegistroAcessoNegado.exibeRelatorioPorMatricula(registrosEncontrados, matricula, nenhumRegistroEncontrado);
-		if(opcao == 1) {
-			ControladorPrincipal.getInstance().exibeMenuPrincipal();
+	public ArrayList<RegistroAcessoNegado> encontraRegistrosHorarioNaoPermitidoPelaMatricula(int matricula) {
+		ArrayList<RegistroAcessoNegado> registrosHorarioNaoPermitido = new ArrayList<>();
+		for(RegistroAcessoNegado registro : this.registros) {
+			if(registro.getMatricula() == matricula && registro.getMotivo() == Motivo.HORARIO_NAO_PERMITIDO)
+				registrosHorarioNaoPermitido.add(registro);
 		}
+		return registrosHorarioNaoPermitido;
 	}
-
+	
+	public void novoRegistroAcessoNegado(Date data, int matricula, Motivo motivo) {
+		RegistroAcessoNegado registro = new RegistroAcessoNegado(data, matricula, motivo);
+		this.registros.add(registro);
+	}
+	
 	public void exibeMatriculaInexistente() {
 		int opcao = 0;
 		opcao = telaRegistroAcessoNegado.exibeMatriculaInexistente();
@@ -102,32 +139,6 @@ public class ControladorRegistroAcessoNegado {
 		} else if(opcao == 2) {
 			ControladorPrincipal.getInstance().exibeMenuPrincipal();
 		}
-	}
-
-	public void exibeRelatorioMatriculaInexistente() {
-		ArrayList<RegistroAcessoNegado> registrosEncontrados = new ArrayList<>();
-		boolean nenhumRegistroEncontrado = false;
-		for(RegistroAcessoNegado registro : this.registros) {
-			if(registro.getMotivo() == Motivo.MATRICULA_INEXISTENTE) {
-				registrosEncontrados.add(registro);
-			}
-		}
-		if(registrosEncontrados.isEmpty()) nenhumRegistroEncontrado = true;
-		telaRegistroAcessoNegado.exibeRelatorioMatriculaInexistente(registrosEncontrados, nenhumRegistroEncontrado);
-	}
-
-	public void novoRegistroAcessoNegado(Date data, int matricula, Motivo motivo) {
-		RegistroAcessoNegado registro = new RegistroAcessoNegado(data, matricula, motivo);
-		this.registros.add(registro);
-	}
-
-	ArrayList<RegistroAcessoNegado> encontraRegistrosHorarioNaoPermitidoPelaMatricula(int matricula) {
-		ArrayList<RegistroAcessoNegado> registrosHorarioNaoPermitido = new ArrayList<>();
-		for(RegistroAcessoNegado registro : this.registros) {
-			if(registro.getMatricula() == matricula && registro.getMotivo() == Motivo.HORARIO_NAO_PERMITIDO)
-				registrosHorarioNaoPermitido.add(registro);
-		}
-		return registrosHorarioNaoPermitido;
 	}
 	
 }

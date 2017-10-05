@@ -51,6 +51,10 @@ public class ControladorAcesso {
         return false;
     }
 
+	public void novoRegistroAcessoNegado(Date data, int matricula, Motivo motivo) {
+		ControladorPrincipal.getInstance().novoRegistroAcessoNegado(data, matricula, motivo);
+	}
+	
 	public void trataNovaTentativa() {
 		int opcao = 0;
 		opcao = telaAcesso.exibeNovaTentativa();
@@ -67,10 +71,6 @@ public class ControladorAcesso {
 
 	public void exibeAcessoNegadoHorarioNaoPermitido() {
 		telaAcesso.exibeAcessoNegadoHorarioNaoPermitido();
-	}
-
-	public void novoRegistroAcessoNegado(Date data, int matricula, Motivo motivo) {
-		ControladorPrincipal.getInstance().novoRegistroAcessoNegado(data, matricula, motivo);
 	}
     
 }

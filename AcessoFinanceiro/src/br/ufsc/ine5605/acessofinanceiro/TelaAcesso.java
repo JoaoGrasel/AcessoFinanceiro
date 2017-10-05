@@ -46,23 +46,6 @@ public class TelaAcesso {
 		System.out.println(Constantes.ACESSO_MATRICULA_INEXISTENTE);
 	}
 
-	public int exibeNovaTentativa() {
-		int opcao = 0;
-		boolean opcaoInvalida = true;
-		while(opcaoInvalida) {
-			try {
-				System.out.println(Constantes.INSIRA_OPCAO);
-				System.out.println(Constantes.TENTAR_NOVAMENTE);
-				System.out.println(Constantes.VOLTAR_MENU_PRINCIPAL);
-				opcao = teclado.nextInt();
-				opcaoInvalida = false;
-			} catch (InputMismatchException e) {
-				System.out.println(Constantes.OPCAO_INVALIDA);
-			}
-		}
-		return opcao;
-	}
-
 	public void exibeAcessoNegadoCargoSemAcesso() {
 		System.out.println(Constantes.ACESSO_NEGADO_CARGO_SEM_ACESSO);
 	}
@@ -75,4 +58,21 @@ public class TelaAcesso {
 		System.out.println(Constantes.ACESSO_NEGADO_ACESSO_BLOQUEADO);
 	}
     
+	public int exibeNovaTentativa() {
+		int opcao = 0;
+		boolean opcaoInvalida = true;
+		while(opcaoInvalida) {
+			try {
+				System.out.println(Constantes.INSIRA_OPCAO);
+				System.out.println(Constantes.TENTAR_NOVAMENTE);
+				System.out.println(Constantes.VOLTAR_MENU_PRINCIPAL_2);
+				opcao = teclado.nextInt();
+				opcaoInvalida = false;
+			} catch (InputMismatchException e) {
+				System.out.println(Constantes.OPCAO_INVALIDA);
+			}
+		}
+		return opcao;
+	}
+	
 }
