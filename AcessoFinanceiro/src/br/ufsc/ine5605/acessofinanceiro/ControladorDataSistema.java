@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -13,36 +15,56 @@ import java.util.Date;
  */
 public class ControladorDataSistema {
 
-    private TelaDataSistema telaData;
-    private ControladorPrincipal controlador;
-    private Date dataSistema;
+    private TelaDataHoraSistema telaDataHora;
+    private ControladorPrincipal controladorPrincipal;
+    private Date dataHoraSistema;
 
     public ControladorDataSistema(ControladorPrincipal owner) {
-        this.controlador = owner;
-        this.telaData = new TelaDataSistema(this);
-        this.dataSistema =
+        this.controladorPrincipal = owner;
+        this.telaDataHora = new TelaDataHoraSistema(this);
+        this.dataHoraSistema = new Date();
     }
 
-    public void exibeMenuDataSistema() {
+    public void menuDataHoraSistema() {
         exibeDataHoraSistema();
-        int opcao = this.telaData.exibeMenuDataSistema();
-        controlaMenuDataSistema(opcao);
+        exibeMenuDataHoraSistema();
+        controlaMenuDataHoraSistema();
     }
 
     public void exibeDataHoraSistema() {
-        this.telaData.exibeDataHoraSistema(dataSistema);
+        this.telaDataHora.exibeDataHoraSistema(dataHoraSistema);
     }
 
-    private void controlaMenuDataSistema(int opcao) {
+    public void exibeMenuDataHoraSistema() {
+        this.telaDataHora.exibeMenuDataHoraSistema();
+    }
+
+    private void controlaMenuDataHoraSistema() {
+        int opcao = this.telaDataHora.pedeOpcao();
         switch (opcao) {
             case 1:
-                alteraDataSistema();
+                alteraDataHoraSistema();
+                break;
+            case 2:
+                this.controladorPrincipal.exibeMenuPrincipal();
+                break;
+            default:
+                this.telaDataHora.opcaoInexistente();
+                controlaMenuDataHoraSistema();
                 break;
         }
     }
 
-    private void alteraDataSistema() {
-        this.telaData.pedeDataSistema();
+    private void alteraDataHoraSistema() {
+        String dataEHora = this.telaDataHora.pedeDataHoraSistema();
+        SimpleDateFormat formatadorDataNascimento = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataNascimento = formatadorDataNascimento.parse(dataNascimentoInserida);
+        try {
+            dataNascimento = formatadorDataNascimento.parse(formatadorDataNascimento.format(dataNascimentoInserida));
+
+        } catch (ParseException ex) {
+            System.out.println("Data invalida");
+        }
     }
 
 }

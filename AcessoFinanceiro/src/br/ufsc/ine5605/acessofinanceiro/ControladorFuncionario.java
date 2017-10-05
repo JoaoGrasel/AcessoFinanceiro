@@ -8,6 +8,10 @@ package br.ufsc.ine5605.acessofinanceiro;
 import java.util.ArrayList;
 import java.util.Date;
 import java.lang.Character;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -81,7 +85,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
 
         String nome = this.telaFuncionario.pedeNome();
         int matricula = verificaMatriculaInserida();
-        Date dataNascimento = this.telaFuncionario.pedeDataNascimento();
+        Date dataNascimento = cadastraDataNascimento();
         int telefone = this.telaFuncionario.pedeTelefone();
         int salario = this.telaFuncionario.pedeSalario();
         this.telaFuncionario.exibeOpcaoCargoFuncionario();
@@ -93,6 +97,42 @@ public class ControladorFuncionario implements IControladorFuncionario {
             this.telaFuncionario.mensagemUsuarioCadastrado();
         }
         exibeMenuFuncionario();
+    }
+
+    public Date formataDataNascimento(String dataNascimentoInserida) {
+        SimpleDateFormat formatadorDataNascimento = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataNascimento = new Date();
+        try {
+            dataNascimento = formatadorDataNascimento.parse(formatadorDataNascimento.format(dataNascimentoInserida));
+        } catch (ParseException ex) {
+            this.telaFuncionario.mensagemErroDataNascimento();
+            cadastraDataNascimento();
+        }
+        return dataNascimento;
+
+    }
+
+    public Date cadastraDataNascimento() {
+        String dataNascimentoInserida = this.telaFuncionario.pedeDataNascimento();
+        Date dataNascimento = formataDataNascimento(dataNascimentoInserida);
+        this.telaFuncionario.exibeMenuCadastroDataNascimento(dataNascimento);
+        return controlaCadastroDataNascimento(dataNascimento);
+    }
+
+    public Date controlaCadastroDataNascimento(Date dataNascimento) {
+        int opcao = this.telaFuncionario.pedeOpcao();
+        switch (opcao) {
+            case 1:
+                return dataNascimento;
+            case 2:
+                cadastraDataNascimento();
+                break;
+            default:
+                this.telaFuncionario.opcaoInexistente();
+                controlaCadastroDataNascimento(dataNascimento);
+                break;
+        }
+        return dataNascimento;
     }
 
     /**
@@ -165,7 +205,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
                 funcionario.setMatricula(matricula);
                 break;
             case 3:
-                Date dataNascimento = this.telaFuncionario.pedeDataNascimento();
+                Date dataNascimento = cadastraDataNascimento();
                 funcionario.setDataNascimento(dataNascimento);
                 break;
             case 4:
@@ -376,7 +416,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
                 }
             }
         } else {
-            this.telaFuncionario.mensagemNomeInvalidoTamanho
+            this.telaFuncionario.mensagemNomeInvalidoTamanho();
         }
     }
 

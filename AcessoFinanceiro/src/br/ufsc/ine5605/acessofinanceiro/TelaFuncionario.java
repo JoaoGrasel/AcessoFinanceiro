@@ -144,11 +144,10 @@ public class TelaFuncionario {
         return matricula;
     }
 
-    public Date pedeDataNascimento() {
+    public String pedeDataNascimento() {
         System.out.println(Constantes.DIGITE_DATA_NASCIMENTO);
         String dataNascimento = teclado.nextLine();
-        //fazer as excecoes da data e depois transformar em um string
-        return
+        return dataNascimento;
     }
 
     public int pedeTelefone() {
@@ -233,5 +232,16 @@ public class TelaFuncionario {
 
     public void mensagemNomeInvalidoTamanho() {
         System.out.println(Constantes.NOME_INVALIDO_TAMANHO);
+    }
+
+    public void mensagemErroDataNascimento() {
+        System.out.println(Constantes.DATA_NASCIMENTO_INVALIDA);
+    }
+
+    public void exibeMenuCadastroDataNascimento(Date dataInserida) {
+        System.out.println(Constantes.EXIBE_DATA_CADASTRADA + dataInserida);
+        System.out.println(Constantes.CONFIRMA_DATA_CADASTRADA);
+        System.out.println(Constantes.SIM);
+        System.out.println(Constantes.NAO);
     }
 }

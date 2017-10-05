@@ -25,8 +25,7 @@ class Constantes {
     public static final String VOLTAR_MENU_PRINCIPAL = "2 - Voltar ao menu principal";
     public static final String NOME_INVALIDO_LETRAS = "Nome invalido, o nome deve conter somente letras.";
     public static final String NOME_INVALIDO_TAMANHO = "Nome invalido, o nome deve conter no mínimo 3 letras.";
-
-    // ACESSO AO FINANCEIRO
+    public static final String DATA_NASCIMENTO_INVALIDA = "Data de nascimento inválida. A data deve ser inserida no formato dd/mm/yyyy" // ACESSO AO FINANCEIRO
     public static final String ACESSO_FINANCEIRO = "+-+-+-+-+-+-+-+ Acesso ao financeiro +-+-+-+-+-+-+-+";
     public static final String ACESSO_MATRICULA_INEXISTENTE = "Nao foi possivel acessar o financeiro. A matricula inserida nao existe.";
     public static final String ACESSO_PERMITIDO = "Parabens, voce conseguiu acessar o financeiro. Faca a festa!";
@@ -62,10 +61,12 @@ class Constantes {
     public static final String MENSAGEM_NOVO_USUARIO = "+-+-+-+-+-+-+-+ Novo Funcionário +-+-+-+-+-+-+-+";
     public static final String DIGITE_NOME = " Digite o nome do funcionário:";
     public static final String DIGITE_MATRICULA = " Digite a matrícula do funcionário:";
-    public static final String DIGITE_DATA_NASCIMENTO = " Digite a data de nascimento do funcionário:";
+    public static final String DIGITE_DATA_NASCIMENTO = " Digite a data de nascimento do funcionário no formato dd/mm/yyyy:";
     public static final String DIGITE_TELEFONE = " Digite o telefone do funcionário:";
     public static final String DIGITE_SALARIO = " Digite o salário do funcionário:";
     public static final String DIGITE_CODIGO = " Digite o código do cargo que deseja atribuir ao funcionário: ";
+    public static final String EXIBE_DATA_CADASTRADA = "Data cadasrada: ";
+    public static final String CONFIRMA_DATA_CADASTRADA = "Você confirma a data?";
 
     //EDITAR FUNCIONARIO
     public static final String TITULO_EDITAR_FUNCIONARIO = "+-+-+-+-+-+-+-+ Editar Funcionário +-+-+-+-+-+-+-+";
@@ -123,8 +124,7 @@ class Constantes {
     public static final String HORA_ATUAL_DO_SISTEMA = "Data e hora do sistema: ";
     public static final String ALTERAR_DATA_E_HORA = " 1. Alterar data e hora do sistema";
     public static final String DATA_VOLTAR_MENU_PRINCIPAL = " 2. Voltar ao menu principal";
-
-    //COMUM
+    public static final String INSIRA_DATA_SISTEMA = "Insira a nova data e hora do sistema no formato" //COMUM
     public static final String CODIGO_INVALIDO = "Codigo invalido: o codigo deve conter somente numeros. Tente novamente.";
     public static final String SALARIO_INVALIDO = "Salario invalido: o salario deve conter somente numeros.";
     public static final String TELEFONE_INVALIDO = "Telefone invalido: o telefone deve conter somente numeros.";
