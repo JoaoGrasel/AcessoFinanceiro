@@ -14,12 +14,10 @@ import java.util.Date;
  */
 public class ControladorRegistroAcessoNegado {
     
-    private ControladorPrincipal controladorPrincipal;
     private TelaRegistroAcessoNegado telaRegistroAcessoNegado;
 	private ArrayList<RegistroAcessoNegado> registros;
     
     public ControladorRegistroAcessoNegado() {
-        this.controladorPrincipal = new ControladorPrincipal();
         this.telaRegistroAcessoNegado = new TelaRegistroAcessoNegado(this);
 		this.registros = new ArrayList<>();
     }
@@ -68,7 +66,7 @@ public class ControladorRegistroAcessoNegado {
     public void exibeFiltroPorMatricula() {
         int matricula = telaRegistroAcessoNegado.exibeFiltroPorMatricula();
 		boolean nenhumRegistroEncontrado = false;
-		if(controladorPrincipal.matriculaExiste(matricula)) {
+		if(ControladorPrincipal.getInstance().matriculaExiste(matricula)) {
 			ArrayList<RegistroAcessoNegado> registrosEncontrados = new ArrayList<>();
 			registrosEncontrados = encontraRegistrosPorMatricula(matricula);
 			if(registrosEncontrados.isEmpty()) nenhumRegistroEncontrado = true;
@@ -92,7 +90,7 @@ public class ControladorRegistroAcessoNegado {
 		int opcao = 0;
 		opcao = telaRegistroAcessoNegado.exibeRelatorioPorMatricula(registrosEncontrados, matricula, nenhumRegistroEncontrado);
 		if(opcao == 1) {
-			controladorPrincipal.exibeMenuPrincipal();
+			ControladorPrincipal.getInstance().exibeMenuPrincipal();
 		}
 	}
 
@@ -102,7 +100,7 @@ public class ControladorRegistroAcessoNegado {
 		if(opcao == 1) {
 			exibeFiltroPorMatricula();
 		} else if(opcao == 2) {
-			controladorPrincipal.exibeMenuPrincipal();
+			ControladorPrincipal.getInstance().exibeMenuPrincipal();
 		}
 	}
 

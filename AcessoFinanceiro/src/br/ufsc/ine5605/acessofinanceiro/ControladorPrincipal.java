@@ -55,11 +55,11 @@ public class ControladorPrincipal {
     }
     
     public void emitirRelatorio(ControladorRegistroAcessoNegado controladorRegistroAcessoNegado){
-        
+        controladorRegistroAcessoNegado.exibeRelatorio();
     }
     
     public void acessarFinanceiro(ControladorAcesso controladorAcesso){
-        
+        this.controladorAcesso.acessaFinanceiro();
     }
 	
     public Date getDataSistema(){

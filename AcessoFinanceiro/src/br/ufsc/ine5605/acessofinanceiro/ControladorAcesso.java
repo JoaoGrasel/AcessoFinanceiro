@@ -14,12 +14,10 @@ import java.util.InputMismatchException;
  * @author thiagobrezinski
  */
 public class ControladorAcesso {
-    
-    private ControladorPrincipal controladorPrincipal;
+	
     private TelaAcesso telaAcesso;
     
     public ControladorAcesso() {
-        this.controladorPrincipal = new ControladorPrincipal();
         this.telaAcesso = new TelaAcesso(this);
     }
     
@@ -34,20 +32,20 @@ public class ControladorAcesso {
     }
     
     public boolean validaAcessoFinanceiro(int matricula) {
-		Date dataAtual = controladorPrincipal.getDataSistema();
+		Date dataAtual = ControladorPrincipal.getInstance().getDataSistema();
         try {
-            Funcionario funcionario = controladorPrincipal.encontraFuncionarioPelaMatricula(matricula);
+            Funcionario funcionario = ControladorPrincipal.getInstance().encontraFuncionarioPelaMatricula(matricula);
 			ArrayList<RegistroAcessoNegado> registrosHorarioNaoPermitido;
-			registrosHorarioNaoPermitido = controladorPrincipal.encontraRegistrosHorarioNaoPermitidoPelaMatricula(matricula);
+			registrosHorarioNaoPermitido = ControladorPrincipal.getInstance().encontraRegistrosHorarioNaoPermitidoPelaMatricula(matricula);
 			if(registrosHorarioNaoPermitido.size() > 3) {
-				controladorPrincipal.novoRegistroAcessoNegado(dataAtual, matricula, Motivo.ACESSO_BLOQUEADO);
+				ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.ACESSO_BLOQUEADO);
 				telaAcesso.exibeAcessoNegadoAcessoBloqueado();
 				return false;
 			}
 			Acesso acesso = new Acesso(dataAtual, matricula);
 			return acesso.validaAcesso(acesso, funcionario, dataAtual);
         } catch (NullPointerException e) {
-			controladorPrincipal.novoRegistroAcessoNegado(dataAtual, matricula, Motivo.MATRICULA_INEXISTENTE);
+			ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.MATRICULA_INEXISTENTE);
 			telaAcesso.exibeAcessoNegadoMatriculaInexistente();
         }
         return false;
@@ -59,7 +57,7 @@ public class ControladorAcesso {
 		if(opcao == 1) {
 			acessaFinanceiro();
 		} else {
-			controladorPrincipal.exibeMenuPrincipal();
+			ControladorPrincipal.getInstance().exibeMenuPrincipal();
 		}
 	}
 
@@ -72,7 +70,7 @@ public class ControladorAcesso {
 	}
 
 	public void novoRegistroAcessoNegado(Date data, int matricula, Motivo motivo) {
-		controladorPrincipal.novoRegistroAcessoNegado(data, matricula, motivo);
+		ControladorPrincipal.getInstance().novoRegistroAcessoNegado(data, matricula, motivo);
 	}
     
 }
