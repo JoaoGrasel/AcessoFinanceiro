@@ -13,7 +13,7 @@ import java.util.Date;
  *
  * @author vladimir
  */
-public class ControladorDataSistema {
+public class ControladorDataSistema implements IControladorDataSistema {
 
     private TelaDataHoraSistema telaDataHora;
     private ControladorPrincipal controladorPrincipal;
@@ -43,7 +43,10 @@ public class ControladorDataSistema {
         int opcao = this.telaDataHora.pedeOpcao();
         switch (opcao) {
             case 1:
-                alteraDataHoraSistema();
+                dataHoraSistema = alteraDataHoraSistema();
+                exibeDataHoraSistema();
+                this.telaDataHora.exibeConfirmacaoDataHoraSistema();
+                controlaConfirmacaoDataHoraSistema();
                 break;
             case 2:
                 this.controladorPrincipal.exibeMenuPrincipal();
@@ -55,16 +58,39 @@ public class ControladorDataSistema {
         }
     }
 
-    private void alteraDataHoraSistema() {
-        String dataEHora = this.telaDataHora.pedeDataHoraSistema();
-        SimpleDateFormat formatadorDataNascimento = new SimpleDateFormat("dd/MM/yyyy");
-        Date dataNascimento = formatadorDataNascimento.parse(dataNascimentoInserida);
+    private Date alteraDataHoraSistema() {
+        String dataEHoraInseridos = this.telaDataHora.pedeDataHoraSistema();
         try {
-            dataNascimento = formatadorDataNascimento.parse(formatadorDataNascimento.format(dataNascimentoInserida));
-
+            Date dataEHora = new SimpleDateFormat("dd-MM-yyyy HH:mm")
+                    .parse(dataEHoraInseridos);
+            return dataEHora;
         } catch (ParseException ex) {
-            System.out.println("Data invalida");
+            this.telaDataHora.mensagemDataInvalida();
+            alteraDataHoraSistema();
         }
+        return null;
     }
 
+    @Override
+    public Date getDataSistema() {
+        return this.dataHoraSistema;
+    }
+
+    private void controlaConfirmacaoDataHoraSistema() {
+        int opcao = this.telaDataHora.pedeOpcao();
+        switch (opcao) {
+            case 1:
+                this.telaDataHora.mensagemDataHoraAtualizadosSucesso();
+                menuDataHoraSistema();
+                break;
+            case 2:
+                this.telaDataHora.mensagemDataHoraNaoAtualizados();
+                alteraDataHoraSistema();
+                break;
+            default:
+                this.telaDataHora.opcaoInexistente();
+                controlaConfirmacaoDataHoraSistema();
+                break;
+        }
+    }
 }

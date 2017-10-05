@@ -25,7 +25,9 @@ class Constantes {
     public static final String VOLTAR_MENU_PRINCIPAL = "2 - Voltar ao menu principal";
     public static final String NOME_INVALIDO_LETRAS = "Nome invalido, o nome deve conter somente letras.";
     public static final String NOME_INVALIDO_TAMANHO = "Nome invalido, o nome deve conter no mínimo 3 letras.";
-    public static final String DATA_NASCIMENTO_INVALIDA = "Data de nascimento inválida. A data deve ser inserida no formato dd/mm/yyyy" // ACESSO AO FINANCEIRO
+    public static final String DATA_NASCIMENTO_INVALIDA = "Data de nascimento inválida. A data deve ser inserida no formato dd/mm/yyyy";
+
+    // ACESSO AO FINANCEIRO
     public static final String ACESSO_FINANCEIRO = "+-+-+-+-+-+-+-+ Acesso ao financeiro +-+-+-+-+-+-+-+";
     public static final String ACESSO_MATRICULA_INEXISTENTE = "Nao foi possivel acessar o financeiro. A matricula inserida nao existe.";
     public static final String ACESSO_PERMITIDO = "Parabens, voce conseguiu acessar o financeiro. Faca a festa!";
@@ -128,7 +130,13 @@ class Constantes {
     public static final String HORA_ATUAL_DO_SISTEMA = "Data e hora do sistema: ";
     public static final String ALTERAR_DATA_E_HORA = " 1. Alterar data e hora do sistema";
     public static final String DATA_VOLTAR_MENU_PRINCIPAL = " 2. Voltar ao menu principal";
-    public static final String INSIRA_DATA_SISTEMA = "Insira a nova data e hora do sistema no formato" //COMUM
+    public static final String INSIRA_DATA_SISTEMA = "Insira a nova data e hora do sistema no seguinte formato: dd-MM-yyyy HH:mm ";
+    public static final String DATA_HORA_SISTEMA_INVALIDOS = "A data e o horario inseridos sao invalidos. Verifique o formato correto e insira novamente.";
+    public static final String CONFIRMA_ALTERACAO_DATA_HORA = "Voce confirma a alteracao de data e hora do sistema?";
+    public static final String DATA_HORA_ATUALIZADOS_SUCESSO = "Data e hora do sistema atualizadas com sucesso!";
+    public static final String DATA_HORA_NAO_ATUALIZADOS = "Atualização de data e hora do sistema abortada.";
+
+    //COMUM
     public static final String CODIGO_INVALIDO = "Codigo invalido: o codigo deve conter somente numeros. Tente novamente.";
     public static final String SALARIO_INVALIDO = "Salario invalido: o salario deve conter somente numeros.";
     public static final String TELEFONE_INVALIDO = "Telefone invalido: o telefone deve conter somente numeros.";
