@@ -49,11 +49,11 @@ public class Acesso {
 	}
 
 	public boolean validaHorarioAcesso(Acesso acesso, Cargo cargo, Date data) {
-        if(!(acesso.getData().after(cargo.getHorarioInicio()) && acesso.getData().before(cargo.getHorarioFim()))) {
-			controladorAcesso.novoRegistroAcessoNegado(data, acesso.getMatricula(), Motivo.HORARIO_NAO_PERMITIDO);
-			controladorAcesso.exibeAcessoNegadoHorarioNaoPermitido();
-            return false;
-        }
+//        if(!(acesso.getData().after(cargo.getHorarioInicio()) && acesso.getData().before(cargo.getHorarioFim()))) {
+//			controladorAcesso.novoRegistroAcessoNegado(data, acesso.getMatricula(), Motivo.HORARIO_NAO_PERMITIDO);
+//			controladorAcesso.exibeAcessoNegadoHorarioNaoPermitido();
+//            return false;
+//        }
         return true;
 	}
     

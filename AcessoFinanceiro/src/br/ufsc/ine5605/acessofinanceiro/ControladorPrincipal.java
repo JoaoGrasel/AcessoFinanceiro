@@ -5,6 +5,9 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 /**
  *
  * @author thiagobrezinski
@@ -51,8 +54,25 @@ public class ControladorPrincipal {
     public void acessarFinanceiro(ControladorAcesso controladorAcesso){
         
     }
-    public void horarioDoSistema(){
-        
+	
+    public Date getDataSistema(){
+		return controladorData.getDataSistema();
     }
+
+	public Funcionario encontraFuncionarioPelaMatricula(int matricula) {
+		return controladorFuncionario.encontraFuncionarioPelaMatricula(matricula);
+	}
+
+	public ArrayList<RegistroAcessoNegado> encontraRegistrosHorarioNaoPermitidoPelaMatricula(int matricula) {
+		return controladorRegistroAcessoNegado.encontraRegistrosHorarioNaoPermitidoPelaMatricula(matricula);
+	}
+
+	public void novoRegistroAcessoNegado(Date data, int matricula, Motivo motivo) {
+		controladorRegistroAcessoNegado.novoRegistroAcessoNegado(data, matricula, motivo);
+	}
+
+	public boolean matriculaExiste(int matricula) {
+		return controladorFuncionario.matriculaExiste(matricula);
+	}
     
 }

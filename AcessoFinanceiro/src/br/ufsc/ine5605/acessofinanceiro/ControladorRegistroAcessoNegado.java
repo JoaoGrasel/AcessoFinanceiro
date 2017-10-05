@@ -68,7 +68,7 @@ public class ControladorRegistroAcessoNegado {
     public void exibeFiltroPorMatricula() {
         int matricula = telaRegistroAcessoNegado.exibeFiltroPorMatricula();
 		boolean nenhumRegistroEncontrado = false;
-		if(controladorPrincipal.validaMatricula(matricula)) {
+		if(controladorPrincipal.matriculaExiste(matricula)) {
 			ArrayList<RegistroAcessoNegado> registrosEncontrados = new ArrayList<>();
 			registrosEncontrados = encontraRegistrosPorMatricula(matricula);
 			if(registrosEncontrados.isEmpty()) nenhumRegistroEncontrado = true;

@@ -34,7 +34,7 @@ public class ControladorAcesso {
     }
     
     public boolean validaAcessoFinanceiro(int matricula) {
-		Date dataAtual = controladorPrincipal.horarioDoSistema();
+		Date dataAtual = controladorPrincipal.getDataSistema();
         try {
             Funcionario funcionario = controladorPrincipal.encontraFuncionarioPelaMatricula(matricula);
 			ArrayList<RegistroAcessoNegado> registrosHorarioNaoPermitido;
