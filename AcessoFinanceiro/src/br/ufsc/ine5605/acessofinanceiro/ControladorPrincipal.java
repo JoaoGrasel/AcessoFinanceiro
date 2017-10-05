@@ -13,6 +13,9 @@ import java.util.Date;
  * @author thiagobrezinski
  */
 public class ControladorPrincipal {
+	
+	private static ControladorPrincipal controladorPrincipal;
+	
     public TelaPrincipal telaPrincipal;
     public ControladorCargo controladorCargo;
     public ControladorDataSistema controladorData;
@@ -23,7 +26,6 @@ public class ControladorPrincipal {
     
     public ControladorPrincipal() {
         this.telaPrincipal = new TelaPrincipal(this);
-
         this.controladorCargo = controladorCargo;
         this.controladorData = controladorData;
         this.controladorFuncionario = controladorFuncionario;
@@ -31,6 +33,11 @@ public class ControladorPrincipal {
         this.controladorRegistroAcessoNegado = controladorRegistroAcessoNegado;
     }
     
+	public static ControladorPrincipal getInstance() {
+		if(controladorPrincipal == null) controladorPrincipal = new ControladorPrincipal();
+		return controladorPrincipal;
+	}
+	
     public void exibeMenuPrincipal() {
         
     }
