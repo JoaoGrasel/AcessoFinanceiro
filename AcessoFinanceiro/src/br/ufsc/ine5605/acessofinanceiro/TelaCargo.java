@@ -12,6 +12,7 @@ import java.util.Scanner;
  * @author bruno
  */
 public class TelaCargo {
+
     private Scanner teclado;
     private ControladorCargo controlador;
 
@@ -22,7 +23,7 @@ public class TelaCargo {
 
     public int exibeMenuCargo() {
         int opcao;
-        
+
         System.out.println(Constantes.GERENCIAR_CARGO);
         System.out.println();
         System.out.println(Constantes.CADASTRAR_CARGO);
@@ -37,21 +38,21 @@ public class TelaCargo {
 
         return opcao;
     }
-    
+
     public void mensagemNovoCargo() {
         System.out.println(Constantes.MENSAGEM_NOVO_CARGO);
         System.out.println();
     }
-    
+
     public void mensagemEditaCargo() {
         System.out.println(Constantes.TITULO_EDITAR_CARGO);
         System.out.println();
     }
-    
+
     public int opcaoCargo
-    
-    public void exibeCargoSelecionado(){
+
+    public void exibeCargoSelecionado() {
         System.out.println(Constantes.CARGO_SELECIONADO);
     }
-    
+
 }

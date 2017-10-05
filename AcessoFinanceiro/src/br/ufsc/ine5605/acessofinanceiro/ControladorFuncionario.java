@@ -10,8 +10,6 @@ import java.util.Date;
 import java.lang.Character;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -85,7 +83,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
 
         String nome = this.telaFuncionario.pedeNome();
         int matricula = verificaMatriculaInserida();
-        Date dataNascimento = cadastraDataNascimento();
+        String dataNascimento = cadastraDataNascimento();
         int telefone = this.telaFuncionario.pedeTelefone();
         int salario = this.telaFuncionario.pedeSalario();
         this.telaFuncionario.exibeOpcaoCargoFuncionario();
@@ -94,32 +92,56 @@ public class ControladorFuncionario implements IControladorFuncionario {
         if (!this.funcionarios.contains(encontraFuncionarioPelaMatricula(matricula))) {
             Funcionario funcionario = new Funcionario(matricula, nome, dataNascimento, telefone, salario, cargo);
             funcionarios.add(funcionario);
-            this.telaFuncionario.mensagemUsuarioCadastrado();
+            this.telaFuncionario.mensagemFuncionarioCadastrado();
         }
         exibeMenuFuncionario();
     }
 
-    public Date formataDataNascimento(String dataNascimentoInserida) {
+    /**
+     * formata a data de nascimento inserida pelo usuario para o formato date
+     * (dd/MM/yyyy)
+     *
+     * @param dataNascimentoInserida String inserida pelo usuario anteriormente
+     * @return dataNascimento no formato date
+     */
+    public String formataDataNascimento(String dataNascimentoInserida) {
         SimpleDateFormat formatadorDataNascimento = new SimpleDateFormat("dd/MM/yyyy");
         Date dataNascimento = new Date();
         try {
-            dataNascimento = formatadorDataNascimento.parse(formatadorDataNascimento.format(dataNascimentoInserida));
+            dataNascimento = formatadorDataNascimento.parse((dataNascimentoInserida));
         } catch (ParseException ex) {
             this.telaFuncionario.mensagemErroDataNascimento();
             cadastraDataNascimento();
         }
-        return dataNascimento;
-
+        return formatadorDataNascimento.format(dataNascimento);
     }
 
-    public Date cadastraDataNascimento() {
+    /**
+     * Cadastra uma data de nascimento para o funcionário. Pede que o usuario
+     * insira a data que deseja cadastrar, chama um metodo que transforma a
+     * string em date, formata para o padrao desejado e chama o metodo que pede
+     * que o usuario confirme a data ou não
+     *
+     * @return dataNascimento inserida pelo usuario no formato desejado
+     */
+    public String cadastraDataNascimento() {
         String dataNascimentoInserida = this.telaFuncionario.pedeDataNascimento();
-        Date dataNascimento = formataDataNascimento(dataNascimentoInserida);
-        this.telaFuncionario.exibeMenuCadastroDataNascimento(dataNascimento);
-        return controlaCadastroDataNascimento(dataNascimento);
+        String dataNascimento = formataDataNascimento(dataNascimentoInserida);
+        this.telaFuncionario.exibeMenuConfirmacaoCadastroDataNascimento(dataNascimento);
+        return controlaConfirmacaoCadastroDataNascimento(dataNascimento);
     }
 
-    public Date controlaCadastroDataNascimento(Date dataNascimento) {
+    /**
+     * Controla o que o sistema faz com base na opcao que o usuario selecionar
+     * onde caso ele selecione 1: o sistema confirma a data de nascimento
+     * inserida; selecione 2: cadastra uma nova data de nascimento; selecione
+     * outra tecla: apresenta uma mensagem de opcao invalida e pede que o
+     * usuario digite outra opcao
+     *
+     * @param dataNascimento inserida anteriormente pelo usuario
+     * @return dataNascimento inserida anteriormente pelo usuario
+     */
+    public String controlaConfirmacaoCadastroDataNascimento(String dataNascimento) {
         int opcao = this.telaFuncionario.pedeOpcao();
         switch (opcao) {
             case 1:
@@ -129,7 +151,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
                 break;
             default:
                 this.telaFuncionario.opcaoInexistente();
-                controlaCadastroDataNascimento(dataNascimento);
+                controlaConfirmacaoCadastroDataNascimento(dataNascimento);
                 break;
         }
         return dataNascimento;
@@ -205,7 +227,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
                 funcionario.setMatricula(matricula);
                 break;
             case 3:
-                Date dataNascimento = cadastraDataNascimento();
+                String dataNascimento = cadastraDataNascimento();
                 funcionario.setDataNascimento(dataNascimento);
                 break;
             case 4:
@@ -242,7 +264,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
         for (Funcionario funcionarioCadastrado : funcionarios) {
             int matricula = funcionarioCadastrado.getMatricula();
             String nome = funcionarioCadastrado.getNome();
-            Date dataNascimento = funcionarioCadastrado.getDataNascimento();
+            String dataNascimento = funcionarioCadastrado.getDataNascimento();
             int telefone = funcionarioCadastrado.getTelefone();
             int salario = funcionarioCadastrado.getSalario();
             Cargo cargo = funcionarioCadastrado.getCargo();
@@ -260,7 +282,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
         Funcionario funcionario = pedeFuncionario();
         this.telaFuncionario.exibeMensagemFuncionarioSelecionado();
         this.telaFuncionario.exibeFuncionario(funcionario.getMatricula(), funcionario.getNome(), funcionario.getDataNascimento(), funcionario.getTelefone(), funcionario.getSalario(), funcionario.getCargo());
-        this.telaFuncionario.exibeMenuDeletaFuncionario();
+        this.telaFuncionario.exibeMenuConfirmacaoDeletarFuncionario();
         controlaMenuDeletarFuncionario(funcionario);
     }
 

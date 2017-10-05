@@ -26,6 +26,8 @@ class Constantes {
     public static final String NOME_INVALIDO_LETRAS = "Nome invalido, o nome deve conter somente letras.";
     public static final String NOME_INVALIDO_TAMANHO = "Nome invalido, o nome deve conter no mínimo 3 letras.";
     public static final String DATA_NASCIMENTO_INVALIDA = "Data de nascimento inválida. A data deve ser inserida no formato dd/mm/yyyy";
+    public static final String SIM = " 1. Sim ";
+    public static final String NAO = " 2. Não";
 
     // ACESSO AO FINANCEIRO
     public static final String ACESSO_FINANCEIRO = "+-+-+-+-+-+-+-+ Acesso ao financeiro +-+-+-+-+-+-+-+";
@@ -71,8 +73,8 @@ class Constantes {
     public static final String DIGITE_TELEFONE = " Digite o telefone do funcionário:";
     public static final String DIGITE_SALARIO = " Digite o salário do funcionário:";
     public static final String DIGITE_CODIGO = " Digite o código do cargo que deseja atribuir ao funcionário: ";
-    public static final String EXIBE_DATA_CADASTRADA = "Data cadasrada: ";
-    public static final String CONFIRMA_DATA_CADASTRADA = "Você confirma a data?";
+    public static final String EXIBE_DATA_CADASTRADA = "Data cadastrada: ";
+    public static final String CONFIRMA_DATA_CADASTRADA = "Você confirma a data cadastrada?";
 
     //EDITAR FUNCIONARIO
     public static final String TITULO_EDITAR_FUNCIONARIO = "+-+-+-+-+-+-+-+ Editar Funcionário +-+-+-+-+-+-+-+";
@@ -103,9 +105,7 @@ class Constantes {
 
     //DELETAR FUNCIONARIO
     public static final String TITULO_DELETAR_FUNCIONARIO = "+-+-+-+-+-+-+-+ Deletar Funcionário +-+-+-+-+-+-+-+";
-    public static final String TEM_CERTEZA_EXCLUIR = " Tem certeza que deseja excluir o funcionario? ";
-    public static final String SIM = " 1. Sim ";
-    public static final String NAO = " 2. Não";
+    public static final String TEM_CERTEZA_EXCLUIR = " Tem certeza que deseja excluir o funcionario? Caso selecione não você voltará ao menu de funcionarios. ";
 
     //MENU GERENCIAR CARGO  @BRUNO
     public static final String GERENCIAR_CARGO = " +-+-+-+-+-+-+-+ Gerenciar Cargo +-+-+-+-+-+-+-+";
@@ -143,6 +143,6 @@ class Constantes {
     public static final String CARGO_NAO_ENCONTRADO = "O sistema nao encontrou nenhum cargo com este codigo. Tente novamente.";
     public static final String FUNCIONARIO_DELETADO_SUCESSO = "O funcionario foi deletado com sucesso!";
 
-    public static final String USUARIO_CADASTRADO_SUCESSO = "Usuario cadastrado com sucesso!";
+    public static final String FUNCIONARIO_CADASTRADO_SUCESSO = "Usuario cadastrado com sucesso!";
 
 }

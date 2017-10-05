@@ -15,12 +15,12 @@ public class Funcionario {
 
     private int matricula;
     private String nome;
-    private Date dataNascimento;
+    private String dataNascimento;
     private int telefone;
     private int salario;
     private Cargo cargo;
 
-    public Funcionario(int matricula, String nome, Date dataNascimento, int telefone, int salario, Cargo cargo) {
+    public Funcionario(int matricula, String nome, String dataNascimento, int telefone, int salario, Cargo cargo) {
         this.matricula = matricula;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -37,7 +37,7 @@ public class Funcionario {
         return this.nome;
     }
 
-    public Date getDataNascimento() {
+    public String getDataNascimento() {
         return this.dataNascimento;
     }
 
@@ -62,7 +62,7 @@ public class Funcionario {
         this.nome = nome;
     }
 
-    public void setDataNascimento(Date dataNascimento) {
+    public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 

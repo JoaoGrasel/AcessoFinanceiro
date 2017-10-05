@@ -23,12 +23,21 @@ public class TelaDataHoraSistema {
         this.controlador = owner;
     }
 
+    /**
+     * exibe na tela a data e a hora atuais do sistema
+     *
+     * @param dataHoraSistema atual do sistema
+     */
     public void exibeDataHoraSistema(Date dataHoraSistema) {
         System.out.println();
         System.out.println(Constantes.HORA_ATUAL_DO_SISTEMA + dataHoraSistema);
         System.out.println();
     }
 
+    /**
+     * exibe as opcoes que o usuario pode selecioanr quanto a data e a hora do
+     * sistema
+     */
     public void exibeMenuDataHoraSistema() {
         System.out.println();
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
@@ -37,6 +46,11 @@ public class TelaDataHoraSistema {
         System.out.println();
     }
 
+    /**
+     * pede que o usuario insira a nova data e hora do sistema
+     *
+     * @return dataEHora inseridas pelo usuario
+     */
     public String pedeDataHoraSistema() {
         System.out.println();
         System.out.println(Constantes.INSIRA_DATA_SISTEMA);
@@ -45,6 +59,12 @@ public class TelaDataHoraSistema {
 
     }
 
+    /**
+     * pede que o usuario digite um numero correspondente a opcao que ele deseja
+     * selecionar
+     *
+     * @return opcao int inserido pelo usuario
+     */
     public int pedeOpcao() {
         int opcao = 0;
         boolean opcaoInvalida = true;
@@ -65,19 +85,29 @@ public class TelaDataHoraSistema {
         return opcao;
     }
 
+    /**
+     * exibe a mensagem de erro de opcao inexistente
+     */
     public void opcaoInexistente() {
         System.out.println();
         System.out.println(Constantes.OPCAO_INEXISTENTE);
         System.out.println();
     }
 
+    /**
+     * exibe a mensagem de erro de data e hora invalidas
+     */
     public void mensagemDataInvalida() {
         System.out.println();
         System.out.println(Constantes.DATA_HORA_SISTEMA_INVALIDOS);
         System.out.println();
     }
 
-    void exibeConfirmacaoDataHoraSistema() {
+    /**
+     * exibe o menu de confirmacao de alteracao de data e hora do usuario, onde
+     * o usuario tem as opcoes de sim ou nao
+     */
+    public void exibeConfirmacaoDataHoraSistema() {
         System.out.println();
         System.out.println(Constantes.CONFIRMA_ALTERACAO_DATA_HORA);
         System.out.println(Constantes.SIM);
@@ -85,13 +115,19 @@ public class TelaDataHoraSistema {
         System.out.println();
     }
 
-    void mensagemDataHoraAtualizadosSucesso() {
+    /**
+     * exibe a mensagem de data e horas atualizadas com sucesso
+     */
+    public void mensagemDataHoraAtualizadosSucesso() {
         System.out.println();
         System.out.println(Constantes.DATA_HORA_ATUALIZADOS_SUCESSO);
         System.out.println();
     }
 
-    void mensagemDataHoraNaoAtualizados() {
+    /**
+     * exibe a mensagem de data e hora não atualizadas
+     */
+    public void mensagemDataHoraNaoAtualizados() {
         System.out.println();
         System.out.println(Constantes.DATA_HORA_NAO_ATUALIZADOS);
         System.out.println();

@@ -17,7 +17,11 @@ public class AcessoFinanceiro {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
+        ControladorPrincipal controladorPrincipal = new ControladorPrincipal();
+        ControladorDataSistema controladorDataSistema = new ControladorDataSistema(controladorPrincipal);
+        controladorDataSistema.menuDataHoraSistema();
+
     }
-    
+
 }

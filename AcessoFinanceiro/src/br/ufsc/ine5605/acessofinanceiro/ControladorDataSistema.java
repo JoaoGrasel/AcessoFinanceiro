@@ -25,21 +25,41 @@ public class ControladorDataSistema implements IControladorDataSistema {
         this.dataHoraSistema = new Date();
     }
 
+    /**
+     * compreende o controle da totalidade do menu de data e hora do sistema,
+     * chamando os metodos para exibir a data e hora e exibir as opcoes
+     * disponiveis
+     */
     public void menuDataHoraSistema() {
         exibeDataHoraSistema();
         exibeMenuDataHoraSistema();
         controlaMenuDataHoraSistema();
     }
 
+    /**
+     * exibe a data e hora atuais do sistema
+     */
     public void exibeDataHoraSistema() {
         this.telaDataHora.exibeDataHoraSistema(dataHoraSistema);
     }
 
+    /**
+     * exibe o menu de opcoes disponiveis para o usuario quanto a data e a hora
+     * do sistema
+     */
     public void exibeMenuDataHoraSistema() {
         this.telaDataHora.exibeMenuDataHoraSistema();
     }
 
-    private void controlaMenuDataHoraSistema() {
+    /**
+     * controla o que o sistema faz com base na opcao selecionada pelo usuario,
+     * caso selecione 1: chama o metodo para alterar a data e hora do sistema,
+     * imprime na tela e chama o metodo de confirmacao de alteracao de data e
+     * hora. caso selecione 2: volta para o menu principal. caso selecione outra
+     * opcao: exibe a mensagem de opcao inexistente e pede que insira novamente
+     * uma opcao
+     */
+    public void controlaMenuDataHoraSistema() {
         int opcao = this.telaDataHora.pedeOpcao();
         switch (opcao) {
             case 1:
@@ -58,7 +78,13 @@ public class ControladorDataSistema implements IControladorDataSistema {
         }
     }
 
-    private Date alteraDataHoraSistema() {
+    /**
+     * altera a data e a hora do sistema com base na nova data inserida pelo
+     * usuario
+     *
+     * @return dataEHora atualizadas do sistema
+     */
+    public Date alteraDataHoraSistema() {
         String dataEHoraInseridos = this.telaDataHora.pedeDataHoraSistema();
         try {
             Date dataEHora = new SimpleDateFormat("dd-MM-yyyy HH:mm")
@@ -76,7 +102,15 @@ public class ControladorDataSistema implements IControladorDataSistema {
         return this.dataHoraSistema;
     }
 
-    private void controlaConfirmacaoDataHoraSistema() {
+    /**
+     * Controla o menu de confirmacao da alteracao de data e hora do sistema,
+     * onde caso o usuario selecione 1: exibe a mensagem de que a data e a hora
+     * foram atualizadas com sucesso. caso selecione 2: exibe a mensagem de data
+     * e hora nao atualizados, chama o metodo para que o usuario atualize a data
+     * e a hora. caso selecione outra tecla: exibe a mensagem de opcao
+     * inexistente e pede que o usuario insira outra opcao
+     */
+    public void controlaConfirmacaoDataHoraSistema() {
         int opcao = this.telaDataHora.pedeOpcao();
         switch (opcao) {
             case 1:
