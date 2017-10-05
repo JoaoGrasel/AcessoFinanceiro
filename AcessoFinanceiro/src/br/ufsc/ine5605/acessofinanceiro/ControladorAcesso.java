@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.InputMismatchException;
 
 /**
@@ -24,42 +26,53 @@ public class ControladorAcesso {
     public void acessaFinanceiro() {
         int matricula = 0;
         matricula = telaAcesso.exibeAcessoFinanceiro();
-        // Motivo?
         if(validaAcessoFinanceiro(matricula)) {
-            System.out.println(Constantes.ACESSO_PERMITIDO);
-        } else {
-//            controladorPrincipal.retornaMotivoP
-        }
+			telaAcesso.exibeAcessoPermitido();
+		} else {
+			trataNovaTentativa();
+		}
     }
     
     public boolean validaAcessoFinanceiro(int matricula) {
+		Date dataAtual = controladorPrincipal.horarioDoSistema();
         try {
-            if(controladorPrincipal.encontraFuncionarioPelaMatricula(matricula)) {
-                //se nao encontrar a matricula mostrar motivo
-            }
             Funcionario funcionario = controladorPrincipal.encontraFuncionarioPelaMatricula(matricula);
-            Cargo cargo = funcionario.getCargo();
-            
-            if(cargo.ehGerente()) return true;
-            if(cargo.temAcessoAoFinanceiro()) {
-                return validaHorarioAcesso(cargo);
-            } else {
-                System.out.println(Motivo.CARGO_SEM_ACESSO);
-            }
+			ArrayList<RegistroAcessoNegado> registrosHorarioNaoPermitido;
+			registrosHorarioNaoPermitido = controladorPrincipal.encontraRegistrosHorarioNaoPermitidoPelaMatricula(matricula);
+			if(registrosHorarioNaoPermitido.size() > 3) {
+				controladorPrincipal.novoRegistroAcessoNegado(dataAtual, matricula, Motivo.ACESSO_BLOQUEADO);
+				telaAcesso.exibeAcessoNegadoAcessoBloqueado();
+				return false;
+			}
+			Acesso acesso = new Acesso(dataAtual, matricula);
+			return acesso.validaAcesso(acesso, funcionario, dataAtual);
         } catch (NullPointerException e) {
-            System.out.println(Constantes.ACESSO_MATRICULA_INEXISTENTE);
+			controladorPrincipal.novoRegistroAcessoNegado(dataAtual, matricula, Motivo.MATRICULA_INEXISTENTE);
+			telaAcesso.exibeAcessoNegadoMatriculaInexistente();
         }
         return false;
     }
-    
-	//REVER
-    public boolean validaHorarioAcesso(Cargo cargo) {
-        Date horario = controladorPrincipal.horarioDoSistema();
-        if(!horario.after(cargo.getHorarioInicio()) && horario.before(cargo.getHorarioFim())) {
-            System.out.println(Motivo.HORARIO_NAO_PERMITIDO);
-            return false;
-        }
-        return true;
-    }
+
+	public void trataNovaTentativa() {
+		int opcao = 0;
+		opcao = telaAcesso.exibeNovaTentativa();
+		if(opcao == 1) {
+			acessaFinanceiro();
+		} else {
+			controladorPrincipal.exibeMenuPrincipal();
+		}
+	}
+
+	public void exibeAcessoNegadoCargoSemAcesso() {
+		telaAcesso.exibeAcessoNegadoCargoSemAcesso();
+	}
+
+	public void exibeAcessoNegadoHorarioNaoPermitido() {
+		telaAcesso.exibeAcessoNegadoHorarioNaoPermitido();
+	}
+
+	public void novoRegistroAcessoNegado(Date data, int matricula, Motivo motivo) {
+		controladorPrincipal.novoRegistroAcessoNegado(data, matricula, motivo);
+	}
     
 }
