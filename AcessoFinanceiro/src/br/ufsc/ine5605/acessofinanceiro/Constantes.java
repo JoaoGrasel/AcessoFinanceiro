@@ -20,6 +20,7 @@ class Constantes {
     public static final String OPCAO_INEXISTENTE = "-- Opção solicitada não existe, confira as opcoes do menu e tente novamente --";
     public static final String INSIRA_OPCAO = "Insira a opcao: ";
     public static final String MATRICULA_JA_CADASTRADA = "-- Matricula invalida: a matricula inserida ja foi cadastrada --";
+    public static final String CODIGO_JA_CADASTRADO = "-- Codigo invalido: o codigo inserido ja foi cadastrado --";
     public static final String MATRICULA_INEXISTENTE = "-- Matricula inexistente: a matricula inserida nao pertence a nenhum funcionario --";
     public static final String TENTAR_NOVAMENTE = "1 - Tentar novamente";
     public static final String VOLTAR_MENU_PRINCIPAL_1 = "1 - Voltar ao menu principal";
@@ -123,6 +124,7 @@ class Constantes {
     public static final String MENSAGEM_NOVO_CARGO = "+-+-+-+-+-+-+-+ Novo Cargo +-+-+-+-+-+-+-+";
     public static final String DIGITE_NOME_CARGO = " Digite o nome do cargo:";
     public static final String DIGITE_CODIGO_CARGO = " Digite o código que deseja atribuir ao cargo: ";
+    
 
     //EDITAR CARGO   @BRUNO
     public static final String TITULO_EDITAR_CARGO = "+-+-+-+-+-+-+-+ Editar Cargo +-+-+-+-+-+-+-+";

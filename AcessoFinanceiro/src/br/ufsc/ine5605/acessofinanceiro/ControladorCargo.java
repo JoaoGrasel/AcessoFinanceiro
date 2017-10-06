@@ -62,21 +62,60 @@ public class ControladorCargo implements IControladorCargo {
     //COMENTAR ISSO SE PRECISAR TESTAR.
     @Override
     public Cargo encontraCargoPorCodigo(int codigo) {
-        return cargos;
+        return cargo;
     }
 
+    //CONTINUAR DAQUI
     private void incluiCargo() {
+        this.telaCargo.mensagemNovoCargo();
+
+        String nome = this.telaCargo.pedeNome();
+        int codigo = verificaCodigoInserido();
+        boolean ehGerente = ;
+        
     }
 
     private void editaCargo() {
     }
-
-    private void listaCargo() {
+    
+    /**
+     * Controla o que o sistema faz com base na opcao que o usuario selecionar
+     * no menu para deletar o cargo. Caso o usuario aperte 1: deleta o
+     * cargo. Caso o usuario aperte 2: volta para o menu principal do
+     * cargo. Caso o usuario aperte outra tecla qualquer: apresenta a
+     * mensagem de opcao inexistente e exibe o menu de deletar um cargo
+     * novamente
+     *
+     * @param cargo a ser deletado
+     */
+    private void controlaMenuDeletarCargo(Cargo cargo) {
+        int opcao = this.telaCargo.pedeOpcao();
+        switch (opcao) {
+            case 1:
+                deletaCargo(cargo);
+                exibeMenuCargo();
+                break;
+            case 2:
+                exibeMenuCargo();
+                break;
+            default:
+                this.telaCargo.opcaoInexistente();
+                controlaMenuDeletarCargo(cargo);
+                break;
+        }
     }
-
-    private void menuDeletarCargo() {
+    
+    public int verificaCodigoInserido() {
+        int codigo = this.telaCargo.pedeCodigo();
+        for (Cargo cargoCadastrado : cargos) {
+            if (cargoCadastrado.getCodigo() == codigo) {
+                this.telaCargo.mensagemErroCodigoJaCadastrada();
+            }
+            verificaCodigoInserido();
+        }
+        return codigo; 
     }
-
+    
     //COMENTAR ISSO SE PRECISAR TESTAR.
     @Override
     public Cargo cadastraCargoParaFuncionario() {

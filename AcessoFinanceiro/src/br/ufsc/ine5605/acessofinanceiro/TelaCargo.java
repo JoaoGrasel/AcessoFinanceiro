@@ -63,6 +63,20 @@ public class TelaCargo {
         }
         return opcao;
     }
+    
+    /**
+     * Pede que o usuário insira o nome do cargo que deseja cadastrar
+     *
+     * @return nome do cargo
+     */
+    public String pedeNome() {
+        System.out.println();
+        System.out.println(Constantes.DIGITE_NOME_CARGO);
+        System.out.println();
+        String nome = teclado.nextLine();
+        System.out.println();
+        return nome;
+    }
 
     public void mensagemNovoCargo() {
         System.out.println(Constantes.MENSAGEM_NOVO_CARGO);
@@ -95,6 +109,34 @@ public class TelaCargo {
 
     public void exibeCargoSelecionado() {
         System.out.println(Constantes.CARGO_SELECIONADO);
+    }
+    
+    public int pedeCodigo() {
+        int codigo = 0;
+        boolean codigoInvalido = true;
+
+        while (codigoInvalido) {
+            try {
+                System.out.println();
+                System.out.println(Constantes.DIGITE_CODIGO_CARGO);
+                codigo = teclado.nextInt();
+                System.out.println();
+                codigoInvalido = false;
+            } catch (InputMismatchException e) {
+                System.out.println();
+                System.out.println(Constantes.CODIGO_INVALIDO);
+                System.out.println();
+                pedeCodigo();
+            }
+
+        }
+        return codigo;
+    }
+    
+    public void mensagemErroCodigoJaCadastrada() {
+        System.out.println();
+        System.out.println(Constantes.CODIGO_JA_CADASTRADO);
+        System.out.println();
     }
 
 }
