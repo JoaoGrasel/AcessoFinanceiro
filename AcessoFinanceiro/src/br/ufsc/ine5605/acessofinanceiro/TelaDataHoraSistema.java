@@ -52,11 +52,7 @@ public class TelaDataHoraSistema {
      * @return dataEHora inseridas pelo usuario
      */
     public String pedeDataHoraSistema() {
-        System.out.println();
-        System.out.println(Constantes.INSIRA_DATA_SISTEMA);
-        String dataEHora = teclado.nextLine();
-        return dataEHora;
-
+        return teclado.nextLine();
     }
 
     /**
@@ -67,20 +63,20 @@ public class TelaDataHoraSistema {
      */
     public int pedeOpcao() {
         int opcao = 0;
-        boolean opcaoInvalida = true;
-
-        while (opcaoInvalida) {
+        boolean opcaoValida = true;
+        while (opcaoValida) {
             try {
                 System.out.println();
                 opcao = teclado.nextInt();
+                teclado.nextLine();
                 System.out.println();
-                opcaoInvalida = false;
+                opcaoValida = false;
+
             } catch (InputMismatchException e) {
                 System.out.println();
                 System.out.println(Constantes.OPCAO_INVALIDA);
-                System.out.println();
+                teclado.nextLine();
             }
-
         }
         return opcao;
     }
@@ -131,6 +127,10 @@ public class TelaDataHoraSistema {
         System.out.println();
         System.out.println(Constantes.DATA_HORA_NAO_ATUALIZADOS);
         System.out.println();
+    }
+
+    public void exibeMensagemPedeDataHoraSistema() {
+        System.out.println(Constantes.INSIRA_DATA_SISTEMA);
     }
 
 }

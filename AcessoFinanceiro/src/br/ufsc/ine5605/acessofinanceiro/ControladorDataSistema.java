@@ -16,11 +16,9 @@ import java.util.Date;
 public class ControladorDataSistema implements IControladorDataSistema {
 
     private TelaDataHoraSistema telaDataHora;
-    private ControladorPrincipal controladorPrincipal;
     private Date dataHoraSistema;
 
-    public ControladorDataSistema(ControladorPrincipal owner) {
-        this.controladorPrincipal = owner;
+    public ControladorDataSistema() {
         this.telaDataHora = new TelaDataHoraSistema(this);
         this.dataHoraSistema = new Date();
     }
@@ -63,13 +61,13 @@ public class ControladorDataSistema implements IControladorDataSistema {
         int opcao = this.telaDataHora.pedeOpcao();
         switch (opcao) {
             case 1:
-                dataHoraSistema = alteraDataHoraSistema();
+                this.dataHoraSistema = alteraDataHoraSistema();
                 exibeDataHoraSistema();
                 this.telaDataHora.exibeConfirmacaoDataHoraSistema();
                 controlaConfirmacaoDataHoraSistema();
                 break;
             case 2:
-                this.controladorPrincipal.exibeMenuPrincipal();
+                ControladorPrincipal.getInstance().exibeMenuPrincipal();
                 break;
             default:
                 this.telaDataHora.opcaoInexistente();
@@ -85,11 +83,12 @@ public class ControladorDataSistema implements IControladorDataSistema {
      * @return dataEHora atualizadas do sistema
      */
     public Date alteraDataHoraSistema() {
+        this.telaDataHora.exibeMensagemPedeDataHoraSistema();
         String dataEHoraInseridos = this.telaDataHora.pedeDataHoraSistema();
         try {
-            Date dataEHora = new SimpleDateFormat("dd-MM-yyyy HH:mm")
+            Date data = new SimpleDateFormat("dd-MM-yyyy HH:mm")
                     .parse(dataEHoraInseridos);
-            return dataEHora;
+            return data;
         } catch (ParseException ex) {
             this.telaDataHora.mensagemDataInvalida();
             alteraDataHoraSistema();

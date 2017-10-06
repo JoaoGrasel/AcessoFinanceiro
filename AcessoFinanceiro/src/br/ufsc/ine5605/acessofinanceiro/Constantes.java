@@ -17,12 +17,12 @@ class Constantes {
     public static final String INSIRA_MATRICULA = "Insira a matricula: ";
     public static final String MATRICULA_INVALIDA = "Matricula invalida: a matricula deve conter somente numeros.";
     public static final String OPCAO_INVALIDA = "Opcao invalida: por favor digite somente um numero.";
-    public static final String OPCAO_INEXISTENTE = "Opcao inexistente: tente novamente.";
+    public static final String OPCAO_INEXISTENTE = "Opcao solicitada não existe. Confira as opcoes do menu e tente novamente.";
     public static final String INSIRA_OPCAO = "Insira a opcao: ";
     public static final String MATRICULA_JA_CADASTRADA = "Matricula invalida: a matricula inserida ja foi cadastrada";
     public static final String MATRICULA_INEXISTENTE = "Matricula inexistente: a matricula inserida nao pertence a nenhum funcionario";
     public static final String TENTAR_NOVAMENTE = "1 - Tentar novamente";
-	public static final String VOLTAR_MENU_PRINCIPAL_1 = "1 - Voltar ao menu principal";
+    public static final String VOLTAR_MENU_PRINCIPAL_1 = "1 - Voltar ao menu principal";
     public static final String VOLTAR_MENU_PRINCIPAL_2 = "2 - Voltar ao menu principal";
     public static final String VOLTAR_MENU_PRINCIPAL_3 = "3 - Voltar ao menu principal";
     public static final String VOLTAR_MENU_PRINCIPAL_5 = "5 - Voltar ao menu principal";
@@ -136,7 +136,7 @@ class Constantes {
     public static final String ALTERAR_DATA_E_HORA = " 1. Alterar data e hora do sistema";
     public static final String DATA_VOLTAR_MENU_PRINCIPAL = " 2. Voltar ao menu principal";
     public static final String INSIRA_DATA_SISTEMA = "Insira a nova data e hora do sistema no seguinte formato: dd-MM-yyyy HH:mm ";
-    public static final String DATA_HORA_SISTEMA_INVALIDOS = "A data e o horario inseridos sao invalidos. Verifique o formato correto e insira novamente.";
+    public static final String DATA_HORA_SISTEMA_INVALIDOS = "Formato invalido, utilize o formato correto solicitado.";
     public static final String CONFIRMA_ALTERACAO_DATA_HORA = "Voce confirma a alteracao de data e hora do sistema?";
     public static final String DATA_HORA_ATUALIZADOS_SUCESSO = "Data e hora do sistema atualizadas com sucesso!";
     public static final String DATA_HORA_NAO_ATUALIZADOS = "Atualização de data e hora do sistema abortada.";

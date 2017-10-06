@@ -18,14 +18,11 @@ import java.text.SimpleDateFormat;
 public class ControladorFuncionario implements IControladorFuncionario {
 
     private TelaFuncionario telaFuncionario;
-    private ControladorPrincipal controladorPrincipal;
     private ArrayList<Funcionario> funcionarios;
 
-    public ControladorFuncionario(ControladorPrincipal owner) {
+    public ControladorFuncionario() {
         this.telaFuncionario = new TelaFuncionario(this);
         this.funcionarios = new ArrayList<>();
-        this.controladorPrincipal = owner;
-
     }
 
     /**
@@ -62,7 +59,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
                 deletaFuncionario();
                 break;
             case 5:
-                this.controladorPrincipal.exibeMenuPrincipal();
+                ControladorPrincipal.getInstance().exibeMenuPrincipal();
                 break;
             default:
                 this.telaFuncionario.opcaoInexistente();
@@ -173,11 +170,11 @@ public class ControladorFuncionario implements IControladorFuncionario {
         Cargo cargo = null;
         switch (opcao) {
             case 1:
-                this.controladorPrincipal.controladorCargo.listaCargos();
-                cargo = verificaCodigoComCargo();
+                //ControladorPrincipal.getInstance().controladorCargo.listaCargos();
+                //cargo = verificaCodigoComCargo();
                 break;
             case 2:
-                cargo = this.controladorPrincipal.controladorCargo.cadastraCargoParaFuncionario();
+                // cargo = ControladorPrincipal.getInstance().controladorCargo.cadastraCargoParaFuncionario();
                 break;
             default:
                 this.telaFuncionario.opcaoInexistente();
@@ -368,17 +365,15 @@ public class ControladorFuncionario implements IControladorFuncionario {
      *
      * @return cargo com o codigo digitado pelo usuario;
      */
-    public Cargo verificaCodigoComCargo() {
-        int codigo = pedeCodigo();
-        Cargo cargo = this.controladorPrincipal.controladorCargo.encontraCargoPorCodigo(codigo);
-        if (cargo == null) {
-            this.telaFuncionario.mensagemCargoNaoEncontrado();
-            verificaCodigoComCargo();
-        }
-        return cargo;
-
-    }
-
+    //public Cargo verificaCodigoComCargo() {
+    // int codigo = pedeCodigo();
+    //Cargo cargo = ControladorPrincipal.getInstance().controladorCargo.encontraCargoPorCodigo(codigo);
+    // if (cargo == null) {
+    //    this.telaFuncionario.mensagemCargoNaoEncontrado();
+    //    verificaCodigoComCargo();
+    // }
+    // return cargo;
+    //}
     /**
      * Verifica se a matricula inserida pelo usuario ja foi cadastrada
      * anteriormente
