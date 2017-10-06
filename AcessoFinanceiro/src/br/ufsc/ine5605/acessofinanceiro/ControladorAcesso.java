@@ -21,6 +21,9 @@ public class ControladorAcesso {
         this.telaAcesso = new TelaAcesso(this);
     }
     
+	/**
+	 * Exibe a tela para acesso do financeiro e trata o recebimento da matricula.
+	 */
     public void acessaFinanceiro() {
         int matricula = 0;
         matricula = telaAcesso.exibeAcessoFinanceiro();
@@ -31,6 +34,14 @@ public class ControladorAcesso {
 		}
     }
     
+	/**
+	 * Verifica se a matricula recebida existe e, se verdadeiro, verifica se o
+	 * acesso do funcionario esta bloqueado. Se sim, solicita a criacao de um
+	 * novo registro de acesso negado. Se nao, tenta validar o acesso.
+	 * 
+	 * @param matricula matricula inserida pelo usuario
+	 * @return true se o acesso do funcionario for permitido
+	 */
     public boolean validaAcessoFinanceiro(int matricula) {
 		Date dataAtual = ControladorPrincipal.getInstance().getDataSistema();
         try {
@@ -51,10 +62,20 @@ public class ControladorAcesso {
         return false;
     }
 
+	/**
+	 * Solicita a criacao de um novo registro de acesso negado.
+	 * 
+	 * @param data data da tentativa negada de acesso
+	 * @param matricula matricula da tentativa negada de acesso
+	 * @param motivo motivo pelo qual o acesso foi negado
+	 */
 	public void novoRegistroAcessoNegado(Date data, int matricula, Motivo motivo) {
 		ControladorPrincipal.getInstance().novoRegistroAcessoNegado(data, matricula, motivo);
 	}
 	
+	/**
+	 * 
+	 */
 	public void trataNovaTentativa() {
 		int opcao = 0;
 		opcao = telaAcesso.exibeNovaTentativa();

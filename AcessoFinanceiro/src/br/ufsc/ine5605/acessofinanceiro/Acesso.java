@@ -39,6 +39,16 @@ public class Acesso {
         this.matricula = matricula;
     }
 
+	/**
+	 * Verifica se o cargo do funcionario recebido eh gerencial ou se permite
+	 * acesso ao financeiro. Se for gerencial ou se o horario do cargo com acesso
+	 * estiver valido permite o acesso.
+	 * 
+	 * @param acesso Acesso tentado pelo funcionario
+	 * @param funcionario Funcionario que tentou o acesso
+	 * @param data Data da tentativa de acesso
+	 * @return True se o acesso for validado
+	 */
 	public boolean validaAcesso(Acesso acesso, Funcionario funcionario, Date data) {
 		if(funcionario.getCargo().ehGerente()) return true;
 		if(funcionario.getCargo().temAcessoAoFinanceiro())
@@ -48,6 +58,16 @@ public class Acesso {
 		return false;
 	}
 
+	/**
+	 * Verifica se o horario que o funcionario tentou o acesso confere com o
+	 * horario em que ele eh permitido acessar.
+	 * 
+	 * @param acesso Acesso tentado pelo funcionario
+	 * @param cargo Cargo do funcionario
+	 * @param data Data da tentativa de acesso
+	 * @return True se o horario da tentativa de acesso estiver dentro do
+	 * permitido pelo cargo
+	 */
 	public boolean validaHorarioAcesso(Acesso acesso, Cargo cargo, Date data) {
 //        if(!(acesso.getData().after(cargo.getHorarioInicio()) && acesso.getData().before(cargo.getHorarioFim()))) {
 //			controladorAcesso.novoRegistroAcessoNegado(data, acesso.getMatricula(), Motivo.HORARIO_NAO_PERMITIDO);

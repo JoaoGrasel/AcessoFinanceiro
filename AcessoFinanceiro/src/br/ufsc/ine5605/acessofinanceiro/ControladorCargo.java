@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author bruno
  */
-public class ControladorCargo {
+public class ControladorCargo implements IControladorCargo{
     private ArrayList<Cargo> cargos;
     private ControladorPrincipal controladorPrincipal;
     private TelaCargo telaCargo;
@@ -22,9 +22,14 @@ public class ControladorCargo {
         this.controladorPrincipal = owner;
     }
     
-    public void menuCargo(){
+    public void exibeMenuCargo() {
+        telaCargo.exibeMenuCargo();
+        controlaMenuCargo();
+    }
+    
+    public void controlaMenuCargo(){
         
-        int opcao = telaCargo.exibeMenuCargo();
+        int opcao = this.telaCargo.pedeOpcao();
 
         switch (opcao) {
             case 1:
@@ -43,8 +48,8 @@ public class ControladorCargo {
                 this.controladorPrincipal.exibeMenuPrincipal();
                 break;
             default:
-                System.out.println(Constantes.OPCAO_INEXISTENTE);
-                menuCargo();
+                this.telaCargo.opcaoInexistente();
+                exibeMenuCargo();
                 break;
         }
     }
@@ -52,8 +57,10 @@ public class ControladorCargo {
     public void voltaMenuPrincipal() {
         controladorPrincipal.exibeMenuPrincipal();
     }
-    public void encontraCargoPorCodigo(int codigo) {
-    
+    //COMENTAR ISSO SE PRECISAR TESTAR.
+    @Override
+    public Cargo encontraCargoPorCodigo(int codigo) {
+        return cargos;
     }
 
     private void incluiCargo() {
@@ -66,6 +73,24 @@ public class ControladorCargo {
     }
 
     private void menuDeletarCargo() {
+    }
+    //COMENTAR ISSO SE PRECISAR TESTAR.
+    @Override
+    public Cargo cadastraCargoParaFuncionario() {
+        
+    }
+
+    @Override
+    public void listaCargos() {
+        this.telaCargo.mensagemListaCargos();
+        for (Cargo cargoCadastrado : cargos) {
+            int codigo = cargoCadastrado.getCodigo();
+            String nome = cargoCadastrado.getNome();
+            boolean ehGerente = cargoCadastrado.ehGerente();
+            boolean temAcessoAoFinanceiro = cargoCadastrado.temAcessoAoFinanceiro();
+            this.telaCargo.exibeCargo(codigo, nome, ehGerente, temAcessoAoFinanceiro);
+        }
+        exibeMenuCargo();
     }
     
     
