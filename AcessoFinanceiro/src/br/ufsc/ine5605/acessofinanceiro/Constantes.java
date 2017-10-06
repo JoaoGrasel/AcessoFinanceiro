@@ -130,6 +130,13 @@ class Constantes {
     public static final String ALTERAR_NOME_CARGO = " 1. Alterar Nome do Cargo";
     public static final String ALTERAR_CODIGO_CARGO = " 2. Alterar Código do Cargo ";
     public static final String OPCAO_VOLTAR_CARGO = " 3. Voltar ";
+    
+    //LISTAR CARGOS
+    public static final String LISTA_DE_CARGOS = "+-+-+-+-+-+-+-+ Lista de Cargos +-+-+-+-+-+-+-+";
+    public static final String CODIGO = " Codigo: ";
+    public static final String NOME_CARGO = "Nome: ";
+    public static final String EH_GERENTE = " O cargo é gerencial: ";
+    public static final String TEM_ACESSO_AO_FINANCEIRO = " Tem Acesso ao Financeiro: ";
 
     //DATA DO SISTEMA
     public static final String HORA_ATUAL_DO_SISTEMA = "Data e hora do sistema: ";

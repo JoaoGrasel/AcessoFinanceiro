@@ -10,7 +10,7 @@ package br.ufsc.ine5605.acessofinanceiro;
  * @author bruno
  */
 public interface IControladorCargo {
-    public void cadastraCargoParaFuncionario();
+    public Cargo cadastraCargoParaFuncionario();
     //    return um_cargo;
     //}
 
