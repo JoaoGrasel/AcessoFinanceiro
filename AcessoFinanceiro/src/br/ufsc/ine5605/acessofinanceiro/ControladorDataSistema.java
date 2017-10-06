@@ -51,20 +51,16 @@ public class ControladorDataSistema implements IControladorDataSistema {
 
     /**
      * controla o que o sistema faz com base na opcao selecionada pelo usuario,
-     * caso selecione 1: chama o metodo para alterar a data e hora do sistema,
-     * imprime na tela e chama o metodo de confirmacao de alteracao de data e
-     * hora. caso selecione 2: volta para o menu principal. caso selecione outra
-     * opcao: exibe a mensagem de opcao inexistente e pede que insira novamente
-     * uma opcao
+     * caso selecione 1: executa o metodo que realiza a atualização da data e
+     * hora do sistema. Caso selecione 2: volta para o menu principal. caso
+     * selecione outra opcao: exibe a mensagem de opcao inexistente e pede que
+     * insira novamente uma opcao
      */
     public void controlaMenuDataHoraSistema() {
         int opcao = this.telaDataHora.pedeOpcao();
         switch (opcao) {
             case 1:
-                this.dataHoraSistema = alteraDataHoraSistema();
-                exibeDataHoraSistema();
-                this.telaDataHora.exibeConfirmacaoDataHoraSistema();
-                controlaConfirmacaoDataHoraSistema();
+                executaOpcao1Menu();
                 break;
             case 2:
                 ControladorPrincipal.getInstance().exibeMenuPrincipal();
@@ -74,6 +70,17 @@ public class ControladorDataSistema implements IControladorDataSistema {
                 controlaMenuDataHoraSistema();
                 break;
         }
+    }
+
+    /**
+     * Chama o metodo para alterar a data e hora do sistema, imprime na tela e
+     * chama o metodo de confirmacao de alteracao de data e hora.
+     */
+    public void executaOpcao1Menu() {
+        this.dataHoraSistema = alteraDataHoraSistema();
+        exibeDataHoraSistema();
+        this.telaDataHora.exibeConfirmacaoDataHoraSistema();
+        controlaConfirmacaoDataHoraSistema();
     }
 
     /**
@@ -118,7 +125,7 @@ public class ControladorDataSistema implements IControladorDataSistema {
                 break;
             case 2:
                 this.telaDataHora.mensagemDataHoraNaoAtualizados();
-                alteraDataHoraSistema();
+                executaOpcao1Menu();
                 break;
             default:
                 this.telaDataHora.opcaoInexistente();

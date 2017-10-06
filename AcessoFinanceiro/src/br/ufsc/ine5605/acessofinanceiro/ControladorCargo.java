@@ -11,7 +11,8 @@ import java.util.ArrayList;
  *
  * @author bruno
  */
-public class ControladorCargo implements IControladorCargo{
+public class ControladorCargo implements IControladorCargo {
+
     private ArrayList<Cargo> cargos;
     private ControladorPrincipal controladorPrincipal;
     private TelaCargo telaCargo;
@@ -21,14 +22,14 @@ public class ControladorCargo implements IControladorCargo{
         this.telaCargo = new TelaCargo(this);
         this.controladorPrincipal = owner;
     }
-    
+
     public void exibeMenuCargo() {
         telaCargo.exibeMenuCargo();
         controlaMenuCargo();
     }
-    
-    public void controlaMenuCargo(){
-        
+
+    public void controlaMenuCargo() {
+
         int opcao = this.telaCargo.pedeOpcao();
 
         switch (opcao) {
@@ -53,10 +54,11 @@ public class ControladorCargo implements IControladorCargo{
                 break;
         }
     }
-    
+
     public void voltaMenuPrincipal() {
         controladorPrincipal.exibeMenuPrincipal();
     }
+
     //COMENTAR ISSO SE PRECISAR TESTAR.
     @Override
     public Cargo encontraCargoPorCodigo(int codigo) {
@@ -74,10 +76,11 @@ public class ControladorCargo implements IControladorCargo{
 
     private void menuDeletarCargo() {
     }
+
     //COMENTAR ISSO SE PRECISAR TESTAR.
     @Override
     public Cargo cadastraCargoParaFuncionario() {
-        
+
     }
 
     @Override
@@ -92,6 +95,5 @@ public class ControladorCargo implements IControladorCargo{
         }
         exibeMenuCargo();
     }
-    
-    
+
 }

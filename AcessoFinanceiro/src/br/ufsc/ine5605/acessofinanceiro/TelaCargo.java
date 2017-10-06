@@ -21,10 +21,10 @@ public class TelaCargo {
         this.controlador = owner;
         this.teclado = new Scanner(System.in);
     }
-    
+
     /**
-     * Exibe na tela o menu com as opcoes do CRUD do cargo (cadastrar,
-     * editar, listar e deletar)
+     * Exibe na tela o menu com as opcoes do CRUD do cargo (cadastrar, editar,
+     * listar e deletar)
      */
     public void exibeMenuCargo() {
         System.out.println();
@@ -38,7 +38,7 @@ public class TelaCargo {
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println();
     }
-    
+
     /**
      * Pede que o usuario insira um numero correspondente a opcao que ele deseja
      * selecionar
@@ -63,7 +63,7 @@ public class TelaCargo {
         }
         return opcao;
     }
-    
+
     public void mensagemNovoCargo() {
         System.out.println(Constantes.MENSAGEM_NOVO_CARGO);
         System.out.println();
@@ -73,7 +73,7 @@ public class TelaCargo {
         System.out.println(Constantes.TITULO_EDITAR_CARGO);
         System.out.println();
     }
-    
+
     public void mensagemListaCargos() {
         System.out.println();
         System.out.println(Constantes.LISTA_DE_CARGOS);
@@ -81,9 +81,9 @@ public class TelaCargo {
     }
 
     public int opcaoInexistente() {
-        
+
     }
-    
+
     public void exibeCargo(int codigo, String nome, boolean ehGerente, boolean temAcessoAoFinanceiro) {
         System.out.println();
         System.out.println(Constantes.CODIGO + codigo);
@@ -92,7 +92,7 @@ public class TelaCargo {
         System.out.println(Constantes.TEM_ACESSO_AO_FINANCEIRO + temAcessoAoFinanceiro);
         System.out.println();
     }
-    
+
     public void exibeCargoSelecionado() {
         System.out.println(Constantes.CARGO_SELECIONADO);
     }

@@ -39,6 +39,7 @@ public class TelaDataHoraSistema {
      * sistema
      */
     public void exibeMenuDataHoraSistema() {
+        System.out.println(Constantes.TITULO_MENU_DATA_HORA_SISTEMA);
         System.out.println();
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println(Constantes.ALTERAR_DATA_E_HORA);

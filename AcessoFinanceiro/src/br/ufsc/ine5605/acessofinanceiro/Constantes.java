@@ -15,19 +15,19 @@ class Constantes {
 
     // COMUM
     public static final String INSIRA_MATRICULA = "Insira a matricula: ";
-    public static final String MATRICULA_INVALIDA = "Matricula invalida: a matricula deve conter somente numeros.";
-    public static final String OPCAO_INVALIDA = "Opcao invalida: por favor digite somente um numero.";
-    public static final String OPCAO_INEXISTENTE = "Opcao solicitada não existe. Confira as opcoes do menu e tente novamente.";
+    public static final String MATRICULA_INVALIDA = "-- Matricula invalida: a matricula deve conter somente numeros --";
+    public static final String OPCAO_INVALIDA = "-- Opcao invalida: por favor digite somente um numero --";
+    public static final String OPCAO_INEXISTENTE = "-- Opção solicitada não existe, confira as opcoes do menu e tente novamente --";
     public static final String INSIRA_OPCAO = "Insira a opcao: ";
-    public static final String MATRICULA_JA_CADASTRADA = "Matricula invalida: a matricula inserida ja foi cadastrada";
-    public static final String MATRICULA_INEXISTENTE = "Matricula inexistente: a matricula inserida nao pertence a nenhum funcionario";
+    public static final String MATRICULA_JA_CADASTRADA = "-- Matricula invalida: a matricula inserida ja foi cadastrada --";
+    public static final String MATRICULA_INEXISTENTE = "-- Matricula inexistente: a matricula inserida nao pertence a nenhum funcionario --";
     public static final String TENTAR_NOVAMENTE = "1 - Tentar novamente";
     public static final String VOLTAR_MENU_PRINCIPAL_1 = "1 - Voltar ao menu principal";
     public static final String VOLTAR_MENU_PRINCIPAL_2 = "2 - Voltar ao menu principal";
     public static final String VOLTAR_MENU_PRINCIPAL_3 = "3 - Voltar ao menu principal";
     public static final String VOLTAR_MENU_PRINCIPAL_5 = "5 - Voltar ao menu principal";
-    public static final String NOME_INVALIDO_LETRAS = "Nome invalido, o nome deve conter somente letras.";
-    public static final String NOME_INVALIDO_TAMANHO = "Nome invalido, o nome deve conter no mínimo 3 letras.";
+    public static final String NOME_INVALIDO_LETRAS = "-- Nome invalido, o nome deve conter somente letras --";
+    public static final String NOME_INVALIDO_TAMANHO = "-- Nome invalido, o nome deve conter no mínimo 3 letras --";
     public static final String DATA_NASCIMENTO_INVALIDA = "Data de nascimento inválida. A data deve ser inserida no formato dd/mm/yyyy";
     public static final String SIM = " 1. Sim ";
     public static final String NAO = " 2. Não";
@@ -130,7 +130,7 @@ class Constantes {
     public static final String ALTERAR_NOME_CARGO = " 1. Alterar Nome do Cargo";
     public static final String ALTERAR_CODIGO_CARGO = " 2. Alterar Código do Cargo ";
     public static final String OPCAO_VOLTAR_CARGO = " 3. Voltar ";
-    
+
     //LISTAR CARGOS
     public static final String LISTA_DE_CARGOS = "+-+-+-+-+-+-+-+ Lista de Cargos +-+-+-+-+-+-+-+";
     public static final String CODIGO = " Codigo: ";
@@ -139,20 +139,21 @@ class Constantes {
     public static final String TEM_ACESSO_AO_FINANCEIRO = " Tem Acesso ao Financeiro: ";
 
     //DATA DO SISTEMA
-    public static final String HORA_ATUAL_DO_SISTEMA = "Data e hora do sistema: ";
+    public static final String TITULO_MENU_DATA_HORA_SISTEMA = "+-+-+-+-+-+-+-+ Menu de data e hora do sistema +-+-+-+-+-+-+-+";
+    public static final String HORA_ATUAL_DO_SISTEMA = "Data e hora atuais do sistema: ";
     public static final String ALTERAR_DATA_E_HORA = " 1. Alterar data e hora do sistema";
     public static final String DATA_VOLTAR_MENU_PRINCIPAL = " 2. Voltar ao menu principal";
     public static final String INSIRA_DATA_SISTEMA = "Insira a nova data e hora do sistema no seguinte formato: dd-MM-yyyy HH:mm ";
-    public static final String DATA_HORA_SISTEMA_INVALIDOS = "Formato invalido, utilize o formato correto solicitado.";
+    public static final String DATA_HORA_SISTEMA_INVALIDOS = "-- Formato invalido, utilize o formato correto solicitado --";
     public static final String CONFIRMA_ALTERACAO_DATA_HORA = "Voce confirma a alteracao de data e hora do sistema?";
     public static final String DATA_HORA_ATUALIZADOS_SUCESSO = "Data e hora do sistema atualizadas com sucesso!";
-    public static final String DATA_HORA_NAO_ATUALIZADOS = "Atualização de data e hora do sistema abortada.";
+    public static final String DATA_HORA_NAO_ATUALIZADOS = "-- Atualização de data e hora do sistema abortada --";
 
     //COMUM
-    public static final String CODIGO_INVALIDO = "Codigo invalido: o codigo deve conter somente numeros. Tente novamente.";
-    public static final String SALARIO_INVALIDO = "Salario invalido: o salario deve conter somente numeros.";
-    public static final String TELEFONE_INVALIDO = "Telefone invalido: o telefone deve conter somente numeros.";
-    public static final String CARGO_NAO_ENCONTRADO = "O sistema nao encontrou nenhum cargo com este codigo. Tente novamente.";
+    public static final String CODIGO_INVALIDO = "-- Codigo invalido: o codigo deve conter somente numeros. Tente novamente --";
+    public static final String SALARIO_INVALIDO = "-- Salario invalido: o salario deve conter somente numeros --";
+    public static final String TELEFONE_INVALIDO = "-- Telefone invalido: o telefone deve conter somente numeros --";
+    public static final String CARGO_NAO_ENCONTRADO = "-- O sistema nao encontrou nenhum cargo com este codigo. Tente novamente --";
     public static final String FUNCIONARIO_DELETADO_SUCESSO = "O funcionario foi deletado com sucesso!";
 
     public static final String FUNCIONARIO_CADASTRADO_SUCESSO = "Usuario cadastrado com sucesso!";
