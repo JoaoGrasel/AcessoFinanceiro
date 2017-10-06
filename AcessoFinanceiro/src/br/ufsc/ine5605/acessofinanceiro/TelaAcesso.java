@@ -22,6 +22,12 @@ public class TelaAcesso {
         this.owner = owner;
     }
     
+	/**
+	 * Exibe o menu para insercao da matricula para tentativa de acesso ao
+	 * financeiro e trata se a matricula inserida eh realmente um inteiro.
+	 * 
+	 * @return int matricula usada para a tentativa de acesso
+	 */
     public int exibeAcessoFinanceiro(){
         int matricula = 0;
         boolean matriculaInvalida = true;
@@ -38,26 +44,51 @@ public class TelaAcesso {
         return matricula;
     }
 
+	/**
+	 * Imprime na tela que o acesso ao financeiro foi permitido.
+	 */
 	public void exibeAcessoPermitido() {
 		System.out.println(Constantes.ACESSO_PERMITIDO);
 	}
 
+	/**
+	 * Imprime na tela que o acesso ao financeiro foi negado pois a matricula
+	 * nao existe.
+	 */
 	public void exibeAcessoNegadoMatriculaInexistente() {
 		System.out.println(Constantes.ACESSO_MATRICULA_INEXISTENTE);
 	}
 
+	/**
+	 * Imprime na tela que o acesso ao financeiro foi negado pois o cargo nao
+	 * tem acesso.
+	 */
 	public void exibeAcessoNegadoCargoSemAcesso() {
 		System.out.println(Constantes.ACESSO_NEGADO_CARGO_SEM_ACESSO);
 	}
 
+	/**
+	 * Imprime na tela que o acesso ao financeiro foi negado pois o horario
+	 * nao eh permitido para o cargo do funcionario tentando o acesso.
+	 */
 	public void exibeAcessoNegadoHorarioNaoPermitido() {
 		System.out.println(Motivo.HORARIO_NAO_PERMITIDO);
 	}
 
+	/**
+	 * Imprime na tela que o acesso ao financeiro foi negado pois o acesso do
+	 * funcionario foi bloqueado.
+	 */
 	public void exibeAcessoNegadoAcessoBloqueado() {
 		System.out.println(Constantes.ACESSO_NEGADO_ACESSO_BLOQUEADO);
 	}
     
+	/**
+	 * Exibe um menu para o usuario escolher a opcao desejada, para tentar
+	 * inserir a matricula novamente ou voltar ao menu principal.
+	 * 
+	 * @return int opcao escolhida pelo usuario
+	 */
 	public int exibeNovaTentativa() {
 		int opcao = 0;
 		boolean opcaoInvalida = true;

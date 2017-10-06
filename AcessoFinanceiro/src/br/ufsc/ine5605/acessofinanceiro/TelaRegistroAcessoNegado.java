@@ -23,6 +23,12 @@ class TelaRegistroAcessoNegado {
         this.teclado = new Scanner(System.in);
     }
     
+	/**
+	 * Exibe o menu de escolha do filtro para emissao do relatorio e trata se
+	 * o input recebido eh realmente um inteiro.
+	 * 
+	 * @return int opcao escolhida pelo usuario
+	 */
     public int exibeMenuRelatorio() {
         int opcao = 0;
         boolean opcaoInvalida = true;
@@ -42,6 +48,12 @@ class TelaRegistroAcessoNegado {
         return opcao;
     }
     
+	/**
+	 * Exibe o menu com as opcoes de filtro da emissao do relatorio por motivos
+	 * existentes e trata se o input recebido eh realmente um inteiro.
+	 * 
+	 * @return int opcao escolhida pelo usuario
+	 */
     public int exibeFiltroPorMotivo() {
         int opcao = 0;
         boolean opcaoInvalida = true;
@@ -62,6 +74,13 @@ class TelaRegistroAcessoNegado {
         return opcao;
     }
     
+	/**
+	 * Exibe o input para insercao da matricula a ser utilizada para filtrar
+	 * a emissao do relatorio e trata se a matricula inserida eh realmente um
+	 * inteiro.
+	 * 
+	 * @return int matricula inserida pelo usuario.
+	 */
     public int exibeFiltroPorMatricula() {
         int matricula = 0;
         boolean matriculaInvalida = true;
@@ -77,6 +96,15 @@ class TelaRegistroAcessoNegado {
         return matricula;
     }
 
+	/**
+	 * Exibe o relatorio de registros de acesso negado pelo motivo filtrado.
+	 * 
+	 * @param registrosEncontrados colecao de registros encontrados pelo motivo
+	 * @param encontrouRegistro recebe true se a colecao registrosEncontrados
+	 * nao estiver vazia e false se estiver
+	 * @param motivo motivo pelo qual o relatorio a ser exibido foi filtrado
+	 * @return int opcao utilizada para voltar ao menu principal
+	 */
 	public int exibeRelatorioPorMotivo(ArrayList<RegistroAcessoNegado> registrosEncontrados, boolean encontrouRegistro, Motivo motivo) {
 		int opcao = 0;
 		if(!encontrouRegistro) {
@@ -119,6 +147,16 @@ class TelaRegistroAcessoNegado {
 		return opcao;
 	}
 	
+	/**
+	 * Exibe o relatorio de registros de acesso negado pela matricula filtrada.
+	 * 
+	 * @param registrosEncontrados colecao de registros encontrados com a
+	 * matricula filtrada
+	 * @param matricula matricula pela qual o relatorio a ser exibido foi filtrado
+	 * @param encontrouRegistro recebe true se a colecao registrosEncontrados
+	 * nao estiver vazia e false se estiver
+	 * @return int opcao utilizada para voltar ao menu principal
+	 */
 	public int exibeRelatorioPorMatricula(ArrayList<RegistroAcessoNegado> registrosEncontrados, int matricula, boolean encontrouRegistro) {
 		int opcao = 0;
 		if(!encontrouRegistro) {
@@ -151,10 +189,20 @@ class TelaRegistroAcessoNegado {
 		return opcao;
 	}
 
+	/**
+	 * Imprime que a opcao inserida pelo usuario nao existe.
+	 */
 	public void exibeOpcaoInexistente() {
 		System.out.println(Constantes.OPCAO_INEXISTENTE);
 	}
     
+	/**
+	 * Imprime que a matricula inserida pelo usuario nao existe, oferece um
+	 * menu para ele tentar inserir novamente ou voltar ao menu principal e
+	 * trata se a opcao inserida eh realmente um inteiro.
+	 * 
+	 * @return int opcao inserida pelo usuario
+	 */
 	public int exibeMatriculaInexistente() {
 		int opcao = 0;
 		boolean opcaoInvalida = true;

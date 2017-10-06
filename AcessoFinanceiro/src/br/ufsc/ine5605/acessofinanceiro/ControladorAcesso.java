@@ -74,7 +74,8 @@ public class ControladorAcesso {
 	}
 	
 	/**
-	 * 
+	 * Oferece a opcao de tentar inserir a matricula novamente para acessar o
+	 * financeiro ou voltar ao menu principal.
 	 */
 	public void trataNovaTentativa() {
 		int opcao = 0;
@@ -86,10 +87,18 @@ public class ControladorAcesso {
 		}
 	}
 
+	/**
+	 * Solicita a tela que exiba que o acesso foi negado porque o cargo nao tem
+	 * permissao.
+	 */
 	public void exibeAcessoNegadoCargoSemAcesso() {
 		telaAcesso.exibeAcessoNegadoCargoSemAcesso();
 	}
 
+	/**
+	 * Solicita a tela que exiba que o acesso foi negado porque o horario nao
+	 * eh permitido para o cargo do funcionario tentando acessar.
+	 */
 	public void exibeAcessoNegadoHorarioNaoPermitido() {
 		telaAcesso.exibeAcessoNegadoHorarioNaoPermitido();
 	}
