@@ -14,13 +14,11 @@ import java.util.ArrayList;
 public class ControladorCargo implements IControladorCargo {
 
     private ArrayList<Cargo> cargos;
-    private ControladorPrincipal controladorPrincipal;
     private TelaCargo telaCargo;
 
-    public ControladorCargo(ControladorPrincipal owner) {
+    public ControladorCargo() {
         this.cargos = new ArrayList<>();
         this.telaCargo = new TelaCargo(this);
-        this.controladorPrincipal = owner;
     }
 
     public void exibeMenuCargo() {
@@ -40,13 +38,13 @@ public class ControladorCargo implements IControladorCargo {
                 editaCargo();
                 break;
             case 3:
-                listaCargo();
+//                listaCargo();
                 break;
             case 4:
-                menuDeletarCargo();
+//                menuDeletarCargo();
                 break;
             case 5:
-                this.controladorPrincipal.exibeMenuPrincipal();
+                ControladorPrincipal.getInstance().exibeMenuPrincipal();
                 break;
             default:
                 this.telaCargo.opcaoInexistente();
@@ -56,14 +54,15 @@ public class ControladorCargo implements IControladorCargo {
     }
 
     public void voltaMenuPrincipal() {
-        controladorPrincipal.exibeMenuPrincipal();
+        ControladorPrincipal.getInstance().exibeMenuPrincipal();
     }
 
     //COMENTAR ISSO SE PRECISAR TESTAR.
-    @Override
-    public Cargo encontraCargoPorCodigo(int codigo) {
-        return cargo;
-    }
+//    @Override
+//    public Cargo encontraCargoPorCodigo(int codigo) {
+//		Cargo cargo = new Cargo();
+//        return cargo;
+//    }
 
     //CONTINUAR DAQUI
     private void incluiCargo() {
@@ -71,7 +70,7 @@ public class ControladorCargo implements IControladorCargo {
 
         String nome = this.telaCargo.pedeNome();
         int codigo = verificaCodigoInserido();
-        boolean ehGerente = ;
+//        boolean ehGerente = ;
         
     }
 
@@ -92,7 +91,7 @@ public class ControladorCargo implements IControladorCargo {
         int opcao = this.telaCargo.pedeOpcao();
         switch (opcao) {
             case 1:
-                deletaCargo(cargo);
+//                deletaCargo(cargo);
                 exibeMenuCargo();
                 break;
             case 2:
@@ -117,10 +116,10 @@ public class ControladorCargo implements IControladorCargo {
     }
     
     //COMENTAR ISSO SE PRECISAR TESTAR.
-    @Override
-    public Cargo cadastraCargoParaFuncionario() {
+//    @Override
+//    public Cargo cadastraCargoParaFuncionario() {
 
-    }
+//    }
 
     @Override
     public void listaCargos() {
@@ -134,5 +133,15 @@ public class ControladorCargo implements IControladorCargo {
         }
         exibeMenuCargo();
     }
+
+	@Override
+	public Cargo cadastraCargoParaFuncionario() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public Cargo encontraCargoPorCodigo(int codigo) {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 
 }

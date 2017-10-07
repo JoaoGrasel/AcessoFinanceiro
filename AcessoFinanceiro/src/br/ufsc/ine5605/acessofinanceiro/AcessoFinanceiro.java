@@ -18,9 +18,11 @@ public class AcessoFinanceiro {
      */
     public static void main(String[] args) {
 
-        ControladorPrincipal controladorPrincipal = new ControladorPrincipal();
-        ControladorDataSistema controladorDataSistema = new ControladorDataSistema();
-        controladorDataSistema.menuDataHoraSistema();
+//        ControladorPrincipal controladorPrincipal = new ControladorPrincipal();
+//        ControladorDataSistema controladorDataSistema = new ControladorDataSistema();
+//        controladorDataSistema.menuDataHoraSistema();
+		ControladorAcesso c = new ControladorAcesso();
+		c.acessaFinanceiro();
 
     }
 

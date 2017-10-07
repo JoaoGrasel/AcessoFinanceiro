@@ -95,7 +95,7 @@ public class TelaCargo {
     }
 
     public int opcaoInexistente() {
-
+		return 0;
     }
 
     public void exibeCargo(int codigo, String nome, boolean ehGerente, boolean temAcessoAoFinanceiro) {

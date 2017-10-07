@@ -26,11 +26,11 @@ public class ControladorPrincipal {
     
     public ControladorPrincipal() {
         this.telaPrincipal = new TelaPrincipal(this);
-        this.controladorCargo = controladorCargo;
-        this.controladorData = controladorData;
-        this.controladorFuncionario = controladorFuncionario;
-        this.controladorAcesso = controladorAcesso;
-        this.controladorRegistroAcessoNegado = controladorRegistroAcessoNegado;
+        this.controladorCargo = new ControladorCargo();
+        this.controladorData = new ControladorDataSistema();
+        this.controladorFuncionario = new ControladorFuncionario();
+        this.controladorAcesso = new ControladorAcesso();
+        this.controladorRegistroAcessoNegado = new ControladorRegistroAcessoNegado();
     }
     
 	public static ControladorPrincipal getInstance() {
