@@ -40,7 +40,7 @@ public class ControladorRegistroAcessoNegado {
                 ControladorPrincipal.getInstance().exibeMenuPrincipal();
                 break;
             default:
-                System.out.println(Constantes.OPCAO_INEXISTENTE);
+                telaRegistroAcessoNegado.exibeOpcaoInexistente();
                 exibeRelatorio();
         }
     }
