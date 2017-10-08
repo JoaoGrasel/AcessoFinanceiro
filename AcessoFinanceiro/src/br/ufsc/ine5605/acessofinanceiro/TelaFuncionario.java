@@ -203,6 +203,7 @@ public class TelaFuncionario {
         System.out.println();
         System.out.println(Constantes.DIGITE_NOME);
         System.out.println();
+		teclado.nextLine();
         String nome = teclado.nextLine();
         System.out.println();
         return nome;
@@ -245,6 +246,7 @@ public class TelaFuncionario {
         System.out.println();
         System.out.println(Constantes.DIGITE_DATA_NASCIMENTO);
         System.out.println();
+		teclado.nextLine();
         String dataNascimento = teclado.nextLine();
         System.out.println();
         return dataNascimento;
