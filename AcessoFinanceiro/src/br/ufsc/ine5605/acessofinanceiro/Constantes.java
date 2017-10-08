@@ -159,5 +159,15 @@ class Constantes {
     public static final String FUNCIONARIO_DELETADO_SUCESSO = "O funcionario foi deletado com sucesso!";
 
     public static final String FUNCIONARIO_CADASTRADO_SUCESSO = "Usuario cadastrado com sucesso!";
+    
+    //MENU PRINCIPAL
+    public static final String MENU_PRINCIPAL = "+-+-+-+-+-+-+-+ Menu Principal +-+-+-+-+-+-+-+";
+    public static final String ACESSO_AO_FINANCEIRO = "1. Acesso à Porta do Financeiro";
+    public static final String GERENCIAR_FUNCIONARIOS = "2. Gerenciar Funcionários";
+    public static final String GERENCIAR_CARGOS = "3. Gerenciar Cargos";
+    public static final String GERENCIAR_DATA = "4. Gerenciar data do sistema";
+    public static final String EMITIR_RELATORIO = "5. Emitir Relatorio";
+    
+    
 
 }

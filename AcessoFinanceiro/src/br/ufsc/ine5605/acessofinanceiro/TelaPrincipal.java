@@ -5,6 +5,7 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -20,7 +21,37 @@ class TelaPrincipal {
         this.controlador = owner;
     }
     
-    
-    
+    public void exibeMenuPrincipal() {
+        System.out.println(Constantes.MENU_PRINCIPAL);
+        System.out.println();
+        System.out.println(Constantes.ACESSO_AO_FINANCEIRO);
+        System.out.println(Constantes.GERENCIAR_FUNCIONARIOS);
+        System.out.println(Constantes.GERENCIAR_CARGOS);
+        System.out.println(Constantes.GERENCIAR_DATA);
+        System.out.println(Constantes.EMITIR_RELATORIO);
+        System.out.println(Constantes.O_QUE_DESEJA_FAZER);
+        System.out.println();
+    }
+
+    public int pedeOpcao() {
+        int opcao = 0;
+        boolean opcaoInvalida = true;
+        while(opcaoInvalida) {
+            try {
+                System.out.println();
+                opcao = teclado.nextInt();
+                opcaoInvalida = false;
+                System.out.println();
+            } catch (InputMismatchException e) {
+                System.out.println(Constantes.OPCAO_INVALIDA);
+            }
+        }
+        return opcao;
+    }
+    public void exibeOpcaoInexistente() {
+        System.out.println();
+        System.out.println(Constantes.OPCAO_INEXISTENTE);
+        System.out.println();
+    }
     
 }

@@ -38,10 +38,10 @@ public class ControladorCargo implements IControladorCargo {
                 editaCargo();
                 break;
             case 3:
-//                listaCargo();
+                listaCargo();
                 break;
             case 4:
-//                menuDeletarCargo();
+                menuDeletarCargo();
                 break;
             case 5:
                 ControladorPrincipal.getInstance().exibeMenuPrincipal();
@@ -58,11 +58,11 @@ public class ControladorCargo implements IControladorCargo {
     }
 
     //COMENTAR ISSO SE PRECISAR TESTAR.
-//    @Override
-//    public Cargo encontraCargoPorCodigo(int codigo) {
-//		Cargo cargo = new Cargo();
-//        return cargo;
-//    }
+    @Override
+    public Cargo encontraCargoPorCodigo(int codigo) {
+        Cargo cargo = new Cargo();
+        return cargo;
+    }
 
     //CONTINUAR DAQUI
     private void incluiCargo() {
@@ -116,10 +116,10 @@ public class ControladorCargo implements IControladorCargo {
     }
     
     //COMENTAR ISSO SE PRECISAR TESTAR.
-//    @Override
-//    public Cargo cadastraCargoParaFuncionario() {
-
-//    }
+    @Override
+    public Cargo cadastraCargoParaFuncionario() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
     @Override
     public void listaCargos() {
@@ -133,15 +133,4 @@ public class ControladorCargo implements IControladorCargo {
         }
         exibeMenuCargo();
     }
-
-	@Override
-	public Cargo cadastraCargoParaFuncionario() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-
-	@Override
-	public Cargo encontraCargoPorCodigo(int codigo) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-
 }
