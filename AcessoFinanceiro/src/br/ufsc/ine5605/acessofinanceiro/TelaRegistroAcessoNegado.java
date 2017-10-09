@@ -220,4 +220,27 @@ class TelaRegistroAcessoNegado {
 		return opcao;
 	}
 	
+	/**
+	 * Exibe um menu para o usuario escolher a opcao desejada, para tentar
+	 * inserir a matricula novamente ou voltar ao menu principal.
+	 * 
+	 * @return int opcao escolhida pelo usuario
+	 */
+	public int exibeNovaTentativa() {
+		int opcao = 0;
+		boolean opcaoInvalida = true;
+		while(opcaoInvalida) {
+			try {
+				System.out.println(Constantes.INSIRA_OPCAO);
+				System.out.println(Constantes.TENTAR_NOVAMENTE);
+				System.out.println(Constantes.VOLTAR_MENU_PRINCIPAL_2);
+				opcao = teclado.nextInt();
+				opcaoInvalida = false;
+			} catch (InputMismatchException e) {
+				System.out.println(Constantes.OPCAO_INVALIDA);
+			}
+		}
+		return opcao;
+	}
+	
 }

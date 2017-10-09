@@ -44,33 +44,23 @@ public class ControladorAcesso {
 	 */
     public boolean validaAcessoFinanceiro(int matricula) {
 		Date dataAtual = ControladorPrincipal.getInstance().getDataSistema();
+		Funcionario funcionario = null;
+		ArrayList<RegistroAcessoNegado> registrosHorarioNaoPermitido = new ArrayList<>();
         try {
-			System.out.println("entrou primeiro try");
-            Funcionario funcionario = ControladorPrincipal.getInstance().encontraFuncionarioPelaMatricula(matricula);
-			ArrayList<RegistroAcessoNegado> registrosHorarioNaoPermitido;
-			try {
-				System.out.println("entrou segundo try");
-				registrosHorarioNaoPermitido = ControladorPrincipal.getInstance().encontraRegistrosHorarioNaoPermitidoPelaMatricula(matricula);
-				System.out.println("passou do encontra");
-				if(registrosHorarioNaoPermitido.size() > 3) {
-					System.out.println("entrou no size");
-					ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.ACESSO_BLOQUEADO);
-					telaAcesso.exibeAcessoNegadoAcessoBloqueado();
-					return false;
-				}
-			} catch (NullPointerException e1) {
-				System.out.println("entrou primeiro catch");
+            funcionario = ControladorPrincipal.getInstance().encontraFuncionarioPelaMatricula(matricula);
+			registrosHorarioNaoPermitido = ControladorPrincipal.getInstance().encontraRegistrosHorarioNaoPermitidoPelaMatricula(matricula);
+			if(registrosHorarioNaoPermitido.size() > 3) {
+				ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.ACESSO_BLOQUEADO);
+				telaAcesso.exibeAcessoNegadoAcessoBloqueado();
+				return false;
 			}
 			Acesso acesso = new Acesso(dataAtual, matricula);
-			System.out.println("fez acesso");
 			return acesso.validaAcesso(acesso, funcionario, dataAtual);
-        } catch (NullPointerException e2) {
-			System.out.println("entrou segundo catch");
-			System.out.println(e2.getCause());
-			System.out.println("===================================");
-			System.out.println(e2.getMessage());
-			ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.MATRICULA_INEXISTENTE);
-			telaAcesso.exibeAcessoNegadoMatriculaInexistente();
+        } catch (NullPointerException e) {
+			if(funcionario == null) {
+				ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.MATRICULA_INEXISTENTE);
+				telaAcesso.exibeAcessoNegadoMatriculaInexistente();
+			}
         }
         return false;
     }

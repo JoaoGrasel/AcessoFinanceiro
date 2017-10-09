@@ -120,6 +120,7 @@ public class ControladorRegistroAcessoNegado {
 	 */
 	public void exibeRelatorioPorMatricula(ArrayList<RegistroAcessoNegado> registrosEncontrados, int matricula, boolean encontrouRegistro) {
 		int opcao = 0;
+		//ARRUMAR AQUI TRATAR QUANDO NAO EXISTE REGISTRO A APLICACAO PARA
 		opcao = telaRegistroAcessoNegado.exibeRelatorioPorMatricula(registrosEncontrados, matricula, encontrouRegistro);
 		if(opcao == 1) {
 			ControladorPrincipal.getInstance().exibeMenuPrincipal();
@@ -198,6 +199,20 @@ public class ControladorRegistroAcessoNegado {
 		if(opcao == 1) {
 			exibeFiltroPorMatricula();
 		} else if(opcao == 2) {
+			ControladorPrincipal.getInstance().exibeMenuPrincipal();
+		}
+	}
+
+	/**
+	 * Oferece a opcao de tentar inserir a matricula novamente para acessar o
+	 * financeiro ou voltar ao menu principal.
+	 */
+	public void trataNovaTentativa() {
+		int opcao = 0;
+		opcao = telaRegistroAcessoNegado.exibeNovaTentativa();
+		if(opcao == 1) {
+			exibeFiltroPorMatricula();
+		} else {
 			ControladorPrincipal.getInstance().exibeMenuPrincipal();
 		}
 	}

@@ -73,7 +73,7 @@ public class TelaAcesso {
 	 * nao eh permitido para o cargo do funcionario tentando o acesso.
 	 */
 	public void exibeAcessoNegadoHorarioNaoPermitido() {
-		System.out.println(Motivo.HORARIO_NAO_PERMITIDO);
+		System.out.println(Constantes.ACESSO_NEGADO_HORARIO_NAO_PERMITIDO);
 	}
 
 	/**

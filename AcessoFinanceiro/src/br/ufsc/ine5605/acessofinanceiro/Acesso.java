@@ -53,7 +53,7 @@ public class Acesso {
 		if(funcionario.getCargo().ehGerente()) return true;
 		if(funcionario.getCargo().temAcessoAoFinanceiro())
 			return validaHorarioAcesso(acesso, funcionario.getCargo(), data);
-		controladorAcesso.novoRegistroAcessoNegado(data, matricula, Motivo.CARGO_SEM_ACESSO);
+		controladorAcesso.novoRegistroAcessoNegado(data, acesso.getMatricula(), Motivo.CARGO_SEM_ACESSO);
 		controladorAcesso.exibeAcessoNegadoCargoSemAcesso();
 		return false;
 	}
