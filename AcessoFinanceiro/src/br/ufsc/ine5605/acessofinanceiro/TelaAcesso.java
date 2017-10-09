@@ -38,6 +38,7 @@ public class TelaAcesso {
                 matricula = teclado.nextInt();
                 matriculaInvalida = false;
             } catch (InputMismatchException e) {
+				teclado.next();
                 System.out.println(Constantes.MATRICULA_INVALIDA);
             }
         }

@@ -45,17 +45,30 @@ public class ControladorAcesso {
     public boolean validaAcessoFinanceiro(int matricula) {
 		Date dataAtual = ControladorPrincipal.getInstance().getDataSistema();
         try {
+			System.out.println("entrou primeiro try");
             Funcionario funcionario = ControladorPrincipal.getInstance().encontraFuncionarioPelaMatricula(matricula);
 			ArrayList<RegistroAcessoNegado> registrosHorarioNaoPermitido;
-			registrosHorarioNaoPermitido = ControladorPrincipal.getInstance().encontraRegistrosHorarioNaoPermitidoPelaMatricula(matricula);
-			if(registrosHorarioNaoPermitido.size() > 3) {
-				ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.ACESSO_BLOQUEADO);
-				telaAcesso.exibeAcessoNegadoAcessoBloqueado();
-				return false;
+			try {
+				System.out.println("entrou segundo try");
+				registrosHorarioNaoPermitido = ControladorPrincipal.getInstance().encontraRegistrosHorarioNaoPermitidoPelaMatricula(matricula);
+				System.out.println("passou do encontra");
+				if(registrosHorarioNaoPermitido.size() > 3) {
+					System.out.println("entrou no size");
+					ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.ACESSO_BLOQUEADO);
+					telaAcesso.exibeAcessoNegadoAcessoBloqueado();
+					return false;
+				}
+			} catch (NullPointerException e1) {
+				System.out.println("entrou primeiro catch");
 			}
 			Acesso acesso = new Acesso(dataAtual, matricula);
+			System.out.println("fez acesso");
 			return acesso.validaAcesso(acesso, funcionario, dataAtual);
-        } catch (NullPointerException e) {
+        } catch (NullPointerException e2) {
+			System.out.println("entrou segundo catch");
+			System.out.println(e2.getCause());
+			System.out.println("===================================");
+			System.out.println(e2.getMessage());
 			ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.MATRICULA_INEXISTENTE);
 			telaAcesso.exibeAcessoNegadoMatriculaInexistente();
         }
