@@ -101,6 +101,7 @@ public class TelaAcesso {
 				opcao = teclado.nextInt();
 				opcaoInvalida = false;
 			} catch (InputMismatchException e) {
+				teclado.next();
 				System.out.println(Constantes.OPCAO_INVALIDA);
 			}
 		}

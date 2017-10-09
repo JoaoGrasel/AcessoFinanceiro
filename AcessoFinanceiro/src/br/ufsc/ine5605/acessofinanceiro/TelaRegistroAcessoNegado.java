@@ -42,6 +42,7 @@ class TelaRegistroAcessoNegado {
                 opcao = teclado.nextInt();
                 opcaoInvalida = false;
             } catch (InputMismatchException e) {
+				teclado.next();
                 System.out.println(Constantes.OPCAO_INVALIDA);
             }
         }
@@ -68,6 +69,7 @@ class TelaRegistroAcessoNegado {
                 opcao = teclado.nextInt();
                 opcaoInvalida = false;
             } catch (InputMismatchException e) {
+				teclado.next();
                 System.out.println(Constantes.OPCAO_INVALIDA);
             }
         }
@@ -90,6 +92,7 @@ class TelaRegistroAcessoNegado {
                 matricula = teclado.nextInt();
                 matriculaInvalida = false;
             } catch (InputMismatchException e) {
+				teclado.next();
                 System.out.println(Constantes.MATRICULA_INVALIDA);
             }
         }
@@ -159,19 +162,10 @@ class TelaRegistroAcessoNegado {
 	 */
 	public int exibeRelatorioPorMatricula(ArrayList<RegistroAcessoNegado> registrosEncontrados, int matricula, boolean encontrouRegistro) {
 		int opcao = 0;
+		boolean opcaoInvalida = true;
 		if(!encontrouRegistro) {
 			System.out.println(Constantes.RELATORIO_REGISTRO_NENHUM_ENCONTRADO);
-		} else {
-			int numeroRegistro = 0;
-			System.out.println(Constantes.RELATORIO_ACESSO_MATRICULA + matricula);
-			for(RegistroAcessoNegado registro : registrosEncontrados) {
-				numeroRegistro++;
-				System.out.println(Constantes.RELATORIO_REGISTRO_CABECALHO + numeroRegistro);
-				System.out.println(Constantes.RELATORIO_REGISTRO_DATA + registro.getData());
-				System.out.println(Constantes.RELATORIO_REGISTRO_MOTIVO + registro.getMotivo());
-			}
 			System.out.println(Constantes.VOLTAR_MENU_PRINCIPAL_1);
-			boolean opcaoInvalida = true;
 			while(opcaoInvalida) {
 				try {
 					System.out.println(Constantes.INSIRA_OPCAO);
@@ -182,6 +176,31 @@ class TelaRegistroAcessoNegado {
 						System.out.println(Constantes.OPCAO_INEXISTENTE);
 					}
 				} catch (InputMismatchException e) {
+					teclado.next();
+					System.out.println(Constantes.OPCAO_INVALIDA);
+				}
+			}
+		} else {
+			int numeroRegistro = 0;
+			System.out.println(Constantes.RELATORIO_ACESSO_MATRICULA + matricula);
+			for(RegistroAcessoNegado registro : registrosEncontrados) {
+				numeroRegistro++;
+				System.out.println(Constantes.RELATORIO_REGISTRO_CABECALHO + numeroRegistro);
+				System.out.println(Constantes.RELATORIO_REGISTRO_DATA + registro.getData());
+				System.out.println(Constantes.RELATORIO_REGISTRO_MOTIVO + registro.getMotivo());
+			}
+			System.out.println(Constantes.VOLTAR_MENU_PRINCIPAL_1);
+			while(opcaoInvalida) {
+				try {
+					System.out.println(Constantes.INSIRA_OPCAO);
+					opcao = teclado.nextInt();
+					if(opcao == 1) {
+						opcaoInvalida = false;
+					} else {
+						System.out.println(Constantes.OPCAO_INEXISTENTE);
+					}
+				} catch (InputMismatchException e) {
+					teclado.next();
 					System.out.println(Constantes.OPCAO_INVALIDA);
 				}
 			}
@@ -213,7 +232,9 @@ class TelaRegistroAcessoNegado {
 				System.out.println(Constantes.TENTAR_NOVAMENTE);
 				System.out.println(Constantes.VOLTAR_MENU_PRINCIPAL_2);
 				opcao = teclado.nextInt();
+				opcaoInvalida = false;
 			} catch (InputMismatchException e) {
+				teclado.next();
 				System.out.println(Constantes.OPCAO_INVALIDA);
 			}
 		}
