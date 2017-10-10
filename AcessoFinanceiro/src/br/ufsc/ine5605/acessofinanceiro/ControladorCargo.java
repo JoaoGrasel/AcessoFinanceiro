@@ -32,7 +32,7 @@ public class ControladorCargo implements IControladorCargo {
 
         switch (opcao) {
             case 1:
-//                incluiCargo();
+                incluiCargo();
                 break;
             case 2:
                 editaCargo();
@@ -64,19 +64,29 @@ public class ControladorCargo implements IControladorCargo {
 //        return cargo;
 //    }
 
-    //CONTINUAR DAQUI
-   //    private void incluiCargo() {
-//        this.telaCargo.mensagemNovoCargo();
-//
-//        String nome = this.telaCargo.pedeNome();
-//        int codigo = verificaCodigoInserido();
-//        this.telaCargo.pedeTipoCargo();
-//        //switch pra ver se é gerencial, comercial e especial
-//        boolean ehGerencial = this.telaCargo.pedeEhGerencial();
-//        boolean temAcessoAoFinanceiro = this.telaCargo.pedeTemAcesso();
-//        pedeHorario
-//        
-//    }
+	public Cargo incluiCargo() {
+        this.telaCargo.mensagemNovoCargo();
+        String nome = this.telaCargo.pedeNome();
+        int codigo = verificaCodigoInserido();
+        int tipoCargo = this.telaCargo.pedeTipoCargo();
+		Cargo cargo = new Cargo(0, "", false, false);
+        switch(tipoCargo){
+			case 1:
+				cargo = criaCargoGerencial(nome, codigo);
+				break;
+			case 2:
+				cargo = criaCargoComercial(nome, codigo);
+				break;
+			case 3:
+				cargo = criaCargoEspecial(nome, codigo);
+				break;
+			default:
+				this.telaCargo.exibeOpcaoInexistente();
+				incluiCargo();
+		}
+		System.out.println(cargo);
+		return cargo;
+    }
 //    
 //    public void tipoDoCargo() {
 //        int opcao = this.telaCargo.pedeOpcao();
@@ -136,11 +146,11 @@ public class ControladorCargo implements IControladorCargo {
     
     public int verificaCodigoInserido() {
         int codigo = this.telaCargo.pedeCodigo();
-        for (Cargo cargoCadastrado : cargos) {
+        for (Cargo cargoCadastrado : this.cargos) {
             if (cargoCadastrado.getCodigo() == codigo) {
                 this.telaCargo.mensagemErroCodigoJaCadastrada();
+				verificaCodigoInserido();
             }
-            verificaCodigoInserido();
         }
         return codigo; 
     }
@@ -166,13 +176,32 @@ public class ControladorCargo implements IControladorCargo {
 
 	@Override
 	public Cargo encontraCargoPorCodigo(int codigo) {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		for(Cargo cargoLista : this.cargos) {
+			if(cargoLista.getCodigo() == codigo) return cargoLista;
+		}
+		return null;
 	}
-
-    
 
     private Cargo pedeCargo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+	public Cargo criaCargoGerencial(String nome, int codigo) {
+		Cargo cargo = new Cargo(codigo, nome, true, true);
+		this.cargos.add(cargo);
+		return cargo;
+	}
+
+	private CargoHorarioComercial criaCargoComercial(String nome, int codigo) {
+		CargoHorarioComercial cargo = new CargoHorarioComercial(codigo, nome);
+		this.cargos.add(cargo);
+		return cargo;
+	}
+
+	private CargoHorarioEspecial criaCargoEspecial(String nome, int codigo) {
+		CargoHorarioEspecial cargo = new CargoHorarioEspecial(codigo, nome);
+		this.cargos.add(cargo);
+		return cargo;
+	}
 
 }

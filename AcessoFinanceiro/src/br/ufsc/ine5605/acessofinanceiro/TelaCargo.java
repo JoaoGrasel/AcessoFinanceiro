@@ -77,6 +77,17 @@ public class TelaCargo {
         System.out.println();
         return nome;
     }
+	
+	public int pedeTipoCargo() {
+		System.out.println();
+        System.out.println(Constantes.ESCOLHA_TIPO_CARGO);
+        System.out.println();
+		System.out.println(Constantes.TIPO_CARGO_GERENCIAL);
+		System.out.println(Constantes.TIPO_CARGO_COMERCIAL);
+		System.out.println(Constantes.TIPO_CARGO_ESPECIAL);
+		System.out.println("");
+		return teclado.nextInt();
+	}
 
     public void mensagemNovoCargo() {
         System.out.println(Constantes.MENSAGEM_NOVO_CARGO);
@@ -154,5 +165,9 @@ public class TelaCargo {
     void mensagemCargoDeletadoSucesso() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+	public void exibeOpcaoInexistente() {
+		System.out.println(Constantes.OPCAO_INEXISTENTE);
+	}
 
 }

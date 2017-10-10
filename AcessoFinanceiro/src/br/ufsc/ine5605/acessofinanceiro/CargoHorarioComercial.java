@@ -5,13 +5,55 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  *
  * @author bruno
  */
 public class CargoHorarioComercial extends Cargo {
-
-    public CargoHorarioComercial(int codigo, String nome, boolean ehGerente, boolean temAcessoAoFinanceiro) {
-        super(codigo, nome, ehGerente, temAcessoAoFinanceiro);
+	
+	private Date horaInicioManha;
+	private Date horaInicioTarde;
+	private Date horaFimManha;
+	private Date horaFimTarde;
+	
+    public CargoHorarioComercial(int codigo, String nome) {
+        super(codigo, nome, false, true);
     }
+
+	public Date getHoraInicioManha() throws ParseException {
+		this.horaInicioManha = ControladorPrincipal.getInstance().getDataSistema();
+		this.horaInicioManha.setHours(8);
+		this.horaInicioManha.setMinutes(0);
+		this.horaInicioManha.setSeconds(0);
+		return this.horaInicioManha;
+	}
+
+	public Date getHoraInicioTarde() throws ParseException {
+		this.horaInicioTarde = ControladorPrincipal.getInstance().getDataSistema();
+		this.horaInicioTarde.setHours(14);
+		this.horaInicioTarde.setMinutes(0);
+		this.horaInicioTarde.setSeconds(0);
+		return horaInicioTarde;
+	}
+
+	public Date getHoraFimManha() throws ParseException {
+		this.horaFimManha = ControladorPrincipal.getInstance().getDataSistema();
+		this.horaFimManha.setHours(12);
+		this.horaFimManha.setMinutes(0);
+		this.horaFimManha.setSeconds(0);
+		return horaFimManha;
+	}
+
+	public Date getHoraFimTarde() throws ParseException {
+		this.horaFimTarde = ControladorPrincipal.getInstance().getDataSistema();
+		this.horaFimTarde.setHours(18);
+		this.horaFimTarde.setMinutes(0);
+		this.horaFimTarde.setSeconds(0);
+		return horaFimTarde;
+	}
+	
  }

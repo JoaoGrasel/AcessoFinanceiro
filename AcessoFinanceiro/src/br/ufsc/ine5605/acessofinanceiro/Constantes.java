@@ -26,6 +26,7 @@ class Constantes {
     public static final String VOLTAR_MENU_PRINCIPAL_1 = "1 - Voltar ao menu principal";
     public static final String VOLTAR_MENU_PRINCIPAL_2 = "2 - Voltar ao menu principal";
     public static final String VOLTAR_MENU_PRINCIPAL_3 = "3 - Voltar ao menu principal";
+    public static final String VOLTAR_MENU_PRINCIPAL_4 = "4 - Voltar ao menu principal";
     public static final String VOLTAR_MENU_PRINCIPAL_5 = "5 - Voltar ao menu principal";
     public static final String NOME_INVALIDO_LETRAS = "-- Nome invalido, o nome deve conter somente letras --";
     public static final String NOME_INVALIDO_TAMANHO = "-- Nome invalido, o nome deve conter no mínimo 3 letras --";
@@ -132,6 +133,10 @@ class Constantes {
     //CADASTRA CARGO    @BRUNO
     public static final String MENSAGEM_NOVO_CARGO = "+-+-+-+-+-+-+-+ Novo Cargo +-+-+-+-+-+-+-+";
     public static final String DIGITE_NOME_CARGO = " Digite o nome do cargo:";
+    public static final String ESCOLHA_TIPO_CARGO = " Escolha o tipo do cargo:";
+    public static final String TIPO_CARGO_GERENCIAL = "1 - Cargo Gerencial";
+    public static final String TIPO_CARGO_COMERCIAL = "2 - Cargo Comercial";
+    public static final String TIPO_CARGO_ESPECIAL = "3 - Cargo Especial";
     public static final String DIGITE_CODIGO_CARGO = " Digite o código que deseja atribuir ao cargo: ";
 
     //EDITAR CARGO   @BRUNO

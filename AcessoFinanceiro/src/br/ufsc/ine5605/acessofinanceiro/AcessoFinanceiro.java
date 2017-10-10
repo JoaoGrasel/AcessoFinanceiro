@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -19,6 +21,12 @@ public class AcessoFinanceiro {
     public static void main(String[] args) {
 
 		ControladorPrincipal.getInstance().exibeMenuPrincipal();
+//		Date d1 = new Date();
+//		d1.setHours(9);
+//		CargoHorarioEspecial c = new CargoHorarioEspecial(123, "haha");
+//		c.setHoraInicioManha(d1);
+//		
+//		c.atualizaHoraInicioManha(0, 0, 0);
 
     }
 
