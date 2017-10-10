@@ -113,7 +113,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
             return dataNascimentoString;
         }
         dataNascimentoString = formatadorDataNascimento.format(dataNascimento);
-        controlaConfirmacaoCadastroDataNascimento(dataNascimentoString);
+        dataNascimentoString = controlaConfirmacaoCadastroDataNascimento(dataNascimentoString);
         return dataNascimentoString;
     }
 
@@ -148,7 +148,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
             case 1:
                 return dataNascimento;
             case 2:
-                cadastraDataNascimento();
+                dataNascimento = cadastraDataNascimento();
                 break;
             default:
                 this.telaFuncionario.opcaoInexistente();
