@@ -121,6 +121,7 @@ public class ControladorRegistroAcessoNegado {
 	public void exibeRelatorioPorMatricula(ArrayList<RegistroAcessoNegado> registrosEncontrados, int matricula, boolean encontrouRegistro) {
 		int opcao = 0;
 		opcao = telaRegistroAcessoNegado.exibeRelatorioPorMatricula(registrosEncontrados, matricula, encontrouRegistro);
+//		trataNovaTentativa(Constantes.NOVA_TENTATIVA_FILTRO_MATRICULA);
 		if(opcao == 1) {
 			ControladorPrincipal.getInstance().exibeMenuPrincipal();
 		}
@@ -198,6 +199,26 @@ public class ControladorRegistroAcessoNegado {
 		if(opcao == 1) {
 			exibeFiltroPorMatricula();
 		} else if(opcao == 2) {
+			ControladorPrincipal.getInstance().exibeMenuPrincipal();
+		}
+	}
+
+	/**
+	 * Gerencia a nova tentativa do usuário para tentar emitir um relatório por
+	 * matrícula ou motivo.
+	 * 
+	 * @param constante indica se a nova tentativa sera para matrícula ou motivo
+	 */
+	public void trataNovaTentativa(String constante) {
+		int opcao = 0;
+		opcao = telaRegistroAcessoNegado.exibeNovaTentativa();
+		if(opcao == 1) {
+			if(constante.equals(Constantes.NOVA_TENTATIVA_FILTRO_MATRICULA)) {
+				exibeFiltroPorMatricula();
+			} else if (constante.equals(Constantes.NOVA_TENTATIVA_FILTRO_MOTIVO)) {
+				exibeFiltroPorMotivo();
+			}
+		} else {
 			ControladorPrincipal.getInstance().exibeMenuPrincipal();
 		}
 	}

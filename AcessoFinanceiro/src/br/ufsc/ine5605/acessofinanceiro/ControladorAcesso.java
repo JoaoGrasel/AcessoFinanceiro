@@ -44,9 +44,10 @@ public class ControladorAcesso {
 	 */
     public boolean validaAcessoFinanceiro(int matricula) {
 		Date dataAtual = ControladorPrincipal.getInstance().getDataSistema();
+		Funcionario funcionario = null;
+		ArrayList<RegistroAcessoNegado> registrosHorarioNaoPermitido = new ArrayList<>();
         try {
-            Funcionario funcionario = ControladorPrincipal.getInstance().encontraFuncionarioPelaMatricula(matricula);
-			ArrayList<RegistroAcessoNegado> registrosHorarioNaoPermitido;
+            funcionario = ControladorPrincipal.getInstance().encontraFuncionarioPelaMatricula(matricula);
 			registrosHorarioNaoPermitido = ControladorPrincipal.getInstance().encontraRegistrosHorarioNaoPermitidoPelaMatricula(matricula);
 			if(registrosHorarioNaoPermitido.size() > 3) {
 				ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.ACESSO_BLOQUEADO);
@@ -56,8 +57,10 @@ public class ControladorAcesso {
 			Acesso acesso = new Acesso(dataAtual, matricula);
 			return acesso.validaAcesso(acesso, funcionario, dataAtual);
         } catch (NullPointerException e) {
-			ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.MATRICULA_INEXISTENTE);
-			telaAcesso.exibeAcessoNegadoMatriculaInexistente();
+			if(funcionario == null) {
+				ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.MATRICULA_INEXISTENTE);
+				telaAcesso.exibeAcessoNegadoMatriculaInexistente();
+			}
         }
         return false;
     }

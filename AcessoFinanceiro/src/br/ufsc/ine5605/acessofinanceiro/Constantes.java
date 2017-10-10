@@ -32,6 +32,8 @@ class Constantes {
     public static final String DATA_NASCIMENTO_INVALIDA = "Data de nascimento inválida. A data deve ser inserida no formato dd/mm/yyyy";
     public static final String SIM = " 1. Sim ";
     public static final String NAO = " 2. Não";
+	public static final String NOVA_TENTATIVA_FILTRO_MATRICULA = "Tentar novamente filtro matricula";
+	public static final String NOVA_TENTATIVA_FILTRO_MOTIVO = "Tentar novamente filtro motivo";
 
     // ACESSO AO FINANCEIRO
     public static final String ACESSO_FINANCEIRO = "+-+-+-+-+-+-+-+ Acesso ao financeiro +-+-+-+-+-+-+-+";

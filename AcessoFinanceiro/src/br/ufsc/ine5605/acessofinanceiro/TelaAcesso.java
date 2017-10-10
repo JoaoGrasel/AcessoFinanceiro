@@ -38,6 +38,7 @@ public class TelaAcesso {
                 matricula = teclado.nextInt();
                 matriculaInvalida = false;
             } catch (InputMismatchException e) {
+				teclado.next();
                 System.out.println(Constantes.MATRICULA_INVALIDA);
             }
         }
@@ -72,7 +73,7 @@ public class TelaAcesso {
 	 * nao eh permitido para o cargo do funcionario tentando o acesso.
 	 */
 	public void exibeAcessoNegadoHorarioNaoPermitido() {
-		System.out.println(Motivo.HORARIO_NAO_PERMITIDO);
+		System.out.println(Constantes.ACESSO_NEGADO_HORARIO_NAO_PERMITIDO);
 	}
 
 	/**
@@ -100,6 +101,7 @@ public class TelaAcesso {
 				opcao = teclado.nextInt();
 				opcaoInvalida = false;
 			} catch (InputMismatchException e) {
+				teclado.next();
 				System.out.println(Constantes.OPCAO_INVALIDA);
 			}
 		}
