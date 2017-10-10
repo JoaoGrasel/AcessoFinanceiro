@@ -32,16 +32,16 @@ public class ControladorCargo implements IControladorCargo {
 
         switch (opcao) {
             case 1:
-                incluiCargo();
+//                incluiCargo();
                 break;
             case 2:
                 editaCargo();
                 break;
             case 3:
-//                listaCargo();
+                listaCargos();
                 break;
             case 4:
-//                menuDeletarCargo();
+                menuDeletarCargo();
                 break;
             case 5:
                 ControladorPrincipal.getInstance().exibeMenuPrincipal();
@@ -65,14 +65,23 @@ public class ControladorCargo implements IControladorCargo {
 //    }
 
     //CONTINUAR DAQUI
-    private void incluiCargo() {
-        this.telaCargo.mensagemNovoCargo();
-
-        String nome = this.telaCargo.pedeNome();
-        int codigo = verificaCodigoInserido();
-//        boolean ehGerente = ;
-        
-    }
+   //    private void incluiCargo() {
+//        this.telaCargo.mensagemNovoCargo();
+//
+//        String nome = this.telaCargo.pedeNome();
+//        int codigo = verificaCodigoInserido();
+//        this.telaCargo.pedeTipoCargo();
+//        //switch pra ver se é gerencial, comercial e especial
+//        boolean ehGerencial = this.telaCargo.pedeEhGerencial();
+//        boolean temAcessoAoFinanceiro = this.telaCargo.pedeTemAcesso();
+//        pedeHorario
+//        
+//    }
+//    
+//    public void tipoDoCargo() {
+//        int opcao = this.telaCargo.pedeOpcao();
+//        
+//    }
 
     private void editaCargo() {
     }
@@ -91,7 +100,7 @@ public class ControladorCargo implements IControladorCargo {
         int opcao = this.telaCargo.pedeOpcao();
         switch (opcao) {
             case 1:
-//                deletaCargo(cargo);
+                deletaCargo(cargo);
                 exibeMenuCargo();
                 break;
             case 2:
@@ -101,6 +110,27 @@ public class ControladorCargo implements IControladorCargo {
                 this.telaCargo.opcaoInexistente();
                 controlaMenuDeletarCargo(cargo);
                 break;
+        }
+    }
+    
+    private void menuDeletarCargo() {
+        this.telaCargo.mensagemDeletaCargo();
+        Cargo cargo = pedeCargo();
+        this.telaCargo.exibeMensagemCargoSelecionado();
+        this.telaCargo.exibeCargo(cargo.getCodigo(), cargo.getNome(), cargo.ehGerente(), cargo.temAcessoAoFinanceiro());
+        this.telaCargo.exibeMenuConfirmacaoDeletarCargo();
+        controlaMenuDeletarCargo(cargo);
+        
+        
+    }
+    
+    private void deletaCargo(Cargo cargo) {
+        if(cargo != null) {
+            if (cargos.contains(cargo)) {
+                cargos.remove(cargo);
+                cargo = null;
+                this.telaCargo.mensagemCargoDeletadoSucesso();
+            }
         }
     }
     
@@ -138,4 +168,11 @@ public class ControladorCargo implements IControladorCargo {
 	public Cargo encontraCargoPorCodigo(int codigo) {
 		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 	}
+
+    
+
+    private Cargo pedeCargo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

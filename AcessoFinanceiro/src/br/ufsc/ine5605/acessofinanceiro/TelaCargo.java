@@ -139,4 +139,20 @@ public class TelaCargo {
         System.out.println();
     }
 
+    void mensagemDeletaCargo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void exibeMensagemCargoSelecionado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void exibeMenuConfirmacaoDeletarCargo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void mensagemCargoDeletadoSucesso() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
