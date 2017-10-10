@@ -56,7 +56,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
                 listaFuncionarios();
                 break;
             case 4:
-                deletaFuncionario();
+                menuDeletaFuncionario();
                 break;
             case 5:
                 ControladorPrincipal.getInstance().exibeMenuPrincipal();
@@ -124,7 +124,6 @@ public class ControladorFuncionario implements IControladorFuncionario {
     public String cadastraDataNascimento() {
         String dataNascimentoInserida = this.telaFuncionario.pedeDataNascimento();
         String dataNascimento = formataDataNascimento(dataNascimentoInserida);
-        this.telaFuncionario.exibeMenuConfirmacaoCadastroDataNascimento(dataNascimento);
         return controlaConfirmacaoCadastroDataNascimento(dataNascimento);
     }
 
@@ -139,6 +138,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
      * @return dataNascimento inserida anteriormente pelo usuario
      */
     public String controlaConfirmacaoCadastroDataNascimento(String dataNascimento) {
+        this.telaFuncionario.exibeMenuConfirmacaoCadastroDataNascimento(dataNascimento);
         int opcao = this.telaFuncionario.pedeOpcao();
         switch (opcao) {
             case 1:
@@ -274,7 +274,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
      * Pede qual funcionario o usuario deseja deletar. Exibe o menu de deletar
      * funcionario e chama quem controla o menu.
      */
-    public void deletaFuncionario() {
+    public void menuDeletaFuncionario() {
         this.telaFuncionario.mensagemDeletaFuncionario();
         Funcionario funcionario = pedeFuncionario();
         this.telaFuncionario.exibeMensagemFuncionarioSelecionado();
@@ -386,8 +386,8 @@ public class ControladorFuncionario implements IControladorFuncionario {
         for (Funcionario funcionarioCadastrado : funcionarios) {
             if (funcionarioCadastrado.getMatricula() == matricula) {
                 this.telaFuncionario.mensagemErroMatriculaJaCadastrada();
+                matricula = verificaMatriculaInserida();
             }
-            verificaMatriculaInserida();
         }
         return matricula;
     }
@@ -434,6 +434,17 @@ public class ControladorFuncionario implements IControladorFuncionario {
             }
         } else {
             this.telaFuncionario.mensagemNomeInvalidoTamanho();
+        }
+    }
+
+    @Override
+    public void deixaFuncionarioSemCargo(Cargo cargoDeletado, Cargo semCargo) {
+        if (cargoDeletado != null) {
+            for (Funcionario funcionarioCadastrado : funcionarios) {
+                if (funcionarioCadastrado.getCargo().equals(cargoDeletado)) {
+                    funcionarioCadastrado.setCargo(semCargo);
+                }
+            }
         }
     }
 

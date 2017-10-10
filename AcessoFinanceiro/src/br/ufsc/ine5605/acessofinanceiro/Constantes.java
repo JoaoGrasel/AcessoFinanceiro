@@ -103,7 +103,7 @@ class Constantes {
     //LISTAR CARGOS
     public static final String LISTA_DE_FUNCIONARIOS = "+-+-+-+-+-+-+-+ Lista de Funcionários +-+-+-+-+-+-+-+";
     public static final String MATRICULA = " Matricula: ";
-    public static final String NOME = "Nome : ";
+    public static final String NOME = " Nome : ";
     public static final String DATA_NASCIMENTO = " Data de Nascimento: ";
     public static final String TELEFONE = " Telefone: ";
     public static final String SALARIO = " Salario: ";
@@ -124,7 +124,6 @@ class Constantes {
     public static final String MENSAGEM_NOVO_CARGO = "+-+-+-+-+-+-+-+ Novo Cargo +-+-+-+-+-+-+-+";
     public static final String DIGITE_NOME_CARGO = " Digite o nome do cargo:";
     public static final String DIGITE_CODIGO_CARGO = " Digite o código que deseja atribuir ao cargo: ";
-    
 
     //EDITAR CARGO   @BRUNO
     public static final String TITULO_EDITAR_CARGO = "+-+-+-+-+-+-+-+ Editar Cargo +-+-+-+-+-+-+-+";
@@ -158,8 +157,8 @@ class Constantes {
     public static final String CARGO_NAO_ENCONTRADO = "-- O sistema nao encontrou nenhum cargo com este codigo. Tente novamente --";
     public static final String FUNCIONARIO_DELETADO_SUCESSO = "O funcionario foi deletado com sucesso!";
 
-    public static final String FUNCIONARIO_CADASTRADO_SUCESSO = "Usuario cadastrado com sucesso!";
-    
+    public static final String FUNCIONARIO_CADASTRADO_SUCESSO = "Funcionario cadastrado com sucesso!";
+
     //MENU PRINCIPAL
     public static final String MENU_PRINCIPAL = "+-+-+-+-+-+-+-+ Menu Principal +-+-+-+-+-+-+-+";
     public static final String ACESSO_AO_FINANCEIRO = "1. Acesso à Porta do Financeiro";
@@ -167,7 +166,5 @@ class Constantes {
     public static final String GERENCIAR_CARGOS = "3. Gerenciar Cargos";
     public static final String GERENCIAR_DATA = "4. Gerenciar data do sistema";
     public static final String EMITIR_RELATORIO = "5. Emitir Relatorio";
-    
-    
 
 }

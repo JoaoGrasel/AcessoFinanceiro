@@ -28,4 +28,5 @@ public interface IControladorFuncionario {
      */
     public boolean matriculaExiste(int matricula);
 
+    public void deixaFuncionarioSemCargo(Cargo cargoDeletado, Cargo semCargo);
 }

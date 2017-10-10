@@ -48,20 +48,20 @@ public class TelaFuncionario {
      */
     public int pedeOpcao() {
         int opcao = 0;
-        boolean opcaoInvalida = true;
-
-        while (opcaoInvalida) {
+        boolean opcaoValida = true;
+        while (opcaoValida) {
             try {
                 System.out.println();
                 opcao = teclado.nextInt();
-                opcaoInvalida = false;
+                teclado.nextLine();
                 System.out.println();
+                opcaoValida = false;
+
             } catch (InputMismatchException e) {
                 System.out.println();
                 System.out.println(Constantes.OPCAO_INVALIDA);
-                System.out.println();
+                teclado.next();
             }
-
         }
         return opcao;
 
@@ -202,8 +202,6 @@ public class TelaFuncionario {
     public String pedeNome() {
         System.out.println();
         System.out.println(Constantes.DIGITE_NOME);
-        System.out.println();
-		teclado.nextLine();
         String nome = teclado.nextLine();
         System.out.println();
         return nome;
@@ -217,23 +215,26 @@ public class TelaFuncionario {
     public int pedeMatricula() {
         int matricula = 0;
         boolean matriculaInvalida = true;
-
         while (matriculaInvalida) {
             try {
                 System.out.println();
                 System.out.println(Constantes.DIGITE_MATRICULA);
                 matricula = teclado.nextInt();
+                teclado.nextLine();
                 System.out.println();
                 matriculaInvalida = false;
+
             } catch (InputMismatchException e) {
                 System.out.println();
                 System.out.println(Constantes.MATRICULA_INVALIDA);
+                teclado.next();
                 System.out.println();
-                pedeMatricula();
+
             }
 
         }
         return matricula;
+
     }
 
     /**
@@ -245,10 +246,7 @@ public class TelaFuncionario {
     public String pedeDataNascimento() {
         System.out.println();
         System.out.println(Constantes.DIGITE_DATA_NASCIMENTO);
-        System.out.println();
-		teclado.nextLine();
         String dataNascimento = teclado.nextLine();
-        System.out.println();
         return dataNascimento;
     }
 
@@ -265,15 +263,14 @@ public class TelaFuncionario {
             try {
                 System.out.println();
                 System.out.println(Constantes.DIGITE_TELEFONE);
-                System.out.println();
                 telefone = teclado.nextInt();
+                teclado.nextLine();
                 System.out.println();
                 telefoneInvalido = false;
             } catch (InputMismatchException e) {
                 System.out.println();
                 System.out.println(Constantes.TELEFONE_INVALIDO);
-                System.out.println();
-                pedeTelefone();
+                teclado.nextLine();
             }
 
         }
@@ -287,22 +284,20 @@ public class TelaFuncionario {
      */
     public int pedeSalario() {
         int salario = 0;
-
         boolean salarioInvalido = true;
 
         while (salarioInvalido) {
             try {
                 System.out.println();
                 System.out.println(Constantes.DIGITE_SALARIO);
-                System.out.println();
                 salario = teclado.nextInt();
+                teclado.nextLine();
                 System.out.println();
                 salarioInvalido = false;
             } catch (InputMismatchException e) {
                 System.out.println();
                 System.out.println(Constantes.SALARIO_INVALIDO);
-                System.out.println();
-                pedeSalario();
+                teclado.nextLine();
             }
 
         }
@@ -323,15 +318,14 @@ public class TelaFuncionario {
             try {
                 System.out.println();
                 System.out.println(Constantes.DIGITE_CODIGO);
-                System.out.println();
                 codigo = teclado.nextInt();
+                teclado.nextLine();
                 System.out.println();
                 codigoInvalido = false;
             } catch (InputMismatchException e) {
                 System.out.println();
                 System.out.println(Constantes.CODIGO_INVALIDO);
-                System.out.println();
-                pedeCodigo();
+                teclado.nextLine();
             }
 
         }
