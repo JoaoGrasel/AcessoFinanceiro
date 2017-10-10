@@ -78,7 +78,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
 
         this.telaFuncionario.mensagemNovoFuncionario();
 
-        String nome = this.telaFuncionario.pedeNome();
+        String nome = pedeNome();
         int matricula = verificaMatriculaInserida();
         String dataNascimento = cadastraDataNascimento();
         int telefone = this.telaFuncionario.pedeTelefone();
@@ -102,15 +102,19 @@ public class ControladorFuncionario implements IControladorFuncionario {
      * @return dataNascimento no formato date
      */
     public String formataDataNascimento(String dataNascimentoInserida) {
+        String dataNascimentoString;
         SimpleDateFormat formatadorDataNascimento = new SimpleDateFormat("dd/MM/yyyy");
         Date dataNascimento = new Date();
         try {
             dataNascimento = formatadorDataNascimento.parse((dataNascimentoInserida));
         } catch (ParseException ex) {
             this.telaFuncionario.mensagemErroDataNascimento();
-            cadastraDataNascimento();
+            dataNascimentoString = cadastraDataNascimento();
+            return dataNascimentoString;
         }
-        return formatadorDataNascimento.format(dataNascimento);
+        dataNascimentoString = formatadorDataNascimento.format(dataNascimento);
+        controlaConfirmacaoCadastroDataNascimento(dataNascimentoString);
+        return dataNascimentoString;
     }
 
     /**
@@ -124,7 +128,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
     public String cadastraDataNascimento() {
         String dataNascimentoInserida = this.telaFuncionario.pedeDataNascimento();
         String dataNascimento = formataDataNascimento(dataNascimentoInserida);
-        return controlaConfirmacaoCadastroDataNascimento(dataNascimento);
+        return dataNascimento;
     }
 
     /**
@@ -193,10 +197,13 @@ public class ControladorFuncionario implements IControladorFuncionario {
         Funcionario funcionario = pedeFuncionario();
         this.telaFuncionario.exibeMensagemFuncionarioSelecionado();
         this.telaFuncionario.exibeFuncionario(funcionario.getMatricula(), funcionario.getNome(), funcionario.getDataNascimento(), funcionario.getTelefone(), funcionario.getSalario(), funcionario.getCargo());
+        menuEditaFuncionario(funcionario);
 
+    }
+
+    public void menuEditaFuncionario(Funcionario funcionario) {
         this.telaFuncionario.exibeMenuEditaFuncionario();
         controlaMenuEditaFuncionario(funcionario);
-
     }
 
     /**
@@ -218,28 +225,40 @@ public class ControladorFuncionario implements IControladorFuncionario {
             case 1:
                 String nome = this.telaFuncionario.pedeNome();
                 funcionario.setNome(nome);
+                menuEditaFuncionario(funcionario);
+                this.telaFuncionario.mensagemNomeEditadoSucesso();
                 break;
             case 2:
                 int matricula = verificaMatriculaInserida();
                 funcionario.setMatricula(matricula);
+                this.telaFuncionario.mensagemMatriculaEditadaSucesso();
+                menuEditaFuncionario(funcionario);
                 break;
             case 3:
                 String dataNascimento = cadastraDataNascimento();
                 funcionario.setDataNascimento(dataNascimento);
+                this.telaFuncionario.mensagemDataNascimentoEditadaSucesso();
+                menuEditaFuncionario(funcionario);
                 break;
             case 4:
                 int telefone = this.telaFuncionario.pedeTelefone();
                 funcionario.setTelefone(telefone);
+                this.telaFuncionario.mensagemTelefoneEditadoSucesso();
+                menuEditaFuncionario(funcionario);
                 break;
             case 5:
                 int salario = this.telaFuncionario.pedeSalario();
                 funcionario.setSalario(salario);
+                this.telaFuncionario.mensagemSalarioEditadoSucesso();
+                menuEditaFuncionario(funcionario);
                 break;
 
             case 6:
                 this.telaFuncionario.exibeOpcaoCargoFuncionario();
                 Cargo cargo = atribuiCargoAoFuncionario();
                 funcionario.setCargo(cargo);
+                this.telaFuncionario.mensagemCargoEditadoSucesso();
+                menuEditaFuncionario(funcionario);
                 break;
 
             case 7:
@@ -347,7 +366,12 @@ public class ControladorFuncionario implements IControladorFuncionario {
     public Funcionario pedeFuncionario() {
         int matricula = this.telaFuncionario.pedeMatricula();
         Funcionario funcionario = encontraFuncionarioPelaMatricula(matricula);
+        if (funcionario == null) {
+            this.telaFuncionario.mensagemFuncionarioNaoEncontrado();
+            funcionario = pedeFuncionario();
+        }
         return funcionario;
+
     }
 
     /**
@@ -410,7 +434,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
      */
     public String pedeNome() {
         String nome = this.telaFuncionario.pedeNome();
-        verificaNome(nome);
+        nome = verificaNome(nome);
         return nome;
     }
 
@@ -421,20 +445,22 @@ public class ControladorFuncionario implements IControladorFuncionario {
      *
      * @param nome que o usuário inseriu por meio do teclado.
      */
-    public void verificaNome(String nome) {
+    public String verificaNome(String nome) {
         if (nome.length() > 2) {
             for (int i = 0; i < nome.length(); i++) {
                 char letraAnalisada = nome.charAt(i);
                 if (!Character.isLetter(letraAnalisada)) {
                     if (!Character.isSpace(letraAnalisada)) {
                         this.telaFuncionario.mensagemNomeInvalidoLetras();
-                        pedeNome();
+                        nome = pedeNome();
                     }
                 }
             }
         } else {
             this.telaFuncionario.mensagemNomeInvalidoTamanho();
+            nome = pedeNome();
         }
+        return nome;
     }
 
     @Override

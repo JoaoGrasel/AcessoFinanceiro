@@ -32,8 +32,9 @@ class Constantes {
     public static final String DATA_NASCIMENTO_INVALIDA = "Data de nascimento inválida. A data deve ser inserida no formato dd/mm/yyyy";
     public static final String SIM = " 1. Sim ";
     public static final String NAO = " 2. Não";
-	public static final String NOVA_TENTATIVA_FILTRO_MATRICULA = "Tentar novamente filtro matricula";
-	public static final String NOVA_TENTATIVA_FILTRO_MOTIVO = "Tentar novamente filtro motivo";
+    public static final String NOVA_TENTATIVA_FILTRO_MATRICULA = "Tentar novamente filtro matricula";
+    public static final String NOVA_TENTATIVA_FILTRO_MOTIVO = "Tentar novamente filtro motivo";
+    public static final String MENSAGEM_FUNCIONARIO_NAO_ENCONTRADO = " Funcionário não encontrado. Insira uma matricula existente. ";
 
     // ACESSO AO FINANCEIRO
     public static final String ACESSO_FINANCEIRO = "+-+-+-+-+-+-+-+ Acesso ao financeiro +-+-+-+-+-+-+-+";
@@ -94,8 +95,14 @@ class Constantes {
     public static final String ALTERAR_SALARIO = " 5. Alterar o Salário ";
     public static final String ALTERAR_CARGO = " 6. Alterar o Cargo ";
     public static final String OPCAO_VOLTAR = " 7. Voltar ";
+    public static final String CARGO_EDITADO_SUCESSO = " Cargo editado com sucesso!";
+    public static final String SALARIO_EDITADO_SUCESSO = " Salario editado com sucesso!";
+    public static final String TELEFONE_EDITADO_SUCESSO = " Telefone editado com sucesso!";
+    public static final String DATA_NASCIMENTO_EDITADA_SUCESSO = " Data de nascimento editada com sucesso!";
+    public static final String MATRICULA_EDITADA_SUCESSO = " Matricula editada com sucesso!";
+    public static final String NOME_EDITADO_SUCESSO = " Nome editado com sucesso!";
 
-    //SELECIONAR OU CRIAR CARGO NO CADASTRO
+//SELECIONAR OU CRIAR CARGO NO CADASTRO
     public static final String O_QUE_DESEJA_FAZER = " O que você deseja fazer?";
     public static final String USAR_CARGO_EXISTENTE = " 1. Usar cargo ja existente ";
     public static final String CRIAR_CARGO_PARA_FUNCIONARIO = " 2. Criar cargo ";

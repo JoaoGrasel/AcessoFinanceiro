@@ -421,4 +421,32 @@ public class TelaFuncionario {
         System.out.println(Constantes.NAO);
         System.out.println();
     }
+
+    public void mensagemCargoEditadoSucesso() {
+        System.out.println(Constantes.CARGO_EDITADO_SUCESSO);
+    }
+
+    public void mensagemSalarioEditadoSucesso() {
+        System.out.println(Constantes.SALARIO_EDITADO_SUCESSO);
+    }
+
+    public void mensagemTelefoneEditadoSucesso() {
+        System.out.println(Constantes.TELEFONE_EDITADO_SUCESSO);
+    }
+
+    public void mensagemDataNascimentoEditadaSucesso() {
+        System.out.println(Constantes.DATA_NASCIMENTO_EDITADA_SUCESSO);
+    }
+
+    public void mensagemMatriculaEditadaSucesso() {
+        System.out.println(Constantes.MATRICULA_EDITADA_SUCESSO);
+    }
+
+    public void mensagemNomeEditadoSucesso() {
+        System.out.println(Constantes.NOME_EDITADO_SUCESSO);
+    }
+
+    public void mensagemFuncionarioNaoEncontrado() {
+        System.out.println(Constantes.MENSAGEM_FUNCIONARIO_NAO_ENCONTRADO);
+    }
 }
