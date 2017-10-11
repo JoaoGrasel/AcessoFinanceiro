@@ -28,5 +28,12 @@ public interface IControladorFuncionario {
      */
     public boolean matriculaExiste(int matricula);
 
-    public void deixaFuncionarioSemCargo(Cargo cargoDeletado, Cargo semCargo);
+    /**
+     * Altera o cargo dos funcionarios com o cargoDeletado para o cargo semCargo
+     *
+     * @param cargoDeletado cargo a ser deletado pelo sistema
+     * @param semCargo cargo que representa a situação onde o funcionario esta
+     * sem cargo
+     */
+    public void deixaFuncionariosSemCargo(Cargo cargoDeletado, Cargo semCargo);
 }

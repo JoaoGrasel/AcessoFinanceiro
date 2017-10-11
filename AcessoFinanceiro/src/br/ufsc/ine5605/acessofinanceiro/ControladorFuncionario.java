@@ -24,6 +24,9 @@ public class ControladorFuncionario implements IControladorFuncionario {
         this.telaFuncionario = new TelaFuncionario(this);
         this.funcionarios = new ArrayList<>();
     }
+//
+// +-+-+-+-+-+-+-+-+-+- MENU PRINCIPAL FUNCIONARIO +-+-+-+-+-+-+-+-+-+-
+//
 
     /**
      * Exibe o menu principal do CRUD do funcionário.
@@ -69,6 +72,9 @@ public class ControladorFuncionario implements IControladorFuncionario {
 
     }
 
+//
+//+-+-+-+-+-+-+-+-+-+- CADASTRAR FUNCIONARIO +-+-+-+-+-+-+-+-+-+-
+//
     /**
      * Pede ao usuario todos os atributos para cadastrar um funcionario e caso o
      * funcionario não esteja cadastrado (matricula não foi cadastrada ainda),
@@ -188,6 +194,9 @@ public class ControladorFuncionario implements IControladorFuncionario {
         return cargo;
     }
 
+//
+// +-+-+-+-+-+-+-+-+-+- EDITAR FUNCIONÁRIO +-+-+-+-+-+-+-+-+-+-
+//
     /**
      * Pede qual funcionario o usuario deseja editar. Exibe o menu de editar
      * funcionario e chama quem controla o menu.
@@ -201,6 +210,13 @@ public class ControladorFuncionario implements IControladorFuncionario {
 
     }
 
+    /**
+     * Método responsavel pelo menu de editar o funcionario, onde chama o metodo
+     * da tela para exibir o menu propriamente e depois chama o método
+     * responsavel pelo controle das opcoes possiveis
+     *
+     * @param funcionario a ser editado
+     */
     public void menuEditaFuncionario(Funcionario funcionario) {
         this.telaFuncionario.exibeMenuEditaFuncionario();
         controlaMenuEditaFuncionario(funcionario);
@@ -225,8 +241,8 @@ public class ControladorFuncionario implements IControladorFuncionario {
             case 1:
                 String nome = this.telaFuncionario.pedeNome();
                 funcionario.setNome(nome);
-                menuEditaFuncionario(funcionario);
                 this.telaFuncionario.mensagemNomeEditadoSucesso();
+                menuEditaFuncionario(funcionario);
                 break;
             case 2:
                 int matricula = verificaMatriculaInserida();
@@ -271,24 +287,9 @@ public class ControladorFuncionario implements IControladorFuncionario {
         }
     }
 
-    /**
-     * Lista na tela todos os funcionarios cadastrados, com todos os seus
-     * atributos. Retorna ao menu funcionario.
-     */
-    public void listaFuncionarios() {
-        this.telaFuncionario.mensagemListaFuncionarios();
-        for (Funcionario funcionarioCadastrado : funcionarios) {
-            int matricula = funcionarioCadastrado.getMatricula();
-            String nome = funcionarioCadastrado.getNome();
-            String dataNascimento = funcionarioCadastrado.getDataNascimento();
-            int telefone = funcionarioCadastrado.getTelefone();
-            int salario = funcionarioCadastrado.getSalario();
-            Cargo cargo = funcionarioCadastrado.getCargo();
-            this.telaFuncionario.exibeFuncionario(matricula, nome, dataNascimento, telefone, salario, cargo);
-        }
-        exibeMenuFuncionario();
-    }
-
+//
+//+-+-+-+-+-+-+-+-+-+- DELETA FUNCIONÁRIO +-+-+-+-+-+-+-+-+-+-
+//
     /**
      * Pede qual funcionario o usuario deseja deletar. Exibe o menu de deletar
      * funcionario e chama quem controla o menu.
@@ -346,58 +347,45 @@ public class ControladorFuncionario implements IControladorFuncionario {
         }
     }
 
+//
+//+-+-+-+-+-+-+-+-+-+- COMUM +-+-+-+-+-+-+-+-+-+-
+//
     @Override
-    public Funcionario encontraFuncionarioPelaMatricula(int matricula) {
-        for (Funcionario funcionarioCadastrado : this.funcionarios) {
-            if (matricula == funcionarioCadastrado.getMatricula()) {
-                return funcionarioCadastrado;
+    public void deixaFuncionariosSemCargo(Cargo cargoDeletado, Cargo semCargo) {
+        if (cargoDeletado != null) {
+            for (Funcionario funcionarioCadastrado : funcionarios) {
+                if (funcionarioCadastrado.getCargo().equals(cargoDeletado)) {
+                    funcionarioCadastrado.setCargo(semCargo);
+                }
             }
         }
-        return null;
     }
 
     /**
-     * Pede inicialemente qual a matricula do funcionario que o usuario esta se
-     * referindo. Com a matricula inserida pelo usuario, encontra o funcionario
-     * em questão.
+     * Verifica se a string nome é composta de pelo menos 3 caracteres e somente
+     * de letras ou espaços. Caso não seja exibe uma mensagem ao usuário e chama
+     * o pedeNome novamente.
      *
-     * @return funcionario a quem o usuario esta se referindo
+     * @param nome que o usuário inseriu por meio do teclado.
      */
-    public Funcionario pedeFuncionario() {
-        int matricula = this.telaFuncionario.pedeMatricula();
-        Funcionario funcionario = encontraFuncionarioPelaMatricula(matricula);
-        if (funcionario == null) {
-            this.telaFuncionario.mensagemFuncionarioNaoEncontrado();
-            funcionario = pedeFuncionario();
+    public String verificaNome(String nome) {
+        if (nome.length() > 2) {
+            for (int i = 0; i < nome.length(); i++) {
+                char letraAnalisada = nome.charAt(i);
+                if (!Character.isLetter(letraAnalisada)) {
+                    if (!Character.isSpace(letraAnalisada)) {
+                        this.telaFuncionario.mensagemNomeInvalidoLetras();
+                        nome = pedeNome();
+                    }
+                }
+            }
+        } else {
+            this.telaFuncionario.mensagemNomeInvalidoTamanho();
+            nome = pedeNome();
         }
-        return funcionario;
-
+        return nome;
     }
 
-    /**
-     * Pede para o usuario digitar um codigo de cargo;
-     *
-     * @return codigo digitado pelo usuario
-     */
-    public int pedeCodigo() {
-        int codigo = this.telaFuncionario.pedeCodigo();
-        return codigo;
-    }
-
-    /**
-     * Verifica qual o cargo responsavel pelo codigo digitado pelo usuario
-     *
-     * @return cargo com o codigo digitado pelo usuario;
-     */
-    //public Cargo verificaCodigoComCargo() {
-    // int codigo = pedeCodigo();
-    //Cargo cargo = ControladorPrincipal.getInstance().controladorCargo.encontraCargoPorCodigo(codigo);
-    // if (cargo == null) {
-    //    this.telaFuncionario.mensagemCargoNaoEncontrado();
-    //    verificaCodigoComCargo();
-    // }
-    // return cargo;
-    //}
     /**
      * Verifica se a matricula inserida pelo usuario ja foi cadastrada
      * anteriormente
@@ -438,40 +426,73 @@ public class ControladorFuncionario implements IControladorFuncionario {
         return nome;
     }
 
-    /**
-     * Verifica se a string nome é composta de pelo menos 3 caracteres e somente
-     * de letras ou espaços. Caso não seja exibe uma mensagem ao usuário e chama
-     * o pedeNome novamente.
-     *
-     * @param nome que o usuário inseriu por meio do teclado.
-     */
-    public String verificaNome(String nome) {
-        if (nome.length() > 2) {
-            for (int i = 0; i < nome.length(); i++) {
-                char letraAnalisada = nome.charAt(i);
-                if (!Character.isLetter(letraAnalisada)) {
-                    if (!Character.isSpace(letraAnalisada)) {
-                        this.telaFuncionario.mensagemNomeInvalidoLetras();
-                        nome = pedeNome();
-                    }
-                }
-            }
-        } else {
-            this.telaFuncionario.mensagemNomeInvalidoTamanho();
-            nome = pedeNome();
-        }
-        return nome;
-    }
-
     @Override
-    public void deixaFuncionarioSemCargo(Cargo cargoDeletado, Cargo semCargo) {
-        if (cargoDeletado != null) {
-            for (Funcionario funcionarioCadastrado : funcionarios) {
-                if (funcionarioCadastrado.getCargo().equals(cargoDeletado)) {
-                    funcionarioCadastrado.setCargo(semCargo);
-                }
+    public Funcionario encontraFuncionarioPelaMatricula(int matricula) {
+        for (Funcionario funcionarioCadastrado : this.funcionarios) {
+            if (matricula == funcionarioCadastrado.getMatricula()) {
+                return funcionarioCadastrado;
             }
         }
+        return null;
     }
 
+    /**
+     * Pede inicialemente qual a matricula do funcionario que o usuario esta se
+     * referindo. Com a matricula inserida pelo usuario, encontra o funcionario
+     * em questão.
+     *
+     * @return funcionario a quem o usuario esta se referindo
+     */
+    public Funcionario pedeFuncionario() {
+        int matricula = this.telaFuncionario.pedeMatricula();
+        Funcionario funcionario = encontraFuncionarioPelaMatricula(matricula);
+        if (funcionario == null) {
+            this.telaFuncionario.mensagemFuncionarioNaoEncontrado();
+            funcionario = pedeFuncionario();
+        }
+        return funcionario;
+    }
+
+    /**
+     * Pede para o usuario digitar um codigo de cargo;
+     *
+     * @return codigo digitado pelo usuario
+     */
+    public int pedeCodigo() {
+        int codigo = this.telaFuncionario.pedeCodigo();
+        return codigo;
+    }
+
+    /**
+     * Lista na tela todos os funcionarios cadastrados, com todos os seus
+     * atributos. Retorna ao menu funcionario.
+     */
+    public void listaFuncionarios() {
+        this.telaFuncionario.mensagemListaFuncionarios();
+        for (Funcionario funcionarioCadastrado : funcionarios) {
+            int matricula = funcionarioCadastrado.getMatricula();
+            String nome = funcionarioCadastrado.getNome();
+            String dataNascimento = funcionarioCadastrado.getDataNascimento();
+            int telefone = funcionarioCadastrado.getTelefone();
+            int salario = funcionarioCadastrado.getSalario();
+            Cargo cargo = funcionarioCadastrado.getCargo();
+            this.telaFuncionario.exibeFuncionario(matricula, nome, dataNascimento, telefone, salario, cargo);
+        }
+        exibeMenuFuncionario();
+    }
+
+    /**
+     * Verifica qual o cargo responsavel pelo codigo digitado pelo usuario
+     *
+     * @return cargo com o codigo digitado pelo usuario;
+     */
+    //public Cargo verificaCodigoComCargo() {
+    // int codigo = pedeCodigo();
+    //Cargo cargo = ControladorPrincipal.getInstance().controladorCargo.encontraCargoPorCodigo(codigo);
+    // if (cargo == null) {
+    //    this.telaFuncionario.mensagemCargoNaoEncontrado();
+    //    verificaCodigoComCargo();
+    // }
+    // return cargo;
+    //}
 }
