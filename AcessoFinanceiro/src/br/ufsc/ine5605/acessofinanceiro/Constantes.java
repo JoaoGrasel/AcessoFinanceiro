@@ -36,6 +36,8 @@ class Constantes {
     public static final String NOVA_TENTATIVA_FILTRO_MATRICULA = "Tentar novamente filtro matricula";
     public static final String NOVA_TENTATIVA_FILTRO_MOTIVO = "Tentar novamente filtro motivo";
     public static final String MENSAGEM_FUNCIONARIO_NAO_ENCONTRADO = " Funcionário não encontrado. Insira uma matricula existente. ";
+    public static final String VOLTAR_2 = "2 - Voltar";
+    public static final String VOLTAR_5 = "5 - Voltar";
 
     // ACESSO AO FINANCEIRO
     public static final String ACESSO_FINANCEIRO = "+-+-+-+-+-+-+-+ Acesso ao financeiro +-+-+-+-+-+-+-+";

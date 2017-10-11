@@ -5,6 +5,7 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.text.ParseException;
 import java.util.Date;
 
 /**
@@ -50,7 +51,7 @@ public class Acesso {
 	 * @return True se o acesso for validado
 	 */
 	public boolean validaAcesso(Acesso acesso, Funcionario funcionario, Date data) {
-		if(funcionario.getCargo().ehGerente()) return true;
+		if(funcionario.getCargo().ehGerencial()) return true;
 		if(funcionario.getCargo().temAcessoAoFinanceiro())
 			return validaHorarioAcesso(acesso, funcionario.getCargo(), data);
 		controladorAcesso.novoRegistroAcessoNegado(data, acesso.getMatricula(), Motivo.CARGO_SEM_ACESSO);
@@ -69,12 +70,21 @@ public class Acesso {
 	 * permitido pelo cargo
 	 */
 	public boolean validaHorarioAcesso(Acesso acesso, Cargo cargo, Date data) {
-//        if(!(acesso.getData().after(cargo.getHorarioInicio()) && acesso.getData().before(cargo.getHorarioFim()))) {
-//			controladorAcesso.novoRegistroAcessoNegado(data, acesso.getMatricula(), Motivo.HORARIO_NAO_PERMITIDO);
-//			controladorAcesso.exibeAcessoNegadoHorarioNaoPermitido();
-//            return false;
-//        }
-        return true;
+		if(cargo instanceof CargoHorarioComercial || cargo instanceof CargoHorarioEspecial) {
+			if((acesso.getData().after(((CargoHorarioComercial) cargo).getHoraInicioManha())
+					&& acesso.getData().before(((CargoHorarioComercial) cargo).getHoraFimManha()))) {
+				System.out.println("acessou pela manha - RETIRAR");
+				return true;
+			}
+			if((acesso.getData().after(((CargoHorarioComercial) cargo).getHoraInicioTarde())
+					&& acesso.getData().before(((CargoHorarioComercial) cargo).getHoraFimTarde()))) {
+				System.out.println("acessou pela tarde - RETIRAR");
+				return true;
+			}
+		}
+		controladorAcesso.novoRegistroAcessoNegado(data, acesso.getMatricula(), Motivo.HORARIO_NAO_PERMITIDO);
+		controladorAcesso.exibeAcessoNegadoHorarioNaoPermitido();
+		return false;
 	}
     
 }
