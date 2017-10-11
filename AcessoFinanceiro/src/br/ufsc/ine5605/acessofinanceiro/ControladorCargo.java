@@ -57,35 +57,29 @@ public class ControladorCargo implements IControladorCargo {
         ControladorPrincipal.getInstance().exibeMenuPrincipal();
     }
 
-    //COMENTAR ISSO SE PRECISAR TESTAR.
-//    @Override
-//    public Cargo encontraCargoPorCodigo(int codigo) {
-//        Cargo cargo = new Cargo();
-//        return cargo;
-//    }
 
-	public Cargo incluiCargo() {
-        this.telaCargo.mensagemNovoCargo();
-        String nome = this.telaCargo.pedeNome();
-        int codigo = verificaCodigoInserido();
-        int tipoCargo = this.telaCargo.pedeTipoCargo();
-		Cargo cargo = new Cargo(0, "", false, false);
-        switch(tipoCargo){
-			case 1:
-				cargo = criaCargoGerencial(nome, codigo);
-				break;
-			case 2:
-				cargo = criaCargoComercial(nome, codigo);
-				break;
-			case 3:
-				cargo = criaCargoEspecial(nome, codigo);
-				break;
-			default:
-				this.telaCargo.exibeOpcaoInexistente();
-				incluiCargo();
-		}
-		System.out.println(cargo);
-		return cargo;
+    public Cargo incluiCargo() {
+    this.telaCargo.mensagemNovoCargo();
+    String nome = this.telaCargo.pedeNome();
+    int codigo = verificaCodigoInserido();
+    int tipoCargo = this.telaCargo.pedeTipoCargo();
+            Cargo cargo = new Cargo(0, "", false, false);
+    switch(tipoCargo){
+        case 1:
+                cargo = criaCargoGerencial(nome, codigo);
+                break;
+        case 2:
+                cargo = criaCargoComercial(nome, codigo);
+                break;
+        case 3:
+                cargo = criaCargoEspecial(nome, codigo);
+                break;
+        default:
+                this.telaCargo.exibeOpcaoInexistente();
+                incluiCargo();
+    }
+    System.out.println(cargo);
+    return cargo;
     }
 //    
 //    public void tipoDoCargo() {
@@ -93,8 +87,6 @@ public class ControladorCargo implements IControladorCargo {
 //        
 //    }
 
-    private void editaCargo() {
-    }
     
     /**
      * Controla o que o sistema faz com base na opcao que o usuario selecionar
@@ -127,7 +119,7 @@ public class ControladorCargo implements IControladorCargo {
         this.telaCargo.mensagemDeletaCargo();
         Cargo cargo = pedeCargo();
         this.telaCargo.exibeMensagemCargoSelecionado();
-        this.telaCargo.exibeCargo(cargo.getCodigo(), cargo.getNome(), cargo.ehGerente(), cargo.temAcessoAoFinanceiro());
+        this.telaCargo.exibeCargo(cargo.getCodigo(), cargo.getNome(), cargo.ehGerencial(), cargo.temAcessoAoFinanceiro());
         this.telaCargo.exibeMenuConfirmacaoDeletarCargo();
         controlaMenuDeletarCargo(cargo);
         
@@ -155,11 +147,28 @@ public class ControladorCargo implements IControladorCargo {
         return codigo; 
     }
     
-    //COMENTAR ISSO SE PRECISAR TESTAR.
-    @Override
-    public Cargo cadastraCargoParaFuncionario() {
+    public void editaCargo() {
+        this.telaCargo.mensagemEditaCargo();
+        Cargo cargo = pedeCargo();
+        this.telaCargo.exibeMensagemCargoSelecionado();
+        this.telaCargo.exibeCargo(cargo.getCodigo(), cargo.getNome(), cargo.ehGerencial(), cargo.temAcessoAoFinanceiro());
+        menuEditaCargo(cargo);
+    }
+    
+    public void menuEditaCargo(Cargo cargo) {
+        this.telaCargo.exibeMenuEditaCargo();
+        controlaMenuEditaCargo(cargo);
+    }
+    
+    public void controlaMenuEditaCargo(Cargo cargo) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+    
+    //não é mais necessario, cadastraCargo ja retorna cargo
+    //@Override
+    //public Cargo cadastraCargoParaFuncionario() {
+    //    throw new UnsupportedOperationException("Not supported yet.");
+    //}
 
     @Override
     public void listaCargos() {
@@ -167,7 +176,7 @@ public class ControladorCargo implements IControladorCargo {
         for (Cargo cargoCadastrado : cargos) {
             int codigo = cargoCadastrado.getCodigo();
             String nome = cargoCadastrado.getNome();
-            boolean ehGerente = cargoCadastrado.ehGerente();
+            boolean ehGerente = cargoCadastrado.ehGerencial();
             boolean temAcessoAoFinanceiro = cargoCadastrado.temAcessoAoFinanceiro();
             this.telaCargo.exibeCargo(codigo, nome, ehGerente, temAcessoAoFinanceiro);
         }
@@ -176,10 +185,10 @@ public class ControladorCargo implements IControladorCargo {
 
 	@Override
 	public Cargo encontraCargoPorCodigo(int codigo) {
-		for(Cargo cargoLista : this.cargos) {
-			if(cargoLista.getCodigo() == codigo) return cargoLista;
-		}
-		return null;
+            for(Cargo cargoLista : this.cargos) {
+                if(cargoLista.getCodigo() == codigo) return cargoLista;
+            }
+            return null;
 	}
 
     private Cargo pedeCargo() {
@@ -187,21 +196,21 @@ public class ControladorCargo implements IControladorCargo {
     }
 
 	public Cargo criaCargoGerencial(String nome, int codigo) {
-		Cargo cargo = new Cargo(codigo, nome, true, true);
-		this.cargos.add(cargo);
-		return cargo;
+            Cargo cargo = new Cargo(codigo, nome, true, true);
+            this.cargos.add(cargo);
+            return cargo;
 	}
 
 	private CargoHorarioComercial criaCargoComercial(String nome, int codigo) {
-		CargoHorarioComercial cargo = new CargoHorarioComercial(codigo, nome);
-		this.cargos.add(cargo);
-		return cargo;
+            CargoHorarioComercial cargo = new CargoHorarioComercial(codigo, nome);
+            this.cargos.add(cargo);
+            return cargo;
 	}
 
 	private CargoHorarioEspecial criaCargoEspecial(String nome, int codigo) {
-		CargoHorarioEspecial cargo = new CargoHorarioEspecial(codigo, nome);
-		this.cargos.add(cargo);
-		return cargo;
+            CargoHorarioEspecial cargo = new CargoHorarioEspecial(codigo, nome);
+            this.cargos.add(cargo);
+            return cargo;
 	}
 
 }

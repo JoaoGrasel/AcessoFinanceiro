@@ -143,8 +143,10 @@ class Constantes {
     public static final String TITULO_EDITAR_CARGO = "+-+-+-+-+-+-+-+ Editar Cargo +-+-+-+-+-+-+-+";
     public static final String CARGO_SELECIONADO = " Cargo selecionado: ";
     public static final String ALTERAR_NOME_CARGO = " 1. Alterar Nome do Cargo";
-    public static final String ALTERAR_CODIGO_CARGO = " 2. Alterar Código do Cargo ";
-    public static final String OPCAO_VOLTAR_CARGO = " 3. Voltar ";
+    public static final String ALTERAR_CODIGO_CARGO = " 2. Alterar Código do Cargo";
+    public static final String ALTERAR_EH_GERENCIAL = " 3. Alterar Função Gerencial do Cargo";
+    public static final String ALTERAR_TEM_ACESSO= " 4. Alterar Permissão de Acesso do Cargo";
+    public static final String OPCAO_VOLTAR_CARGO = " 5. Voltar ";
 
     //LISTAR CARGOS
     public static final String LISTA_DE_CARGOS = "+-+-+-+-+-+-+-+ Lista de Cargos +-+-+-+-+-+-+-+";
@@ -152,6 +154,13 @@ class Constantes {
     public static final String NOME_CARGO = "Nome: ";
     public static final String EH_GERENTE = " O cargo é gerencial: ";
     public static final String TEM_ACESSO_AO_FINANCEIRO = " Tem Acesso ao Financeiro: ";
+    
+    //DELETAR CARGO
+    public static final String TITULO_DELETAR_CARGO = "+-+-+-+-+-+-+-+ Deletar Cargo +-+-+-+-+-+-+-+";
+    public static final String CARGO_DELETADO_SUCESSO = "O cargo foi deletado com sucesso!";
+    public static final String CONFIRMACAO_EXCLUSAO_CARGO = " Tem certeza que deseja excluir o cargo? Caso selecione não você voltará ao menu de cargos. ";
+
+
 
     //DATA DO SISTEMA
     public static final String TITULO_MENU_DATA_HORA_SISTEMA = "+-+-+-+-+-+-+-+ Menu de data e hora do sistema +-+-+-+-+-+-+-+";
