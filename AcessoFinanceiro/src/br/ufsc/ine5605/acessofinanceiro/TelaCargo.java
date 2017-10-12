@@ -206,4 +206,8 @@ public class TelaCargo {
         System.out.println(); 
     }
 
+    void mensagemCargoNaoEncontrado() {
+        System.out.println(Constantes.MENSAGEM_CARGO_NAO_ENCONTRADO);
+    }
+
 }

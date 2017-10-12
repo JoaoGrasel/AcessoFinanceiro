@@ -23,6 +23,9 @@ public class TelaFuncionario {
         this.teclado = new Scanner(System.in);
     }
 
+    //
+    // +-+-+-+-+-+-+-+-+-+- MENUS +-+-+-+-+-+-+-+-+-+-
+    //
     /**
      * Exibe na tela o menu com as opcoes do CRUD do funcionario (cadastrar,
      * editar, listar e deletar)
@@ -38,33 +41,6 @@ public class TelaFuncionario {
         System.out.println(Constantes.VOLTAR_AO_MENU_PRINCIPAL);
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println();
-    }
-
-    /**
-     * Pede que o usuario insira um numero correspondente a opcao que ele deseja
-     * selecionar
-     *
-     * @return opcao inserida pelo usuario
-     */
-    public int pedeOpcao() {
-        int opcao = 0;
-        boolean opcaoValida = true;
-        while (opcaoValida) {
-            try {
-                System.out.println();
-                opcao = teclado.nextInt();
-                teclado.nextLine();
-                System.out.println();
-                opcaoValida = false;
-
-            } catch (InputMismatchException e) {
-                System.out.println();
-                System.out.println(Constantes.OPCAO_INVALIDA);
-                teclado.next();
-            }
-        }
-        return opcao;
-
     }
 
     /**
@@ -100,19 +76,6 @@ public class TelaFuncionario {
     }
 
     /**
-     * Exibe na tela o nome e o codigo de um cargo
-     *
-     * @param codigo do cargo
-     * @param nome do cargo
-     */
-    public void listaCargo(int codigo, String nome) {
-        System.out.println();
-        System.out.println(Constantes.CODIGO_DO_CARGO + codigo);
-        System.out.println(Constantes.NOME_DO_CARGO + nome);
-        System.out.println();
-    }
-
-    /**
      * Exibe um menu com as opcoes que o usuario pode selecionar com relação a
      * editar um funcionario. (Alterar o nome, alterar a matricula, alterar a
      * data de nascimento, alterar o telefone, alterar o salario, alterar o
@@ -135,47 +98,6 @@ public class TelaFuncionario {
     }
 
     /**
-     * Exibe na tela o funcionário selecionado (matricula, nome, data de
-     * nascimento, telefone, salario, cargo)
-     *
-     * @param matricula do funcionario selecionado
-     * @param nome do funcionario selecionado
-     * @param dataNascimento do funcionario selecionado
-     * @param telefone do funcionario selecionado
-     * @param salario do funcionario selecionado
-     * @param cargo do funcionario selecionado
-     */
-    public void exibeFuncionario(int matricula, String nome, String dataNascimento, int telefone, int salario, Cargo cargo) {
-        System.out.println();
-        System.out.println(Constantes.MATRICULA + matricula);
-        System.out.println(Constantes.NOME + nome);
-        System.out.println(Constantes.DATA_NASCIMENTO + dataNascimento);
-        System.out.println(Constantes.TELEFONE + telefone);
-        System.out.println(Constantes.SALARIO + salario);
-        System.out.println(Constantes.CARGO + cargo);
-        System.out.println();
-    }
-
-    /**
-     * Exibe na tela a mensagem: "Lista de funcionarios cadastrados: "
-     */
-    public void mensagemListaFuncionarios() {
-        System.out.println();
-        System.out.println(Constantes.LISTA_DE_FUNCIONARIOS);
-        System.out.println();
-    }
-
-    /**
-     * Exibe na tela o titulo do menu para deletar funcionario
-     */
-    public void mensagemDeletaFuncionario() {
-        System.out.println();
-        System.out.println(Constantes.TITULO_DELETAR_FUNCIONARIO);
-        System.out.println();
-
-    }
-
-    /**
      * Exibe um menu pedindo ao usuário se ele confirma que quer deletar o
      * funcionário selecionado ou se ele não quer deletar e quer voltar ao menu
      * anterior
@@ -186,6 +108,178 @@ public class TelaFuncionario {
         System.out.println(Constantes.SIM);
         System.out.println(Constantes.NAO);
         System.out.println();
+
+    }
+
+    /**
+     * exibe a data inserida e apresenta um menu para que o usuario confirme a
+     * data cadastrada ou não, caso não confirme ele deve inserir uma nova data
+     *
+     * @param dataInserida pelo usuario
+     */
+    public void exibeMenuConfirmacaoCadastroDataNascimento(String dataInserida) {
+        System.out.println();
+        System.out.println(Constantes.EXIBE_DATA_CADASTRADA + dataInserida);
+        System.out.println(Constantes.CONFIRMA_DATA_CADASTRADA);
+        System.out.println(Constantes.SIM);
+        System.out.println(Constantes.NAO);
+        System.out.println();
+    }
+
+//
+// +-+-+-+-+-+-+-+-+-+- MENSAGENS +-+-+-+-+-+-+-+-+-+-
+//
+    /**
+     * exibe na tela a mensagem de cargo editado com sucesso
+     */
+    public void mensagemCargoEditadoSucesso() {
+        System.out.println(Constantes.CARGO_EDITADO_SUCESSO);
+    }
+
+    /**
+     * exibe na tela a mensagem de salario editado com sucesso
+     */
+    public void mensagemSalarioEditadoSucesso() {
+        System.out.println(Constantes.SALARIO_EDITADO_SUCESSO);
+    }
+
+    /**
+     * exibe na tela a mensagem de telefone editado com sucesso
+     */
+    public void mensagemTelefoneEditadoSucesso() {
+        System.out.println(Constantes.TELEFONE_EDITADO_SUCESSO);
+    }
+
+    /**
+     * exibe na tela a mensagem de data de nascimento editaca com sucesso
+     */
+    public void mensagemDataNascimentoEditadaSucesso() {
+        System.out.println(Constantes.DATA_NASCIMENTO_EDITADA_SUCESSO);
+    }
+
+    /**
+     * exibe na tela a mensagem de matricula editada com sucesso
+     */
+    public void mensagemMatriculaEditadaSucesso() {
+        System.out.println(Constantes.MATRICULA_EDITADA_SUCESSO);
+    }
+
+    /**
+     * exibe na tela a mensagem de nome editado com sucesso
+     */
+    public void mensagemNomeEditadoSucesso() {
+        System.out.println(Constantes.NOME_EDITADO_SUCESSO);
+    }
+
+    /**
+     * exibe na tela a mensagem de funcionario não encontrado
+     */
+    public void mensagemFuncionarioNaoEncontrado() {
+        System.out.println(Constantes.MENSAGEM_FUNCIONARIO_NAO_ENCONTRADO);
+    }
+
+    /**
+     * Exibe a mensagem de erro de nome inserido invalido: deve conter no minimo
+     * 3 letras
+     */
+    public void mensagemNomeInvalidoTamanho() {
+        System.out.println();
+        System.out.println(Constantes.NOME_INVALIDO_TAMANHO);
+        System.out.println();
+    }
+
+    /**
+     * Exibe a mensagem de erro de data de nascimento invalida: não está no
+     * formato pedido
+     */
+    public void mensagemErroDataNascimento() {
+        System.out.println();
+        System.out.println(Constantes.DATA_NASCIMENTO_INVALIDA);
+        System.out.println();
+    }
+
+    /**
+     * Exibe a mensagem de erro de matricula ja cadastrada
+     */
+    public void mensagemErroMatriculaJaCadastrada() {
+        System.out.println();
+        System.out.println(Constantes.MATRICULA_JA_CADASTRADA);
+        System.out.println();
+    }
+
+    /**
+     * Exibe a mensagem de erro de opcao inexistente
+     */
+    public void opcaoInexistente() {
+        System.out.println();
+        System.out.println(Constantes.OPCAO_INEXISTENTE);
+        System.out.println();
+    }
+
+    /**
+     * exibe a mensagem de funcionario cadastrado com sucesso
+     */
+    public void mensagemFuncionarioCadastrado() {
+        System.out.println();
+        System.out.println(Constantes.FUNCIONARIO_CADASTRADO_SUCESSO);
+        System.out.println();
+    }
+
+    /**
+     * Exibe a mensagem de erro de cargo nao encontrado
+     */
+    public void mensagemCargoNaoEncontrado() {
+        System.out.println();
+        System.out.println(Constantes.CARGO_NAO_ENCONTRADO);
+        System.out.println();
+    }
+
+    /**
+     * Exibe a mensagem de funcionario deletado com sucesso
+     */
+    public void mensagemFuncionarioDeletadoSucesso() {
+        System.out.println();
+        System.out.println(Constantes.FUNCIONARIO_DELETADO_SUCESSO);
+        System.out.println();
+    }
+
+    /**
+     * Exibe a mensagem de erro de nome inserido invalido: deve conter somente
+     * letras
+     */
+    public void mensagemNomeInvalidoLetras() {
+        System.out.println();
+        System.out.println(Constantes.NOME_INVALIDO_LETRAS);
+        System.out.println();
+    }
+
+//
+// +-+-+-+-+-+-+-+-+-+- COMUM +-+-+-+-+-+-+-+-+-+-
+//
+    /**
+     * Pede que o usuario insira um numero correspondente a opcao que ele deseja
+     * selecionar
+     *
+     * @return opcao inserida pelo usuario
+     */
+    public int pedeOpcao() {
+        int opcao = 0;
+        boolean opcaoValida = true;
+        while (opcaoValida) {
+            try {
+                System.out.println();
+                opcao = teclado.nextInt();
+                teclado.nextLine();
+                System.out.println();
+                opcaoValida = false;
+
+            } catch (InputMismatchException e) {
+                System.out.println();
+                System.out.println(Constantes.OPCAO_INVALIDA);
+                teclado.next();
+            }
+        }
+        return opcao;
 
     }
 
@@ -328,120 +422,57 @@ public class TelaFuncionario {
     }
 
     /**
-     * Exibe a mensagem de erro de matricula ja cadastrada
+     * Exibe na tela a mensagem: "Lista de funcionarios cadastrados: "
      */
-    public void mensagemErroMatriculaJaCadastrada() {
+    public void mensagemListaFuncionarios() {
         System.out.println();
-        System.out.println(Constantes.MATRICULA_JA_CADASTRADA);
+        System.out.println(Constantes.LISTA_DE_FUNCIONARIOS);
         System.out.println();
     }
 
     /**
-     * Exibe a mensagem de erro de opcao inexistente
+     * Exibe na tela o titulo do menu para deletar funcionario
      */
-    public void opcaoInexistente() {
+    public void mensagemDeletaFuncionario() {
         System.out.println();
-        System.out.println(Constantes.OPCAO_INEXISTENTE);
+        System.out.println(Constantes.TITULO_DELETAR_FUNCIONARIO);
         System.out.println();
+
     }
 
     /**
-     * exibe a mensagem de funcionario cadastrado com sucesso
-     */
-    public void mensagemFuncionarioCadastrado() {
-        System.out.println();
-        System.out.println(Constantes.FUNCIONARIO_CADASTRADO_SUCESSO);
-        System.out.println();
-    }
-
-    /**
-     * Exibe a mensagem de erro de cargo nao encontrado
-     */
-    public void mensagemCargoNaoEncontrado() {
-        System.out.println();
-        System.out.println(Constantes.CARGO_NAO_ENCONTRADO);
-        System.out.println();
-    }
-
-    /**
-     * Exibe a mensagem de funcionario deletado com sucesso
-     */
-    public void mensagemFuncionarioDeletadoSucesso() {
-        System.out.println();
-        System.out.println(Constantes.FUNCIONARIO_DELETADO_SUCESSO);
-        System.out.println();
-    }
-
-    /**
-     * Exibe a mensagem de erro de nome inserido invalido: deve conter somente
-     * letras
-     */
-    public void mensagemNomeInvalidoLetras() {
-        System.out.println();
-        System.out.println(Constantes.NOME_INVALIDO_LETRAS);
-        System.out.println();
-    }
-
-    /**
-     * Exibe a mensagem de erro de nome inserido invalido: deve conter no minimo
-     * 3 letras
-     */
-    public void mensagemNomeInvalidoTamanho() {
-        System.out.println();
-        System.out.println(Constantes.NOME_INVALIDO_TAMANHO);
-        System.out.println();
-    }
-
-    /**
-     * Exibe a mensagem de erro de data de nascimento invalida: não está no
-     * formato pedido
-     */
-    public void mensagemErroDataNascimento() {
-        System.out.println();
-        System.out.println(Constantes.DATA_NASCIMENTO_INVALIDA);
-        System.out.println();
-    }
-
-    /**
-     * exibe a data inserida e apresenta um menu para que o usuario confirme a
-     * data cadastrada ou não, caso não confirme ele deve inserir uma nova data
+     * Exibe na tela o funcionário selecionado (matricula, nome, data de
+     * nascimento, telefone, salario, cargo)
      *
-     * @param dataInserida pelo usuario
+     * @param matricula do funcionario selecionado
+     * @param nome do funcionario selecionado
+     * @param dataNascimento do funcionario selecionado
+     * @param telefone do funcionario selecionado
+     * @param salario do funcionario selecionado
+     * @param cargo do funcionario selecionado
      */
-    public void exibeMenuConfirmacaoCadastroDataNascimento(String dataInserida) {
+    public void exibeFuncionario(int matricula, String nome, String dataNascimento, int telefone, int salario, Cargo cargo) {
         System.out.println();
-        System.out.println(Constantes.EXIBE_DATA_CADASTRADA + dataInserida);
-        System.out.println(Constantes.CONFIRMA_DATA_CADASTRADA);
-        System.out.println(Constantes.SIM);
-        System.out.println(Constantes.NAO);
+        System.out.println(Constantes.MATRICULA + matricula);
+        System.out.println(Constantes.NOME + nome);
+        System.out.println(Constantes.DATA_NASCIMENTO + dataNascimento);
+        System.out.println(Constantes.TELEFONE + telefone);
+        System.out.println(Constantes.SALARIO + salario);
+        System.out.println(Constantes.CARGO + cargo);
         System.out.println();
     }
 
-    public void mensagemCargoEditadoSucesso() {
-        System.out.println(Constantes.CARGO_EDITADO_SUCESSO);
+    /**
+     * Exibe na tela o nome e o codigo de um cargo
+     *
+     * @param codigo do cargo
+     * @param nome do cargo
+     */
+    public void listaCargo(int codigo, String nome) {
+        System.out.println();
+        System.out.println(Constantes.CODIGO_DO_CARGO + codigo);
+        System.out.println(Constantes.NOME_DO_CARGO + nome);
+        System.out.println();
     }
 
-    public void mensagemSalarioEditadoSucesso() {
-        System.out.println(Constantes.SALARIO_EDITADO_SUCESSO);
-    }
-
-    public void mensagemTelefoneEditadoSucesso() {
-        System.out.println(Constantes.TELEFONE_EDITADO_SUCESSO);
-    }
-
-    public void mensagemDataNascimentoEditadaSucesso() {
-        System.out.println(Constantes.DATA_NASCIMENTO_EDITADA_SUCESSO);
-    }
-
-    public void mensagemMatriculaEditadaSucesso() {
-        System.out.println(Constantes.MATRICULA_EDITADA_SUCESSO);
-    }
-
-    public void mensagemNomeEditadoSucesso() {
-        System.out.println(Constantes.NOME_EDITADO_SUCESSO);
-    }
-
-    public void mensagemFuncionarioNaoEncontrado() {
-        System.out.println(Constantes.MENSAGEM_FUNCIONARIO_NAO_ENCONTRADO);
-    }
 }

@@ -81,20 +81,19 @@ public class ControladorCargo implements IControladorCargo {
     System.out.println(cargo);
     return cargo;
     }
-//    
+
 //    public void tipoDoCargo() {
 //        int opcao = this.telaCargo.pedeOpcao();
-//        
+//
 //    }
 
-    
+
     /**
      * Controla o que o sistema faz com base na opcao que o usuario selecionar
-     * no menu para deletar o cargo. Caso o usuario aperte 1: deleta o
-     * cargo. Caso o usuario aperte 2: volta para o menu principal do
-     * cargo. Caso o usuario aperte outra tecla qualquer: apresenta a
-     * mensagem de opcao inexistente e exibe o menu de deletar um cargo
-     * novamente
+     * no menu para deletar o cargo. Caso o usuario aperte 1: deleta o cargo.
+     * Caso o usuario aperte 2: volta para o menu principal do cargo. Caso o
+     * usuario aperte outra tecla qualquer: apresenta a mensagem de opcao
+     * inexistente e exibe o menu de deletar um cargo novamente
      *
      * @param cargo a ser deletado
      */
@@ -114,7 +113,7 @@ public class ControladorCargo implements IControladorCargo {
                 break;
         }
     }
-    
+
     private void menuDeletarCargo() {
         this.telaCargo.mensagemDeletaCargo();
         Cargo cargo = pedeCargo();
@@ -122,12 +121,10 @@ public class ControladorCargo implements IControladorCargo {
         this.telaCargo.exibeCargo(cargo.getCodigo(), cargo.getNome(), cargo.ehGerencial(), cargo.temAcessoAoFinanceiro());
         this.telaCargo.exibeMenuConfirmacaoDeletarCargo();
         controlaMenuDeletarCargo(cargo);
-        
-        
     }
-    
+
     private void deletaCargo(Cargo cargo) {
-        if(cargo != null) {
+        if (cargo != null) {
             if (cargos.contains(cargo)) {
                 cargos.remove(cargo);
                 cargo = null;
@@ -135,16 +132,16 @@ public class ControladorCargo implements IControladorCargo {
             }
         }
     }
-    
+
     public int verificaCodigoInserido() {
         int codigo = this.telaCargo.pedeCodigo();
         for (Cargo cargoCadastrado : this.cargos) {
             if (cargoCadastrado.getCodigo() == codigo) {
                 this.telaCargo.mensagemErroCodigoJaCadastrada();
-				verificaCodigoInserido();
+                verificaCodigoInserido();
             }
         }
-        return codigo; 
+        return codigo;
     }
     
     public void editaCargo() {
@@ -161,8 +158,9 @@ public class ControladorCargo implements IControladorCargo {
     }
     
     public void controlaMenuEditaCargo(Cargo cargo) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
     }
+
     
     //não é mais necessario, cadastraCargo ja retorna cargo
     //@Override
@@ -176,9 +174,9 @@ public class ControladorCargo implements IControladorCargo {
         for (Cargo cargoCadastrado : cargos) {
             int codigo = cargoCadastrado.getCodigo();
             String nome = cargoCadastrado.getNome();
-            boolean ehGerente = cargoCadastrado.ehGerencial();
+            boolean ehGerencial = cargoCadastrado.ehGerencial();
             boolean temAcessoAoFinanceiro = cargoCadastrado.temAcessoAoFinanceiro();
-            this.telaCargo.exibeCargo(codigo, nome, ehGerente, temAcessoAoFinanceiro);
+            this.telaCargo.exibeCargo(codigo, nome, ehGerencial, temAcessoAoFinanceiro);
         }
         exibeMenuCargo();
     }
@@ -191,26 +189,33 @@ public class ControladorCargo implements IControladorCargo {
             return null;
 	}
 
-    private Cargo pedeCargo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+    public Cargo pedeCargo() {
+        int codigo = this.telaCargo.pedeCodigo();
+        Cargo cargo = encontraCargoPorCodigo(codigo);
+        if (cargo == null) {
+            this.telaCargo.mensagemCargoNaoEncontrado();
+            cargo = pedeCargo();
+        }
+        return cargo;
     }
 
-	public Cargo criaCargoGerencial(String nome, int codigo) {
-            Cargo cargo = new Cargo(codigo, nome, true, true);
-            this.cargos.add(cargo);
-            return cargo;
-	}
+    public Cargo criaCargoGerencial(String nome, int codigo) {
+        Cargo cargo = new Cargo(codigo, nome, true, true);
+        this.cargos.add(cargo);
+        return cargo;
+    }
 
-	private CargoHorarioComercial criaCargoComercial(String nome, int codigo) {
-            CargoHorarioComercial cargo = new CargoHorarioComercial(codigo, nome);
-            this.cargos.add(cargo);
-            return cargo;
-	}
+    private CargoHorarioComercial criaCargoComercial(String nome, int codigo) {
+        CargoHorarioComercial cargo = new CargoHorarioComercial(codigo, nome);
+        this.cargos.add(cargo);
+        return cargo;
+    }
 
-	private CargoHorarioEspecial criaCargoEspecial(String nome, int codigo) {
-            CargoHorarioEspecial cargo = new CargoHorarioEspecial(codigo, nome);
-            this.cargos.add(cargo);
-            return cargo;
-	}
+    private CargoHorarioEspecial criaCargoEspecial(String nome, int codigo) {
+        CargoHorarioEspecial cargo = new CargoHorarioEspecial(codigo, nome);
+        this.cargos.add(cargo);
+        return cargo;
+    }
 
 }

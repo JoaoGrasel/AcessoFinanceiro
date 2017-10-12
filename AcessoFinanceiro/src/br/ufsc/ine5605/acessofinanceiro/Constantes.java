@@ -20,7 +20,7 @@ class Constantes {
     public static final String OPCAO_INEXISTENTE = "-- Opção solicitada não existe, confira as opcoes do menu e tente novamente --";
     public static final String INSIRA_OPCAO = "Insira a opcao: ";
     public static final String MATRICULA_JA_CADASTRADA = "-- Matricula invalida: a matricula inserida ja foi cadastrada --";
-    public static final String CODIGO_JA_CADASTRADO = "-- Codigo invalido: o codigo inserido ja foi cadastrado --";
+    public static final String CODIGO_JA_CADASTRADO = "-- Codigo invalido: o código inserido ja foi cadastrado --";
     public static final String MATRICULA_INEXISTENTE = "-- Matricula inexistente: a matricula inserida nao pertence a nenhum funcionario --";
     public static final String TENTAR_NOVAMENTE = "1 - Tentar novamente";
     public static final String VOLTAR_MENU_PRINCIPAL_1 = "1 - Voltar ao menu principal";
@@ -36,6 +36,9 @@ class Constantes {
     public static final String NOVA_TENTATIVA_FILTRO_MATRICULA = "Tentar novamente filtro matricula";
     public static final String NOVA_TENTATIVA_FILTRO_MOTIVO = "Tentar novamente filtro motivo";
     public static final String MENSAGEM_FUNCIONARIO_NAO_ENCONTRADO = " Funcionário não encontrado. Insira uma matricula existente. ";
+    public static final String MENSAGEM_CARGO_NAO_ENCONTRADO = " Cargo não encontrado. Insira um código existente. ";
+    public static final String VOLTAR_2 = "2 - Voltar";
+    public static final String VOLTAR_5 = "5 - Voltar";
 
     // ACESSO AO FINANCEIRO
     public static final String ACESSO_FINANCEIRO = "+-+-+-+-+-+-+-+ Acesso ao financeiro +-+-+-+-+-+-+-+";

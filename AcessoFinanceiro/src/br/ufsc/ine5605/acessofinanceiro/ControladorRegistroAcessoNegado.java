@@ -65,7 +65,7 @@ public class ControladorRegistroAcessoNegado {
                 exibeRelatorioPorMotivo(Motivo.ACESSO_BLOQUEADO);
                 break;
 			case 5:
-				ControladorPrincipal.getInstance().exibeMenuPrincipal();
+				exibeRelatorio();
             default:
 				telaRegistroAcessoNegado.exibeOpcaoInexistente();
                 exibeFiltroPorMotivo();
@@ -100,13 +100,12 @@ public class ControladorRegistroAcessoNegado {
 	 */
 	public void exibeRelatorioPorMotivo(Motivo motivo) {
 		boolean encontrouRegistro = false;
-		int opcao = 0;
 		
 		ArrayList<RegistroAcessoNegado> registrosEncontrados = new ArrayList<>();
 		registrosEncontrados = encontraRegistrosPorMotivo(motivo);
 		if(!registrosEncontrados.isEmpty()) encontrouRegistro = true;
-		opcao = telaRegistroAcessoNegado.exibeRelatorioPorMotivo(registrosEncontrados, encontrouRegistro, motivo);
-		if(opcao == 1) ControladorPrincipal.getInstance().exibeMenuPrincipal();
+		telaRegistroAcessoNegado.exibeRelatorioPorMotivo(registrosEncontrados, encontrouRegistro, motivo);
+		exibeFiltroPorMotivo();
 	}
 	
 	/**
@@ -119,12 +118,8 @@ public class ControladorRegistroAcessoNegado {
 	 * estiver vazio e false se estiver
 	 */
 	public void exibeRelatorioPorMatricula(ArrayList<RegistroAcessoNegado> registrosEncontrados, int matricula, boolean encontrouRegistro) {
-		int opcao = 0;
-		opcao = telaRegistroAcessoNegado.exibeRelatorioPorMatricula(registrosEncontrados, matricula, encontrouRegistro);
-//		trataNovaTentativa(Constantes.NOVA_TENTATIVA_FILTRO_MATRICULA);
-		if(opcao == 1) {
-			ControladorPrincipal.getInstance().exibeMenuPrincipal();
-		}
+		telaRegistroAcessoNegado.exibeRelatorioPorMatricula(registrosEncontrados, matricula, encontrouRegistro);
+		exibeRelatorio();
 	}
 	
 	/**
@@ -196,10 +191,17 @@ public class ControladorRegistroAcessoNegado {
 	public void exibeMatriculaInexistente() {
 		int opcao = 0;
 		opcao = telaRegistroAcessoNegado.exibeMatriculaInexistente();
-		if(opcao == 1) {
-			exibeFiltroPorMatricula();
-		} else if(opcao == 2) {
-			ControladorPrincipal.getInstance().exibeMenuPrincipal();
+		switch(opcao) {
+			case 1:
+				exibeFiltroPorMatricula();
+				break;
+			case 2:
+				exibeRelatorio();
+				break;
+			default:
+				telaRegistroAcessoNegado.exibeOpcaoInexistente();
+				ControladorPrincipal.getInstance().exibeMenuPrincipal();
+				break;
 		}
 	}
 
