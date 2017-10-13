@@ -47,18 +47,19 @@ public class TelaCargo {
      */
     public int pedeOpcao() {
         int opcao = 0;
-        boolean opcaoInvalida = true;
-
-        while (opcaoInvalida) {
+        boolean opcaoValida = true;
+        while (opcaoValida) {
             try {
                 System.out.println();
                 opcao = teclado.nextInt();
-                opcaoInvalida = false;
+                teclado.nextLine();
                 System.out.println();
+                opcaoValida = false;
+
             } catch (InputMismatchException e) {
                 System.out.println();
                 System.out.println(Constantes.OPCAO_INVALIDA);
-                System.out.println();
+                teclado.next();
             }
         }
         return opcao;
@@ -72,29 +73,36 @@ public class TelaCargo {
     public String pedeNome() {
         System.out.println();
         System.out.println(Constantes.DIGITE_NOME_CARGO);
-        System.out.println();
         String nome = teclado.nextLine();
         System.out.println();
         return nome;
     }
 	
-	public int pedeTipoCargo() {
-		System.out.println();
+    public int pedeTipoCargo() {
+        System.out.println();
         System.out.println(Constantes.ESCOLHA_TIPO_CARGO);
         System.out.println();
-		System.out.println(Constantes.TIPO_CARGO_GERENCIAL);
-		System.out.println(Constantes.TIPO_CARGO_COMERCIAL);
-		System.out.println(Constantes.TIPO_CARGO_ESPECIAL);
-		System.out.println("");
-		return teclado.nextInt();
-	}
-
+        System.out.println(Constantes.TIPO_CARGO_GERENCIAL);
+        System.out.println(Constantes.TIPO_CARGO_COMERCIAL);
+        System.out.println(Constantes.TIPO_CARGO_ESPECIAL);
+        System.out.println();
+        return teclado.nextInt();
+    }
+    
+    /**
+     * Exibe na tela o titulo do cadastro de cargo: Novo Cargo
+     */
     public void mensagemNovoCargo() {
+        System.out.println();
         System.out.println(Constantes.MENSAGEM_NOVO_CARGO);
         System.out.println();
     }
-
+    
+    /**
+     * Exibe na tela o titulo da seção de edição de cargo: Editar Cargo
+     */
     public void mensagemEditaCargo() {
+        System.out.println();
         System.out.println(Constantes.TITULO_EDITAR_CARGO);
         System.out.println();
     }
@@ -105,8 +113,13 @@ public class TelaCargo {
         System.out.println();
     }
 
-    public int opcaoInexistente() {
-		return 0;
+    /**
+     * Exibe a mensagem de erro de opcao inexistente
+     */
+    public void opcaoInexistente() {
+        System.out.println();
+        System.out.println(Constantes.OPCAO_INEXISTENTE);
+        System.out.println();
     }
 
     public void exibeCargo(int codigo, String nome, boolean ehGerente, boolean temAcessoAoFinanceiro) {
@@ -131,13 +144,13 @@ public class TelaCargo {
                 System.out.println();
                 System.out.println(Constantes.DIGITE_CODIGO_CARGO);
                 codigo = teclado.nextInt();
+                teclado.nextLine();
                 System.out.println();
                 codigoInvalido = false;
             } catch (InputMismatchException e) {
                 System.out.println();
                 System.out.println(Constantes.CODIGO_INVALIDO);
-                System.out.println();
-                pedeCodigo();
+                teclado.nextLine();
             }
 
         }
@@ -150,24 +163,51 @@ public class TelaCargo {
         System.out.println();
     }
 
-    void mensagemDeletaCargo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void mensagemDeletaCargo() {
+        System.out.println();
+        System.out.println(Constantes.TITULO_DELETAR_CARGO);
+        System.out.println();
     }
 
-    void exibeMensagemCargoSelecionado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void exibeMensagemCargoSelecionado() {
+        System.out.println();
+        System.out.println(Constantes.CARGO_SELECIONADO);
+        System.out.println();
     }
 
-    void exibeMenuConfirmacaoDeletarCargo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void exibeMenuConfirmacaoDeletarCargo() {
+        System.out.println();
+        System.out.println(Constantes.CONFIRMACAO_EXCLUSAO_CARGO);
+        System.out.println(Constantes.SIM);
+        System.out.println(Constantes.NAO);
+        System.out.println();
     }
 
-    void mensagemCargoDeletadoSucesso() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void mensagemCargoDeletadoSucesso() {
+        System.out.println();
+        System.out.println(Constantes.CARGO_DELETADO_SUCESSO);
+        System.out.println();
     }
 
-	public void exibeOpcaoInexistente() {
-		System.out.println(Constantes.OPCAO_INEXISTENTE);
-	}
+    public void exibeOpcaoInexistente() {
+        System.out.println(Constantes.OPCAO_INEXISTENTE);
+    }
+
+    public void exibeMenuEditaCargo() {
+        System.out.println();
+        System.out.println(Constantes.O_QUE_DESEJA_FAZER);
+        System.out.println(Constantes.ALTERAR_NOME_CARGO);
+        System.out.println(Constantes.ALTERAR_CODIGO_CARGO);
+        System.out.println(Constantes.ALTERAR_DATA_NASCIMENTO);
+        System.out.println(Constantes.ALTERAR_TELEFONE);
+        System.out.println(Constantes.ALTERAR_SALARIO);
+        System.out.println(Constantes.ALTERAR_CARGO);
+        System.out.println(Constantes.OPCAO_VOLTAR);
+        System.out.println(); 
+    }
+
+    void mensagemCargoNaoEncontrado() {
+        System.out.println(Constantes.MENSAGEM_CARGO_NAO_ENCONTRADO);
+    }
 
 }

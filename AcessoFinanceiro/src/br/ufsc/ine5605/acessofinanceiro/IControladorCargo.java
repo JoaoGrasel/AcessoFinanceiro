@@ -10,9 +10,6 @@ package br.ufsc.ine5605.acessofinanceiro;
  * @author bruno
  */
 public interface IControladorCargo {
-    public Cargo cadastraCargoParaFuncionario();
-    //    return um_cargo;
-    //}
 
    
     //DEIXAR O CONTROLADOR CARGO COMO PUBLICO NO CONTROLADOR PRINCIPAL PRA PODER CHAMAR OS METODOS DELE NO CONTROLADOR FUNCIONARIO
@@ -23,6 +20,7 @@ public interface IControladorCargo {
      * @return cargo
      */
     public Cargo encontraCargoPorCodigo(int codigo);
+    
     /**
      *
      * Printa na tela todos os cargos criados com seu código, possibilidade de
@@ -31,4 +29,5 @@ public interface IControladorCargo {
      * @return
      */
     public void listaCargos();
+
 }

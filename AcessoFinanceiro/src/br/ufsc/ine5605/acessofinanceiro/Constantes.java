@@ -20,7 +20,7 @@ class Constantes {
     public static final String OPCAO_INEXISTENTE = "-- Opção solicitada não existe, confira as opcoes do menu e tente novamente --";
     public static final String INSIRA_OPCAO = "Insira a opcao: ";
     public static final String MATRICULA_JA_CADASTRADA = "-- Matricula invalida: a matricula inserida ja foi cadastrada --";
-    public static final String CODIGO_JA_CADASTRADO = "-- Codigo invalido: o codigo inserido ja foi cadastrado --";
+    public static final String CODIGO_JA_CADASTRADO = "-- Codigo invalido: o código inserido ja foi cadastrado --";
     public static final String MATRICULA_INEXISTENTE = "-- Matricula inexistente: a matricula inserida nao pertence a nenhum funcionario --";
     public static final String TENTAR_NOVAMENTE = "1 - Tentar novamente";
     public static final String VOLTAR_MENU_PRINCIPAL_1 = "1 - Voltar ao menu principal";
@@ -36,6 +36,9 @@ class Constantes {
     public static final String NOVA_TENTATIVA_FILTRO_MATRICULA = "Tentar novamente filtro matricula";
     public static final String NOVA_TENTATIVA_FILTRO_MOTIVO = "Tentar novamente filtro motivo";
     public static final String MENSAGEM_FUNCIONARIO_NAO_ENCONTRADO = " Funcionário não encontrado. Insira uma matricula existente. ";
+    public static final String MENSAGEM_CARGO_NAO_ENCONTRADO = " Cargo não encontrado. Insira um código existente. ";
+    public static final String VOLTAR_2 = "2 - Voltar";
+    public static final String VOLTAR_5 = "5 - Voltar";
 
     // ACESSO AO FINANCEIRO
     public static final String ACESSO_FINANCEIRO = "+-+-+-+-+-+-+-+ Acesso ao financeiro +-+-+-+-+-+-+-+";
@@ -143,8 +146,10 @@ class Constantes {
     public static final String TITULO_EDITAR_CARGO = "+-+-+-+-+-+-+-+ Editar Cargo +-+-+-+-+-+-+-+";
     public static final String CARGO_SELECIONADO = " Cargo selecionado: ";
     public static final String ALTERAR_NOME_CARGO = " 1. Alterar Nome do Cargo";
-    public static final String ALTERAR_CODIGO_CARGO = " 2. Alterar Código do Cargo ";
-    public static final String OPCAO_VOLTAR_CARGO = " 3. Voltar ";
+    public static final String ALTERAR_CODIGO_CARGO = " 2. Alterar Código do Cargo";
+    public static final String ALTERAR_EH_GERENCIAL = " 3. Alterar Função Gerencial do Cargo";
+    public static final String ALTERAR_TEM_ACESSO= " 4. Alterar Permissão de Acesso do Cargo";
+    public static final String OPCAO_VOLTAR_CARGO = " 5. Voltar ";
 
     //LISTAR CARGOS
     public static final String LISTA_DE_CARGOS = "+-+-+-+-+-+-+-+ Lista de Cargos +-+-+-+-+-+-+-+";
@@ -152,6 +157,13 @@ class Constantes {
     public static final String NOME_CARGO = "Nome: ";
     public static final String EH_GERENTE = " O cargo é gerencial: ";
     public static final String TEM_ACESSO_AO_FINANCEIRO = " Tem Acesso ao Financeiro: ";
+    
+    //DELETAR CARGO
+    public static final String TITULO_DELETAR_CARGO = "+-+-+-+-+-+-+-+ Deletar Cargo +-+-+-+-+-+-+-+";
+    public static final String CARGO_DELETADO_SUCESSO = "O cargo foi deletado com sucesso!";
+    public static final String CONFIRMACAO_EXCLUSAO_CARGO = " Tem certeza que deseja excluir o cargo? Caso selecione não você voltará ao menu de cargos. ";
+
+
 
     //DATA DO SISTEMA
     public static final String TITULO_MENU_DATA_HORA_SISTEMA = "+-+-+-+-+-+-+-+ Menu de data e hora do sistema +-+-+-+-+-+-+-+";
