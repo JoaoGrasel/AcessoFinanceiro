@@ -150,6 +150,10 @@ class Constantes {
     public static final String ALTERAR_EH_GERENCIAL = " 3. Alterar Função Gerencial do Cargo";
     public static final String ALTERAR_TEM_ACESSO= " 4. Alterar Permissão de Acesso do Cargo";
     public static final String OPCAO_VOLTAR_CARGO = " 5. Voltar ";
+    public static final String CODIGO_EDITADO_SUCESSO = " Matricula editada com sucesso! ";
+    public static final String EH_GERENCIAL_EDITADO_SUCESSO = " Função Gerencial editada com sucesso! ";
+    public static final String TORNAR_CARGO_GERENCIAL = " Deseja torná-lo um cargo gerencial? ";
+    
 
     //LISTAR CARGOS
     public static final String LISTA_DE_CARGOS = "+-+-+-+-+-+-+-+ Lista de Cargos +-+-+-+-+-+-+-+";
