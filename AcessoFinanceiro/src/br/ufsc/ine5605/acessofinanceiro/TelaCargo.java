@@ -122,11 +122,11 @@ public class TelaCargo {
         System.out.println();
     }
 
-    public void exibeCargo(int codigo, String nome, boolean ehGerente, boolean temAcessoAoFinanceiro) {
+    public void exibeCargo(int codigo, String nome, boolean ehGerencial, boolean temAcessoAoFinanceiro) {
         System.out.println();
         System.out.println(Constantes.CODIGO + codigo);
         System.out.println(Constantes.NOME + nome);
-        System.out.println(Constantes.EH_GERENTE + ehGerente);
+        System.out.println(Constantes.EH_GERENTE + ehGerencial);
         System.out.println(Constantes.TEM_ACESSO_AO_FINANCEIRO + temAcessoAoFinanceiro);
         System.out.println();
     }
@@ -198,16 +198,55 @@ public class TelaCargo {
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println(Constantes.ALTERAR_NOME_CARGO);
         System.out.println(Constantes.ALTERAR_CODIGO_CARGO);
-        System.out.println(Constantes.ALTERAR_DATA_NASCIMENTO);
-        System.out.println(Constantes.ALTERAR_TELEFONE);
-        System.out.println(Constantes.ALTERAR_SALARIO);
-        System.out.println(Constantes.ALTERAR_CARGO);
-        System.out.println(Constantes.OPCAO_VOLTAR);
+        System.out.println(Constantes.ALTERAR_EH_GERENCIAL);
+        System.out.println(Constantes.ALTERAR_TEM_ACESSO);
+        System.out.println(Constantes.OPCAO_VOLTAR_CARGO);
         System.out.println(); 
     }
 
     void mensagemCargoNaoEncontrado() {
         System.out.println(Constantes.MENSAGEM_CARGO_NAO_ENCONTRADO);
+    }
+
+    void mensagemNomeEditadoSucesso() {
+        System.out.println(Constantes.NOME_EDITADO_SUCESSO);
+    }
+
+    void mensagemCodigoEditadoSucesso() {
+        System.out.println(Constantes.CODIGO_EDITADO_SUCESSO);
+    }
+    
+    void mensagemGerencialEditadoSucesso() {
+        System.out.println(Constantes.EH_GERENCIAL_EDITADO_SUCESSO);
+    }
+    
+    boolean pedeSeEhGerencial() {
+        boolean ehGerencial = false;
+        boolean gerencialInvalido = true;
+        
+        while (gerencialInvalido) {
+            try {
+                System.out.println();
+                System.out.println(Constantes.TORNAR_CARGO_GERENCIAL);
+                System.out.println(Constantes.SIM);
+                System.out.println(Constantes.NAO);
+                ehGerencial = teclado.nextInt();
+                teclado.nextLine();
+                System.out.println();
+                gerencialInvalido = false;
+            } catch (InputMismatchException e) {
+                System.out.println();
+                System.out.println(Constantes.SALARIO_INVALIDO);
+                teclado.nextLine();
+            }
+        }
+        return ehGerencial;
+    }
+
+    
+
+    boolean pedeTemAcessoAoFinanceiro() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

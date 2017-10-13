@@ -28,8 +28,17 @@ public class Cargo {
     public boolean ehGerencial(){
         return this.ehGerencial;
     }
+    
+    public void setEhGerencial(boolean ehGerencial) {
+        this.ehGerencial = ehGerencial;
+    }
+    
     public boolean temAcessoAoFinanceiro() {
         return this.temAcessoAoFinanceiro;
+    }
+    
+    public void setTemAcessoAoFinanceiro(boolean temAcessoAoFinanceiro) {
+        this.temAcessoAoFinanceiro = temAcessoAoFinanceiro;
     }
     
     public int getCodigo() {

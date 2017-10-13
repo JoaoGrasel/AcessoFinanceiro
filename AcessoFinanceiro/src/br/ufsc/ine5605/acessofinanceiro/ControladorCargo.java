@@ -59,27 +59,27 @@ public class ControladorCargo implements IControladorCargo {
 
 
     public Cargo incluiCargo() {
-    this.telaCargo.mensagemNovoCargo();
-    String nome = this.telaCargo.pedeNome();
-    int codigo = verificaCodigoInserido();
-    int tipoCargo = this.telaCargo.pedeTipoCargo();
-            Cargo cargo = new Cargo(0, "", false, false);
-    switch(tipoCargo){
-        case 1:
-                cargo = criaCargoGerencial(nome, codigo);
-                break;
-        case 2:
-                cargo = criaCargoComercial(nome, codigo);
-                break;
-        case 3:
-                cargo = criaCargoEspecial(nome, codigo);
-                break;
-        default:
-                this.telaCargo.exibeOpcaoInexistente();
-                incluiCargo();
-    }
-    System.out.println(cargo);
-    return cargo;
+        this.telaCargo.mensagemNovoCargo();
+        String nome = this.telaCargo.pedeNome();
+        int codigo = verificaCodigoInserido();
+        int tipoCargo = this.telaCargo.pedeTipoCargo();
+        Cargo cargo = new Cargo(0, "", false, false);
+        switch(tipoCargo){
+            case 1:
+                    cargo = criaCargoGerencial(nome, codigo);
+                    break;
+            case 2:
+                    cargo = criaCargoComercial(nome, codigo);
+                    break;
+            case 3:
+                    cargo = criaCargoEspecial(nome, codigo);
+                    break;
+            default:
+                    this.telaCargo.exibeOpcaoInexistente();
+                    incluiCargo();
+        }
+        System.out.println(cargo);
+        return cargo;
     }
 
 //    public void tipoDoCargo() {
@@ -158,7 +158,41 @@ public class ControladorCargo implements IControladorCargo {
     }
     
     public void controlaMenuEditaCargo(Cargo cargo) {
+        int opcao = this.telaCargo.pedeOpcao();
         
+        switch (opcao) {
+            case 1:
+                String nome = this.telaCargo.pedeNome();
+                cargo.setNome(nome);
+                this.telaCargo.mensagemNomeEditadoSucesso();
+                menuEditaCargo(cargo);
+                break;
+            case 2:
+                int codigo = this.telaCargo.pedeCodigo();
+                cargo.setCodigo(codigo);
+                this.telaCargo.mensagemCodigoEditadoSucesso();
+                menuEditaCargo(cargo);
+                break;
+            case 3: 
+                boolean ehGerencial = this.telaCargo.pedeSeEhGerencial();
+                cargo.setEhGerencial(ehGerencial);
+                this.telaCargo.mensagemGerencialEditadoSucesso();
+                menuEditaCargo(cargo);
+                break;
+            case 4:
+                boolean temAcessoAoFinanceiro = this.telaCargo.pedeTemAcessoAoFinanceiro();
+                cargo.setTemAcessoAoFinanceiro(temAcessoAoFinanceiro);
+                this.telaCargo.mensagemGerencialEditadoSucesso();
+                menuEditaCargo(cargo);
+                break;
+            case 5:
+                exibeMenuCargo();
+                break;
+            default:
+                this.telaCargo.opcaoInexistente();
+                editaCargo();
+                break;
+        }
     }
 
     
