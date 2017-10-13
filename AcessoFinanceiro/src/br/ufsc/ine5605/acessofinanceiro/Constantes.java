@@ -29,7 +29,7 @@ class Constantes {
     public static final String VOLTAR_MENU_PRINCIPAL_4 = "4 - Voltar ao menu principal";
     public static final String VOLTAR_MENU_PRINCIPAL_5 = "5 - Voltar ao menu principal";
     public static final String NOME_INVALIDO_LETRAS = "-- Nome invalido, o nome deve conter somente letras --";
-    public static final String NOME_INVALIDO_TAMANHO = "-- Nome invalido, o nome deve conter no mínimo 3 letras --";
+    public static final String NOME_INVALIDO_TAMANHO = "-- Nome invalido, o nome deve conter no mínimo 3 caracteres --";
     public static final String DATA_NASCIMENTO_INVALIDA = "Data de nascimento inválida. A data deve ser inserida no formato dd/mm/yyyy";
     public static final String SIM = " 1. Sim ";
     public static final String NAO = " 2. Não";
