@@ -39,6 +39,7 @@ class Constantes {
     public static final String MENSAGEM_CARGO_NAO_ENCONTRADO = " Cargo não encontrado. Insira um código existente. ";
     public static final String VOLTAR_2 = "2 - Voltar";
     public static final String VOLTAR_5 = "5 - Voltar";
+    public static final String CARGO_INDEFINIDO = " Cargo Indefinido ";
 
     // ACESSO AO FINANCEIRO
     public static final String ACESSO_FINANCEIRO = "+-+-+-+-+-+-+-+ Acesso ao financeiro +-+-+-+-+-+-+-+";
@@ -152,7 +153,9 @@ class Constantes {
     public static final String OPCAO_VOLTAR_CARGO = " 5. Voltar ";
     public static final String CODIGO_EDITADO_SUCESSO = " Matricula editada com sucesso! ";
     public static final String EH_GERENCIAL_EDITADO_SUCESSO = " Função Gerencial editada com sucesso! ";
+    public static final String TEM_ACESSO_EDITADO_SUCESSO = " Permissão de acesso editada com sucesso! ";
     public static final String TORNAR_CARGO_GERENCIAL = " Deseja torná-lo um cargo gerencial? ";
+    public static final String ESCOLHA_TEM_ACESSO = " Deseja torná-lo um cargo com acesso ao financeiro? ";
     
 
     //LISTAR CARGOS
