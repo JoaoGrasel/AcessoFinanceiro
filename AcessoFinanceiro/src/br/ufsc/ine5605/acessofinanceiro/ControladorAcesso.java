@@ -29,6 +29,7 @@ public class ControladorAcesso {
         matricula = telaAcesso.exibeAcessoFinanceiro();
         if(validaAcessoFinanceiro(matricula)) {
 			telaAcesso.exibeAcessoPermitido();
+			ControladorPrincipal.getInstance().exibeMenuPrincipal();
 		} else {
 			trataNovaTentativa();
 		}
@@ -49,7 +50,7 @@ public class ControladorAcesso {
         try {
             funcionario = ControladorPrincipal.getInstance().encontraFuncionarioPelaMatricula(matricula);
 			registrosHorarioNaoPermitido = ControladorPrincipal.getInstance().encontraRegistrosHorarioNaoPermitidoPelaMatricula(matricula);
-			if(registrosHorarioNaoPermitido.size() > 3) {
+			if(registrosHorarioNaoPermitido.size() >= 3) {
 				ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.ACESSO_BLOQUEADO);
 				telaAcesso.exibeAcessoNegadoAcessoBloqueado();
 				return false;

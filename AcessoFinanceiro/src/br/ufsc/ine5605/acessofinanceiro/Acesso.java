@@ -74,28 +74,21 @@ public class Acesso {
 		SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
 			Date horaAtual = formatador.parse(formatador.format(acesso.getData()));
 			if(cargo instanceof CargoHorarioComercial) {
-				if((horaAtual.after(((CargoHorarioComercial) cargo).getHoraInicioManha()) &&
-						horaAtual.before(((CargoHorarioComercial) cargo).getHoraFimManha())) ||
-				   (horaAtual.after(((CargoHorarioComercial) cargo).getHoraInicioTarde()) &&
-						horaAtual.before(((CargoHorarioComercial) cargo).getHoraFimTarde()))) {
-					System.out.println("acessou - RETIRAR");
+				if(((!horaAtual.before(((CargoHorarioComercial) cargo).getHoraInicioManha())) &&
+						(!horaAtual.after(((CargoHorarioComercial) cargo).getHoraFimManha()))) ||
+				   ((!horaAtual.before(((CargoHorarioComercial) cargo).getHoraInicioTarde())) &&
+						(!horaAtual.after(((CargoHorarioComercial) cargo).getHoraFimTarde())))) {
 					return true;
 				}
 			}
 			if(cargo instanceof CargoHorarioEspecial) {
-//				if((horaAtual.after(((CargoHorarioEspecial) cargo).getHoraInicioManha()) &&
-//						horaAtual.before(((CargoHorarioEspecial) cargo).getHoraFimManha())) ||
-//				   (horaAtual.after(((CargoHorarioEspecial) cargo).getHoraInicioTarde()) &&
-//						horaAtual.before(((CargoHorarioEspecial) cargo).getHoraFimTarde()))) {
-				if(horaAtual.after(((CargoHorarioEspecial) cargo).getHoraInicio()) &&
-						horaAtual.before(((CargoHorarioEspecial) cargo).getHoraFim())) {
-					System.out.println("acessou especial - RETIRAR");
+				if((!horaAtual.before(((CargoHorarioEspecial) cargo).getHoraInicio())) &&
+						(!horaAtual.after(((CargoHorarioEspecial) cargo).getHoraFim()))) {
 					return true;
-				} else if(((CargoHorarioComercial) cargo).getHoraInicioTarde().after(((CargoHorarioComercial) cargo).getHoraFimTarde())) {
+				} else if(((CargoHorarioEspecial) cargo).getHoraInicio().after(((CargoHorarioEspecial) cargo).getHoraFim())) {
 					Date meiaNoite = formatador.parse("00:00");
-					System.out.println("inicio depois do fim");
-					if((horaAtual.after(((CargoHorarioEspecial) cargo).getHoraInicio()) && horaAtual.before(meiaNoite)) ||
-							horaAtual.after(meiaNoite) && horaAtual.before(((CargoHorarioEspecial) cargo).getHoraFim())) {
+					if(((!horaAtual.before(((CargoHorarioEspecial) cargo).getHoraInicio())) && (!horaAtual.after(meiaNoite))) ||
+							(!horaAtual.before(meiaNoite)) && (!horaAtual.after(((CargoHorarioEspecial) cargo).getHoraFim()))) {
 						return true;
 					}
 				}

@@ -31,15 +31,19 @@ public class TelaAcesso {
     public int exibeAcessoFinanceiro(){
         int matricula = 0;
         boolean matriculaInvalida = true;
+		System.out.println("");
         System.out.println(Constantes.ACESSO_FINANCEIRO);
+		System.out.println("");
         while(matriculaInvalida) {
             try {
                 System.out.println(Constantes.INSIRA_MATRICULA);
+				System.out.println("");
                 matricula = teclado.nextInt();
                 matriculaInvalida = false;
             } catch (InputMismatchException e) {
 				teclado.next();
                 System.out.println(Constantes.MATRICULA_INVALIDA);
+				System.out.println("");
             }
         }
         return matricula;
@@ -49,7 +53,9 @@ public class TelaAcesso {
 	 * Imprime na tela que o acesso ao financeiro foi permitido.
 	 */
 	public void exibeAcessoPermitido() {
+		System.out.println("");
 		System.out.println(Constantes.ACESSO_PERMITIDO);
+		System.out.println("");
 	}
 
 	/**
@@ -57,7 +63,9 @@ public class TelaAcesso {
 	 * nao existe.
 	 */
 	public void exibeAcessoNegadoMatriculaInexistente() {
+		System.out.println("");
 		System.out.println(Constantes.ACESSO_MATRICULA_INEXISTENTE);
+		System.out.println("");
 	}
 
 	/**
@@ -65,7 +73,9 @@ public class TelaAcesso {
 	 * tem acesso.
 	 */
 	public void exibeAcessoNegadoCargoSemAcesso() {
+		System.out.println("");
 		System.out.println(Constantes.ACESSO_NEGADO_CARGO_SEM_ACESSO);
+		System.out.println("");
 	}
 
 	/**
@@ -73,7 +83,9 @@ public class TelaAcesso {
 	 * nao eh permitido para o cargo do funcionario tentando o acesso.
 	 */
 	public void exibeAcessoNegadoHorarioNaoPermitido() {
+		System.out.println("");
 		System.out.println(Constantes.ACESSO_NEGADO_HORARIO_NAO_PERMITIDO);
+		System.out.println("");
 	}
 
 	/**
@@ -81,7 +93,9 @@ public class TelaAcesso {
 	 * funcionario foi bloqueado.
 	 */
 	public void exibeAcessoNegadoAcessoBloqueado() {
+		System.out.println("");
 		System.out.println(Constantes.ACESSO_NEGADO_ACESSO_BLOQUEADO);
+		System.out.println("");
 	}
     
 	/**
@@ -95,14 +109,18 @@ public class TelaAcesso {
 		boolean opcaoInvalida = true;
 		while(opcaoInvalida) {
 			try {
+				System.out.println("");
 				System.out.println(Constantes.INSIRA_OPCAO);
 				System.out.println(Constantes.TENTAR_NOVAMENTE);
 				System.out.println(Constantes.VOLTAR_MENU_PRINCIPAL_2);
+				System.out.println("");
 				opcao = teclado.nextInt();
 				opcaoInvalida = false;
 			} catch (InputMismatchException e) {
 				teclado.next();
+				System.out.println("");
 				System.out.println(Constantes.OPCAO_INVALIDA);
+				System.out.println("");
 			}
 		}
 		return opcao;
