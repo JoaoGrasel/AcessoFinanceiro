@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -49,7 +51,7 @@ public class Acesso {
 	 * @param data Data da tentativa de acesso
 	 * @return True se o acesso for validado
 	 */
-	public boolean validaAcesso(Acesso acesso, Funcionario funcionario, Date data) {
+	public boolean validaAcesso(Acesso acesso, Funcionario funcionario, Date data) throws ParseException {
 		if(funcionario.getCargo().ehGerencial()) return true;
 		if(funcionario.getCargo().temAcessoAoFinanceiro())
 			return validaHorarioAcesso(acesso, funcionario.getCargo(), data);
@@ -68,19 +70,36 @@ public class Acesso {
 	 * @return True se o horario da tentativa de acesso estiver dentro do
 	 * permitido pelo cargo
 	 */
-	public boolean validaHorarioAcesso(Acesso acesso, Cargo cargo, Date data) {
-		if(cargo instanceof CargoHorarioComercial || cargo instanceof CargoHorarioEspecial) {
-			if((acesso.getData().after(((CargoHorarioComercial) cargo).getHoraInicioManha())
-					&& acesso.getData().before(((CargoHorarioComercial) cargo).getHoraFimManha()))) {
-				System.out.println("acessou pela manha - RETIRAR");
-				return true;
+	public boolean validaHorarioAcesso(Acesso acesso, Cargo cargo, Date data) throws ParseException {
+		SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
+			Date horaAtual = formatador.parse(formatador.format(acesso.getData()));
+			if(cargo instanceof CargoHorarioComercial) {
+				if((horaAtual.after(((CargoHorarioComercial) cargo).getHoraInicioManha()) &&
+						horaAtual.before(((CargoHorarioComercial) cargo).getHoraFimManha())) ||
+				   (horaAtual.after(((CargoHorarioComercial) cargo).getHoraInicioTarde()) &&
+						horaAtual.before(((CargoHorarioComercial) cargo).getHoraFimTarde()))) {
+					System.out.println("acessou - RETIRAR");
+					return true;
+				}
 			}
-			if((acesso.getData().after(((CargoHorarioComercial) cargo).getHoraInicioTarde())
-					&& acesso.getData().before(((CargoHorarioComercial) cargo).getHoraFimTarde()))) {
-				System.out.println("acessou pela tarde - RETIRAR");
-				return true;
+			if(cargo instanceof CargoHorarioEspecial) {
+//				if((horaAtual.after(((CargoHorarioEspecial) cargo).getHoraInicioManha()) &&
+//						horaAtual.before(((CargoHorarioEspecial) cargo).getHoraFimManha())) ||
+//				   (horaAtual.after(((CargoHorarioEspecial) cargo).getHoraInicioTarde()) &&
+//						horaAtual.before(((CargoHorarioEspecial) cargo).getHoraFimTarde()))) {
+				if(horaAtual.after(((CargoHorarioEspecial) cargo).getHoraInicio()) &&
+						horaAtual.before(((CargoHorarioEspecial) cargo).getHoraFim())) {
+					System.out.println("acessou especial - RETIRAR");
+					return true;
+				} else if(((CargoHorarioComercial) cargo).getHoraInicioTarde().after(((CargoHorarioComercial) cargo).getHoraFimTarde())) {
+					Date meiaNoite = formatador.parse("00:00");
+					System.out.println("inicio depois do fim");
+					if((horaAtual.after(((CargoHorarioEspecial) cargo).getHoraInicio()) && horaAtual.before(meiaNoite)) ||
+							horaAtual.after(meiaNoite) && horaAtual.before(((CargoHorarioEspecial) cargo).getHoraFim())) {
+						return true;
+					}
+				}
 			}
-		}
 		controladorAcesso.novoRegistroAcessoNegado(data, acesso.getMatricula(), Motivo.HORARIO_NAO_PERMITIDO);
 		controladorAcesso.exibeAcessoNegadoHorarioNaoPermitido();
 		return false;

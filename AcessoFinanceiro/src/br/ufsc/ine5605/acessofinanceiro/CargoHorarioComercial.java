@@ -5,6 +5,8 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -13,45 +15,31 @@ import java.util.Date;
  */
 public class CargoHorarioComercial extends Cargo {
 	
-	private Date horaInicioManha;
-	private Date horaInicioTarde;
-	private Date horaFimManha;
-	private Date horaFimTarde;
+//	private Date horaInicioManha;
+//	private Date horaInicioTarde;
+//	private Date horaFimManha;
+//	private Date horaFimTarde;
+	private SimpleDateFormat formatador;
 	
     public CargoHorarioComercial(int codigo, String nome) {
         super(codigo, nome, false, true);
+		formatador = new SimpleDateFormat("HH:mm");
     }
 
-	public Date getHoraInicioManha() {
-		this.horaInicioManha = ControladorPrincipal.getInstance().getDataSistema();
-		this.horaInicioManha.setHours(8);
-		this.horaInicioManha.setMinutes(0);
-		this.horaInicioManha.setSeconds(0);
-		return this.horaInicioManha;
+	public Date getHoraInicioManha() throws ParseException {
+		return formatador.parse("08:00");
 	}
 
-	public Date getHoraInicioTarde() {
-		this.horaInicioTarde = ControladorPrincipal.getInstance().getDataSistema();
-		this.horaInicioTarde.setHours(14);
-		this.horaInicioTarde.setMinutes(0);
-		this.horaInicioTarde.setSeconds(0);
-		return horaInicioTarde;
+	public Date getHoraInicioTarde() throws ParseException {
+		return formatador.parse("14:00");
 	}
 
-	public Date getHoraFimManha() {
-		this.horaFimManha = ControladorPrincipal.getInstance().getDataSistema();
-		this.horaFimManha.setHours(12);
-		this.horaFimManha.setMinutes(0);
-		this.horaFimManha.setSeconds(0);
-		return horaFimManha;
+	public Date getHoraFimManha() throws ParseException {
+		return formatador.parse("12:00");
 	}
 
-	public Date getHoraFimTarde() {
-		this.horaFimTarde = ControladorPrincipal.getInstance().getDataSistema();
-		this.horaFimTarde.setHours(18);
-		this.horaFimTarde.setMinutes(0);
-		this.horaFimTarde.setSeconds(0);
-		return horaFimTarde;
+	public Date getHoraFimTarde() throws ParseException {
+		return formatador.parse("18:00");
 	}
 	
  }

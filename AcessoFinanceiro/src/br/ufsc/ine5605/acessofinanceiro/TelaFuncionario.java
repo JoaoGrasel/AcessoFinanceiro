@@ -458,7 +458,7 @@ public class TelaFuncionario {
         System.out.println(Constantes.DATA_NASCIMENTO + dataNascimento);
         System.out.println(Constantes.TELEFONE + telefone);
         System.out.println(Constantes.SALARIO + salario);
-        System.out.println(Constantes.CARGO + cargo);
+        System.out.println(Constantes.CARGO + cargo.getNome());
         System.out.println();
     }
 

@@ -187,9 +187,6 @@ class TelaRegistroAcessoNegado {
 				System.out.println(Constantes.RELATORIO_REGISTRO_MOTIVO + registro.getMotivo());
 				System.out.println("");
 			}
-			System.out.println("");
-			System.out.println(Constantes.VOLTAR_MENU_PRINCIPAL_1);
-			System.out.println("");
 		}
 	}
 
