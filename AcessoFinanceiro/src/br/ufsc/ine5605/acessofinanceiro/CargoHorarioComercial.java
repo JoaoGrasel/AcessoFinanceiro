@@ -5,8 +5,6 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -24,7 +22,7 @@ public class CargoHorarioComercial extends Cargo {
         super(codigo, nome, false, true);
     }
 
-	public Date getHoraInicioManha() throws ParseException {
+	public Date getHoraInicioManha() {
 		this.horaInicioManha = ControladorPrincipal.getInstance().getDataSistema();
 		this.horaInicioManha.setHours(8);
 		this.horaInicioManha.setMinutes(0);
@@ -32,7 +30,7 @@ public class CargoHorarioComercial extends Cargo {
 		return this.horaInicioManha;
 	}
 
-	public Date getHoraInicioTarde() throws ParseException {
+	public Date getHoraInicioTarde() {
 		this.horaInicioTarde = ControladorPrincipal.getInstance().getDataSistema();
 		this.horaInicioTarde.setHours(14);
 		this.horaInicioTarde.setMinutes(0);
@@ -40,7 +38,7 @@ public class CargoHorarioComercial extends Cargo {
 		return horaInicioTarde;
 	}
 
-	public Date getHoraFimManha() throws ParseException {
+	public Date getHoraFimManha() {
 		this.horaFimManha = ControladorPrincipal.getInstance().getDataSistema();
 		this.horaFimManha.setHours(12);
 		this.horaFimManha.setMinutes(0);
@@ -48,7 +46,7 @@ public class CargoHorarioComercial extends Cargo {
 		return horaFimManha;
 	}
 
-	public Date getHoraFimTarde() throws ParseException {
+	public Date getHoraFimTarde() {
 		this.horaFimTarde = ControladorPrincipal.getInstance().getDataSistema();
 		this.horaFimTarde.setHours(18);
 		this.horaFimTarde.setMinutes(0);

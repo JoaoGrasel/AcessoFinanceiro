@@ -5,7 +5,6 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
-import java.text.ParseException;
 import java.util.Date;
 
 /**
@@ -50,7 +49,7 @@ public class Acesso {
 	 * @param data Data da tentativa de acesso
 	 * @return True se o acesso for validado
 	 */
-	public boolean validaAcesso(Acesso acesso, Funcionario funcionario, Date data) throws ParseException {
+	public boolean validaAcesso(Acesso acesso, Funcionario funcionario, Date data) {
 		if(funcionario.getCargo().ehGerencial()) return true;
 		if(funcionario.getCargo().temAcessoAoFinanceiro())
 			return validaHorarioAcesso(acesso, funcionario.getCargo(), data);
@@ -69,7 +68,7 @@ public class Acesso {
 	 * @return True se o horario da tentativa de acesso estiver dentro do
 	 * permitido pelo cargo
 	 */
-	public boolean validaHorarioAcesso(Acesso acesso, Cargo cargo, Date data) throws ParseException {
+	public boolean validaHorarioAcesso(Acesso acesso, Cargo cargo, Date data) {
 		if(cargo instanceof CargoHorarioComercial || cargo instanceof CargoHorarioEspecial) {
 			if((acesso.getData().after(((CargoHorarioComercial) cargo).getHoraInicioManha())
 					&& acesso.getData().before(((CargoHorarioComercial) cargo).getHoraFimManha()))) {

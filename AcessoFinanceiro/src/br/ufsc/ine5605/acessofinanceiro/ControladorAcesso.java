@@ -7,7 +7,6 @@ package br.ufsc.ine5605.acessofinanceiro;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.InputMismatchException;
 
 /**
  *
