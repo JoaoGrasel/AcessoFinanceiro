@@ -180,11 +180,11 @@ public class ControladorFuncionario implements IControladorFuncionario {
         Cargo cargo = null;
         switch (opcao) {
             case 1:
-                //ControladorPrincipal.getInstance().controladorCargo.listaCargos();
-                //cargo = verificaCodigoComCargo();
+                ControladorPrincipal.getInstance().controladorCargo.listaCargos();
+                cargo = comparaCodigoComCargo();
                 break;
             case 2:
-                // cargo = ControladorPrincipal.getInstance().controladorCargo.cadastraCargoParaFuncionario();
+                cargo = ControladorPrincipal.getInstance().controladorCargo.incluiCargo();
                 break;
             default:
                 this.telaFuncionario.opcaoInexistente();
@@ -354,7 +354,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
     public void deixaFuncionariosSemCargo(Cargo cargoDeletado, Cargo semCargo) {
         if (cargoDeletado != null) {
             for (Funcionario funcionarioCadastrado : funcionarios) {
-                if (funcionarioCadastrado.getCargo().equals(cargoDeletado)) {
+                if (funcionarioCadastrado.getCargo().getCodigo() == cargoDeletado.getCodigo()) {
                     funcionarioCadastrado.setCargo(semCargo);
                 }
             }
@@ -486,12 +486,18 @@ public class ControladorFuncionario implements IControladorFuncionario {
      *
      * @return cargo com o codigo digitado pelo usuario;
      */
-    public Cargo verificaCodigoComCargo() {
-        int codigo = pedeCodigo();
-        Cargo cargo = ControladorPrincipal.getInstance().controladorCargo.encontraCargoPorCodigo(codigo);
-        if (cargo == null) {
-            this.telaFuncionario.mensagemCargoNaoEncontrado();
-            verificaCodigoComCargo();
+    public Cargo comparaCodigoComCargo() {
+        boolean cargoNaoEncontrado = true;
+        Cargo cargo = null;
+
+        while (cargoNaoEncontrado) {
+            int codigo = pedeCodigo();
+            cargo = ControladorPrincipal.getInstance().controladorCargo.encontraCargoPorCodigo(codigo);
+            if (cargo != null) {
+                cargoNaoEncontrado = false;
+            } else {
+                this.telaFuncionario.mensagemCargoNaoEncontrado();
+            }
         }
         return cargo;
     }
