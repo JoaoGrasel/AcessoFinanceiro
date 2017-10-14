@@ -141,7 +141,7 @@ class Constantes {
     public static final String TIPO_CARGO_GERENCIAL = "1 - Cargo Gerencial";
     public static final String TIPO_CARGO_COMERCIAL = "2 - Cargo Comercial";
     public static final String TIPO_CARGO_ESPECIAL = "3 - Cargo Especial";
-    public static final String DIGITE_CODIGO_CARGO = " Digite o código do cargo que deseja editar: ";
+    public static final String DIGITE_CODIGO_CARGO = " Digite o código do cargo: ";
     public static final String DIGITE_HORA_INICIO = "Digite a hora de inicio do expediente no formato HH:mm : ";
     public static final String DIGITE_HORA_FIM = "Digite a hora de fim do expediente no formato HH:mm : ";
     public static final String HORA_INSERIDA_FORMATO_INCORRETO = "O formato da hora inserida esta incorreto, por favor digite novamente. ";
@@ -153,13 +153,13 @@ class Constantes {
     public static final String ALTERAR_NOME_CARGO = " 1. Alterar Nome do Cargo";
     public static final String ALTERAR_CODIGO_CARGO = " 2. Alterar Código do Cargo";
     public static final String ALTERAR_EH_GERENCIAL = " 3. Alterar Função Gerencial do Cargo";
-    public static final String ALTERAR_TEM_ACESSO= " 4. Alterar Permissão de Acesso do Cargo";
+    public static final String ALTERAR_TEM_ACESSO = " 4. Alterar Permissão de Acesso do Cargo";
     public static final String OPCAO_VOLTAR_CARGO = " 5. Voltar ";
-    public static final String CODIGO_EDITADO_SUCESSO = " Matricula editada com sucesso! ";
+    public static final String CODIGO_EDITADO_SUCESSO = " Código editado com sucesso! ";
     public static final String EH_GERENCIAL_EDITADO_SUCESSO = " Função Gerencial editada com sucesso! ";
     public static final String TEM_ACESSO_EDITADO_SUCESSO = " Permissão de acesso editada com sucesso! ";
     public static final String TORNAR_CARGO_GERENCIAL = " Deseja torná-lo um cargo gerencial? ";
-    public static final String ESCOLHA_TEM_ACESSO = " Deseja torná-lo um cargo com acesso ao financeiro? ";
+    public static final String ESCOLHA_TEM_ACESSO = " Deseja torná-lo um cargo com permissão de acesso ao financeiro? ";
     
 
     //LISTAR CARGOS

@@ -306,6 +306,7 @@ public class ControladorCargo implements IControladorCargo {
         switch(opcaoEhGerencial) {
             case 1: 
                 cargo.setEhGerencial(true);
+                cargo.setTemAcessoAoFinanceiro(true);
                 break;
             case 2: 
                 cargo.setEhGerencial(false);
