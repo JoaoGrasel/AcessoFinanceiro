@@ -142,6 +142,9 @@ class Constantes {
     public static final String TIPO_CARGO_COMERCIAL = "2 - Cargo Comercial";
     public static final String TIPO_CARGO_ESPECIAL = "3 - Cargo Especial";
     public static final String DIGITE_CODIGO_CARGO = " Digite o código que deseja atribuir ao cargo: ";
+    public static final String DIGITE_HORA_INICIO = "Digite a hora de inicio do expediente no formato HH:mm : ";
+    public static final String DIGITE_HORA_FIM = "Digite a hora de fim do expediente no formato HH:mm : ";
+    public static final String HORA_INSERIDA_FORMATO_INCORRETO = "O formato da hora inserida esta incorreto, por favor digite novamente. ";
 
     //EDITAR CARGO   @BRUNO
     public static final String TITULO_EDITAR_CARGO = "+-+-+-+-+-+-+-+ Editar Cargo +-+-+-+-+-+-+-+";

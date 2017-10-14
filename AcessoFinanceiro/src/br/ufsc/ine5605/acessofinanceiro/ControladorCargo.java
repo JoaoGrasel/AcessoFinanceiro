@@ -5,7 +5,10 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -33,6 +36,7 @@ public class ControladorCargo implements IControladorCargo {
         switch (opcao) {
             case 1:
                 incluiCargo();
+				exibeMenuCargo();
                 break;
             case 2:
                 editaCargo();
@@ -79,7 +83,6 @@ public class ControladorCargo implements IControladorCargo {
                 incluiCargo();
                 break;
         }
-        System.out.println(cargo);
         return cargo;
     }
 
@@ -242,7 +245,12 @@ public class ControladorCargo implements IControladorCargo {
             boolean temAcessoAoFinanceiro = cargoCadastrado.temAcessoAoFinanceiro();
             this.telaCargo.exibeCargo(codigo, nome, ehGerencial, temAcessoAoFinanceiro);
         }
-        exibeMenuCargo();
+		//@thiago
+		//comentei essa funcao porque quando ta cadastando um usuario ele pede a lista de cargos pra escolher
+		//mas ai é listado e ja chama o menu novamente, impedindo de escolher o cargo...
+		//mas com essa funcao comentada quando so quiser ir no gerenciador de cargos e listar todos vai parar
+		//o sistema porque ele nao vai mais ter nada pra fazer
+		//exibeMenuCargo();
     }
 
     @Override
@@ -277,9 +285,18 @@ public class ControladorCargo implements IControladorCargo {
     }
 
     private CargoHorarioEspecial criaCargoEspecial(String nome, int codigo) {
-        CargoHorarioEspecial cargo = new CargoHorarioEspecial(codigo, nome);
-        this.cargos.add(cargo);
-        return cargo;
+		SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
+		try {
+			Date horaInicio = formatador.parse(this.telaCargo.pedeHoraInicio());
+			Date horaFim = formatador.parse(this.telaCargo.pedeHoraFim());
+			CargoHorarioEspecial cargo = new CargoHorarioEspecial(codigo, nome, horaInicio, horaFim);
+			this.cargos.add(cargo);
+			return cargo;
+		} catch (ParseException e) {
+			this.telaCargo.exibeHoraInseridaFormatoIncorreto();
+			criaCargoEspecial(nome, codigo);
+		}
+		return null;
     }
     
     public void atualizaEhGerencial(int opcaoEhGerencial, Cargo cargo) {

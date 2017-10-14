@@ -5,6 +5,7 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -60,7 +61,7 @@ public class ControladorAcesso {
 				ControladorPrincipal.getInstance().novoRegistroAcessoNegado(dataAtual, matricula, Motivo.MATRICULA_INEXISTENTE);
 				telaAcesso.exibeAcessoNegadoMatriculaInexistente();
 			}
-        }
+        } catch (ParseException e) {}
         return false;
     }
 

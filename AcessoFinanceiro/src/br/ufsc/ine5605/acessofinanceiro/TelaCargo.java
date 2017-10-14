@@ -287,5 +287,24 @@ public class TelaCargo {
         System.out.println();
     }
 
+	public String pedeHoraInicio() {
+		System.out.println();
+        System.out.println(Constantes.DIGITE_HORA_INICIO);
+        String horaInicio = teclado.nextLine();
+        System.out.println();
+        return horaInicio;
+	}
+	
+	public String pedeHoraFim() {
+		System.out.println();
+        System.out.println(Constantes.DIGITE_HORA_FIM);
+        String horaFim = teclado.nextLine();
+        System.out.println();
+        return horaFim;
+	}
 
+	public void exibeHoraInseridaFormatoIncorreto() {
+            System.out.println(Constantes.HORA_INSERIDA_FORMATO_INCORRETO);
+	}
+	
 }
