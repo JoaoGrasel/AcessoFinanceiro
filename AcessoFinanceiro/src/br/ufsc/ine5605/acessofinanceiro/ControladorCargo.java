@@ -36,13 +36,13 @@ public class ControladorCargo implements IControladorCargo {
         switch (opcao) {
             case 1:
                 incluiCargo();
-				exibeMenuCargo();
+                exibeMenuCargo();
                 break;
             case 2:
                 editaCargo();
                 break;
             case 3:
-                listaCargos();
+                pedeListaCargos();
                 break;
             case 4:
                 menuDeletarCargo();
@@ -71,12 +71,15 @@ public class ControladorCargo implements IControladorCargo {
         switch(tipoCargo){
             case 1:
                 cargo = criaCargoGerencial(nome, codigo);
+                this.telaCargo.mensagemCargoCadastrado();
                 break;
             case 2:
                 cargo = criaCargoComercial(nome, codigo);
+                this.telaCargo.mensagemCargoCadastrado();
                 break;
             case 3:
                 cargo = criaCargoEspecial(nome, codigo);
+                this.telaCargo.mensagemCargoCadastrado();
                 break;
             default:
                 this.telaCargo.exibeOpcaoInexistente();
@@ -234,7 +237,12 @@ public class ControladorCargo implements IControladorCargo {
     //public Cargo cadastraCargoParaFuncionario() {
     //    throw new UnsupportedOperationException("Not supported yet.");
     //}
-
+    
+    public void pedeListaCargos() {
+        listaCargos();
+        exibeMenuCargo();
+    }
+    
     @Override
     public void listaCargos() {
         this.telaCargo.mensagemListaCargos();
@@ -245,12 +253,7 @@ public class ControladorCargo implements IControladorCargo {
             boolean temAcessoAoFinanceiro = cargoCadastrado.temAcessoAoFinanceiro();
             this.telaCargo.exibeCargo(codigo, nome, ehGerencial, temAcessoAoFinanceiro);
         }
-		//@thiago
-		//comentei essa funcao porque quando ta cadastando um usuario ele pede a lista de cargos pra escolher
-		//mas ai é listado e ja chama o menu novamente, impedindo de escolher o cargo...
-		//mas com essa funcao comentada quando so quiser ir no gerenciador de cargos e listar todos vai parar
-		//o sistema porque ele nao vai mais ter nada pra fazer
-		//exibeMenuCargo();
+	
     }
 
     @Override
@@ -285,18 +288,18 @@ public class ControladorCargo implements IControladorCargo {
     }
 
     private CargoHorarioEspecial criaCargoEspecial(String nome, int codigo) {
-		SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
-		try {
-			Date horaInicio = formatador.parse(this.telaCargo.pedeHoraInicio());
-			Date horaFim = formatador.parse(this.telaCargo.pedeHoraFim());
-			CargoHorarioEspecial cargo = new CargoHorarioEspecial(codigo, nome, horaInicio, horaFim);
-			this.cargos.add(cargo);
-			return cargo;
-		} catch (ParseException e) {
-			this.telaCargo.exibeHoraInseridaFormatoIncorreto();
-			criaCargoEspecial(nome, codigo);
-		}
-		return null;
+        SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
+        try {
+            Date horaInicio = formatador.parse(this.telaCargo.pedeHoraInicio());
+            Date horaFim = formatador.parse(this.telaCargo.pedeHoraFim());
+            CargoHorarioEspecial cargo = new CargoHorarioEspecial(codigo, nome, horaInicio, horaFim);
+            this.cargos.add(cargo);
+            return cargo;
+        } catch (ParseException e) {
+            this.telaCargo.exibeHoraInseridaFormatoIncorreto();
+            criaCargoEspecial(nome, codigo);
+        }
+        return null;
     }
     
     public void atualizaEhGerencial(int opcaoEhGerencial, Cargo cargo) {

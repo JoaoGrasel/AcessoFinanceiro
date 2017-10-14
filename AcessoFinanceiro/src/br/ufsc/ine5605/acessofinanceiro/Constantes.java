@@ -136,15 +136,16 @@ class Constantes {
 
     //CADASTRA CARGO    @BRUNO
     public static final String MENSAGEM_NOVO_CARGO = "+-+-+-+-+-+-+-+ Novo Cargo +-+-+-+-+-+-+-+";
-    public static final String DIGITE_NOME_CARGO = " Digite o nome do cargo:";
+    public static final String DIGITE_NOME_CARGO = " Digite um nome para o cargo:";
     public static final String ESCOLHA_TIPO_CARGO = " Escolha o tipo do cargo:";
     public static final String TIPO_CARGO_GERENCIAL = "1 - Cargo Gerencial";
     public static final String TIPO_CARGO_COMERCIAL = "2 - Cargo Comercial";
     public static final String TIPO_CARGO_ESPECIAL = "3 - Cargo Especial";
-    public static final String DIGITE_CODIGO_CARGO = " Digite o código que deseja atribuir ao cargo: ";
+    public static final String DIGITE_CODIGO_CARGO = " Digite o código do cargo que deseja editar: ";
     public static final String DIGITE_HORA_INICIO = "Digite a hora de inicio do expediente no formato HH:mm : ";
     public static final String DIGITE_HORA_FIM = "Digite a hora de fim do expediente no formato HH:mm : ";
     public static final String HORA_INSERIDA_FORMATO_INCORRETO = "O formato da hora inserida esta incorreto, por favor digite novamente. ";
+    public static final String CARGO_CADASTRADO_SUCESSO = "Cargo cadastrado com sucesso!";
 
     //EDITAR CARGO   @BRUNO
     public static final String TITULO_EDITAR_CARGO = "+-+-+-+-+-+-+-+ Editar Cargo +-+-+-+-+-+-+-+";
@@ -164,8 +165,8 @@ class Constantes {
     //LISTAR CARGOS
     public static final String LISTA_DE_CARGOS = "+-+-+-+-+-+-+-+ Lista de Cargos +-+-+-+-+-+-+-+";
     public static final String CODIGO = " Codigo: ";
-    public static final String NOME_CARGO = "Nome: ";
-    public static final String EH_GERENTE = " O cargo é gerencial: ";
+    public static final String NOME_CARGO = " Nome: ";
+    public static final String EH_GERENTE = " Cargo Gerencial: ";
     public static final String TEM_ACESSO_AO_FINANCEIRO = " Tem Acesso ao Financeiro: ";
     
     //DELETAR CARGO

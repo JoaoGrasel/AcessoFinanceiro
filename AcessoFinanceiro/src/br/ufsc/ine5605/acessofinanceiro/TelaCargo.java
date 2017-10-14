@@ -168,6 +168,15 @@ public class TelaCargo {
         System.out.println(Constantes.TITULO_DELETAR_CARGO);
         System.out.println();
     }
+    
+    /**
+     * exibe a mensagem de cargo cadastrado com sucesso
+     */
+    public void mensagemCargoCadastrado() {
+        System.out.println();
+        System.out.println(Constantes.CARGO_CADASTRADO_SUCESSO);
+        System.out.println();
+    }
 
     public void exibeMensagemCargoSelecionado() {
         System.out.println();
