@@ -84,9 +84,14 @@ public class TelaFuncionario {
     public void exibeMenuEditaFuncionario() {
         System.out.println();
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
-        System.out.println(Constantes.ALTERAR_CODIGO_CARGO);
-        //CONTINUAR DAQUI
-        System.out.println();
+        System.out.println(Constantes.ALTERAR_NOME);
+        System.out.println(Constantes.ALTERAR_MATRICULA);
+        System.out.println(Constantes.ALTERAR_DATA_NASCIMENTO);
+        System.out.println(Constantes.ALTERAR_TELEFONE);
+        System.out.println(Constantes.ALTERAR_SALARIO);
+        System.out.println(Constantes.ALTERAR_CARGO);
+        System.out.println(Constantes.OPCAO_VOLTAR);
+
     }
 
     /**
