@@ -60,23 +60,24 @@ public class ControladorCargo implements IControladorCargo {
 
     public Cargo incluiCargo() {
         this.telaCargo.mensagemNovoCargo();
-        String nome = this.telaCargo.pedeNome();
+        String nome = pedeNome();
         int codigo = verificaCodigoInserido();
         int tipoCargo = this.telaCargo.pedeTipoCargo();
         Cargo cargo = new Cargo(0, "", false, false);
         switch(tipoCargo){
             case 1:
-                    cargo = criaCargoGerencial(nome, codigo);
-                    break;
+                cargo = criaCargoGerencial(nome, codigo);
+                break;
             case 2:
-                    cargo = criaCargoComercial(nome, codigo);
-                    break;
+                cargo = criaCargoComercial(nome, codigo);
+                break;
             case 3:
-                    cargo = criaCargoEspecial(nome, codigo);
-                    break;
+                cargo = criaCargoEspecial(nome, codigo);
+                break;
             default:
-                    this.telaCargo.exibeOpcaoInexistente();
-                    incluiCargo();
+                this.telaCargo.exibeOpcaoInexistente();
+                incluiCargo();
+                break;
         }
         System.out.println(cargo);
         return cargo;
@@ -141,6 +142,36 @@ public class ControladorCargo implements IControladorCargo {
             }
         }
         return codigo;
+    }
+    
+    /**
+     * Pede para o usuário inserir um nome para o cargo, chama o método
+     * para verificar se o nome é valido e, caso seja, retorna o nome.
+     *
+     * @return nome do cargo validado e inserido pelo usuário
+     */
+    public String pedeNome() {
+        String nome = this.telaCargo.pedeNome();
+        nome = verificaNome(nome);
+        return nome;
+    }
+    
+    public String verificaNome(String nome) {
+        if (nome.length() > 2) {
+            for (int i = 0; i < nome.length(); i++) {
+                char letraAnalisada = nome.charAt(i);
+                if (!Character.isLetter(letraAnalisada)) {
+                    if (!Character.isSpace(letraAnalisada)) {
+                        this.telaCargo.mensagemNomeInvalidoLetras();
+                        nome = pedeNome();
+                    }
+                }
+            }
+        } else {
+            this.telaCargo.mensagemNomeInvalidoTamanho();
+            nome = pedeNome();
+        }
+        return nome;
     }
     
     public void editaCargo() {

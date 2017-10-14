@@ -270,5 +270,22 @@ public class TelaCargo {
         return temAcessoAoFinanceiro;
     }
 
+    
+    /**
+     * Exibe a mensagem de erro de nome inserido invalido: deve conter somente
+     * letras
+     */
+    public void mensagemNomeInvalidoLetras() {
+        System.out.println();
+        System.out.println(Constantes.NOME_INVALIDO_LETRAS);
+        System.out.println();
+    }
+
+    public void mensagemNomeInvalidoTamanho() {
+        System.out.println();
+        System.out.println(Constantes.NOME_INVALIDO_TAMANHO);
+        System.out.println();
+    }
+
 
 }
