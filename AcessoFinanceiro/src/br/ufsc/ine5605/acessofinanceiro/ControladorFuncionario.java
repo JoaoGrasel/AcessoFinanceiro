@@ -486,13 +486,13 @@ public class ControladorFuncionario implements IControladorFuncionario {
      *
      * @return cargo com o codigo digitado pelo usuario;
      */
-    //public Cargo verificaCodigoComCargo() {
-    // int codigo = pedeCodigo();
-    //Cargo cargo = ControladorPrincipal.getInstance().controladorCargo.encontraCargoPorCodigo(codigo);
-    // if (cargo == null) {
-    //    this.telaFuncionario.mensagemCargoNaoEncontrado();
-    //    verificaCodigoComCargo();
-    // }
-    // return cargo;
-    //}
+    public Cargo verificaCodigoComCargo() {
+        int codigo = pedeCodigo();
+        Cargo cargo = ControladorPrincipal.getInstance().controladorCargo.encontraCargoPorCodigo(codigo);
+        if (cargo == null) {
+            this.telaFuncionario.mensagemCargoNaoEncontrado();
+            verificaCodigoComCargo();
+        }
+        return cargo;
+    }
 }

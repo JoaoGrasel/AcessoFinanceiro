@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class ControladorPrincipal {
 	
-	private static ControladorPrincipal controladorPrincipal;
+    private static ControladorPrincipal controladorPrincipal;
 	
     public TelaPrincipal telaPrincipal;
     public ControladorCargo controladorCargo;
@@ -106,6 +106,15 @@ public class ControladorPrincipal {
 
     public boolean matriculaExiste(int matricula) {
     	return controladorFuncionario.matriculaExiste(matricula);
+    }
+
+    public void inicia() {
+        controladorCargo.criaCargoPadrao();
+        exibeMenuPrincipal();
+    }
+
+    public void deletaCargosFuncionarios(Cargo cargoDeletado, Cargo cargoIndefinido) {
+        controladorFuncionario.deixaFuncionariosSemCargo(cargoDeletado, cargoIndefinido);
     }
     
 }

@@ -16,15 +16,14 @@ public class Cargo {
     private String nome;
     private boolean ehGerencial;
     private boolean temAcessoAoFinanceiro;
-    private ArrayList<Funcionario> funcionarios;
 
     public Cargo(int codigo, String nome, boolean ehGerencial, boolean temAcessoAoFinanceiro) {
         this.codigo = codigo;
         this.nome = nome;
         this.ehGerencial = ehGerencial;
         this.temAcessoAoFinanceiro = temAcessoAoFinanceiro;
-        this.funcionarios = new ArrayList<>();
     }
+    
     public boolean ehGerencial(){
         return this.ehGerencial;
     }
@@ -57,12 +56,4 @@ public class Cargo {
         this.nome = nome;
     }
 
-    public ArrayList<Funcionario> getFuncionarios() {
-        return funcionarios;
-    }
-
-    public void setFuncionarios(ArrayList<Funcionario> funcionarios) {
-        this.funcionarios = funcionarios;
-    }
-    
 }

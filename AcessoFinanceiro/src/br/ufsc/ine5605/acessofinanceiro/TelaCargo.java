@@ -204,24 +204,28 @@ public class TelaCargo {
         System.out.println(); 
     }
 
-    void mensagemCargoNaoEncontrado() {
+    public void mensagemCargoNaoEncontrado() {
         System.out.println(Constantes.MENSAGEM_CARGO_NAO_ENCONTRADO);
     }
 
-    void mensagemNomeEditadoSucesso() {
+    public void mensagemNomeEditadoSucesso() {
         System.out.println(Constantes.NOME_EDITADO_SUCESSO);
     }
 
-    void mensagemCodigoEditadoSucesso() {
+    public void mensagemCodigoEditadoSucesso() {
         System.out.println(Constantes.CODIGO_EDITADO_SUCESSO);
     }
     
-    void mensagemGerencialEditadoSucesso() {
+    public void mensagemGerencialEditadoSucesso() {
         System.out.println(Constantes.EH_GERENCIAL_EDITADO_SUCESSO);
     }
     
-    boolean pedeSeEhGerencial() {
-        boolean ehGerencial = false;
+    public void mensagemAcessoEditadoSucesso() {
+        System.out.println(Constantes.TEM_ACESSO_EDITADO_SUCESSO);
+    }
+    
+    public int pedeSeEhGerencial() {
+        int ehGerencial = 0;
         boolean gerencialInvalido = true;
         
         while (gerencialInvalido) {
@@ -236,17 +240,35 @@ public class TelaCargo {
                 gerencialInvalido = false;
             } catch (InputMismatchException e) {
                 System.out.println();
-                System.out.println(Constantes.SALARIO_INVALIDO);
+                System.out.println(Constantes.OPCAO_INVALIDA);
                 teclado.nextLine();
             }
         }
         return ehGerencial;
     }
 
-    
-
-    boolean pedeTemAcessoAoFinanceiro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int pedeTemAcessoAoFinanceiro() {
+        int temAcessoAoFinanceiro = 0;
+        boolean temAcessoInvalido = true;
+        
+        while (temAcessoInvalido) {
+            try {
+                System.out.println();
+                System.out.println(Constantes.ESCOLHA_TEM_ACESSO);
+                System.out.println(Constantes.SIM);
+                System.out.println(Constantes.NAO);
+                temAcessoAoFinanceiro = teclado.nextInt();
+                teclado.nextLine();
+                System.out.println();
+                temAcessoInvalido = false;
+            } catch (InputMismatchException e) {
+                System.out.println();
+                System.out.println(Constantes.OPCAO_INVALIDA);
+                teclado.nextLine();
+            }
+        }
+        return temAcessoAoFinanceiro;
     }
+
 
 }

@@ -124,12 +124,11 @@ public class ControladorCargo implements IControladorCargo {
     }
 
     private void deletaCargo(Cargo cargo) {
+        Cargo cargoIndefinido = encontraCargoIndefinido();
         if (cargo != null) {
-            if (cargos.contains(cargo)) {
-                cargos.remove(cargo);
-                cargo = null;
-                this.telaCargo.mensagemCargoDeletadoSucesso();
-            }
+            ControladorPrincipal.getInstance().deletaCargosFuncionarios(cargo, cargoIndefinido);
+            cargos.remove(cargo);
+            this.telaCargo.mensagemCargoDeletadoSucesso();                
         }
     }
 
@@ -174,15 +173,15 @@ public class ControladorCargo implements IControladorCargo {
                 menuEditaCargo(cargo);
                 break;
             case 3: 
-                boolean ehGerencial = this.telaCargo.pedeSeEhGerencial();
-                cargo.setEhGerencial(ehGerencial);
+                int opcaoEhGerencial = this.telaCargo.pedeSeEhGerencial();
+                atualizaEhGerencial(opcaoEhGerencial, cargo);
                 this.telaCargo.mensagemGerencialEditadoSucesso();
                 menuEditaCargo(cargo);
                 break;
             case 4:
-                boolean temAcessoAoFinanceiro = this.telaCargo.pedeTemAcessoAoFinanceiro();
-                cargo.setTemAcessoAoFinanceiro(temAcessoAoFinanceiro);
-                this.telaCargo.mensagemGerencialEditadoSucesso();
+                int opcaoTemAcessoAoFinanceiro = this.telaCargo.pedeTemAcessoAoFinanceiro();
+                atualizaTemAcessoAoFinanceiro(opcaoTemAcessoAoFinanceiro, cargo);
+                this.telaCargo.mensagemAcessoEditadoSucesso();
                 menuEditaCargo(cargo);
                 break;
             case 5:
@@ -215,13 +214,13 @@ public class ControladorCargo implements IControladorCargo {
         exibeMenuCargo();
     }
 
-	@Override
-	public Cargo encontraCargoPorCodigo(int codigo) {
-            for(Cargo cargoLista : this.cargos) {
-                if(cargoLista.getCodigo() == codigo) return cargoLista;
-            }
-            return null;
-	}
+    @Override
+    public Cargo encontraCargoPorCodigo(int codigo) {
+        for(Cargo cargoLista : this.cargos) {
+            if(cargoLista.getCodigo() == codigo) return cargoLista;
+        }
+        return null;
+    }
 
 
     public Cargo pedeCargo() {
@@ -250,6 +249,45 @@ public class ControladorCargo implements IControladorCargo {
         CargoHorarioEspecial cargo = new CargoHorarioEspecial(codigo, nome);
         this.cargos.add(cargo);
         return cargo;
+    }
+    
+    public void atualizaEhGerencial(int opcaoEhGerencial, Cargo cargo) {
+        switch(opcaoEhGerencial) {
+            case 1: 
+                cargo.setEhGerencial(true);
+                break;
+            case 2: 
+                cargo.setEhGerencial(false);
+                break;
+            default:
+                this.telaCargo.opcaoInexistente();
+                menuEditaCargo(cargo);
+                break;
+        }
+    }
+    
+    public void atualizaTemAcessoAoFinanceiro(int opcaoTemAcessoAoFinanceiro, Cargo cargo) {
+        switch(opcaoTemAcessoAoFinanceiro) {
+            case 1: 
+                cargo.setTemAcessoAoFinanceiro(true);
+                break;
+            case 2: 
+                cargo.setTemAcessoAoFinanceiro(false);
+                break;
+            default:
+                this.telaCargo.opcaoInexistente();
+                menuEditaCargo(cargo);
+                break;
+        }
+    }
+
+    public void criaCargoPadrao() {
+        Cargo cargo = new Cargo(0, Constantes.CARGO_INDEFINIDO, false, false);
+        this.cargos.add(cargo);
+    }
+
+    public Cargo encontraCargoIndefinido() {
+        return encontraCargoPorCodigo(0);
     }
 
 }

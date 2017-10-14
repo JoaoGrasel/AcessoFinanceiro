@@ -19,8 +19,8 @@ public class AcessoFinanceiro {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-		ControladorPrincipal.getInstance().exibeMenuPrincipal();
+                
+        ControladorPrincipal.getInstance().inicia();
 
     }
 
