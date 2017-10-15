@@ -46,6 +46,8 @@ class Constantes {
     public static final String CARGO_NAO_ENCONTRADO = "------------ O sistema não encontrou nenhum cargo com este codigo. Tente novamente. ------------";
     public static final String FUNCIONARIO_DELETADO_SUCESSO = "FUNCIONÁRIO DELETADO COM SUCESSO!";
     public static final String FUNCIONARIO_CADASTRADO_SUCESSO = "FUNCIONÁRIO CADASTRADO COM SUCESSO!";
+    public static final String FORMATADOR_HORA = "HH:mm";
+    public static final String FORMATADOR_MEIA_NOITE = "00:00";
 
     // ACESSO AO FINANCEIRO
     public static final String ACESSO_FINANCEIRO = "+-+-+-+-+-+-+-+ Acesso ao financeiro +-+-+-+-+-+-+-+";
@@ -71,7 +73,7 @@ class Constantes {
     public static final String RELATORIO_ACESSO_MOTIVO_ACESSO_BLOQUEADO = "Relatórios de acesso negado filtrados por motivo de acesso bloqueado:";
     public static final String RELATORIO_ACESSO_MOTIVO_CARGO_SEM_ACESSO = "Relatórios de acesso negado filtrados por motivo de cargo sem acesso:";
     public static final String RELATORIO_ACESSO_MOTIVO_HORARIO_NAO_PERMITIDO = "Relatórios de acesso negado filtrados por motivo de horário não permitido:";
-    public static final String RELATORIO_REGISTRO_CABECALHO = " ==== Registro ====  ";
+    public static final String RELATORIO_REGISTRO_CABECALHO = " ==== Registro ";
     public static final String RELATORIO_REGISTRO_DATA = " Data: ";
     public static final String RELATORIO_REGISTRO_MOTIVO = " Motivo: ";
     public static final String RELATORIO_REGISTRO_MATRICULA = " Matrícula: ";

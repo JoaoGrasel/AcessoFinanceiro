@@ -71,9 +71,9 @@ public class Acesso {
 	 * permitido pelo cargo
 	 */
 	public boolean validaHorarioAcesso(Acesso acesso, Cargo cargo, Date data) throws ParseException {
-		SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
+		SimpleDateFormat formatador = new SimpleDateFormat(Constantes.FORMATADOR_HORA);
 		Date horaAtual = formatador.parse(formatador.format(acesso.getData()));
-		Date meiaNoite = formatador.parse("00:00");
+		Date meiaNoite = formatador.parse(Constantes.FORMATADOR_MEIA_NOITE);
 		if(cargo instanceof CargoHorarioEspecial) {
 			if(((CargoHorarioEspecial) cargo).getHoraInicioTarde().after(((CargoHorarioEspecial) cargo).getHoraFimTarde()) ||
 			   ((CargoHorarioEspecial) cargo).getHoraInicioEspecial().after(((CargoHorarioEspecial) cargo).getHoraFimEspecial())) {
