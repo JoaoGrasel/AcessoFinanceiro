@@ -89,11 +89,6 @@ public class ControladorCargo implements IControladorCargo {
         return cargo;
     }
 
-//    public void tipoDoCargo() {
-//        int opcao = this.telaCargo.pedeOpcao();
-//
-//    }
-
 
     /**
      * Controla o que o sistema faz com base na opcao que o usuario selecionar
@@ -104,7 +99,7 @@ public class ControladorCargo implements IControladorCargo {
      *
      * @param cargo a ser deletado
      */
-    private void controlaMenuDeletarCargo(Cargo cargo) {
+    public void controlaMenuDeletarCargo(Cargo cargo) {
         int opcao = this.telaCargo.pedeOpcao();
         switch (opcao) {
             case 1:
@@ -121,7 +116,7 @@ public class ControladorCargo implements IControladorCargo {
         }
     }
 
-    private void menuDeletarCargo() {
+    public void menuDeletarCargo() {
         this.telaCargo.mensagemDeletaCargo();
         Cargo cargo = pedeCargo();
         this.telaCargo.exibeMensagemCargoSelecionado();
@@ -130,7 +125,7 @@ public class ControladorCargo implements IControladorCargo {
         controlaMenuDeletarCargo(cargo);
     }
 
-    private void deletaCargo(Cargo cargo) {
+    public void deletaCargo(Cargo cargo) {
         Cargo cargoIndefinido = encontraCargoIndefinido();
         if (cargo != null) {
             ControladorPrincipal.getInstance().deletaCargosFuncionarios(cargo, cargoIndefinido);
@@ -230,13 +225,6 @@ public class ControladorCargo implements IControladorCargo {
                 break;
         }
     }
-
-    
-    //não é mais necessario, cadastraCargo ja retorna cargo
-    //@Override
-    //public Cargo cadastraCargoParaFuncionario() {
-    //    throw new UnsupportedOperationException("Not supported yet.");
-    //}
     
     public void pedeListaCargos() {
         listaCargos();
@@ -281,13 +269,13 @@ public class ControladorCargo implements IControladorCargo {
         return cargo;
     }
 
-    private CargoHorarioComercial criaCargoComercial(String nome, int codigo) {
+    public CargoHorarioComercial criaCargoComercial(String nome, int codigo) {
         CargoHorarioComercial cargo = new CargoHorarioComercial(codigo, nome);
         this.cargos.add(cargo);
         return cargo;
     }
-
-    private CargoHorarioEspecial criaCargoEspecial(String nome, int codigo) {
+        
+    public CargoHorarioEspecial criaCargoEspecial(String nome, int codigo) {
         SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
         try {
             Date horaInicio = formatador.parse(this.telaCargo.pedeHoraInicio());

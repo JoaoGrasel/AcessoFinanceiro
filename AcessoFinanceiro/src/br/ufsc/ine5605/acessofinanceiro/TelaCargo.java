@@ -295,10 +295,10 @@ public class TelaCargo {
         System.out.println(Constantes.NOME_INVALIDO_TAMANHO);
         System.out.println();
     }
-
+    
     public String pedeHoraInicio() {
-        System.out.println();
         System.out.println(Constantes.DIGITE_HORA_INICIO);
+        teclado.nextLine();
         String horaInicio = teclado.nextLine();
         System.out.println();
         return horaInicio;
