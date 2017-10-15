@@ -359,13 +359,13 @@ public class TelaCargo {
 		System.out.println("");
 	}
 
-	public String pedeHora(String constante) {
-		System.out.println();
-        System.out.println(constante);
-        String hora = teclado.nextLine();
-        System.out.println();
-        return hora;
-	}
+//	public String pedeHora(String constante) {
+//		System.out.println();
+//        System.out.println(constante);
+//        String hora = teclado.nextLine();
+//        System.out.println();
+//        return hora;
+//	}
 
 	public void mensagemHorariosEditadosSucesso() {
 		System.out.println("");

@@ -72,55 +72,42 @@ public class Acesso {
 	 */
 	public boolean validaHorarioAcesso(Acesso acesso, Cargo cargo, Date data) throws ParseException {
 		SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
-			Date horaAtual = formatador.parse(formatador.format(acesso.getData()));
-			
-			if(!cargo.getHoraInicioTarde().after(cargo.getHoraFimTarde())) {
-				if(cargo instanceof CargoHorarioEspecial) {
-					if(((!horaAtual.before(((CargoHorarioEspecial) cargo).getHoraInicioManha())) &&
-						(!horaAtual.after(((CargoHorarioEspecial) cargo).getHoraFimManha()))) ||
-					  ((!horaAtual.before(((CargoHorarioEspecial) cargo).getHoraInicioTarde())) &&
-						(!horaAtual.after(((CargoHorarioEspecial) cargo).getHoraFimTarde()))) ||
-					  ((!horaAtual.before(((CargoHorarioEspecial) cargo).getHoraInicioEspecial())) &&
-						(!horaAtual.after(((CargoHorarioEspecial) cargo).getHoraFimEspecial())))) {
-						return true;
-					}
-				} else {
-					if(((!horaAtual.before(cargo.getHoraInicioManha())) &&
-							(!horaAtual.after(cargo.getHoraFimManha()))) ||
-					   ((!horaAtual.before(cargo.getHoraInicioTarde())) &&
-							(!horaAtual.after(cargo.getHoraFimTarde())))) {
-						return true;
-					}					
+		Date horaAtual = formatador.parse(formatador.format(acesso.getData()));
+		Date meiaNoite = formatador.parse("00:00");
+		if(cargo instanceof CargoHorarioEspecial) {
+			if(((CargoHorarioEspecial) cargo).getHoraInicioTarde().after(((CargoHorarioEspecial) cargo).getHoraFimTarde()) ||
+			   ((CargoHorarioEspecial) cargo).getHoraInicioEspecial().after(((CargoHorarioEspecial) cargo).getHoraFimEspecial())) {
+				if(((!horaAtual.before(((CargoHorarioEspecial) cargo).getHoraInicioTarde())) && (!horaAtual.after(meiaNoite))) ||
+				   ((!horaAtual.before(meiaNoite)) && (!horaAtual.after(((CargoHorarioEspecial) cargo).getHoraFimTarde()))) ||
+				   ((!horaAtual.before(((CargoHorarioEspecial) cargo).getHoraInicioEspecial())) && (!horaAtual.after(meiaNoite))) ||
+				   ((!horaAtual.before(meiaNoite)) && (!horaAtual.after(((CargoHorarioEspecial) cargo).getHoraFimEspecial())))) {
+					return true;
 				}
 			} else {
-				Date meiaNoite = formatador.parse("00:00");
-				if(((!horaAtual.before(cargo.getHoraInicioTarde())) && (!horaAtual.after(meiaNoite))) ||
-						(!horaAtual.before(meiaNoite)) && (!horaAtual.after(cargo.getHoraFimTarde()))) {
+				if(((!horaAtual.before(((CargoHorarioEspecial) cargo).getHoraInicioManha())) &&
+					(!horaAtual.after(((CargoHorarioEspecial) cargo).getHoraFimManha()))) ||
+				  ((!horaAtual.before(((CargoHorarioEspecial) cargo).getHoraInicioTarde())) &&
+					(!horaAtual.after(((CargoHorarioEspecial) cargo).getHoraFimTarde()))) ||
+				  ((!horaAtual.before(((CargoHorarioEspecial) cargo).getHoraInicioEspecial())) &&
+					(!horaAtual.after(((CargoHorarioEspecial) cargo).getHoraFimEspecial())))) {
 					return true;
 				}
 			}
-			
-//			if(cargo instanceof CargoHorarioComercial) {
-//				if(((!horaAtual.before(((CargoHorarioComercial) cargo).getHoraInicioManha())) &&
-//						(!horaAtual.after(((CargoHorarioComercial) cargo).getHoraFimManha()))) ||
-//				   ((!horaAtual.before(((CargoHorarioComercial) cargo).getHoraInicioTarde())) &&
-//						(!horaAtual.after(((CargoHorarioComercial) cargo).getHoraFimTarde())))) {
-//					return true;
-//				}
-//			}
-//			if(cargo instanceof CargoHorarioEspecial) {
-//				if((!horaAtual.before(((CargoHorarioEspecial) cargo).getHoraInicio())) &&
-//						(!horaAtual.after(((CargoHorarioEspecial) cargo).getHoraFim()))) {
-//					return true;
-//				} else if(((CargoHorarioEspecial) cargo).getHoraInicio().after(((CargoHorarioEspecial) cargo).getHoraFim())) {
-//					Date meiaNoite = formatador.parse("00:00");
-//					if(((!horaAtual.before(((CargoHorarioEspecial) cargo).getHoraInicio())) && (!horaAtual.after(meiaNoite))) ||
-//							(!horaAtual.before(meiaNoite)) && (!horaAtual.after(((CargoHorarioEspecial) cargo).getHoraFim()))) {
-//						return true;
-//					}
-//				}
-//			}
-
+		} else {
+			if(!cargo.getHoraInicioTarde().after(cargo.getHoraFimTarde())) {
+				if(((!horaAtual.before(cargo.getHoraInicioManha())) &&
+						(!horaAtual.after(cargo.getHoraFimManha()))) ||
+				   ((!horaAtual.before(cargo.getHoraInicioTarde())) &&
+						(!horaAtual.after(cargo.getHoraFimTarde())))) {
+					return true;
+				}
+			} else {
+				if(((!horaAtual.before(cargo.getHoraInicioTarde())) && (!horaAtual.after(meiaNoite))) ||
+					(!horaAtual.before(meiaNoite)) && (!horaAtual.after(cargo.getHoraFimTarde()))) {
+					return true;
+				}
+			}
+		}
 		controladorAcesso.novoRegistroAcessoNegado(data, acesso.getMatricula(), Motivo.HORARIO_NAO_PERMITIDO);
 		controladorAcesso.exibeAcessoNegadoHorarioNaoPermitido();
 		return false;
