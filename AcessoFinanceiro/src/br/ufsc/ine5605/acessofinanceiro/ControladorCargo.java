@@ -81,6 +81,10 @@ public class ControladorCargo implements IControladorCargo {
                 cargo = criaCargoEspecial(nome, codigo);
                 this.telaCargo.mensagemCargoCadastrado();
                 break;
+			case 4:
+				cargo = criaCargoComum(nome, codigo);
+				this.telaCargo.mensagemCargoCadastrado();
+				break;
             default:
                 this.telaCargo.exibeOpcaoInexistente();
                 incluiCargo();
@@ -329,5 +333,11 @@ public class ControladorCargo implements IControladorCargo {
     public Cargo encontraCargoIndefinido() {
         return encontraCargoPorCodigo(0);
     }
+
+	public Cargo criaCargoComum(String nome, int codigo) {
+		Cargo cargo = new Cargo(codigo, nome, false, false);
+		this.cargos.add(cargo);
+		return cargo;
+	}
 
 }

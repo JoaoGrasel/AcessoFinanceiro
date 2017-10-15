@@ -82,9 +82,17 @@ public class TelaCargo {
         System.out.println();
         System.out.println(Constantes.ESCOLHA_TIPO_CARGO);
         System.out.println();
+		System.out.println(Constantes.TIPO_CARGOS_COM_ACESSO);
+		System.out.println("");
         System.out.println(Constantes.TIPO_CARGO_GERENCIAL);
         System.out.println(Constantes.TIPO_CARGO_COMERCIAL);
         System.out.println(Constantes.TIPO_CARGO_ESPECIAL);
+		System.out.println("");
+		System.out.println(Constantes.TIPO_CARGOS_SEM_ACESSO);
+		System.out.println("");
+		System.out.println(Constantes.TIPO_CARGO_COMUM);
+		System.out.println("");
+		
         System.out.println();
         return teclado.nextInt();
     }

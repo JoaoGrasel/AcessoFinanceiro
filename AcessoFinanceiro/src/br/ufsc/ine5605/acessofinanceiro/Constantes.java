@@ -138,9 +138,12 @@ class Constantes {
     public static final String MENSAGEM_NOVO_CARGO = "+-+-+-+-+-+-+-+ Novo Cargo +-+-+-+-+-+-+-+";
     public static final String DIGITE_NOME_CARGO = " Digite um nome para o cargo:";
     public static final String ESCOLHA_TIPO_CARGO = " Escolha o tipo do cargo:";
+    public static final String TIPO_CARGOS_COM_ACESSO = "+-+-+ Cargos com acesso ao financeiro +-+-+";
     public static final String TIPO_CARGO_GERENCIAL = "1 - Cargo Gerencial";
     public static final String TIPO_CARGO_COMERCIAL = "2 - Cargo Comercial";
     public static final String TIPO_CARGO_ESPECIAL = "3 - Cargo Especial";
+    public static final String TIPO_CARGOS_SEM_ACESSO = "+-+-+ Cargos sem acesso ao financeiro +-+-+";
+	public static final String TIPO_CARGO_COMUM = "4 - Cargo Comum";
     public static final String DIGITE_CODIGO_CARGO = " Digite o código do cargo: ";
     public static final String DIGITE_HORA_INICIO = "Digite a hora de inicio do expediente no formato HH:mm : ";
     public static final String DIGITE_HORA_FIM = "Digite a hora de fim do expediente no formato HH:mm : ";
