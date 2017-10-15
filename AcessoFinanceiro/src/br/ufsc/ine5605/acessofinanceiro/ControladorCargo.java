@@ -61,36 +61,52 @@ public class ControladorCargo implements IControladorCargo {
         ControladorPrincipal.getInstance().exibeMenuPrincipal();
     }
 
-
     public Cargo incluiCargo() {
         this.telaCargo.mensagemNovoCargo();
         String nome = pedeNome();
         int codigo = verificaCodigoInserido();
         int tipoCargo = this.telaCargo.pedeTipoCargo();
-        Cargo cargo = new Cargo(0, "", false, false);
-        switch(tipoCargo){
-            case 1:
-                cargo = criaCargoGerencial(nome, codigo);
-                this.telaCargo.mensagemCargoCadastrado();
-                break;
-            case 2:
-                cargo = criaCargoComercial(nome, codigo);
-                this.telaCargo.mensagemCargoCadastrado();
-                break;
-            case 3:
-                cargo = criaCargoEspecial(nome, codigo);
-                this.telaCargo.mensagemCargoCadastrado();
-                break;
-			case 4:
-				cargo = criaCargoComum(nome, codigo);
-				this.telaCargo.mensagemCargoCadastrado();
-				break;
-            default:
-                this.telaCargo.exibeOpcaoInexistente();
-                incluiCargo();
-                break;
-        }
-        return cargo;
+		SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
+		try {
+			Date horaInicioManha = formatador.parse(Constantes.HORA_INICIO_MANHA_COMERCIAL);
+			Date horaFimManha = formatador.parse(Constantes.HORA_FIM_MANHA_COMERCIAL);
+			Date horaInicioTarde = formatador.parse(Constantes.HORA_INICIO_TARDE_COMERCIAL);
+			Date horaFimTarde = formatador.parse(Constantes.HORA_FIM_TARDE_COMERCIAL);
+			Cargo cargo = new Cargo(codigo, nome, false, true, horaInicioManha, horaFimManha, horaInicioTarde, horaFimTarde);
+			switch(tipoCargo){
+				case 1:
+					cargo.setEhGerencial(true);
+					this.cargos.add(cargo);
+					this.telaCargo.mensagemCargoCadastrado();
+					break;
+				case 2:
+					this.cargos.add(cargo);
+					this.telaCargo.mensagemCargoCadastrado();
+					break;
+				case 3:
+					cargo = criaCargoEspecial(nome, codigo, formatador);
+					this.telaCargo.mensagemCargoCadastrado();
+					break;
+				case 4:
+					cargo = criaCargoComum(nome, codigo, formatador);
+					this.telaCargo.mensagemCargoCadastrado();
+					break;
+				case 5:
+					cargo.setTemAcessoAoFinanceiro(false);
+					this.cargos.add(cargo);
+					this.telaCargo.mensagemCargoCadastrado();
+					break;
+				default:
+					this.telaCargo.exibeOpcaoInexistente();
+					incluiCargo();
+					break;
+			}
+			return cargo;
+		} catch (ParseException e) {
+			telaCargo.exibeErroConstantesFormatador();
+			ControladorPrincipal.getInstance().exibeMenuPrincipal();
+		}
+        return null;
     }
 
 
@@ -220,7 +236,18 @@ public class ControladorCargo implements IControladorCargo {
                 this.telaCargo.mensagemAcessoEditadoSucesso();
                 menuEditaCargo(cargo);
                 break;
-            case 5:
+			case 5:
+				if(cargo instanceof CargoHorarioEspecial) {
+					atualizaHorariosCargoHorarioEspecial(cargo);
+					telaCargo.mensagemHorariosEditadosSucesso();
+				} else if(cargo.temAcessoAoFinanceiro()) {
+					atualizaHorariosCargo(cargo);
+					telaCargo.mensagemHorariosEditadosSucesso();
+				} else {
+					telaCargo.exibeEditaHorariosCargoSemAcesso();
+					controlaMenuEditaCargo(cargo);
+				}
+            case 6:
                 exibeMenuCargo();
                 break;
             default:
@@ -267,31 +294,41 @@ public class ControladorCargo implements IControladorCargo {
         return cargo;
     }
 
-    public Cargo criaCargoGerencial(String nome, int codigo) {
-        Cargo cargo = new Cargo(codigo, nome, true, true);
-        this.cargos.add(cargo);
-        return cargo;
-    }
-
-    public CargoHorarioComercial criaCargoComercial(String nome, int codigo) {
-        CargoHorarioComercial cargo = new CargoHorarioComercial(codigo, nome);
-        this.cargos.add(cargo);
-        return cargo;
-    }
+//    public Cargo criaCargoGerencial(String nome, int codigo) {
+//        Cargo cargo = new Cargo(codigo, nome, true, true);
+//        this.cargos.add(cargo);
+//        return cargo;
+//    }
+//
+//    public CargoHorarioComercial criaCargoComercial(String nome, int codigo) {
+//        CargoHorarioComercial cargo = new CargoHorarioComercial(codigo, nome);
+//        this.cargos.add(cargo);
+//        return cargo;
+//    }
         
-    public CargoHorarioEspecial criaCargoEspecial(String nome, int codigo) {
-        SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
-        try {
-            Date horaInicio = formatador.parse(this.telaCargo.pedeHoraInicio());
-            Date horaFim = formatador.parse(this.telaCargo.pedeHoraFim());
-            CargoHorarioEspecial cargo = new CargoHorarioEspecial(codigo, nome, horaInicio, horaFim);
+    public CargoHorarioEspecial criaCargoEspecial(String nome, int codigo, SimpleDateFormat formatador) {
+//        try {
+//            Date horaInicioManha = formatador.parse(this.telaCargo.pedeHoraInicioManha());
+//            Date horaFimManha = formatador.parse(this.telaCargo.pedeHoraFimManha());
+//            Date horaInicioTarde = formatador.parse(this.telaCargo.pedeHoraInicioTarde());
+//            Date horaFimTarde = formatador.parse(this.telaCargo.pedeHoraFimTarde());
+//            Date horaInicioEspecial = formatador.parse(this.telaCargo.pedeHoraInicioEspecial());
+//            Date horaFimEspecial = formatador.parse(this.telaCargo.pedeHoraFimEspecial());
+			Date horaInicioManha = pedeHora(Constantes.DIGITE_HORA_INICIO_MANHA, formatador);
+			Date horaFimManha = pedeHora(Constantes.DIGITE_HORA_FIM_MANHA, formatador);
+			Date horaInicioTarde = pedeHora(Constantes.DIGITE_HORA_INICIO_TARDE, formatador);
+			Date horaFimTarde = pedeHora(Constantes.DIGITE_HORA_FIM_TARDE, formatador);
+			Date horaInicioEspecial = pedeHora(Constantes.DIGITE_HORA_INICIO_ESPECIAL, formatador);
+			Date horaFimEspecial = pedeHora(Constantes.DIGITE_HORA_FIM_ESPECIAL, formatador);
+            CargoHorarioEspecial cargo = new CargoHorarioEspecial(codigo, nome, horaInicioManha, horaFimManha,
+			horaInicioTarde, horaFimTarde, horaInicioEspecial, horaFimEspecial);
             this.cargos.add(cargo);
             return cargo;
-        } catch (ParseException e) {
-            this.telaCargo.exibeHoraInseridaFormatoIncorreto();
-            criaCargoEspecial(nome, codigo);
-        }
-        return null;
+//        } catch (ParseException e) {
+//            this.telaCargo.exibeHoraInseridaFormatoIncorreto();
+//            criaCargoEspecial(nome, codigo, formatador);
+//        }
+//        return null;
     }
     
     public void atualizaEhGerencial(int opcaoEhGerencial, Cargo cargo) {
@@ -326,7 +363,9 @@ public class ControladorCargo implements IControladorCargo {
     }
 
     public void criaCargoPadrao() {
-        Cargo cargo = new Cargo(0, Constantes.CARGO_INDEFINIDO, false, false);
+		Date dataIndefinida = new Date();
+        Cargo cargo = new Cargo(0, Constantes.CARGO_INDEFINIDO, false, false,
+		dataIndefinida, dataIndefinida, dataIndefinida, dataIndefinida);
         this.cargos.add(cargo);
     }
 
@@ -334,10 +373,59 @@ public class ControladorCargo implements IControladorCargo {
         return encontraCargoPorCodigo(0);
     }
 
-	public Cargo criaCargoComum(String nome, int codigo) {
-		Cargo cargo = new Cargo(codigo, nome, false, false);
-		this.cargos.add(cargo);
-		return cargo;
+	public Cargo criaCargoComum(String nome, int codigo, SimpleDateFormat formatador) {
+//		try {
+			Date horaInicioManha = pedeHora(Constantes.DIGITE_HORA_INICIO_MANHA, formatador);
+			Date horaFimManha = pedeHora(Constantes.DIGITE_HORA_FIM_MANHA, formatador);
+			Date horaInicioTarde = pedeHora(Constantes.DIGITE_HORA_INICIO_TARDE, formatador);
+			Date horaFimTarde = pedeHora(Constantes.DIGITE_HORA_FIM_TARDE, formatador);
+			Cargo cargo = new Cargo(codigo, nome, false, true, horaInicioManha, horaFimManha,
+			horaInicioTarde, horaFimTarde);
+			this.cargos.add(cargo);
+			return cargo;
+//		} catch (ParseException e) {
+//			telaCargo.exibeHoraInseridaFormatoIncorreto();
+//			criaCargoComum(nome, codigo, formatador);
+//		}
+//		return null;
+	}
+
+	public void atualizaHorariosCargoHorarioEspecial(Cargo cargo) {
+		SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
+		Date horaInicioManha = pedeHora(Constantes.DIGITE_HORA_INICIO_MANHA, formatador);
+		Date horaFimManha = pedeHora(Constantes.DIGITE_HORA_FIM_MANHA, formatador);
+		Date horaInicioTarde = pedeHora(Constantes.DIGITE_HORA_INICIO_TARDE, formatador);
+		Date horaFimTarde = pedeHora(Constantes.DIGITE_HORA_FIM_TARDE, formatador);
+		Date horaInicioEspecial = pedeHora(Constantes.DIGITE_HORA_INICIO_ESPECIAL, formatador);
+		Date horaFimEspecial = pedeHora(Constantes.DIGITE_HORA_FIM_ESPECIAL, formatador);
+		((CargoHorarioEspecial) cargo).setHoraInicioManha(horaInicioManha);
+		((CargoHorarioEspecial) cargo).setHoraFimManha(horaFimManha);
+		((CargoHorarioEspecial) cargo).setHoraInicioTarde(horaInicioTarde);
+		((CargoHorarioEspecial) cargo).setHoraFimTarde(horaFimTarde);
+		((CargoHorarioEspecial) cargo).setHoraInicioEspecial(horaInicioEspecial);
+		((CargoHorarioEspecial) cargo).setHoraFimEspecial(horaFimEspecial);
+	}
+
+	public Date pedeHora(String constante, SimpleDateFormat formatador) {
+		try {
+			return formatador.parse(telaCargo.pedeHora(constante));
+		} catch (ParseException e) {
+			telaCargo.exibeHoraInseridaFormatoIncorreto();
+			pedeHora(constante, formatador);
+		}
+		return null;
+	}
+
+	public void atualizaHorariosCargo(Cargo cargo) {
+		SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
+		Date horaInicioManha = pedeHora(Constantes.DIGITE_HORA_INICIO_MANHA, formatador);
+		Date horaFimManha = pedeHora(Constantes.DIGITE_HORA_FIM_MANHA, formatador);
+		Date horaInicioTarde = pedeHora(Constantes.DIGITE_HORA_INICIO_TARDE, formatador);
+		Date horaFimTarde = pedeHora(Constantes.DIGITE_HORA_FIM_TARDE, formatador);
+		cargo.setHoraInicioManha(horaInicioManha);
+		cargo.setHoraFimManha(horaFimManha);
+		cargo.setHoraInicioTarde(horaInicioTarde);
+		cargo.setHoraFimTarde(horaFimTarde);
 	}
 
 }

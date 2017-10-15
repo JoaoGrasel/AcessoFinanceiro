@@ -79,18 +79,14 @@ public class TelaCargo {
     }
 	
     public int pedeTipoCargo() {
-        System.out.println();
+		System.out.println("");
         System.out.println(Constantes.ESCOLHA_TIPO_CARGO);
-        System.out.println();
-		System.out.println(Constantes.TIPO_CARGOS_COM_ACESSO);
 		System.out.println("");
         System.out.println(Constantes.TIPO_CARGO_GERENCIAL);
         System.out.println(Constantes.TIPO_CARGO_COMERCIAL);
         System.out.println(Constantes.TIPO_CARGO_ESPECIAL);
-		System.out.println("");
-		System.out.println(Constantes.TIPO_CARGOS_SEM_ACESSO);
-		System.out.println("");
 		System.out.println(Constantes.TIPO_CARGO_COMUM);
+		System.out.println(Constantes.TIPO_CARGO_SEM_ACESSO);
 		System.out.println("");
 		
         System.out.println();
@@ -217,6 +213,7 @@ public class TelaCargo {
         System.out.println(Constantes.ALTERAR_CODIGO_CARGO);
         System.out.println(Constantes.ALTERAR_EH_GERENCIAL);
         System.out.println(Constantes.ALTERAR_TEM_ACESSO);
+        System.out.println(Constantes.ALTERAR_HORARIOS_ACESSO);
         System.out.println(Constantes.OPCAO_VOLTAR_CARGO);
         System.out.println(); 
     }
@@ -304,24 +301,82 @@ public class TelaCargo {
         System.out.println();
     }
     
-    public String pedeHoraInicio() {
-        System.out.println(Constantes.DIGITE_HORA_INICIO);
+    public String pedeHoraInicioManha() {
+        System.out.println(Constantes.DIGITE_HORA_INICIO_MANHA);
         teclado.nextLine();
-        String horaInicio = teclado.nextLine();
+        String horaInicioManha = teclado.nextLine();
         System.out.println();
-        return horaInicio;
+        return horaInicioManha;
     }
 	
-    public String pedeHoraFim() {
+    public String pedeHoraFimManha() {
         System.out.println();
-        System.out.println(Constantes.DIGITE_HORA_FIM);
-        String horaFim = teclado.nextLine();
+        System.out.println(Constantes.DIGITE_HORA_FIM_MANHA);
+        String horaFimManha = teclado.nextLine();
         System.out.println();
-        return horaFim;
+        return horaFimManha;
     }
 
+	public String pedeHoraInicioTarde() {
+		System.out.println();
+        System.out.println(Constantes.DIGITE_HORA_INICIO_TARDE);
+        String horaInicioTarde = teclado.nextLine();
+        System.out.println();
+        return horaInicioTarde;
+	}
+
+	public String pedeHoraFimTarde() {
+		System.out.println();
+        System.out.println(Constantes.DIGITE_HORA_FIM_TARDE);
+        String horaFimTarde = teclado.nextLine();
+        System.out.println();
+        return horaFimTarde;
+	}
+
+	public String pedeHoraInicioEspecial() {
+		System.out.println();
+        System.out.println(Constantes.DIGITE_HORA_INICIO_ESPECIAL);
+        String horaInicioEspecial = teclado.nextLine();
+        System.out.println();
+        return horaInicioEspecial;
+	}
+
+	public String pedeHoraFimEspecial() {
+		System.out.println();
+        System.out.println(Constantes.DIGITE_HORA_FIM_ESPECIAL);
+        String horaFimEspecial = teclado.nextLine();
+        System.out.println();
+        return horaFimEspecial;
+	}
+	
     public void exibeHoraInseridaFormatoIncorreto() {
         System.out.println(Constantes.HORA_INSERIDA_FORMATO_INCORRETO);
     }
+
+	public void exibeErroConstantesFormatador() {
+		System.out.println("");
+		System.out.println(Constantes.ERRO_INTERNO_CONSTANTES_FORMATADOR);
+		System.out.println("");
+	}
+
+	public String pedeHora(String constante) {
+		System.out.println();
+        System.out.println(constante);
+        String hora = teclado.nextLine();
+        System.out.println();
+        return hora;
+	}
+
+	public void mensagemHorariosEditadosSucesso() {
+		System.out.println("");
+		System.out.println(Constantes.HORARIOS_EDITADOS_SUCESSO);
+		System.out.println("");
+	}
+
+	public void exibeEditaHorariosCargoSemAcesso() {
+		System.out.println("");
+		System.out.println(Constantes.EDITA_HORARIOS_CARGO_SEM_ACESSO);
+		System.out.println("");
+	}
 	
 }

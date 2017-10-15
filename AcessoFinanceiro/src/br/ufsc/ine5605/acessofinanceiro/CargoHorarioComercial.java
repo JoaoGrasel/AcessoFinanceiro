@@ -6,24 +6,19 @@
 package br.ufsc.ine5605.acessofinanceiro;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- *
- * @author bruno
+ * @author bruno e thiago
  */
 public class CargoHorarioComercial extends Cargo {
 	
-//	private Date horaInicioManha;
-//	private Date horaInicioTarde;
-//	private Date horaFimManha;
-//	private Date horaFimTarde;
-	private SimpleDateFormat formatador;
-	
     public CargoHorarioComercial(int codigo, String nome) {
-        super(codigo, nome, false, true);
-		formatador = new SimpleDateFormat("HH:mm");
+//		Date horaInicioManha = formatador.parse(Constantes.HORA_INICIO_MANHA_COMERCIAL);
+//		Date horaFimManha = formatador.parse(Constantes.HORA_FIM_MANHA_COMERCIAL);
+//		Date horaInicioTarde = formatador.parse(Constantes.HORA_INICIO_TARDE_COMERCIAL);
+//		Date horaFimTarde = formatador.parse(Constantes.HORA_FIM_TARDE_COMERCIAL);
+        super(codigo, nome, false, true, formatador.parse(Constantes.HORA_INICIO_MANHA_COMERCIAL), horaFimManha, horaInicioTarde, horaFimTarde);
     }
 
 	public Date getHoraInicioManha() throws ParseException {

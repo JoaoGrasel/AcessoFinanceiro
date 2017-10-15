@@ -106,7 +106,16 @@ class Constantes {
     public static final String DATA_NASCIMENTO_EDITADA_SUCESSO = " Data de nascimento editada com sucesso!";
     public static final String MATRICULA_EDITADA_SUCESSO = " Matricula editada com sucesso!";
     public static final String NOME_EDITADO_SUCESSO = " Nome editado com sucesso!";
+    public static final String HORARIOS_EDITADOS_SUCESSO = "Horarios de acesso editados com sucesso!";
+    public static final String EDITA_HORARIOS_CARGO_SEM_ACESSO = "Nao eh possivel editar os horarios de acesso: o cargo nao tem acesso.";
 
+	// CARGO
+	public static final String HORA_INICIO_MANHA_COMERCIAL = "08:00";
+	public static final String HORA_FIM_MANHA_COMERCIAL = "12:00";
+	public static final String HORA_INICIO_TARDE_COMERCIAL = "14:00";
+	public static final String HORA_FIM_TARDE_COMERCIAL = "18:00";
+	public static final String ERRO_INTERNO_CONSTANTES_FORMATADOR = "Erro interno: as constantes usadas para formatacao dos horarios de acesso dos cargos estao invalidas.";
+	
 //SELECIONAR OU CRIAR CARGO NO CADASTRO
     public static final String O_QUE_DESEJA_FAZER = " O que você deseja fazer?";
     public static final String USAR_CARGO_EXISTENTE = " 1. Usar cargo ja existente ";
@@ -138,26 +147,30 @@ class Constantes {
     public static final String MENSAGEM_NOVO_CARGO = "+-+-+-+-+-+-+-+ Novo Cargo +-+-+-+-+-+-+-+";
     public static final String DIGITE_NOME_CARGO = " Digite um nome para o cargo:";
     public static final String ESCOLHA_TIPO_CARGO = " Escolha o tipo do cargo:";
-    public static final String TIPO_CARGOS_COM_ACESSO = "+-+-+ Cargos com acesso ao financeiro +-+-+";
-    public static final String TIPO_CARGO_GERENCIAL = "1 - Cargo Gerencial";
-    public static final String TIPO_CARGO_COMERCIAL = "2 - Cargo Comercial";
-    public static final String TIPO_CARGO_ESPECIAL = "3 - Cargo Especial";
-    public static final String TIPO_CARGOS_SEM_ACESSO = "+-+-+ Cargos sem acesso ao financeiro +-+-+";
-	public static final String TIPO_CARGO_COMUM = "4 - Cargo Comum";
+    public static final String TIPO_CARGO_GERENCIAL = "1 - Cargo gerencial";
+    public static final String TIPO_CARGO_COMERCIAL = "2 - Cargo comercial";
+    public static final String TIPO_CARGO_ESPECIAL = "3 - Cargo especial";
+	public static final String TIPO_CARGO_COMUM = "4 - Cargo comum";
+	public static final String TIPO_CARGO_SEM_ACESSO = "5 - Cargo sem acesso";
     public static final String DIGITE_CODIGO_CARGO = " Digite o código do cargo: ";
-    public static final String DIGITE_HORA_INICIO = "Digite a hora de inicio do expediente no formato HH:mm : ";
-    public static final String DIGITE_HORA_FIM = "Digite a hora de fim do expediente no formato HH:mm : ";
+    public static final String DIGITE_HORA_INICIO_MANHA = "Digite a hora de inicio do turno matutino no formato HH:mm : ";
+    public static final String DIGITE_HORA_FIM_MANHA = "Digite a hora de fim do turno matutino no formato HH:mm : ";
+    public static final String DIGITE_HORA_INICIO_TARDE = "Digite a hora de inicio do turno vespertino no formato HH:mm : ";
+    public static final String DIGITE_HORA_FIM_TARDE = "Digite a hora de fim do turno vespertino no formato HH:mm : ";
+    public static final String DIGITE_HORA_INICIO_ESPECIAL = "Digite a hora de inicio do turno especial no formato HH:mm : ";
+    public static final String DIGITE_HORA_FIM_ESPECIAL = "Digite a hora de fim do turno especial no formato HH:mm : ";
     public static final String HORA_INSERIDA_FORMATO_INCORRETO = "O formato da hora inserida esta incorreto, por favor digite novamente. ";
     public static final String CARGO_CADASTRADO_SUCESSO = "Cargo cadastrado com sucesso!";
 
     //EDITAR CARGO   @BRUNO
     public static final String TITULO_EDITAR_CARGO = "+-+-+-+-+-+-+-+ Editar Cargo +-+-+-+-+-+-+-+";
     public static final String CARGO_SELECIONADO = " Cargo selecionado: ";
-    public static final String ALTERAR_NOME_CARGO = " 1. Alterar Nome do Cargo";
-    public static final String ALTERAR_CODIGO_CARGO = " 2. Alterar Código do Cargo";
-    public static final String ALTERAR_EH_GERENCIAL = " 3. Alterar Função Gerencial do Cargo";
-    public static final String ALTERAR_TEM_ACESSO = " 4. Alterar Permissão de Acesso do Cargo";
-    public static final String OPCAO_VOLTAR_CARGO = " 5. Voltar ";
+    public static final String ALTERAR_NOME_CARGO = " 1. Alterar nome do cargo";
+    public static final String ALTERAR_CODIGO_CARGO = " 2. Alterar codigo do cargo";
+    public static final String ALTERAR_EH_GERENCIAL = " 3. Alterar função gerencial";
+    public static final String ALTERAR_TEM_ACESSO = " 4. Alterar permissão de acesso";
+    public static final String ALTERAR_HORARIOS_ACESSO = " 5. Alterar horarios de acesso";
+    public static final String OPCAO_VOLTAR_CARGO = " 6. Voltar ";
     public static final String CODIGO_EDITADO_SUCESSO = " Código editado com sucesso! ";
     public static final String EH_GERENCIAL_EDITADO_SUCESSO = " Função Gerencial editada com sucesso! ";
     public static final String TEM_ACESSO_EDITADO_SUCESSO = " Permissão de acesso editada com sucesso! ";
