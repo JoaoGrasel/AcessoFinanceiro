@@ -13,6 +13,11 @@ import java.util.Date;
  */
 public interface IControladorDataSistema {
 
+    /**
+     * retorna a data do sistema
+     *
+     * @return dataSistema atual
+     */
     public Date getDataSistema();
 
 }
