@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufsc.ine5605.acessofinanceiro;
+package br.ufsc.ine5605.acessofinanceiro.Modelos;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
