@@ -21,7 +21,11 @@ class TelaPrincipal {
         this.teclado = new Scanner(System.in);
         this.controlador = owner;
     }
-
+    
+    /**
+     * Exibe na tela o menu com as opcoes do sistema (Acesso ao financeiro,
+     * Gerenciar Funcionarios, Gerenciar Cargos, Gerenciar Data e Emitir Relatorio)
+     */
     public void exibeMenuPrincipal() {
         System.out.println(Constantes.MENU_PRINCIPAL);
         System.out.println();
@@ -35,6 +39,12 @@ class TelaPrincipal {
         System.out.println();
     }
 
+    /**
+     * Pede que o usuario insira um numero correspondente a opcao que ele deseja
+     * selecionar
+     *
+     * @return opcao inserida pelo usuario
+     */
     public int pedeOpcao() {
         int opcao = 0;
         boolean opcaoValida = true;
@@ -54,7 +64,10 @@ class TelaPrincipal {
         }
         return opcao;
     }
-
+    
+    /**
+     * Exibe a mensagem de erro de opcao inexistente
+     */
     public void exibeOpcaoInexistente() {
         System.out.println();
         System.out.println(Constantes.OPCAO_INEXISTENTE);

@@ -78,7 +78,13 @@ public class TelaCargo {
         System.out.println();
         return nome;
     }
-
+    
+    /**
+     * Pede que o usuario insira um numero correspondente a opcao do tipo de cargo
+     * que deseja selecionar
+     *
+     * @return opcao inserida pelo usuario
+     */
     public int pedeTipoCargo() {
         System.out.println();
         System.out.println(Constantes.ESCOLHA_TIPO_CARGO);
@@ -111,7 +117,10 @@ public class TelaCargo {
         System.out.println(Constantes.TITULO_EDITAR_CARGO);
         System.out.println();
     }
-
+    
+    /**
+     * Exibe na tela a mensagem: "Lista de cargos"
+     */
     public void mensagemListaCargos() {
         System.out.println();
         System.out.println(Constantes.LISTA_DE_CARGOS);
@@ -128,7 +137,15 @@ public class TelaCargo {
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println();
     }
-
+    
+    /**
+     * Exibe na tela o cargo selecionado (codigo, nome, ehGerencial, temAcessoAoFinanceiro)
+     *
+     * @param codigo do cargo selecionado
+     * @param nome do cargo selecionado
+     * @param ehGerencial para o cargo selecionado 
+     * @param temAcessoAoFinanceiro para o cargo selecionado
+     */
     public void exibeCargo(int codigo, String nome, boolean ehGerencial, boolean temAcessoAoFinanceiro) {
         System.out.println();
         System.out.println(Constantes.CODIGO + codigo);
@@ -138,12 +155,19 @@ public class TelaCargo {
         System.out.println();
     }
 
+    /**
+     * Exibe a mensagem "Cargo selecionado: "
+     */
     public void exibeCargoSelecionado() {
         System.out.println();
         System.out.println(Constantes.CARGO_SELECIONADO);
-        System.out.println();
     }
-
+    
+    /**
+     * Pede que o usuário insira o codigo do cargo que deseja selecionar
+     *
+     * @return codigo do cargo
+     */
     public int pedeCodigo() {
         int codigo = 0;
         boolean codigoInvalido = true;
@@ -165,13 +189,19 @@ public class TelaCargo {
         }
         return codigo;
     }
-
+    
+    /**
+     * Exibe a mensagem de erro de codigo ja cadastrada
+     */
     public void mensagemErroCodigoJaCadastrada() {
         System.out.println();
         System.out.println(Constantes.CODIGO_JA_CADASTRADO);
         System.out.println();
     }
 
+    /**
+     * Exibe na tela o titulo do menu para deletar cargo
+     */
     public void mensagemDeletaCargo() {
         System.out.println();
         System.out.println(Constantes.TITULO_DELETAR_CARGO);
@@ -187,12 +217,20 @@ public class TelaCargo {
         System.out.println();
     }
 
+    /**
+     * Exibe a mensagem "Cargo selecionado: "
+     */
     public void exibeMensagemCargoSelecionado() {
         System.out.println();
         System.out.println(Constantes.CARGO_SELECIONADO);
         System.out.println();
     }
 
+    /**
+     * Exibe um menu pedindo ao usuário se ele confirma que quer deletar o
+     * cargo selecionado ou se ele não quer deletar e quer voltar ao menu
+     * anterior
+     */
     public void exibeMenuConfirmacaoDeletarCargo() {
         System.out.println();
         System.out.println(Constantes.CONFIRMACAO_EXCLUSAO_CARGO);
@@ -201,13 +239,19 @@ public class TelaCargo {
         System.out.println(Constantes.NAO);
         System.out.println();
     }
-
+    
+    /**
+     * exibe na tela a mensagem de cargo editado com sucesso
+     */
     public void mensagemCargoDeletadoSucesso() {
         System.out.println();
         System.out.println(Constantes.CARGO_DELETADO_SUCESSO);
         System.out.println();
     }
-
+    
+    /**
+     * Exibe a mensagem de erro de opcao inexistente
+     */
     public void exibeOpcaoInexistente() {
         System.out.println();
         System.out.println(Constantes.OPCAO_INEXISTENTE);
@@ -215,8 +259,15 @@ public class TelaCargo {
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println();
     }
-
+    
+    /**
+     * Exibe um menu com as opcoes que o usuario pode selecionar com relação a
+     * editar um cargo. (Alterar o nome, alterar a codigo, alterar função gerencial, 
+     * alterar permissão de acesso ao financeiro, voltar ao menu de gerenciar cargo)
+     */
     public void exibeMenuEditaCargo() {
+        System.out.println();
+        System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println();
         System.out.println(Constantes.ALTERAR_NOME_CARGO);
         System.out.println(Constantes.ALTERAR_CODIGO_CARGO);
@@ -225,40 +276,59 @@ public class TelaCargo {
         System.out.println(Constantes.ALTERAR_HORARIOS_ACESSO);
         System.out.println(Constantes.OPCAO_VOLTAR_CARGO);
         System.out.println();
-        System.out.println(Constantes.O_QUE_DESEJA_FAZER);
-        System.out.println();
     }
 
+    /**
+     * exibe na tela a mensagem de cargo não encontrado
+     */
     public void mensagemCargoNaoEncontrado() {
         System.out.println();
         System.out.println(Constantes.MENSAGEM_CARGO_NAO_ENCONTRADO);
         System.out.println();
     }
 
+    /**
+     * exibe na tela a mensagem de nome editado com sucesso
+     */
     public void mensagemNomeEditadoSucesso() {
         System.out.println();
         System.out.println(Constantes.NOME_EDITADO_SUCESSO);
         System.out.println();
     }
 
+    /**
+     * exibe na tela a mensagem de codigo editado com sucesso
+     */
     public void mensagemCodigoEditadoSucesso() {
         System.out.println();
         System.out.println(Constantes.CODIGO_EDITADO_SUCESSO);
         System.out.println();
     }
 
+    /**
+     * exibe na tela a mensagem de função gerencial editada com sucesso
+     */
     public void mensagemGerencialEditadoSucesso() {
         System.out.println();
         System.out.println(Constantes.EH_GERENCIAL_EDITADO_SUCESSO);
         System.out.println();
     }
 
+    /**
+     * exibe na tela a mensagem de permissão de acesso editada com sucesso
+     */
     public void mensagemAcessoEditadoSucesso() {
         System.out.println();
         System.out.println(Constantes.TEM_ACESSO_EDITADO_SUCESSO);
         System.out.println();
     }
 
+    /**
+     * Pede que o usuario insira um numero correspondente a opcao de atribuir
+     * ou não a função gerencial a um cargo
+     *
+     * @return opcao inserida pelo usuario
+     */
     public int pedeSeEhGerencial() {
         int ehGerencial = 0;
         boolean gerencialInvalido = true;
@@ -286,6 +356,12 @@ public class TelaCargo {
         return ehGerencial;
     }
 
+    /**
+     * Pede que o usuario insira um numero correspondente a opcao de um cargo ter 
+     * acesso ou não ao financeiro
+     *
+     * @return opcao inserida pelo usuario
+     */
     public int pedeTemAcessoAoFinanceiro() {
         int temAcessoAoFinanceiro = 0;
         boolean temAcessoInvalido = true;
@@ -322,13 +398,23 @@ public class TelaCargo {
         System.out.println(Constantes.NOME_INVALIDO_LETRAS);
         System.out.println();
     }
-
+    
+    /**
+     * Exibe a mensagem de erro de nome inserido invalido: deve conter no minimo
+     * 3 letras
+     */
     public void mensagemNomeInvalidoTamanho() {
         System.out.println();
         System.out.println(Constantes.NOME_INVALIDO_TAMANHO);
         System.out.println();
     }
-
+    
+    /**
+     * Pede que o usuário insira a hora de inicio de expediente da manhã do cargo
+     * que deseja cadastrar no formato HH:mm
+     *
+     * @return hora de inicio pela manhã
+     */
     public String pedeHoraInicioManha() {
         System.out.println();
         System.out.println(Constantes.DIGITE_HORA_INICIO_MANHA);
@@ -337,7 +423,13 @@ public class TelaCargo {
         System.out.println();
         return horaInicioManha;
     }
-
+    
+    /**
+     * Pede que o usuário insira a hora do fim do expediente da manhã do cargo
+     * que deseja cadastrar no formato HH:mm
+     *
+     * @return hora do fim pela manhã
+     */
     public String pedeHoraFimManha() {
         System.out.println();
         System.out.println(Constantes.DIGITE_HORA_FIM_MANHA);
@@ -346,6 +438,12 @@ public class TelaCargo {
         return horaFimManha;
     }
 
+    /**
+     * Pede que o usuário insira a hora de inicio de expediente da tarde do cargo
+     * que deseja cadastrar no formato HH:mm
+     *
+     * @return hora de inicio pela tarde
+     */
     public String pedeHoraInicioTarde() {
         System.out.println();
         System.out.println(Constantes.DIGITE_HORA_INICIO_TARDE);
@@ -354,6 +452,12 @@ public class TelaCargo {
         return horaInicioTarde;
     }
 
+    /**
+     * Pede que o usuário insira a hora do fim do expediente da tarde do cargo
+     * que deseja cadastrar no formato HH:mm
+     *
+     * @return hora do fim pela tarde
+     */
     public String pedeHoraFimTarde() {
         System.out.println();
         System.out.println(Constantes.DIGITE_HORA_FIM_TARDE);
@@ -362,6 +466,12 @@ public class TelaCargo {
         return horaFimTarde;
     }
 
+    /**
+     * Pede que o usuário insira a hora do inicio do expediente do cargo
+     * especial no formato HH:mm
+     *
+     * @return hora do inicio do expediente do cargo especial
+     */
     public String pedeHoraInicioEspecial() {
         System.out.println();
         System.out.println(Constantes.DIGITE_HORA_INICIO_ESPECIAL);
@@ -370,6 +480,12 @@ public class TelaCargo {
         return horaInicioEspecial;
     }
 
+    /**
+     * Pede que o usuário insira a hora do fim do expediente do cargo
+     * especial no formato HH:mm
+     *
+     * @return hora do fim do expediente do cargo especial
+     */
     public String pedeHoraFimEspecial() {
         System.out.println();
         System.out.println(Constantes.DIGITE_HORA_FIM_ESPECIAL);
@@ -377,13 +493,21 @@ public class TelaCargo {
         System.out.println();
         return horaFimEspecial;
     }
-
+    
+    /**
+     * Exibe a mensagem de erro de formato de hora inserido é invalido: utilize o 
+     * formato solicitado 
+     */
     public void exibeHoraInseridaFormatoIncorreto() {
         System.out.println();
         System.out.println(Constantes.HORA_INSERIDA_FORMATO_INCORRETO);
         System.out.println();
     }
 
+    /**
+     * Exibe a mensagem de erro interno: as constantes usadas para formatação 
+     * dos horários de acesso dos cargos estão inválidas
+     */
     public void exibeErroConstantesFormatador() {
         System.out.println();
         System.out.println(Constantes.ERRO_INTERNO_CONSTANTES_FORMATADOR);
@@ -397,12 +521,20 @@ public class TelaCargo {
 //        System.out.println();
 //        return hora;
 //	}
+    
+    /**
+     * exibe na tela a mensagem de horarios editados com sucesso
+     */
     public void mensagemHorariosEditadosSucesso() {
         System.out.println();
         System.out.println(Constantes.HORARIOS_EDITADOS_SUCESSO);
         System.out.println();
     }
 
+    /**
+     * exibe na tela a mensagem de não é possível editar os horários de acesso: 
+     * o cargo não possui acesso.
+     */
     public void exibeEditaHorariosCargoSemAcesso() {
         System.out.println();
         System.out.println(Constantes.EDITA_HORARIOS_CARGO_SEM_ACESSO);

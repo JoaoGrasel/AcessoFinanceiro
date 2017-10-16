@@ -17,21 +17,21 @@ public class Cargo {
     private String nome;
     private boolean ehGerencial;
     private boolean temAcessoAoFinanceiro;
-	private Date horaInicioManha;
-	private Date horaFimManha;
-	private Date horaInicioTarde;
-	private Date horaFimTarde;
+    private Date horaInicioManha;
+    private Date horaFimManha;
+    private Date horaInicioTarde;
+    private Date horaFimTarde;
 
     public Cargo(int codigo, String nome, boolean ehGerencial, boolean temAcessoAoFinanceiro,
-			Date horaInicioManha, Date horaFimManha, Date horaInicioTarde, Date horaFimTarde) {
+                    Date horaInicioManha, Date horaFimManha, Date horaInicioTarde, Date horaFimTarde) {
         this.codigo = codigo;
         this.nome = nome;
         this.ehGerencial = ehGerencial;
         this.temAcessoAoFinanceiro = temAcessoAoFinanceiro;
-		this.horaInicioManha = horaInicioManha;
-		this.horaFimManha = horaFimManha;
-		this.horaInicioTarde = horaInicioTarde;
-		this.horaFimTarde = horaFimTarde;	
+        this.horaInicioManha = horaInicioManha;
+        this.horaFimManha = horaFimManha;
+        this.horaInicioTarde = horaInicioTarde;
+        this.horaFimTarde = horaFimTarde;	
     }
     
     public boolean ehGerencial(){
@@ -66,36 +66,36 @@ public class Cargo {
         this.nome = nome;
     }
 
-	public Date getHoraInicioManha() {
-		return horaInicioManha;
-	}
+    public Date getHoraInicioManha() {
+            return horaInicioManha;
+    }
 
-	public void setHoraInicioManha(Date horaInicioManha) {
-		this.horaInicioManha = horaInicioManha;
-	}
+    public void setHoraInicioManha(Date horaInicioManha) {
+            this.horaInicioManha = horaInicioManha;
+    }
 
-	public Date getHoraFimManha() {
-		return horaFimManha;
-	}
+    public Date getHoraFimManha() {
+            return horaFimManha;
+    }
 
-	public void setHoraFimManha(Date horaFimManha) {
-		this.horaFimManha = horaFimManha;
-	}
+    public void setHoraFimManha(Date horaFimManha) {
+            this.horaFimManha = horaFimManha;
+    }
 
-	public Date getHoraInicioTarde() {
-		return horaInicioTarde;
-	}
+    public Date getHoraInicioTarde() {
+            return horaInicioTarde;
+    }
 
-	public void setHoraInicioTarde(Date horaInicioTarde) {
-		this.horaInicioTarde = horaInicioTarde;
-	}
+    public void setHoraInicioTarde(Date horaInicioTarde) {
+            this.horaInicioTarde = horaInicioTarde;
+    }
 
-	public Date getHoraFimTarde() {
-		return horaFimTarde;
-	}
+    public Date getHoraFimTarde() {
+            return horaFimTarde;
+    }
 
-	public void setHoraFimTarde(Date horaFimTarde) {
-		this.horaFimTarde = horaFimTarde;
-	}
+    public void setHoraFimTarde(Date horaFimTarde) {
+            this.horaFimTarde = horaFimTarde;
+    }
 
 }

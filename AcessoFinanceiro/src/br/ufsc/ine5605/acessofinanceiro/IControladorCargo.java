@@ -10,9 +10,7 @@ package br.ufsc.ine5605.acessofinanceiro;
  * @author bruno
  */
 public interface IControladorCargo {
-
-   
-    //DEIXAR O CONTROLADOR CARGO COMO PUBLICO NO CONTROLADOR PRINCIPAL PRA PODER CHAMAR OS METODOS DELE NO CONTROLADOR FUNCIONARIO
+    
     /**
      * Verifica se existe um cargo criado com o código passado como parametro,
      * caso exista retorna o cargo. Caso não exista retorna null.
@@ -22,10 +20,9 @@ public interface IControladorCargo {
     public Cargo encontraCargoPorCodigo(int codigo);
     
     /**
-     *
-     * Printa na tela todos os cargos criados com seu código, possibilidade de
-     * acesso ou não e horarios que pode acessar a porta;
-     *
+     * Lista na tela todos os cargos cadastrados, com todos os seus
+     * atributos
+     * 
      * @return
      */
     public void listaCargos();
