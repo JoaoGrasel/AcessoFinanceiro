@@ -41,9 +41,10 @@ public class TelaDataHoraSistema {
     public void exibeMenuDataHoraSistema() {
         System.out.println(Constantes.TITULO_MENU_DATA_HORA_SISTEMA);
         System.out.println();
-        System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println(Constantes.ALTERAR_DATA_E_HORA);
         System.out.println(Constantes.DATA_VOLTAR_MENU_PRINCIPAL);
+        System.out.println();
+        System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println();
     }
 
@@ -107,6 +108,7 @@ public class TelaDataHoraSistema {
     public void exibeConfirmacaoDataHoraSistema() {
         System.out.println();
         System.out.println(Constantes.CONFIRMA_ALTERACAO_DATA_HORA);
+        System.out.println();
         System.out.println(Constantes.SIM);
         System.out.println(Constantes.NAO);
         System.out.println();
@@ -130,8 +132,14 @@ public class TelaDataHoraSistema {
         System.out.println();
     }
 
+    /**
+     * exibe na tela uma mensagem pedindo para que o usuário insira uma data no
+     * sistema
+     */
     public void exibeMensagemPedeDataHoraSistema() {
+        System.out.println();
         System.out.println(Constantes.INSIRA_DATA_SISTEMA);
+        System.out.println();
     }
 
 }

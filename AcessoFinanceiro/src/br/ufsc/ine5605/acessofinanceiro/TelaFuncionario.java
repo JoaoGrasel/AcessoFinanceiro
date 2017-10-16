@@ -39,6 +39,7 @@ public class TelaFuncionario {
         System.out.println(Constantes.LISTAR_FUNCIONARIOS);
         System.out.println(Constantes.DELETAR_FUNCIONARIO);
         System.out.println(Constantes.VOLTAR_AO_MENU_PRINCIPAL);
+        System.out.println();
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println();
     }
@@ -69,6 +70,7 @@ public class TelaFuncionario {
     public void exibeOpcaoCargoFuncionario() {
         System.out.println();
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
+        System.out.println();
         System.out.println(Constantes.USAR_CARGO_EXISTENTE);
         System.out.println(Constantes.CRIAR_CARGO_PARA_FUNCIONARIO);
         System.out.println();
@@ -84,6 +86,7 @@ public class TelaFuncionario {
     public void exibeMenuEditaFuncionario() {
         System.out.println();
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
+        System.out.println();
         System.out.println(Constantes.ALTERAR_NOME);
         System.out.println(Constantes.ALTERAR_MATRICULA);
         System.out.println(Constantes.ALTERAR_DATA_NASCIMENTO);
@@ -91,6 +94,7 @@ public class TelaFuncionario {
         System.out.println(Constantes.ALTERAR_SALARIO);
         System.out.println(Constantes.ALTERAR_CARGO);
         System.out.println(Constantes.OPCAO_VOLTAR);
+        System.out.println();
 
     }
 
@@ -138,49 +142,63 @@ public class TelaFuncionario {
      * exibe na tela a mensagem de cargo editado com sucesso
      */
     public void mensagemCargoEditadoSucesso() {
+        System.out.println();
         System.out.println(Constantes.CARGO_EDITADO_SUCESSO);
+        System.out.println();
     }
 
     /**
      * exibe na tela a mensagem de salario editado com sucesso
      */
     public void mensagemSalarioEditadoSucesso() {
+        System.out.println();
         System.out.println(Constantes.SALARIO_EDITADO_SUCESSO);
+        System.out.println();
     }
 
     /**
      * exibe na tela a mensagem de telefone editado com sucesso
      */
     public void mensagemTelefoneEditadoSucesso() {
+        System.out.println();
         System.out.println(Constantes.TELEFONE_EDITADO_SUCESSO);
+        System.out.println();
     }
 
     /**
      * exibe na tela a mensagem de data de nascimento editaca com sucesso
      */
     public void mensagemDataNascimentoEditadaSucesso() {
+        System.out.println();
         System.out.println(Constantes.DATA_NASCIMENTO_EDITADA_SUCESSO);
+        System.out.println();
     }
 
     /**
      * exibe na tela a mensagem de matricula editada com sucesso
      */
     public void mensagemMatriculaEditadaSucesso() {
+        System.out.println();
         System.out.println(Constantes.MATRICULA_EDITADA_SUCESSO);
+        System.out.println();
     }
 
     /**
      * exibe na tela a mensagem de nome editado com sucesso
      */
     public void mensagemNomeEditadoSucesso() {
+        System.out.println();
         System.out.println(Constantes.NOME_EDITADO_SUCESSO);
+        System.out.println();
     }
 
     /**
      * exibe na tela a mensagem de funcionario não encontrado
      */
     public void mensagemFuncionarioNaoEncontrado() {
+        System.out.println();
         System.out.println(Constantes.MENSAGEM_FUNCIONARIO_NAO_ENCONTRADO);
+        System.out.println();
     }
 
     /**
@@ -218,6 +236,8 @@ public class TelaFuncionario {
     public void opcaoInexistente() {
         System.out.println();
         System.out.println(Constantes.OPCAO_INEXISTENTE);
+        System.out.println();
+        System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println();
     }
 

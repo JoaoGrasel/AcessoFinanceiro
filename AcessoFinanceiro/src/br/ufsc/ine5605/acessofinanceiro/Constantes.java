@@ -18,7 +18,7 @@ class Constantes {
     public static final String MATRICULA_INVALIDA = "------------ MATRÍCULA INVÁLIDA: a matrícula deve conter somente numeros ------------";
     public static final String OPCAO_INVALIDA = "------------ OPÇÃO INVÁLIDA: por favor digite somente um numero --";
     public static final String OPCAO_INEXISTENTE = "------------ OPÇÃO SELECIONADA NÃO EXISTE: confira as opções do menu e tente novamente ------------";
-    public static final String INSIRA_OPCAO = " Digite a opcao: ";
+    public static final String INSIRA_OPCAO = " Digite a opção: ";
     public static final String MATRICULA_JA_CADASTRADA = "------------ MATRÍCULA INVÁLIDA: a matricula inserida ja foi cadastrada ------------";
     public static final String CODIGO_JA_CADASTRADO = "------------ CÓDIGO INVALIDO: o código inserido ja foi cadastrado ------------";
     public static final String MATRICULA_INEXISTENTE = "------------ MATRÍCULA INEXISTENTE: a matrícula inserida nao pertence a nenhum funcionario ------------";
@@ -59,7 +59,7 @@ class Constantes {
     public static final String ACESSO_NEGADO_ACESSO_BLOQUEADO = "------------ ACESSO NEGADO: acesso bloqueado. ------------";
 
     // RELATORIO
-    public static final String RELATORIO_ACESSO = "+-+-+-+-+-+-+-+ Emitir relatorio +-+-+-+-+-+-+-+";
+    public static final String RELATORIO_ACESSO = "+-+-+-+-+-+-+-+ Emitir relatórios de acesso negado +-+-+-+-+-+-+-+";
     public static final String RELATORIO_ESCOLHA_FILTRO = " Escolha o filtro: ";
     public static final String RELATORIO_FILTRO_MOTIVO = " 1. Por motivo";
     public static final String RELATORIO_FILTRO_MATRICULA = " 2. Por matrícula";
@@ -125,7 +125,7 @@ class Constantes {
     public static final String ERRO_INTERNO_CONSTANTES_FORMATADOR = "------------ ERRO INTERNO: as constantes usadas para formatação dos horários de acesso dos cargos estão inválidas. ------------";
 
 //SELECIONAR OU CRIAR CARGO NO CADASTRO
-    public static final String O_QUE_DESEJA_FAZER = " O que você deseja fazer?";
+    public static final String O_QUE_DESEJA_FAZER = " Digite a opção correspondente ao que você deseja fazer:";
     public static final String USAR_CARGO_EXISTENTE = " 1. Usar cargo ja existente ";
     public static final String CRIAR_CARGO_PARA_FUNCIONARIO = " 2. Criar cargo ";
     public static final String CODIGO_DO_CARGO = " Código do cargo: ";
@@ -214,6 +214,6 @@ class Constantes {
     public static final String GERENCIAR_FUNCIONARIOS = " 2. Gerenciar Funcionários";
     public static final String GERENCIAR_CARGOS = " 3. Gerenciar Cargos";
     public static final String GERENCIAR_DATA = " 4. Gerenciar data do sistema";
-    public static final String EMITIR_RELATORIO = " 5. Emitir Relatorio";
+    public static final String EMITIR_RELATORIO = " 5. Emitir Relatorio de Acessos Negados";
 
 }

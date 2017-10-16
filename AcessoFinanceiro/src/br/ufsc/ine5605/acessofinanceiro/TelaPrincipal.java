@@ -30,6 +30,7 @@ class TelaPrincipal {
         System.out.println(Constantes.GERENCIAR_CARGOS);
         System.out.println(Constantes.GERENCIAR_DATA);
         System.out.println(Constantes.EMITIR_RELATORIO);
+        System.out.println();
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println();
     }
@@ -57,6 +58,8 @@ class TelaPrincipal {
     public void exibeOpcaoInexistente() {
         System.out.println();
         System.out.println(Constantes.OPCAO_INEXISTENTE);
+        System.out.println();
+        System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println();
     }
 

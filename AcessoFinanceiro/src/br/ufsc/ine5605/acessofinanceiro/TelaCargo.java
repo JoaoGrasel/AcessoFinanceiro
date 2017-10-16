@@ -35,6 +35,7 @@ public class TelaCargo {
         System.out.println(Constantes.LISTAR_CARGOS);
         System.out.println(Constantes.DELETAR_CARGO);
         System.out.println(Constantes.VOLTAR_AO_MENU_PRINCIPAL);
+        System.out.println();
         System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println();
     }
@@ -64,7 +65,7 @@ public class TelaCargo {
         }
         return opcao;
     }
-    
+
     /**
      * Pede que o usuário insira o nome do cargo que deseja cadastrar
      *
@@ -77,22 +78,22 @@ public class TelaCargo {
         System.out.println();
         return nome;
     }
-	
+
     public int pedeTipoCargo() {
-		System.out.println("");
+        System.out.println();
         System.out.println(Constantes.ESCOLHA_TIPO_CARGO);
-		System.out.println("");
+        System.out.println();
         System.out.println(Constantes.TIPO_CARGO_GERENCIAL);
         System.out.println(Constantes.TIPO_CARGO_COMERCIAL);
         System.out.println(Constantes.TIPO_CARGO_ESPECIAL);
-		System.out.println(Constantes.TIPO_CARGO_COMUM);
-		System.out.println(Constantes.TIPO_CARGO_SEM_ACESSO);
-		System.out.println("");
-		
+        System.out.println(Constantes.TIPO_CARGO_COMUM);
+        System.out.println(Constantes.TIPO_CARGO_SEM_ACESSO);
+        System.out.println();
+
         System.out.println();
         return teclado.nextInt();
     }
-    
+
     /**
      * Exibe na tela o titulo do cadastro de cargo: Novo Cargo
      */
@@ -101,7 +102,7 @@ public class TelaCargo {
         System.out.println(Constantes.MENSAGEM_NOVO_CARGO);
         System.out.println();
     }
-    
+
     /**
      * Exibe na tela o titulo da seção de edição de cargo: Editar Cargo
      */
@@ -124,6 +125,8 @@ public class TelaCargo {
         System.out.println();
         System.out.println(Constantes.OPCAO_INEXISTENTE);
         System.out.println();
+        System.out.println(Constantes.O_QUE_DESEJA_FAZER);
+        System.out.println();
     }
 
     public void exibeCargo(int codigo, String nome, boolean ehGerencial, boolean temAcessoAoFinanceiro) {
@@ -136,9 +139,11 @@ public class TelaCargo {
     }
 
     public void exibeCargoSelecionado() {
+        System.out.println();
         System.out.println(Constantes.CARGO_SELECIONADO);
+        System.out.println();
     }
-    
+
     public int pedeCodigo() {
         int codigo = 0;
         boolean codigoInvalido = true;
@@ -160,7 +165,7 @@ public class TelaCargo {
         }
         return codigo;
     }
-    
+
     public void mensagemErroCodigoJaCadastrada() {
         System.out.println();
         System.out.println(Constantes.CODIGO_JA_CADASTRADO);
@@ -172,7 +177,7 @@ public class TelaCargo {
         System.out.println(Constantes.TITULO_DELETAR_CARGO);
         System.out.println();
     }
-    
+
     /**
      * exibe a mensagem de cargo cadastrado com sucesso
      */
@@ -191,6 +196,7 @@ public class TelaCargo {
     public void exibeMenuConfirmacaoDeletarCargo() {
         System.out.println();
         System.out.println(Constantes.CONFIRMACAO_EXCLUSAO_CARGO);
+        System.out.println();
         System.out.println(Constantes.SIM);
         System.out.println(Constantes.NAO);
         System.out.println();
@@ -203,49 +209,65 @@ public class TelaCargo {
     }
 
     public void exibeOpcaoInexistente() {
+        System.out.println();
         System.out.println(Constantes.OPCAO_INEXISTENTE);
+        System.out.println();
+        System.out.println(Constantes.O_QUE_DESEJA_FAZER);
+        System.out.println();
     }
 
     public void exibeMenuEditaCargo() {
         System.out.println();
-        System.out.println(Constantes.O_QUE_DESEJA_FAZER);
         System.out.println(Constantes.ALTERAR_NOME_CARGO);
         System.out.println(Constantes.ALTERAR_CODIGO_CARGO);
         System.out.println(Constantes.ALTERAR_EH_GERENCIAL);
         System.out.println(Constantes.ALTERAR_TEM_ACESSO);
         System.out.println(Constantes.ALTERAR_HORARIOS_ACESSO);
         System.out.println(Constantes.OPCAO_VOLTAR_CARGO);
-        System.out.println(); 
+        System.out.println();
+        System.out.println(Constantes.O_QUE_DESEJA_FAZER);
+        System.out.println();
     }
 
     public void mensagemCargoNaoEncontrado() {
+        System.out.println();
         System.out.println(Constantes.MENSAGEM_CARGO_NAO_ENCONTRADO);
+        System.out.println();
     }
 
     public void mensagemNomeEditadoSucesso() {
+        System.out.println();
         System.out.println(Constantes.NOME_EDITADO_SUCESSO);
+        System.out.println();
     }
 
     public void mensagemCodigoEditadoSucesso() {
+        System.out.println();
         System.out.println(Constantes.CODIGO_EDITADO_SUCESSO);
+        System.out.println();
     }
-    
+
     public void mensagemGerencialEditadoSucesso() {
+        System.out.println();
         System.out.println(Constantes.EH_GERENCIAL_EDITADO_SUCESSO);
+        System.out.println();
     }
-    
+
     public void mensagemAcessoEditadoSucesso() {
+        System.out.println();
         System.out.println(Constantes.TEM_ACESSO_EDITADO_SUCESSO);
+        System.out.println();
     }
-    
+
     public int pedeSeEhGerencial() {
         int ehGerencial = 0;
         boolean gerencialInvalido = true;
-        
+
         while (gerencialInvalido) {
             try {
                 System.out.println();
                 System.out.println(Constantes.TORNAR_CARGO_GERENCIAL);
+                System.out.println();
                 System.out.println(Constantes.SIM);
                 System.out.println(Constantes.NAO);
                 ehGerencial = teclado.nextInt();
@@ -255,6 +277,9 @@ public class TelaCargo {
             } catch (InputMismatchException e) {
                 System.out.println();
                 System.out.println(Constantes.OPCAO_INVALIDA);
+                System.out.println();
+                System.out.println(Constantes.O_QUE_DESEJA_FAZER);
+                System.out.println();
                 teclado.nextLine();
             }
         }
@@ -264,11 +289,12 @@ public class TelaCargo {
     public int pedeTemAcessoAoFinanceiro() {
         int temAcessoAoFinanceiro = 0;
         boolean temAcessoInvalido = true;
-        
+
         while (temAcessoInvalido) {
             try {
                 System.out.println();
                 System.out.println(Constantes.ESCOLHA_TEM_ACESSO);
+                System.out.println();
                 System.out.println(Constantes.SIM);
                 System.out.println(Constantes.NAO);
                 temAcessoAoFinanceiro = teclado.nextInt();
@@ -278,13 +304,15 @@ public class TelaCargo {
             } catch (InputMismatchException e) {
                 System.out.println();
                 System.out.println(Constantes.OPCAO_INVALIDA);
+                System.out.println();
+                System.out.println(Constantes.O_QUE_DESEJA_FAZER);
+                System.out.println();
                 teclado.nextLine();
             }
         }
         return temAcessoAoFinanceiro;
     }
 
-    
     /**
      * Exibe a mensagem de erro de nome inserido invalido: deve conter somente
      * letras
@@ -300,15 +328,16 @@ public class TelaCargo {
         System.out.println(Constantes.NOME_INVALIDO_TAMANHO);
         System.out.println();
     }
-    
+
     public String pedeHoraInicioManha() {
+        System.out.println();
         System.out.println(Constantes.DIGITE_HORA_INICIO_MANHA);
         teclado.nextLine();
         String horaInicioManha = teclado.nextLine();
         System.out.println();
         return horaInicioManha;
     }
-	
+
     public String pedeHoraFimManha() {
         System.out.println();
         System.out.println(Constantes.DIGITE_HORA_FIM_MANHA);
@@ -317,47 +346,49 @@ public class TelaCargo {
         return horaFimManha;
     }
 
-	public String pedeHoraInicioTarde() {
-		System.out.println();
+    public String pedeHoraInicioTarde() {
+        System.out.println();
         System.out.println(Constantes.DIGITE_HORA_INICIO_TARDE);
         String horaInicioTarde = teclado.nextLine();
         System.out.println();
         return horaInicioTarde;
-	}
+    }
 
-	public String pedeHoraFimTarde() {
-		System.out.println();
+    public String pedeHoraFimTarde() {
+        System.out.println();
         System.out.println(Constantes.DIGITE_HORA_FIM_TARDE);
         String horaFimTarde = teclado.nextLine();
         System.out.println();
         return horaFimTarde;
-	}
+    }
 
-	public String pedeHoraInicioEspecial() {
-		System.out.println();
+    public String pedeHoraInicioEspecial() {
+        System.out.println();
         System.out.println(Constantes.DIGITE_HORA_INICIO_ESPECIAL);
         String horaInicioEspecial = teclado.nextLine();
         System.out.println();
         return horaInicioEspecial;
-	}
+    }
 
-	public String pedeHoraFimEspecial() {
-		System.out.println();
+    public String pedeHoraFimEspecial() {
+        System.out.println();
         System.out.println(Constantes.DIGITE_HORA_FIM_ESPECIAL);
         String horaFimEspecial = teclado.nextLine();
         System.out.println();
         return horaFimEspecial;
-	}
-	
-    public void exibeHoraInseridaFormatoIncorreto() {
-        System.out.println(Constantes.HORA_INSERIDA_FORMATO_INCORRETO);
     }
 
-	public void exibeErroConstantesFormatador() {
-		System.out.println("");
-		System.out.println(Constantes.ERRO_INTERNO_CONSTANTES_FORMATADOR);
-		System.out.println("");
-	}
+    public void exibeHoraInseridaFormatoIncorreto() {
+        System.out.println();
+        System.out.println(Constantes.HORA_INSERIDA_FORMATO_INCORRETO);
+        System.out.println();
+    }
+
+    public void exibeErroConstantesFormatador() {
+        System.out.println();
+        System.out.println(Constantes.ERRO_INTERNO_CONSTANTES_FORMATADOR);
+        System.out.println();
+    }
 
 //	public String pedeHora(String constante) {
 //		System.out.println();
@@ -366,17 +397,16 @@ public class TelaCargo {
 //        System.out.println();
 //        return hora;
 //	}
+    public void mensagemHorariosEditadosSucesso() {
+        System.out.println();
+        System.out.println(Constantes.HORARIOS_EDITADOS_SUCESSO);
+        System.out.println();
+    }
 
-	public void mensagemHorariosEditadosSucesso() {
-		System.out.println("");
-		System.out.println(Constantes.HORARIOS_EDITADOS_SUCESSO);
-		System.out.println("");
-	}
+    public void exibeEditaHorariosCargoSemAcesso() {
+        System.out.println();
+        System.out.println(Constantes.EDITA_HORARIOS_CARGO_SEM_ACESSO);
+        System.out.println();
+    }
 
-	public void exibeEditaHorariosCargoSemAcesso() {
-		System.out.println("");
-		System.out.println(Constantes.EDITA_HORARIOS_CARGO_SEM_ACESSO);
-		System.out.println("");
-	}
-	
 }
