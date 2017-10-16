@@ -76,13 +76,15 @@ public class ControladorCargo implements IControladorCargo {
      * Pede ao usuario todos os atributos para cadastrar um cargo e caso o
      * cargo não esteja cadastrado (codigo não foi cadastrada ainda),
      * cadastra o cargo.
+	 * 
+	 * @return Cargo cadastrado
      */
     public Cargo incluiCargo() {
         this.telaCargo.mensagemNovoCargo();
         String nome = pedeNome();
         int codigo = verificaCodigoInserido();
         int tipoCargo = this.telaCargo.pedeTipoCargo();
-        SimpleDateFormat formatador = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat formatador = new SimpleDateFormat(Constantes.FORMATADOR_HORA);
         try {
             Date horaInicioManha = formatador.parse(Constantes.HORA_INICIO_MANHA_COMERCIAL);
             Date horaFimManha = formatador.parse(Constantes.HORA_FIM_MANHA_COMERCIAL);

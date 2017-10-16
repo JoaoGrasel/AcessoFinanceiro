@@ -86,18 +86,28 @@ public class TelaCargo {
      * @return opcao inserida pelo usuario
      */
     public int pedeTipoCargo() {
-        System.out.println();
-        System.out.println(Constantes.ESCOLHA_TIPO_CARGO);
-        System.out.println();
-        System.out.println(Constantes.TIPO_CARGO_GERENCIAL);
-        System.out.println(Constantes.TIPO_CARGO_COMERCIAL);
-        System.out.println(Constantes.TIPO_CARGO_ESPECIAL);
-        System.out.println(Constantes.TIPO_CARGO_COMUM);
-        System.out.println(Constantes.TIPO_CARGO_SEM_ACESSO);
-        System.out.println();
-
-        System.out.println();
-        return teclado.nextInt();
+		int tipoCargo = 0;
+		boolean tipoCargoInvalido = true;
+        while (tipoCargoInvalido) {
+            try {
+				System.out.println("");
+				System.out.println(Constantes.ESCOLHA_TIPO_CARGO);
+				System.out.println("");
+				System.out.println(Constantes.TIPO_CARGO_GERENCIAL);
+				System.out.println(Constantes.TIPO_CARGO_COMERCIAL);
+				System.out.println(Constantes.TIPO_CARGO_ESPECIAL);
+				System.out.println(Constantes.TIPO_CARGO_COMUM);
+				System.out.println(Constantes.TIPO_CARGO_SEM_ACESSO);
+				System.out.println("");
+				tipoCargo = teclado.nextInt();
+                tipoCargoInvalido = false;
+            } catch (InputMismatchException e) {
+                System.out.println("");
+                System.out.println(Constantes.OPCAO_INVALIDA);
+                teclado.next();
+            }
+        }
+        return tipoCargo;
     }
 
     /**
@@ -147,11 +157,13 @@ public class TelaCargo {
      * @param temAcessoAoFinanceiro para o cargo selecionado
      */
     public void exibeCargo(int codigo, String nome, boolean ehGerencial, boolean temAcessoAoFinanceiro) {
+		String textoEhGerencial = ehGerencial == true ? "sim" : "nao";
+		String textoTemAcessoAoFinanceiro = temAcessoAoFinanceiro == true ? "sim" : "nao";
         System.out.println();
         System.out.println(Constantes.CODIGO + codigo);
         System.out.println(Constantes.NOME + nome);
-        System.out.println(Constantes.EH_GERENTE + ehGerencial);
-        System.out.println(Constantes.TEM_ACESSO_AO_FINANCEIRO + temAcessoAoFinanceiro);
+        System.out.println(Constantes.EH_GERENTE + textoEhGerencial);
+        System.out.println(Constantes.TEM_ACESSO_AO_FINANCEIRO + textoTemAcessoAoFinanceiro);
         System.out.println();
     }
 
