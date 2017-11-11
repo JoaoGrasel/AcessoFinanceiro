@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufsc.ine5605.acessofinanceiro;
+package br.ufsc.ine5605.acessofinanceiro.Modelos;
 
 /**
  *
@@ -11,11 +11,11 @@ package br.ufsc.ine5605.acessofinanceiro;
  *
  * @author thiagobrezinski
  */
-class Constantes {
+public class Constantes {
 
     // COMUM
     public static final String INSIRA_MATRICULA = "Digite a matrícula: ";
-    public static final String MATRICULA_INVALIDA = "------------ MATRÍCULA INVÁLIDA: a matrícula deve conter somente numeros ------------";
+    public static final String MATRICULA_INVALIDA = "------------ MATRÍCULA INVÁLIDA: a matrícula deve conter somente e ate 9 numeros ------------";
     public static final String OPCAO_INVALIDA = "------------ OPÇÃO INVÁLIDA: por favor digite somente um numero --";
     public static final String OPCAO_INEXISTENTE = "------------ OPÇÃO SELECIONADA NÃO EXISTE: confira as opções do menu e tente novamente ------------";
     public static final String INSIRA_OPCAO = " Digite a opção: ";
@@ -40,9 +40,9 @@ class Constantes {
     public static final String VOLTAR_2 = " 2. Voltar";
     public static final String VOLTAR_5 = " 5. Voltar";
     public static final String CARGO_INDEFINIDO = " Cargo Indefinido ";
-    public static final String CODIGO_INVALIDO = "------------ CÓDIGO INVÁLIDO: o código deve conter somente números. Tente novamente. ------------";
-    public static final String SALARIO_INVALIDO = "------------ SALÁRIO INVÁLIDO: o salário deve conter somente numeros. Tente novamente. ------------";
-    public static final String TELEFONE_INVALIDO = "------------ TELEFONE INVÁLIDO: o telefone deve conter somente números. Tente novamente. ------------";
+    public static final String CODIGO_INVALIDO = "------------ CÓDIGO INVÁLIDO: o código deve conter somente e ate 9 números. Tente novamente. ------------";
+    public static final String SALARIO_INVALIDO = "------------ SALÁRIO INVÁLIDO: o salário deve conter somente e ate 9 numeros. Tente novamente. ------------";
+    public static final String TELEFONE_INVALIDO = "------------ TELEFONE INVÁLIDO: o telefone deve conter somente e ate 9 números. Tente novamente. ------------";
     public static final String CARGO_NAO_ENCONTRADO = "------------ O sistema não encontrou nenhum cargo com este codigo. Tente novamente. ------------";
     public static final String FUNCIONARIO_DELETADO_SUCESSO = "FUNCIONÁRIO DELETADO COM SUCESSO!";
     public static final String FUNCIONARIO_CADASTRADO_SUCESSO = "FUNCIONÁRIO CADASTRADO COM SUCESSO!";

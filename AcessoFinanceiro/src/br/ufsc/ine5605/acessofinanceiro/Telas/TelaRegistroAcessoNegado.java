@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.ufsc.ine5605.acessofinanceiro;
+package br.ufsc.ine5605.acessofinanceiro.Telas;
 
+import br.ufsc.ine5605.acessofinanceiro.Modelos.Constantes;
+import br.ufsc.ine5605.acessofinanceiro.Controladores.ControladorRegistroAcessoNegado;
+import br.ufsc.ine5605.acessofinanceiro.Modelos.Motivo;
+import br.ufsc.ine5605.acessofinanceiro.Modelos.RegistroAcessoNegado;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -13,7 +17,7 @@ import java.util.Scanner;
  *
  * @author thiagobrezinski
  */
-class TelaRegistroAcessoNegado {
+public class TelaRegistroAcessoNegado {
 
     private Scanner teclado;
     private ControladorRegistroAcessoNegado owner;
