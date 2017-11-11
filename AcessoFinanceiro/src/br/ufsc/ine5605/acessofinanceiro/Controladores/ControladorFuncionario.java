@@ -5,6 +5,7 @@
  */
 package br.ufsc.ine5605.acessofinanceiro.Controladores;
 
+import br.ufsc.ine5605.acessofinanceiro.FuncionarioDAO;
 import br.ufsc.ine5605.acessofinanceiro.Modelos.Cargo;
 import br.ufsc.ine5605.acessofinanceiro.Modelos.Funcionario;
 import br.ufsc.ine5605.acessofinanceiro.Interfaces.IControladorFuncionario;
@@ -98,11 +99,13 @@ public class ControladorFuncionario implements IControladorFuncionario {
         this.telaFuncionario.exibeOpcaoCargoFuncionario();
         Cargo cargo = atribuiCargoAoFuncionario();
 
-        if (!this.funcionarios.contains(encontraFuncionarioPelaMatricula(matricula))) {
+        boolean funcionarioCadastrado = true;
+        if (funcionarioCadastrado) {
             Funcionario funcionario = new Funcionario(matricula, nome, dataNascimento, telefone, salario, cargo);
-            funcionarios.add(funcionario);
+            funcionarioDAO.put(funcionario);
             this.telaFuncionario.mensagemFuncionarioCadastrado();
         }
+
         exibeMenuFuncionario();
     }
 
@@ -357,7 +360,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
     @Override
     public void deixaFuncionariosSemCargo(Cargo cargoDeletado, Cargo semCargo) {
         if (cargoDeletado != null) {
-            for (Funcionario funcionarioCadastrado : funcionarios) {
+            for (Funcionario funcionarioCadastrado : funcionarioDAO.getList()) {
                 if (funcionarioCadastrado.getCargo().getCodigo() == cargoDeletado.getCodigo()) {
                     funcionarioCadastrado.setCargo(semCargo);
                 }
@@ -399,7 +402,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
      */
     public int verificaMatriculaInserida() {
         int matricula = this.telaFuncionario.pedeMatricula();
-        for (Funcionario funcionarioCadastrado : funcionarios) {
+        for (Funcionario funcionarioCadastrado : funcionarioDAO.getList()) {
             if (funcionarioCadastrado.getMatricula() == matricula) {
                 this.telaFuncionario.mensagemErroMatriculaJaCadastrada();
                 matricula = verificaMatriculaInserida();
@@ -410,7 +413,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
 
     @Override
     public boolean matriculaExiste(int matricula) {
-        for (Funcionario funcionarioCadastrado : funcionarios) {
+        for (Funcionario funcionarioCadastrado : this.funcionarioDAO.getList()) {
             if (funcionarioCadastrado.getMatricula() == matricula) {
                 return true;
             }
@@ -474,7 +477,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
      */
     public void listaFuncionarios() {
         this.telaFuncionario.mensagemListaFuncionarios();
-        for (Funcionario funcionarioCadastrado : funcionarios) { //funcionariosDAO list - coloca tudo em um arrayzao e depois manda pra tela
+        for (Funcionario funcionarioCadastrado : funcionarioDAO.getList()) { //funcionariosDAO list - coloca tudo em um arrayzao e depois manda pra tela
             int matricula = funcionarioCadastrado.getMatricula();
             String nome = funcionarioCadastrado.getNome();
             String dataNascimento = funcionarioCadastrado.getDataNascimento();

@@ -5,6 +5,7 @@
  */
 package br.ufsc.ine5605.acessofinanceiro;
 
+import br.ufsc.ine5605.acessofinanceiro.Modelos.Funcionario;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
