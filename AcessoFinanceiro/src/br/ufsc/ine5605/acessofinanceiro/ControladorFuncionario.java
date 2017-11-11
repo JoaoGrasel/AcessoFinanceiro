@@ -18,11 +18,13 @@ import java.text.SimpleDateFormat;
 public class ControladorFuncionario implements IControladorFuncionario {
 
     private TelaFuncionario telaFuncionario;
-    private ArrayList<Funcionario> funcionarios;
+    //retira a lista de funcionarios
+
+    private FuncionarioDAO funcionarioDAO;
 
     public ControladorFuncionario() {
         this.telaFuncionario = new TelaFuncionario(this);
-        this.funcionarios = new ArrayList<>();
+        this.funcionarioDAO = new FuncionarioDAO();
     }
 //
 // +-+-+-+-+-+-+-+-+-+- MENU PRINCIPAL FUNCIONARIO +-+-+-+-+-+-+-+-+-+-
@@ -338,13 +340,11 @@ public class ControladorFuncionario implements IControladorFuncionario {
      * @param funcionario que vai ser deletado
      */
     public void deletaFuncionario(Funcionario funcionario) {
-        if (funcionario != null) {
-            if (funcionarios.contains(funcionario)) {
-                funcionarios.remove(funcionario);
-                funcionario = null;
-                this.telaFuncionario.mensagemFuncionarioDeletadoSucesso();
-            }
-        }
+
+        funcionarioDAO.remove(funcionario);
+        funcionario = null;
+        this.telaFuncionario.mensagemFuncionarioDeletadoSucesso();
+
     }
 
 //
@@ -428,11 +428,12 @@ public class ControladorFuncionario implements IControladorFuncionario {
 
     @Override
     public Funcionario encontraFuncionarioPelaMatricula(int matricula) {
-        for (Funcionario funcionarioCadastrado : this.funcionarios) {
-            if (matricula == funcionarioCadastrado.getMatricula()) {
-                return funcionarioCadastrado;
-            }
+        Funcionario funcionario = funcionarioDAO.get(matricula);
+        if (funcionario != null) {
+            return funcionario;
+
         }
+
         return null;
     }
 
@@ -469,7 +470,7 @@ public class ControladorFuncionario implements IControladorFuncionario {
      */
     public void listaFuncionarios() {
         this.telaFuncionario.mensagemListaFuncionarios();
-        for (Funcionario funcionarioCadastrado : funcionarios) {
+        for (Funcionario funcionarioCadastrado : funcionarios) { //funcionariosDAO list - coloca tudo em um arrayzao e depois manda pra tela
             int matricula = funcionarioCadastrado.getMatricula();
             String nome = funcionarioCadastrado.getNome();
             String dataNascimento = funcionarioCadastrado.getDataNascimento();
